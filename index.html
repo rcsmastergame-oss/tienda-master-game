@@ -90,9 +90,9 @@
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
         </button>
 
-        <!-- PORTADA VECTORIAL NATIVA (NUNCA SE CAE) -->
+        <!-- PORTADA DE IMAGEN DINÁMICA (CORREGIDA) -->
         <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden">
-            <div id="banner-vector-bg" class="absolute inset-0 w-full h-full"></div>
+            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
             <div class="absolute bottom-6 left-6 z-10">
                 <h2 id="selected-game-title" class="text-3xl md:text-4xl font-black tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"></h2>
@@ -170,14 +170,15 @@
     <script>
         let juegoActual = "";
         
+        // Estructura oficial del catálogo con bonos y suscripciones mensuales
         const listaPaquetes = {
             free_fire: [
-                { id: "ff_100", name: "100 Diamantes", bonus: "+10 Diamantes", price: "1.20", icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes", bonus: "+31 Diamantes", price: "3.40", icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes", bonus: "+52 Diamantes", price: "5.50", icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes", bonus: "+106 Diamantes", price: "10.90", icon: "fa-gem" },
-                { id: "ff_2180", name: "2180 Diamantes", bonus: "+218 Diamantes", price: "21.50", icon: "fa-gem" },
-                { id: "ff_5600", name: "5600 Diamantes", bonus: "+560 Diamantes", price: "52.00", icon: "fa-gem" },
+                { id: "ff_100", name: "100 Diamantes", bonus: "+ 20 Bono", price: "0.78", icon: "fa-gem" },
+                { id: "ff_310", name: "310 Diamantes", bonus: "+ 62 Bono", price: "2.18", icon: "fa-gem" },
+                { id: "ff_520", name: "520 Diamantes", bonus: "+ 104 Bono", price: "3.64", icon: "fa-gem" },
+                { id: "ff_1060", name: "1060 Diamantes", bonus: "+ 212 Bono", price: "6.76", icon: "fa-gem" },
+                { id: "ff_2180", name: "2160 Diamantes", bonus: "+ 436 Bono", price: "13.41", icon: "fa-gem" },
+                { id: "ff_5600", name: "5600 Diamantes", bonus: "+ 1120 bono", price: "34.28", icon: "fa-gem" },
                 { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Recibe Diamantes Diario", price: "2.50", icon: "fa-id-card" },
                 { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "El Mayor Beneficio", price: "9.99", icon: "fa-box-open" }
             ],
@@ -187,37 +188,6 @@
                 { id: "bs_620", name: "620 de Oro", bonus: "+65 Oro Extra", price: "8.99", icon: "fa-coins" },
                 { id: "bs_pass", name: "Pase de Batalla", bonus: "Desbloqueo Premium", price: "5.99", icon: "fa-id-card" }
             ]
-        };
-
-        // Banners SVG nativos incrustados para evitar enlaces rotos de internet por completo
-        const svgBanners = {
-            free_fire: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <linearGradient id="g_ff" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#1e1b4b"/>
-                        <stop offset="50%" stop-color="#451a03"/>
-                        <stop offset="100%" stop-color="#0f172a"/>
-                    </linearGradient>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#g_ff)"/>
-                <circle cx="200" cy="125" r="300" fill="#f59e0b" opacity="0.05" filter="blur(40px)"/>
-                <circle cx="600" cy="125" r="200" fill="#dc2626" opacity="0.05" filter="blur(40px)"/>
-                <path d="M150,0 Q300,125 150,250 T650,250" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.15"/>
-                <path d="M200,0 Q350,125 200,250 T700,250" fill="none" stroke="#ea580c" stroke-width="0.5" opacity="0.1"/>
-            </svg>`,
-            blood_strike: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <linearGradient id="g_bs" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#1c1917"/>
-                        <stop offset="50%" stop-color="#7c2d12"/>
-                        <stop offset="100%" stop-color="#0c0a09"/>
-                    </linearGradient>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#g_bs)"/>
-                <circle cx="400" cy="125" r="250" fill="#ea580c" opacity="0.08" filter="blur(50px)"/>
-                <line x1="0" y1="125" x2="800" y2="125" stroke="#ea580c" stroke-width="0.5" opacity="0.15" stroke-dasharray="5,5"/>
-                <circle cx="400" cy="125" r="60" fill="none" stroke="#ea580c" stroke-width="1" opacity="0.2"/>
-            </svg>`
         };
 
         function showSection(id) {
@@ -232,21 +202,24 @@
             const container = document.getElementById('packages-container');
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
-            const vectorContainer = document.getElementById('banner-vector-bg');
+            const bannerImg = document.getElementById('banner-img-src');
             
             container.innerHTML = "";
             document.getElementById('file-name').classList.add('hidden');
             
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
-                vectorContainer.innerHTML = svgBanners.free_fire;
+                // Imagen horizontal aleatoria optimizada de Free Fire para la portada
+                bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10"; 
                 bannerContainer.classList.remove('hidden');
             } else {
                 title.innerText = "Blood Strike";
-                vectorContainer.innerHTML = svgBanners.blood_strike;
+                // Fallback de imagen para Blood Strike
+                bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10";
                 bannerContainer.classList.remove('hidden');
             }
 
+            // Construcción del catálogo visual
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const checked = idx === 0 ? "checked" : "";
                 const themeColor = "amber";
@@ -257,10 +230,13 @@
                         <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name} ${pkg.bonus}" ${checked} class="hidden package-radio">
                         
                         <div class="package-content bg-slate-900/30 border-2 border-slate-800 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-200 relative overflow-hidden">
+                            
+                            <!-- Indicador Check Superior Derecho -->
                             <div class="check-icon opacity-0 scale-75 absolute top-3 right-3 bg-${themeColor}-500 text-slate-950 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200">
                                 <i class="fa-solid fa-check"></i>
                             </div>
 
+                            <!-- Icono superior izquierdo e información -->
                             <div>
                                 <div class="w-9 h-9 rounded-lg bg-slate-950/60 flex items-center justify-center mb-2.5 border border-slate-800 group-hover:scale-105 transition-transform">
                                     <i class="fa-solid ${pkg.icon} text-md ${iconClass}"></i>
@@ -269,6 +245,7 @@
                                 <div class="text-[10px] font-bold text-emerald-400 mt-0.5 tracking-wide">${pkg.bonus}</div>
                             </div>
                             
+                            <!-- Precio alineado abajo a la izquierda -->
                             <div class="text-sm font-black text-slate-200 mt-2">
                                 $${pkg.price}
                             </div>
