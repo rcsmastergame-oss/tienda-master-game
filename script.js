@@ -1,69 +1,95 @@
-const MAKE_WEBHOOK_URL = "https://eu1.make.com/2051113/scenarios/6380627/edit";
+document.getElementById('form-recarga').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-const convertFileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
+    const btnEnviar = document.getElementById('btn-enviar'); // o el ID que tenga tu botón
+    const statusMessage = document.getElementById('status-message'); // o el contenedor del error
+    
+    // Cambiar estado visual del botón
+    if(btnEnviar) {
+        btnEnviar.disabled = true;
+        btnEnviar.innerText = "PROCESANDO ORDEN...";
+    }
+
+    // PON AQUÍ TU URL REAL DE MAKE
+    const URL_WEBHOOK_MAKE = "https://hook.us1.make.com/tu_enlace_aqui";
+
+    const playerId = document.getElementById('player_id').value;
+    const referencia = document.getElementById('referencia').value;
+    const fileInput = document.getElementById('screenshot_file');
+    
+    const paqueteSeleccionado = document.querySelector('input[name="paquete"]:checked');
+    const juego = typeof juegoActual !== 'undefined' ? juegoActual : "No especificado";
+    
+    let infoPaquete = "Ninguno";
+    let precioPaquete = "0.00";
+    
+    if (paqueteSeleccionado) {
+        infoPaquete = paqueteSeleccionado.getAttribute('data-name') || paqueteSeleccionado.value;
+        precioPaquete = paqueteSeleccionado.getAttribute('data-price') || "0.00";
+    }
+
+    // Función interna para convertir la imagen a texto Base64 seguro
+    const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
+        reader.onerror = error => reject(error);
     });
-};
 
-document.getElementById('form-recarga').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const btnEnviar = document.getElementById('btn-enviar');
-    const statusMessage = document.getElementById('status-message');
-    const fileInput = document.getElementById('screenshot_file');
-    
-    btnEnviar.disabled = true;
-    btnEnviar.innerText = "PROCESANDO CAPTURA E INFORME...";
+    let imagenBase64 = "";
+    let nombreImagen = "";
 
-    const paqueteSeleccionado = document.querySelector('input[name="paquete"]:checked');
-    
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        nombreImagen = file.name;
+        // Si la imagen es muy pesada, se convierte de forma segura
+        imagenBase64 = await toBase64(file);
+    }
+
+    // Estructura JSON pura (Mucho más limpia y compatible para Make)
+    const datosOrden = {
+        juego: juego,
+        player_id: playerId,
+        paquete: infoPaquete,
+        precio_bs: precioPaquete,
+        referencia: referencia,
+        comprobante_nombre: nombreImagen,
+        comprobante_archivo: imagenBase64 // Aquí viaja la foto como texto seguro
+    };
+
     try {
-        let base64Image = "";
-        if (fileInput.files && fileInput.files[0]) {
-            base64Image = await convertFileToBase64(fileInput.files[0]);
-        }
-
-        const datosPedido = {
-            juego: juegoActual === "free_fire" ? "Free Fire" : "Blood Strike",
-            id_jugador: document.getElementById('player_id').value,
-            paquete_id: paqueteSeleccionado.value,
-            paquete_nombre: paqueteSeleccionado.getAttribute('data-name'),
-            precio: parseFloat(paqueteSeleccionado.getAttribute('data-price')),
-            metodo_pago: "Pago Movil",
-            referencia: document.getElementById('referencia').value, // ¡Aquí viaja el texto de la referencia!
-            captura_base64: base64Image, 
-            fecha: new Date().toLocaleString()
-        };
-
-        const response = await fetch(MAKE_WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datosPedido)
+        const response = await fetch(URL_WEBHOOK_MAKE, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(datosOrden)
         });
 
+        // Remueve clases de error previas si existen
+        statusMessage.classList.remove('bg-rose-500/10', 'text-rose-400', 'border-rose-500/20');
+
         if (response.ok) {
-            statusMessage.textContent = "¡Pedido enviado con éxito! Tu captura, referencia e ID están en proceso de revisión.";
-            statusMessage.className = "mt-4 p-4 rounded-xl text-center font-bold bg-green-500/20 text-green-400 border border-green-500/30";
+            // Éxito total
+            statusMessage.className = "mt-4 p-4 rounded-xl text-center font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+            statusMessage.innerText = "¡Orden enviada con éxito! Tu recarga será procesada en breve.";
             statusMessage.classList.remove('hidden');
             document.getElementById('form-recarga').reset();
-            
-            setTimeout(() => {
-                statusMessage.classList.add('hidden');
-                showSection('home-view');
-            }, 5000);
+            if(document.getElementById('file-name')) {
+                document.getElementById('file-name').classList.add('hidden');
+            }
         } else {
-            throw new Error("Error en el canal de comunicación.");
+            throw new Error("Rechazado por el servidor");
         }
     } catch (error) {
-        statusMessage.textContent = "Error al enviar. Inténtalo de nuevo o comprueba el peso de la imagen.";
-        statusMessage.className = "mt-4 p-4 rounded-xl text-center font-bold bg-red-500/20 text-red-400 border border-red-500/30";
+        // Muestra el error en pantalla
+        statusMessage.className = "mt-4 p-4 rounded-xl text-center font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20";
+        statusMessage.innerText = "Error al enviar. Inténtalo de nuevo o comprueba el peso de la imagen.";
         statusMessage.classList.remove('hidden');
     } finally {
-        btnEnviar.disabled = false;
-        btnEnviar.innerText = "Enviar Pedido a Operador";
+        if(btnEnviar) {
+            btnEnviar.disabled = false;
+            btnEnviar.innerText = "ENVIAR PEDIDO A OPERADOR";
+        }
     }
 });
