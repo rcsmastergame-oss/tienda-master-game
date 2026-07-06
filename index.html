@@ -57,9 +57,11 @@
             
             <!-- Tarjeta Free Fire -->
             <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-sky-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-sky-950/10">
-                <div class="h-44 bg-slate-950/60 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
-                    <img src="https://instagram.fsci1-2.fna.fbcdn.net/v/t51.2885-19/430737062_1774049179758883_7751363970322950766_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDI0LmMyIn0&_nc_ht=instagram.fsci1-2.fna.fbcdn.net&_nc_cat=107&_nc_oc=Q6cZ2gFvSe8CQqiPwLT_3-VeqTIHwiv9HXbs60hDOYmzSFEJiBpbLdzd5jTeeBUd_nJrzDU&_nc_ohc=GMghh2Qsmv0Q7kNvwHERbI1&_nc_gid=1iolAErF0IduQ41vkkhQJQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQDZQz4puvJvab05mzF52JSgLTg-UMhgEkBhPQQtiYtT7g&oe=6A50FFD1&_nc_sid=8b3546" alt="Free Fire" class="w-32 h-32 object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-lg">
-                    <div class="absolute bottom-3 left-3 bg-slate-950/90 text-sky-400 text-xs font-bold px-3 py-1 rounded-md border border-sky-500/20">ID Directo</div>
+                <div class="h-44 bg-gradient-to-br from-slate-950 via-sky-950/30 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <!-- Imagen de logo optimizada libre de bloqueos de Instagram -->
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=300" alt="Free Fire" class="absolute inset-0 w-full h-full object-cover opacity-20 filter grayscale group-hover:opacity-30 group-hover:scale-105 transition-all duration-500">
+                    <i class="fa-solid fa-fire-flame-curved text-5xl text-sky-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(14,165,233,0.6)]"></i>
+                    <div class="absolute bottom-3 left-3 bg-slate-950/90 text-sky-400 text-xs font-bold px-3 py-1 rounded-md border border-sky-500/20 z-10">ID Directo</div>
                 </div>
                 <h3 class="text-2xl font-black tracking-wide group-hover:text-sky-400 transition-colors">FREE FIRE</h3>
                 <p class="text-slate-400 text-sm mt-1">Diamantes por ID directo con abonos automatizados y bonificaciones en minutos.</p>
@@ -70,9 +72,10 @@
 
             <!-- Tarjeta Blood Strike -->
             <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-red-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-red-950/10">
-                <div class="h-44 bg-slate-950/60 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7VYxDu9xgChNhvuX0X-4cco0W4qW9SMk-IixoM4hC_g&s=10" alt="Blood Strike" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute bottom-3 left-3 bg-slate-950/90 text-red-400 text-xs font-bold px-3 py-1 rounded-md border border-red-500/20">Oro / Pases</div>
+                <div class="h-44 bg-gradient-to-br from-slate-950 via-red-950/30 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=300" alt="Blood Strike" class="absolute inset-0 w-full h-full object-cover opacity-20 filter grayscale group-hover:opacity-30 group-hover:scale-105 transition-all duration-500">
+                    <i class="fa-solid fa-crosshairs text-5xl text-red-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                    <div class="absolute bottom-3 left-3 bg-slate-950/90 text-red-400 text-xs font-bold px-3 py-1 rounded-md border border-red-500/20 z-10">Oro / Pases</div>
                 </div>
                 <h3 class="text-2xl font-black tracking-wide group-hover:text-red-400 transition-colors">BLOOD STRIKE</h3>
                 <p class="text-slate-400 text-sm mt-1">Monedas de oro y pases de temporada de forma directa por ID.</p>
@@ -90,19 +93,20 @@
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
         </button>
 
-        <!-- BANNER DE IMAGEN DINÁMICA DE GOOGLE -->
-        <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden">
-            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-            <div class="absolute bottom-6 left-6">
-                <h2 id="selected-game-title" class="text-3xl md:text-4xl font-black tracking-wider uppercase drop-shadow-md"></h2>
+        <!-- BANNER DE IMAGEN CORREGIDO CON CAPA DE RESPALDO INTERNA -->
+        <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden bg-slate-950">
+            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <div id="banner-fallback-gradient" class="absolute inset-0 bg-gradient-to-r from-sky-950/80 via-slate-900 to-indigo-950/50 mix-blend-initial"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 z-10">
+                <h2 id="selected-game-title" class="text-3xl md:text-4xl font-black tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"></h2>
             </div>
         </div>
 
-        <!-- REJILLA PRINCIPAL DIVIDIDA EN DOS COLUMNAS AL ESTILO PINXTOREGAMES -->
+        <!-- REJILLA PRINCIPAL -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- COLUMNA IZQUIERDA: CATÁLOGO DE PRODUCTOS (Ocupa 7 columnas) -->
+            <!-- COLUMNA IZQUIERDA: CATÁLOGO DE PRODUCTOS -->
             <div class="lg:col-span-7 space-y-4">
                 <h3 class="text-md font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
                     <i class="fa-solid fa-layer-group text-sky-500"></i> Selecciona el producto
@@ -110,7 +114,7 @@
                 <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-2 gap-3.5"></div>
             </div>
 
-            <!-- COLUMNA DERECHA: FORMULARIO DE RECOPILACIÓN DE DATOS (Ocupa 5 columnas) -->
+            <!-- COLUMNA DERECHA: FORMULARIO -->
             <div class="lg:col-span-5">
                 <form id="form-recarga" class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-sm">
                     
@@ -170,7 +174,6 @@
     <script>
         let juegoActual = "";
         
-        // Estructura idéntica y perfeccionada de opciones de recargas directas
         const listaPaquetes = {
             free_fire: [
                 { id: "ff_100", name: "100 Diamantes", bonus: "+10 Diamantes", price: "1.20", icon: "fa-gem" },
@@ -203,24 +206,26 @@
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
             const bannerImg = document.getElementById('banner-img-src');
+            const fallbackGradient = document.getElementById('banner-fallback-gradient');
             
             container.innerHTML = "";
             document.getElementById('file-name').classList.add('hidden');
+            bannerImg.style.display = 'block'; // Resetear visualización
             
-            // Renderizado estricto del Banner Superior e Imagen Aleatoria de Google
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
-                // Imagen horizontal aleatoria optimizada de Free Fire para la portada
-                bannerImg.src = "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=1200"; 
+                // Enlace público ultraestable para el banner horizontal de Free Fire
+                bannerImg.src = "https://images2.alphacoders.com/105/1052671.jpg"; 
+                fallbackGradient.className = "absolute inset-0 bg-gradient-to-r from-sky-950/90 via-slate-900/60 to-blue-950/40";
                 bannerContainer.classList.remove('hidden');
             } else {
                 title.innerText = "Blood Strike";
-                // Fallback de imagen para Blood Strike
-                bannerImg.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200";
+                // Enlace público ultraestable para Blood Strike / Shooter genérico
+                bannerImg.src = "https://images7.alphacoders.com/927/927480.jpg";
+                fallbackGradient.className = "absolute inset-0 bg-gradient-to-r from-red-950/90 via-slate-900/60 to-rose-950/40";
                 bannerContainer.classList.remove('hidden');
             }
 
-            // Inyección del Grid de Catálogo
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const checked = idx === 0 ? "checked" : "";
                 const themeColor = juego === 'free_fire' ? 'sky' : 'red';
@@ -231,13 +236,10 @@
                         <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name} ${pkg.bonus}" ${checked} class="hidden package-radio">
                         
                         <div class="package-content bg-slate-900/30 border-2 border-slate-800 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-200 relative overflow-hidden">
-                            
-                            <!-- Indicador Check Superior Derecho -->
                             <div class="check-icon opacity-0 scale-75 absolute top-3 right-3 bg-${themeColor}-500 text-slate-950 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200">
                                 <i class="fa-solid fa-check"></i>
                             </div>
 
-                            <!-- Icono superior izquierdo e información -->
                             <div>
                                 <div class="w-9 h-9 rounded-lg bg-slate-950/60 flex items-center justify-center mb-2.5 border border-slate-800 group-hover:scale-105 transition-transform">
                                     <i class="fa-solid ${pkg.icon} text-md ${iconClass}"></i>
@@ -246,7 +248,6 @@
                                 <div class="text-[10px] font-bold text-emerald-400 mt-0.5 tracking-wide">${pkg.bonus}</div>
                             </div>
                             
-                            <!-- Precio alineado abajo a la izquierda -->
                             <div class="text-sm font-black text-slate-200 mt-2">
                                 $${pkg.price}
                             </div>
