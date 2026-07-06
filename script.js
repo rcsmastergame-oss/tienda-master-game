@@ -1,22 +1,26 @@
 document.getElementById('form-recarga').addEventListener('submit', async function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Evita que la página se recargue
 
-    const btnEnviar = document.getElementById('btn-enviar'); // o el ID que tenga tu botón
-    const statusMessage = document.getElementById('status-message'); // o el contenedor del error
+    const btnEnviar = document.getElementById('btn-enviar') || e.submitter;
+    const statusMessage = document.getElementById('status-message');
     
-    // Cambiar estado visual del botón
-    if(btnEnviar) {
+    // Cambiar estado visual del botón para evitar doble envío
+    if (btnEnviar) {
         btnEnviar.disabled = true;
         btnEnviar.innerText = "PROCESANDO ORDEN...";
     }
 
-    // PON AQUÍ TU URL REAL DE MAKE
+    // ============================================================
+    // 1. PEGA AQUÍ LA URL DE TU CUSTOM WEBHOOK DE MAKE (EL CÍRCULO AZUL)
+    // ============================================================
     const URL_WEBHOOK_MAKE = "https://hook.eu1.make.com/88kml076h542hxycw78uae2monbv81vp";
 
+    // 2. Capturar los datos de los campos de la página
     const playerId = document.getElementById('player_id').value;
     const referencia = document.getElementById('referencia').value;
     const fileInput = document.getElementById('screenshot_file');
     
+    // Capturar paquete seleccionado
     const paqueteSeleccionado = document.querySelector('input[name="paquete"]:checked');
     const juego = typeof juegoActual !== 'undefined' ? juegoActual : "No especificado";
     
@@ -28,7 +32,7 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
         precioPaquete = paqueteSeleccionado.getAttribute('data-price') || "0.00";
     }
 
-    // Función interna para convertir la imagen a texto Base64 seguro
+    // Función interna para convertir la imagen a texto Base64
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -39,25 +43,26 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     let imagenBase64 = "";
     let nombreImagen = "";
 
-    if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        nombreImagen = file.name;
-        // Si la imagen es muy pesada, se convierte de forma segura
-        imagenBase64 = await toBase64(file);
-    }
-
-    // Estructura JSON pura (Mucho más limpia y compatible para Make)
-    const datosOrden = {
-        juego: juego,
-        player_id: playerId,
-        paquete: infoPaquete,
-        precio_bs: precioPaquete,
-        referencia: referencia,
-        comprobante_nombre: nombreImagen,
-        comprobante_archivo: imagenBase64 // Aquí viaja la foto como texto seguro
-    };
-
     try {
+        // Convertir la imagen si el usuario subió una
+        if (fileInput && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            nombreImagen = file.name;
+            imagenBase64 = await toBase64(file);
+        }
+
+        // 3. Crear el objeto de datos limpio en JSON
+        const datosOrden = {
+            juego: juego,
+            player_id: playerId,
+            paquete: infoPaquete,
+            precio_bs: precioPaquete,
+            referencia: referencia,
+            comprobante_nombre: nombreImagen,
+            comprobante_archivo: imagenBase64 // La imagen viaja aquí convertida en texto seguro
+        };
+
+        // 4. Enviar la petición POST a Make
         const response = await fetch(URL_WEBHOOK_MAKE, {
             method: "POST",
             headers: {
@@ -66,28 +71,33 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
             body: JSON.stringify(datosOrden)
         });
 
-        // Remueve clases de error previas si existen
-        statusMessage.classList.remove('bg-rose-500/10', 'text-rose-400', 'border-rose-500/20');
+        // Limpiar estilos previos del cuadro de mensaje
+        statusMessage.removeAttribute('class');
 
         if (response.ok) {
-            // Éxito total
+            // ÉXITO TOTAL
             statusMessage.className = "mt-4 p-4 rounded-xl text-center font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
             statusMessage.innerText = "¡Orden enviada con éxito! Tu recarga será procesada en breve.";
             statusMessage.classList.remove('hidden');
+            
+            // Limpiar el formulario
             document.getElementById('form-recarga').reset();
-            if(document.getElementById('file-name')) {
-                document.getElementById('file-name').classList.add('hidden');
-            }
+            const fileNameLabel = document.getElementById('file-name');
+            if (fileNameLabel) fileNameLabel.classList.add('hidden');
         } else {
-            throw new Error("Rechazado por el servidor");
+            throw new Error("El servidor de Make rechazó la petición");
         }
+
     } catch (error) {
-        // Muestra el error en pantalla
+        // MANEJO DE ERRORES
+        console.error("Error detectado:", error);
+        statusMessage.removeAttribute('class');
         statusMessage.className = "mt-4 p-4 rounded-xl text-center font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20";
-        statusMessage.innerText = "Error al enviar. Inténtalo de nuevo o comprueba el peso de la imagen.";
+        statusMessage.innerText = "Error al enviar la orden. Inténtalo de nuevo o comprueba que la imagen no sea extremadamente pesada.";
         statusMessage.classList.remove('hidden');
     } finally {
-        if(btnEnviar) {
+        // Devolver el botón a su estado original
+        if (btnEnviar) {
             btnEnviar.disabled = false;
             btnEnviar.innerText = "ENVIAR PEDIDO A OPERADOR";
         }
