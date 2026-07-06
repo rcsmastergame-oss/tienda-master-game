@@ -1,6 +1,5 @@
 const MAKE_WEBHOOK_URL = "TU_URL_DE_WEBHOOK_AQUI";
 
-// Función auxiliar para convertir el archivo de imagen a Base64
 const convertFileToBase64 = (file) => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -32,30 +31,39 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
             juego: juegoActual === "free_fire" ? "Free Fire" : "Blood Strike",
             id_jugador: document.getElementById('player_id').value,
             paquete_id: paqueteSeleccionado.value,
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            paquete_nombre: paqueteSeleccionado.getAttribute('data-name'),
+            precio: parseFloat(paqueteSeleccionado.getAttribute('data-price')),
+            metodo_pago: "Pago Movil",
+            referencia: document.getElementById('referencia').value, // ¡Aquí viaja el texto de la referencia!
+            captura_base64: base64Image, 
+            fecha: new Date().toLocaleString()
+        };
+
+        const response = await fetch(MAKE_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datosPedido)
+        });
+
+        if (response.ok) {
+            statusMessage.textContent = "¡Pedido enviado con éxito! Tu captura, referencia e ID están en proceso de revisión.";
+            statusMessage.className = "mt-4 p-4 rounded-xl text-center font-bold bg-green-500/20 text-green-400 border border-green-500/30";
+            statusMessage.classList.remove('hidden');
+            document.getElementById('form-recarga').reset();
             
-            <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-900/60 border-2 border-slate-800 hover:border-amber-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900 via-slate-900 to-amber-950/20">
-                <div class="h-44 bg-slate-800 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative">
-                    <img src="https://i.imgur.com/39w6mep.jpeg" alt="Free Fire" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute bottom-3 left-3 bg-slate-950/80 text-amber-400 text-xs font-bold px-3 py-1 rounded-md border border-amber-500/30">ID Directo</div>
-                </div>
-                <h3 class="text-2xl font-black tracking-wide group-hover:text-amber-400 transition-colors">FREE FIRE</h3>
-                <p class="text-slate-400 text-sm mt-1">Diamantes oficiales abonados por ID de jugador en minutos.</p>
-                <button class="w-full mt-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
-                    Recargar Ahora <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-            </div>
-
-            <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-900/60 border-2 border-slate-800 hover:border-red-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900 via-slate-900 to-red-950/20">
-                <div class="h-44 bg-slate-800 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative">
-                    <img src="https://i.imgur.com/vH3I04w.jpeg" alt="Blood Strike" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute bottom-3 left-3 bg-slate-950/80 text-red-400 text-xs font-bold px-3 py-1 rounded-md border border-red-500/30">Oro / Pases</div>
-                </div>
-                <h3 class="text-2xl font-black tracking-wide group-hover:text-red-400 transition-colors">BLOOD STRIKE</h3>
-                <p class="text-slate-400 text-sm mt-1">Monedas de oro y pases de batalla para dominar la zona.</p>
-                <button class="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
-                    Recargar Ahora <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-            </div>
-
-        </div>
+            setTimeout(() => {
+                statusMessage.classList.add('hidden');
+                showSection('home-view');
+            }, 5000);
+        } else {
+            throw new Error("Error en el canal de comunicación.");
+        }
+    } catch (error) {
+        statusMessage.textContent = "Error al enviar. Inténtalo de nuevo o comprueba el peso de la imagen.";
+        statusMessage.className = "mt-4 p-4 rounded-xl text-center font-bold bg-red-500/20 text-red-400 border border-red-500/30";
+        statusMessage.classList.remove('hidden');
+    } finally {
+        btnEnviar.disabled = false;
+        btnEnviar.innerText = "Enviar Pedido a Operador";
+    }
+});
