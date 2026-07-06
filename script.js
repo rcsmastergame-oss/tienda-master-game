@@ -11,7 +11,7 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     }
 
     // PON AQUÍ TU URL REAL DE MAKE
-    const URL_WEBHOOK_MAKE = "https://hook.us1.make.com/tu_enlace_aqui";
+    const URL_WEBHOOK_MAKE = "https://hook.eu1.make.com/88kml076h542hxycw78uae2monbv81vp";
 
     const playerId = document.getElementById('player_id').value;
     const referencia = document.getElementById('referencia').value;
