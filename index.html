@@ -33,6 +33,7 @@
 </head>
 <body class="gradient-bg text-white font-sans min-h-screen antialiased">
 
+    <!-- HEADER -->
     <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-900 sticky top-0 z-50 p-4">
         <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center space-x-2 cursor-pointer" onclick="showSection('home-view')">
@@ -45,6 +46,7 @@
         </div>
     </header>
 
+    <!-- VISTA 1: PÁGINA PRINCIPAL -->
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-4xl">
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">RECARGAS <span class="text-amber-500">DIRECTAS</span></h1>
@@ -53,6 +55,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             
+            <!-- Tarjeta Principal Free Fire -->
             <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-amber-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-amber-950/10">
                 <div class="h-44 bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 transition-opacity duration-300">
@@ -68,6 +71,7 @@
                 </button>
             </div>
 
+            <!-- Tarjeta Principal Blood Strike -->
             <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-orange-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-orange-950/10">
                 <div class="h-44 bg-gradient-to-br from-slate-950 via-orange-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 transition-opacity duration-300">
@@ -86,11 +90,13 @@
         </div>
     </section>
 
+    <!-- VISTA 2: FORMULARIO + CATÁLOGO INTEGRADO -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden">
         <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors">
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
         </button>
 
+        <!-- BANNER DE ADENTRO DEL JUEGO -->
         <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden">
             <img id="banner-img-src" src="" alt="Inside Game Banner" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
@@ -99,8 +105,10 @@
             </div>
         </div>
 
+        <!-- REJILLA PRINCIPAL -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
+            <!-- COLUMNA IZQUIERDA: CATÁLOGO DE PRODUCTOS -->
             <div class="lg:col-span-7 space-y-4">
                 <h3 class="text-md font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
                     <i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto
@@ -108,6 +116,7 @@
                 <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-2 gap-3.5"></div>
             </div>
 
+            <!-- COLUMNA DERECHA: FORMULARIO + RESUMEN -->
             <div class="lg:col-span-5">
                 <form id="form-recarga" class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-sm">
                     
@@ -115,12 +124,14 @@
                         <i class="fa-solid fa-user-pen text-amber-500"></i> Información Requerida
                     </h3>
 
+                    <!-- Campo ID -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
                         <input type="text" id="player_id" required placeholder="Ej: 123456789" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
+                    <!-- Datos de Pago Móvil -->
                     <div class="bg-slate-950/50 border border-slate-800 rounded-2xl p-4 text-xs space-y-1.5 text-slate-300">
                         <div class="text-amber-400 font-bold mb-1 flex items-center gap-1.5">
                             <i class="fa-solid fa-mobile-screen-button"></i> Datos de Transferencia:
@@ -130,18 +141,20 @@
                         <p><span class="text-slate-500 font-medium">Cédula:</span> V-32562761</p>
                     </div>
 
+                    <!-- Campo Referencia Bancaria -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Referencia de Pago (6 dígitos)</label>
                         <input type="text" id="referencia" required placeholder="001234" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
+                    <!-- Subir Comprobante -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Comprobante de Pago</label>
                         <div class="flex items-center justify-center w-full">
-                            <label class="flex flex-col items-center justify-center w-full h-28 border-2 border-slate-800 border-dashed rounded-xl cursor-pointer bg-slate-950/20 hover:bg-slate-950/40 transition-colors">
-                                <div class="flex flex-col items-center justify-center pt-4 pb-4">
-                                    <i class="fa-solid fa-cloud-arrow-up text-xl text-slate-500 mb-1"></i>
+                            <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-800 border-dashed rounded-xl cursor-pointer bg-slate-950/20 hover:bg-slate-950/40 transition-colors">
+                                <div class="flex flex-col items-center justify-center pt-2 pb-2">
+                                    <i class="fa-solid fa-cloud-arrow-up text-lg text-slate-500 mb-1"></i>
                                     <p class="text-[11px] text-slate-400">Adjuntar captura de pantalla</p>
                                     <p id="file-name" class="text-[11px] text-amber-400 mt-1 font-medium hidden"></p>
                                 </div>
@@ -150,6 +163,20 @@
                         </div>
                     </div>
 
+                    <!-- PARTE NUEVA: DETALLE Y MONTO TOTAL A PAGAR -->
+                    <div class="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-4 space-y-2">
+                        <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Resumen de la orden</div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-400" id="summary-package-name">Ningún paquete seleccionado</span>
+                            <span class="font-bold text-slate-200" id="summary-package-price">0.00 Bs.</span>
+                        </div>
+                        <div class="border-t border-slate-800/80 my-2 pt-2 flex justify-between items-center">
+                            <span class="text-sm font-bold text-slate-100">Total a Pagar:</span>
+                            <span class="text-xl font-black text-amber-400 tracking-tight" id="summary-total-price">0.00 Bs.</span>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Envío -->
                     <button type="submit" id="btn-enviar" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black py-3.5 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-amber-500/10">
                         Confirmar Orden de Recarga
                     </button>
@@ -162,28 +189,28 @@
     <script>
         let juegoActual = "";
         
-        // Estructuras de Catálogos Oficiales Integrados
+        // Catálogos Oficiales con precios ejemplo en Bolívares (Cámbialos libremente)
         const listaPaquetes = {
             free_fire: [
-                { id: "ff_100", name: "100 Diamantes", bonus: "+ 20 Bono", price: "0.78", icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes", bonus: "+ 62 Bono", price: "2.18", icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes", bonus: "+ 104 Bono", price: "3.64", icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes", bonus: "+ 212 Bono", price: "6.76", icon: "fa-gem" },
-                { id: "ff_2180", name: "2160 Diamantes", bonus: "+ 436 Bono", price: "13.41", icon: "fa-gem" },
-                { id: "ff_5600", name: "5600 Diamantes", bonus: "+ 1120 bono", price: "34.28", icon: "fa-gem" },
-                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Recibe Diamantes Diario", price: "2.50", icon: "fa-id-card" },
-                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "El Mayor Beneficio", price: "9.99", icon: "fa-box-open" }
+                { id: "ff_100", name: "100 Diamantes", bonus: "+ 20 Bono", price: "40.00", icon: "fa-gem" },
+                { id: "ff_310", name: "310 Diamantes", bonus: "+ 62 Bono", price: "110.00", icon: "fa-gem" },
+                { id: "ff_520", name: "520 Diamantes", bonus: "+ 104 Bono", price: "185.00", icon: "fa-gem" },
+                { id: "ff_1060", name: "1060 Diamantes", bonus: "+ 212 Bono", price: "340.00", icon: "fa-gem" },
+                { id: "ff_2180", name: "2160 Diamantes", bonus: "+ 436 Bono", price: "680.00", icon: "fa-gem" },
+                { id: "ff_5600", name: "5600 Diamantes", bonus: "+ 1120 bono", price: "1720.00", icon: "fa-gem" },
+                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Recibe Diamantes Diario", price: "125.00", icon: "fa-id-card" },
+                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "El Mayor Beneficio", price: "500.00", icon: "fa-box-open" }
             ],
             blood_strike: [
-                { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", price: "0.49", icon: "fa-coins" },
-                { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", price: "0.99", icon: "fa-coins" },
-                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "2.99", icon: "fa-coins" },
-                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", price: "4.99", icon: "fa-coins" },
-                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", price: "9.99", icon: "fa-coins" },
-                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", price: "19.99", icon: "fa-coins" },
-                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", price: "49.99", icon: "fa-coins" },
-                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Abono Instantáneo", price: "3.99", icon: "fa-id-card" },
-                { id: "bs_pass_prem", name: "Strike Pass Premium", bonus: "Beneficios Máximos", price: "8.99", icon: "fa-box-open" }
+                { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", price: "25.00", icon: "fa-coins" },
+                { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", price: "50.00", icon: "fa-coins" },
+                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "150.00", icon: "fa-coins" },
+                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", price: "250.00", icon: "fa-coins" },
+                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", price: "500.00", icon: "fa-coins" },
+                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", price: "1000.00", icon: "fa-coins" },
+                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", price: "2500.00", icon: "fa-coins" },
+                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Abono Instantáneo", price: "200.00", icon: "fa-id-card" },
+                { id: "bs_pass_prem", name: "Strike Pass Premium", bonus: "Beneficios Máximos", price: "450.00", icon: "fa-box-open" }
             ]
         };
 
@@ -204,7 +231,6 @@
             container.innerHTML = "";
             document.getElementById('file-name').classList.add('hidden');
             
-            // Asignación perfecta de las imágenes internas ("de adentro") que enviaste
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
                 bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
@@ -222,8 +248,8 @@
                 const iconClass = juego === 'free_fire' ? 'text-amber-400' : 'text-orange-400';
 
                 const html = `
-                    <label class="relative block cursor-pointer package-card group">
-                        <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name} ${pkg.bonus}" ${checked} class="hidden package-radio">
+                    <label class="relative block cursor-pointer package-card group" onclick="updateTotalSummary('${pkg.name}', '${pkg.price}')">
+                        <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name}" ${checked} class="hidden package-radio">
                         
                         <div class="package-content bg-slate-900/30 border-2 border-slate-800 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-200 relative overflow-hidden">
                             <div class="check-icon opacity-0 scale-75 absolute top-3 right-3 bg-${themeColor}-500 text-slate-950 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200">
@@ -238,8 +264,9 @@
                                 <div class="text-[10px] font-bold text-emerald-400 mt-0.5 tracking-wide">${pkg.bonus}</div>
                             </div>
                             
+                            <!-- Cambiado el signo $ por Bs. -->
                             <div class="text-sm font-black text-slate-200 mt-2">
-                                $${pkg.price}
+                                ${pkg.price} Bs.
                             </div>
                         </div>
                     </label>
@@ -247,7 +274,19 @@
                 container.insertAdjacentHTML('beforeend', html);
             });
 
+            // Seleccionar por defecto los valores del primer paquete al abrir la tienda
+            if(listaPaquetes[juego].length > 0) {
+                updateTotalSummary(listaPaquetes[juego][0].name, listaPaquetes[juego][0].price);
+            }
+
             showSection('form-view');
+        }
+
+        // Función dinámica encargada de actualizar el resumen total en tiempo real
+        function updateTotalSummary(name, price) {
+            document.getElementById('summary-package-name').innerText = name;
+            document.getElementById('summary-package-price').innerText = price + " Bs.";
+            document.getElementById('summary-total-price').innerText = price + " Bs.";
         }
 
         function updateFileName(input) {
