@@ -1,4 +1,4 @@
-const MAKE_WEBHOOK_URL = "TU_URL_DE_WEBHOOK_AQUI";
+const MAKE_WEBHOOK_URL = "https://eu1.make.com/2051113/scenarios/6380627/edit";
 
 const convertFileToBase64 = (file) => {
     return new Promise((resolve, reject) => {
