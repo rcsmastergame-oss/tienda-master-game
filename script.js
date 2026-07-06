@@ -13,7 +13,7 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     // ============================================================
     // 1. PEGA AQUÍ LA URL DE TU CUSTOM WEBHOOK DE MAKE (EL CÍRCULO AZUL)
     // ============================================================
-    const URL_WEBHOOK_MAKE = "https://hook.eu1.make.com/7fuiqeer2btukdvc4z1qnh6oed9g3p7k";
+    const URL_WEBHOOK_MAKE ="https://hook.eu1.make.com/7fuiqeer2btukdvc4z1qnh6oed9g3p7k";
 
     // 2. Capturar los datos de los campos de la página
     const playerId = document.getElementById('player_id').value;
