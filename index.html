@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuTienda - Recargas Rápidas y Seguras</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white font-sans">
+
+    <header class="bg-slate-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-yellow-500">TU_TIENDA_LOGO</h1>
+            <span class="text-sm text-green-400 font-medium">● Servicio Activo</span>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-lg">
+        
+        <div class="bg-gradient-to-r from-yellow-500 to-orange-600 p-6 rounded-2xl mb-8 shadow-lg text-center">
+            <h2 class="text-xl font-extrabold text-slate-900">¡RECARGAS INMEDIATAS!</h2>
+            <p class="text-sm text-slate-800 font-medium mt-1">Ingresa tus datos, selecciona tu paquete y procesa tu pago.</p>
+        </div>
+
+        <form id="form-recarga" class="bg-slate-850 border border-slate-700 p-6 rounded-2xl space-y-6 shadow-xl">
+            
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-slate-300">ID del Jugador / Cuenta:</label>
+                <input type="text" id="player_id" required placeholder="Ej: 123456789" 
+                       class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-slate-300">Apodo / Nombre en juego:</label>
+                <input type="text" id="player_name" placeholder="Ej: SlayerPro" 
+                       class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-3 text-slate-300">Selecciona el Paquete:</label>
+                <div class="grid grid-cols-1 gap-3">
+                    
+                    <label class="flex items-center justify-between bg-slate-800 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-yellow-500 transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="paquete" value="100_diamonds" data-price="1.00" data-name="100 Diamantes" required class="accent-yellow-500 w-4 h-4">
+                            <span class="font-medium">100 Diamantes</span>
+                        </div>
+                        <span class="text-yellow-500 font-bold">$1.00</span>
+                    </label>
+
+                    <label class="flex items-center justify-between bg-slate-800 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-yellow-500 transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="paquete" value="310_diamonds" data-price="3.00" data-name="310 Diamantes" class="accent-yellow-500 w-4 h-4">
+                            <span class="font-medium">310 Diamantes</span>
+                        </div>
+                        <span class="text-yellow-500 font-bold">$3.00</span>
+                    </label>
+
+                    <label class="flex items-center justify-between bg-slate-800 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-yellow-500 transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="paquete" value="520_diamonds" data-price="5.00" data-name="520 Diamantes" class="accent-yellow-500 w-4 h-4">
+                            <span class="font-medium">520 Diamantes</span>
+                        </div>
+                        <span class="text-yellow-500 font-bold">$5.00</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-slate-300">Método de Pago:</label>
+                <select id="metodo_pago" required class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="pago_movil">Pago Móvil</option>
+                    <option value="binance">Binance Pay</option>
+                    <option value="zinli">Zinli</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-slate-300">Número de Referencia / Captura:</label>
+                <input type="text" id="referencia" required placeholder="Ej: 4567 u últimos 4 dígitos" 
+                       class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition">
+            </div>
+
+            <button type="submit" id="btn-enviar" class="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-950 font-bold py-4 rounded-xl transition shadow-lg transform active:scale-95">
+                Confirmar y Enviar Pedido
+            </button>
+        </form>
+
+        <div id="status-message" class="hidden mt-4 p-4 rounded-xl text-center font-medium"></div>
+
+    </main>
+
+    <footer class="text-center py-6 text-sm text-slate-500">
+        &copy; 2026 TU_TIENDA. Todos los derechos reservados.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
