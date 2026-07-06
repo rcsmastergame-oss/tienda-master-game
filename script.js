@@ -1,30 +1,44 @@
 const MAKE_WEBHOOK_URL = "TU_URL_DE_WEBHOOK_AQUI";
 
+// Función auxiliar para convertir el archivo de imagen a Base64
+const convertFileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+    });
+};
+
 document.getElementById('form-recarga').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const btnEnviar = document.getElementById('btn-enviar');
     const statusMessage = document.getElementById('status-message');
+    const fileInput = document.getElementById('screenshot_file');
     
     btnEnviar.disabled = true;
-    btnEnviar.innerText = "ENVIANDO DATOS AL OPERADOR...";
+    btnEnviar.innerText = "PROCESANDO CAPTURA E INFORME...";
 
     const paqueteSeleccionado = document.querySelector('input[name="paquete"]:checked');
     
-    // Agrupamos la información incluyendo qué juego se está recargando
-    const datosPedido = {
-        juego: juegoActual === "free_fire" ? "Free Fire" : "Blood Strike",
-        id_jugador: document.getElementById('player_id').value,
-        nombre_jugador: document.getElementById('player_name').value || "No indicado",
-        paquete_id: paqueteSeleccionado.value,
-        paquete_nombre: paqueteSeleccionado.getAttribute('data-name'),
-        precio: parseFloat(paqueteSeleccionado.getAttribute('data-price')),
-        metodo_pago: "Pago Movil", 
-        referencia: document.getElementById('referencia').value,
-        fecha: new Date().toLocaleString()
-    };
-
     try {
+        let base64Image = "";
+        if (fileInput.files && fileInput.files[0]) {
+            base64Image = await convertFileToBase64(fileInput.files[0]);
+        }
+
+        const datosPedido = {
+            juego: juegoActual === "free_fire" ? "Free Fire" : "Blood Strike",
+            id_jugador: document.getElementById('player_id').value,
+            paquete_id: paqueteSeleccionado.value,
+            paquete_nombre: paqueteSeleccionado.getAttribute('data-name'),
+            precio: parseFloat(paqueteSeleccionado.getAttribute('data-price')),
+            metodo_pago: "Pago Movil",
+            captura_base64: base64Image, // ¡Aquí va la imagen codificada en texto!
+            fecha: new Date().toLocaleString()
+        };
+
         const response = await fetch(MAKE_WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,26 +46,24 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
         });
 
         if (response.ok) {
-            statusMessage.textContent = "¡Excelente! Pago registrado. Tu recarga estará lista en breve.";
+            statusMessage.textContent = "¡Pedido enviado con éxito! Tu captura e ID están en proceso de revisión.";
             statusMessage.className = "mt-4 p-4 rounded-xl text-center font-bold bg-green-500/20 text-green-400 border border-green-500/30";
             statusMessage.classList.remove('hidden');
             document.getElementById('form-recarga').reset();
             
-            // Regresar al Home automáticamente a los 4 segundos
             setTimeout(() => {
                 statusMessage.classList.add('hidden');
                 showSection('home-view');
-            }, 4000);
-
+            }, 5000);
         } else {
-            throw new Error("Error del servidor");
+            throw new Error("Error en el canal de comunicación.");
         }
     } catch (error) {
-        statusMessage.textContent = "Error de conexión. Por favor verifica los datos o comunícate por soporte.";
+        statusMessage.textContent = "Error al enviar. Inténtalo de nuevo o comprueba el peso de la imagen.";
         statusMessage.className = "mt-4 p-4 rounded-xl text-center font-bold bg-red-500/20 text-red-400 border border-red-500/30";
         statusMessage.classList.remove('hidden');
     } finally {
         btnEnviar.disabled = false;
-        btnEnviar.innerText = "Procesar e Informar Pago";
+        btnEnviar.innerText = "Enviar Pedido a Operador";
     }
 });
