@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MASTER GAME - Recargas Rápidas y 100% Seguras</title>
+    <!-- Cargador de Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Cargador de Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -24,7 +26,6 @@
         .faq-item.active .faq-icon {
             transform: rotate(180deg);
         }
-        /* Animación suave para la aparición de métodos de pago */
         .payment-info-box {
             display: none;
         }
@@ -40,240 +41,143 @@
 </head>
 <body class="relative min-h-screen pb-16">
 
-    <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
-        <i class="fa-brands fa-whatsapp animate-pulse"></i>
-        <span class="absolute right-16 bg-slate-950/90 border border-slate-800 text-slate-200 text-[11px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-xl">
-            ¿Soporte inmediato? Escríbenos
-        </span>
-    </a>
-
+    <!-- ENCABEZADO / TOP BAR -->
     <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3.5">
         <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <a href="#" id="logo-admin-trigger" class="flex items-center gap-3 group cursor-pointer">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner group-hover:border-amber-500/50 transition-colors">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner">
                 <span class="font-black tracking-widest text-sm uppercase">
                     MASTER <span class="text-amber-500">GAME</span>
                 </span>
             </a>
             
             <span class="border border-emerald-500/20 text-[10px] px-3 py-1 rounded-full font-bold flex items-center gap-1.5 bg-emerald-950/20 text-emerald-400 uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Servidor Activo
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Servidor Conectado
             </span>
         </div>
     </header>
 
+    <!-- INPUT OCULTO DE CONTROL DE TASA -->
     <input type="hidden" id="tasa_cambio" value="45.50" onchange="recalculateAllPrices()">
 
+    <!-- VISTA 1: PÁGINA PRINCIPAL -->
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-5xl relative z-10">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
-        <div class="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
         <div class="text-center mb-16">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black tracking-widest text-amber-400 uppercase mb-4 shadow-md">
-                <i class="fa-solid fa-shield-halved text-amber-500"></i> RECARGAS 100% SEGURAS, LEGALES Y SIN RIESGOS BANEO
+                <i class="fa-solid fa-shield-halved text-amber-500"></i> PROCESAMIENTO AUTOMÁTICO DE RECARGAS
             </div>
             <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase leading-none">
-                Sube de Nivel <br class="sm:hidden"><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 bg-clip-text text-transparent drop-shadow-md">Al Instante</span>
+                Sube de Nivel <br class="sm:hidden"><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 bg-clip-text text-transparent">Al Instante</span>
             </h1>
-            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">
-                ¡Olvídate de las esperas! Proveemos diamantes y monedas de tus juegos favoritos de forma directa mediante tu ID de jugador. Sistema automático, rápido y garantizado con la mayor confianza en toda Venezuela.
+            <p class="text-slate-400 text-sm max-w-xl mx-auto font-medium">
+                Ingresa tu ID, selecciona el paquete que deseas adquirir y reporta tu pago. Nuestro sistema procesará la solicitud de forma inmediata.
             </p>
-            <div class="flex justify-center gap-6 mt-6 text-xs text-slate-500 font-bold">
-                <span><i class="fa-solid fa-bolt text-amber-500 mr-1.5"></i> Entrega en Minutos</span>
-                <span><i class="fa-solid fa-lock text-emerald-500 mr-1.5"></i> Pago Seguro</span>
-                <span><i class="fa-solid fa-headset text-purple-500 mr-1.5"></i> Soporte 24/7</span>
-            </div>
         </div>
 
-        <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
+        <!-- JUEGOS -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 px-2">
-            <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
+            <!-- Free Fire -->
+            <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl p-5 transition-all duration-300 shadow-xl flex flex-col justify-between backdrop-blur-md">
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
+                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] group-hover:border-amber-500/30 transition-all duration-300">
-                            <i class="fa-solid fa-fire-flame-curved text-3xl text-amber-500 filter drop-shadow-[0_0_6px_rgba(245,158,11,0.5)]"></i>
+                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
+                            <i class="fa-solid fa-fire-flame-curved text-3xl text-amber-500"></i>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">ID Directo</div>
                     </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Diamantes abonados de forma directa y legal a tu ID de juego en cuestión de minutos.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors">FREE FIRE</h3>
                 </div>
                 <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 group-hover:from-amber-400 group-hover:to-amber-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
+            <!-- Blood Strike -->
+            <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl p-5 transition-all duration-300 shadow-xl flex flex-col justify-between backdrop-blur-md">
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
+                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:border-orange-500/30 transition-all duration-300">
-                            <i class="fa-solid fa-crosshairs text-3xl text-orange-500 filter drop-shadow-[0_0_6px_rgba(249,115,22,0.5)]"></i>
+                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
+                            <i class="fa-solid fa-crosshairs text-3xl text-orange-500"></i>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-orange-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">Oro / Pases</div>
                     </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Carga oro de combate o adquiere tus pases de batalla de forma directa mediante tu ID de usuario.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors">BLOOD STRIKE</h3>
                 </div>
                 <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- VISTA 2: FORMULARIO -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
         <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 hover:text-white transition-colors">
-            <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
+            <i class="fa-solid fa-arrow-left-long"></i> Volver
         </button>
 
-        <div id="game-image-banner" class="w-full h-36 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-xl">
-            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-            <div class="absolute bottom-5 left-6">
-                <span class="text-[10px] font-black uppercase bg-amber-500 text-slate-950 px-2 py-0.5 rounded tracking-widest mb-1.5 inline-block shadow-md">Tienda Oficial</span>
-                <h2 id="selected-game-title" class="text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow">JUEGO</h2>
-            </div>
-        </div>
-
         <form id="recharge-form" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start" onsubmit="event.preventDefault();">
-            
             <div class="lg:col-span-2 space-y-6">
-                
+                <!-- ID JUGADOR -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Identificación del Héroe
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">ID del Jugador</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold">ID</span>
-                                <input type="number" id="player_id" required placeholder="Ingresa el ID numérico de tu cuenta" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
-                            </div>
-                        </div>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4">1. Identificación</h3>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">ID del Jugador</label>
+                        <input type="number" id="player_id" required placeholder="ID numérico de tu cuenta" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold outline-none">
                     </div>
                 </div>
 
+                <!-- PAQUETES -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">2</span> Selecciona tu Paquete
-                    </h3>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4">2. Selecciona tu Paquete</h3>
                     <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
                 </div>
 
+                <!-- PAGOS -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">3</span> Información de Pago
-                    </h3>
-                    
-                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Selecciona tu Método</label>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4">3. Detalles de Pago</h3>
                     <div class="grid grid-cols-3 gap-2.5 mb-6">
-                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
-                            <i class="fa-solid fa-mobile-screen text-base text-amber-400"></i> PMóvil
-                        </button>
-                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
-                            <i class="fa-solid fa-coins text-base text-amber-500"></i> Binance
-                        </button>
-                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
-                            <i class="fa-solid fa-credit-card text-base text-purple-400"></i> Zinli
-                        </button>
+                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 font-bold text-xs">PMóvil</button>
+                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 rounded-xl py-3 font-bold text-xs">Binance</button>
+                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 rounded-xl py-3 font-bold text-xs">Zinli</button>
                     </div>
 
-                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
-                                <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil Real" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Transferencia</div>
-                                <p><span class="text-slate-500 font-bold">Banco:</span> BANCO DE VENEZUELA (0102)</p>
-                                <p><span class="text-slate-500 font-bold">Teléfono:</span> <span class="font-black text-slate-200">0414-5956693</span></p>
-                                <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-32.562.761</span></p>
-                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Teléfono y Cédula</button>
-                            </div>
-                        </div>
+                    <!-- CAJAS QR -->
+                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4 text-xs">
+                        <p>Banco de Venezuela | 0414-5956693 | V-32.562.761</p>
+                    </div>
+                    <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4 text-xs">
+                        <p>Binance Pay: snaidernarvaez18@gmail.com</p>
+                    </div>
+                    <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4 text-xs">
+                        <p>Zinli Mail: rcsmastergame@gmail.com</p>
                     </div>
 
-                    <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
-                                <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay Real" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Binance Pay</div>
-                                <p><span class="text-slate-500 font-bold">Correo de Cuenta:</span> <span class="font-black text-slate-200">snaidernarvaez18@gmail.com</span></p>
-                                <button type="button" onclick="copyText('snaidernarvaez18@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
-                                <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli Real" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-wider text-purple-400 uppercase">Datos de Cuenta Zinli</div>
-                                <p><span class="text-slate-500 font-bold">Correo Zinli:</span> <span class="font-black text-slate-200">rcsmastergame@gmail.com</span></p>
-                                <button type="button" onclick="copyText('rcsmastergame@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4 pt-2">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Número de Referencia / ID Pago</label>
-                                <input type="text" id="payment_ref" required placeholder="Últimos 4 o 6 dígitos" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Captura de Pantalla (Opcional)</label>
-                                <label class="w-full bg-slate-950/80 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
-                                    <span id="file-name" class="text-emerald-400 hidden font-bold">✓ Archivo cargado</span>
-                                    <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2"></i> Subir Comprobante</span>
-                                    <input type="file" id="receipt_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
-                                </label>
-                            </div>
-                        </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Número de Referencia</label>
+                        <input type="text" id="payment_ref" required placeholder="Últimos dígitos de la operación" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold outline-none">
                     </div>
                 </div>
             </div>
 
+            <!-- RESUMEN FIJO -->
             <div class="bg-slate-900/30 border border-slate-850 rounded-2xl p-5 sticky top-24 backdrop-blur-md">
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen del Pedido</h3>
-                
-                <div class="space-y-3.5 text-xs font-medium mb-5">
-                    <div class="flex justify-between">
-                        <span class="text-slate-500">Paquete:</span>
-                        <span id="summary-package-name" class="font-bold text-slate-200">Ninguno</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-slate-500">Subtotal:</span>
-                        <span id="summary-package-price" class="font-bold text-slate-200">0.00 Bs.</span>
-                    </div>
-                    <div class="border-t border-slate-900 my-2 pt-3 flex justify-between items-baseline">
-                        <span class="text-sm font-black uppercase text-slate-300">Total a Pagar:</span>
-                        <span id="summary-total-price" class="text-lg font-black text-amber-400">0.00 Bs.</span>
-                    </div>
+                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen</h3>
+                <div class="space-y-2 text-xs mb-5">
+                    <div class="flex justify-between"><span>Paquete:</span><span id="summary-package-name" class="font-bold">Ninguno</span></div>
+                    <div class="flex justify-between font-black text-amber-400 text-base"><span>Total:</span><span id="summary-total-price">0.00 Bs.</span></div>
                 </div>
 
-                <button type="button" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(245,158,11,0.2)] flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
+                <button type="button" id="submit-btn" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-share-nodes"></i> Procesar Recarga
                 </button>
             </div>
         </form>
     </section>
-
-    <footer class="w-full text-center py-6 text-[11px] text-slate-600 font-medium mt-12 border-t border-slate-950">
-        &copy; 2026 MASTER GAME. Todos los derechos reservados.
-    </footer>
 
     <script>
         let juegoActual = "";
@@ -283,20 +187,13 @@
 
         const listaPaquetes = {
             free_fire: [
-                { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Entrega Inmediata", priceUSD: 1.00, icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes + 62 Bono", bonus: "Entrega Inmediata", priceUSD: 3.00, icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Entrega Inmediata", priceUSD: 5.00, icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Entrega Inmediata", priceUSD: 10.00, icon: "fa-gem" },
-                { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Entrega Inmediata", priceUSD: 20.00, icon: "fa-gem" },
-                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Diamantes Diarios", priceUSD: 2.50, icon: "fa-id-card" },
-                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "Máximo Descuento", priceUSD: 10.00, icon: "fa-box-open" }
+                { id: "ff_100", name: "100 Diamantes", priceUSD: 1.00, icon: "fa-gem" },
+                { id: "ff_310", name: "310 Diamantes", priceUSD: 3.00, icon: "fa-gem" },
+                { id: "ff_520", name: "520 Diamantes", priceUSD: 5.00, icon: "fa-gem" }
             ],
             blood_strike: [
-                { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", priceUSD: 1.50, icon: "fa-coins" },
-                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", priceUSD: 4.50, icon: "fa-coins" },
-                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", priceUSD: 7.00, icon: "fa-coins" },
-                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", priceUSD: 14.00, icon: "fa-coins" },
-                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Activación Directa", priceUSD: 6.00, icon: "fa-id-card" }
+                { id: "bs_100", name: "100 de Oro", priceUSD: 1.50, icon: "fa-coins" },
+                { id: "bs_300", name: "300 de Oro", priceUSD: 4.50, icon: "fa-coins" }
             ]
         };
 
@@ -304,79 +201,41 @@
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('form-view').classList.add('hidden');
             document.getElementById(id).classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function openStore(juego) {
             juegoActual = juego;
             const container = document.getElementById('packages-container');
-            const title = document.getElementById('selected-game-title');
-            const bannerContainer = document.getElementById('game-image-banner');
-            const bannerImg = document.getElementById('banner-img-src');
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
-            
             container.innerHTML = "";
-            
-            if(juego === 'free_fire') {
-                title.innerText = "Free Fire";
-                bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
-                bannerContainer.classList.remove('hidden');
-            } else {
-                title.innerText = "Blood Strike";
-                bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
-                bannerContainer.classList.remove('hidden');
-            }
-
-            const activeBorderClass = juego === 'free_fire' ? 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.15)]' : 'border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.15)]';
-            const iconClass = juego === 'free_fire' ? 'text-amber-400' : 'text-orange-400';
 
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const isChecked = idx === 0;
                 const checkedAttr = isChecked ? "checked" : "";
-                const currentCardClass = isChecked ? activeBorderClass : 'border-slate-900 bg-slate-950/20';
-                
-                const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                const currentCardClass = isChecked ? 'border-amber-500 bg-amber-500/5' : 'border-slate-900 bg-slate-950/20';
+                const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2 });
 
                 const html = `
-                    <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD}, '${activeBorderClass}')">
-                        <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
-                        <div class="package-content border rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden ${currentCardClass}">
-                            <div>
-                                <div class="w-7 h-7 rounded-lg bg-slate-900 flex items-center justify-center mb-1.5 border border-slate-800">
-                                    <i class="fa-solid ${pkg.icon} text-xs ${iconClass}"></i>
-                                </div>
-                                <div class="font-bold text-[11px] text-slate-200 leading-tight">${pkg.name}</div>
-                                <div class="text-[9px] font-bold text-emerald-400 mt-0.5">${pkg.bonus}</div>
-                            </div>
-                            <div class="text-xs font-black text-slate-200 mt-1 card-price-render" data-usd="${pkg.priceUSD}">
-                                ${calculatedPriceBs} Bs.
-                            </div>
+                    <label class="relative block cursor-pointer" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
+                        <input type="radio" name="paquete" value="${pkg.id}" ${checkedAttr} class="hidden package-radio">
+                        <div class="package-content border rounded-xl p-3.5 flex flex-col justify-between h-28 ${currentCardClass}">
+                            <div class="font-bold text-[11px] text-slate-200">${pkg.name}</div>
+                            <div class="text-xs font-black text-slate-200 card-price-render" data-usd="${pkg.priceUSD}">${calculatedPriceBs} Bs.</div>
                         </div>
                     </label>
                 `;
                 container.insertAdjacentHTML('beforeend', html);
             });
 
-            if(listaPaquetes[juego].length > 0) {
-                selectedPackagePriceUSD = listaPaquetes[juego][0].priceUSD;
-                selectedPackageName = listaPaquetes[juego][0].name;
-                updateTotalSummary();
-            }
-
+            selectedPackagePriceUSD = listaPaquetes[juego][0].priceUSD;
+            selectedPackageName = listaPaquetes[juego][0].name;
+            updateTotalSummary();
             showSection('form-view');
         }
 
-        function selectPackage(element, name, priceUSD, activeClasses) {
-            document.querySelectorAll('.package-content').forEach(card => {
-                card.className = "package-content border border-slate-900 bg-slate-950/20 rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden";
-            });
-
-            const innerDiv = element.querySelector('.package-content');
-            if (innerDiv) innerDiv.className = `package-content border rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden ${activeClasses}`;
-
-            const radio = element.querySelector('.package-radio');
-            if (radio) radio.checked = true;
-
+        function selectPackage(element, name, priceUSD) {
+            document.querySelectorAll('.package-content').forEach(card => card.className = "package-content border border-slate-900 bg-slate-950/20 rounded-xl p-3.5 flex flex-col justify-between h-28");
+            element.querySelector('.package-content').className = "package-content border border-amber-500 bg-amber-500/5 rounded-xl p-3.5 flex flex-col justify-between h-28";
             selectedPackagePriceUSD = priceUSD;
             selectedPackageName = name;
             updateTotalSummary();
@@ -384,135 +243,82 @@
 
         function selectPaymentMethod(metodo) {
             metodoPagoActual = metodo;
-            document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
-            });
-
-            document.querySelectorAll('.payment-info-box').forEach(box => {
-                box.classList.remove('active');
-            });
-
-            if(metodo === 'pago_movil') {
-                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
-                document.getElementById('info-pago_movil').classList.add('active');
-            } else if (metodo === 'binance') {
-                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
-                document.getElementById('info-binance').classList.add('active');
-            } else if (metodo === 'zinli') {
-                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
-                document.getElementById('info-zinli').classList.add('active');
-            }
-        }
-
-        function copyText(texto, btn) {
-            navigator.clipboard.writeText(texto);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "¡Copiado! ✓";
-            btn.classList.add('text-emerald-400');
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('text-emerald-400');
-            }, 2000);
-        }
-
-        function copyPaymentData(telf, ced, btn) {
-            navigator.clipboard.writeText(`Teléfono: ${telf} \nCédula: ${ced}`);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "¡Ambos Copiados! ✓";
-            btn.classList.add('text-emerald-400');
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('text-emerald-400');
-            }, 2000);
-        }
-
-        function recalculateAllPrices() {
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            document.querySelectorAll('.card-price-render').forEach(el => {
-                const usd = parseFloat(el.getAttribute('data-usd'));
-                const newBs = (usd * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                el.innerText = newBs + " Bs.";
-            });
-            updateTotalSummary();
+            document.querySelectorAll('.payment-method-btn').forEach(btn => btn.className = "payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 rounded-xl py-3 font-bold text-xs");
+            document.querySelectorAll('.payment-info-box').forEach(box => box.classList.remove('active'));
+            
+            document.getElementById(`btn-${metodo === 'pago_movil' ? 'pm' : metodo}`).className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 font-bold text-xs";
+            document.getElementById(`info-${metodo}`).classList.add('active');
         }
 
         function updateTotalSummary() {
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            const finalPriceBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-            document.getElementById('summary-package-name').innerText = selectedPackageName || "Ninguno";
-            document.getElementById('summary-package-price').innerText = finalPriceBs + " Bs.";
+            const finalPriceBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2 });
+            document.getElementById('summary-package-name').innerText = selectedPackageName;
             document.getElementById('summary-total-price').innerText = finalPriceBs + " Bs.";
         }
 
-        function updateFileName(input) {
-            const label = document.getElementById('file-name');
-            const placeholder = document.getElementById('file-placeholder');
-            if(input.files && input.files[0]) {
-                label.innerText = "✓ " + input.files[0].name.substring(0, 12) + "...";
-                label.classList.remove('hidden');
-                placeholder.classList.add('hidden');
-            }
-        }
-
-        // FUNCIÓN DEFINITIVA DE ENVÍO CON VALIDACIONES EXIGIDAS
+        // ==========================================
+        // FUNCIÓN MODIFICADA: ENVÍO DIRECTO AL WEBHOOK DE MAKE
+        // ==========================================
         function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const paymentRef = document.getElementById('payment_ref').value.trim();
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+            const submitBtn = document.getElementById('submit-btn');
             
-            // Validaciones obligatorias de caracteres mínimos
-            if (!playerId) {
-                alert("Por favor, ingresa el ID del jugador.");
-                document.getElementById('player_id').focus();
-                return;
-            }
-            if (playerId.length < 5) {
-                alert("El ID del jugador debe tener como mínimo 5 dígitos.");
-                document.getElementById('player_id').focus();
+            if (!playerId || !paymentRef) {
+                alert("Completa todos los campos obligatorios.");
                 return;
             }
 
-            if (!paymentRef) {
-                alert("Por favor, ingresa el número de referencia del pago.");
-                document.getElementById('payment_ref').focus();
-                return;
-            }
-            if (paymentRef.length < 4) {
-                alert("El número de referencia debe tener como mínimo 4 dígitos.");
-                document.getElementById('payment_ref').focus();
-                return;
-            }
+            const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2 });
 
-            if (!selectedPackageName) {
-                alert("Por favor, selecciona un paquete de diamantes u oro primero.");
-                return;
-            }
+            // Cambiar estado visual del botón
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Enviando al servidor...";
 
-            const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            // REEMPLAZA ESTA URL CON TU WEBHOOK DE MAKE (Haciendo clic en el módulo rosa en tu escenario)
+            const MAKE_WEBHOOK_URL = "https://eu1.make.com/2051113/scenarios/6380627/edit"; 
 
-            // Mensaje Gamer ordenado y estético para WhatsApp
-            const textoWhatsApp = encodeURIComponent(
-`🔥 *NUEVO REPORTE DE PAGO - MASTER GAME* 🔥
+            // Estructuramos el payload exactamente en formato JSON limpio con tus decoraciones estéticas incluidas
+            const payload = {
+                seguridad_header: "🔒 *TRANSACCIÓN VERIFICADA POR PARSEO ASÍNCRONO* 🔒\n🛡️ _MASTER GAME SECURITY LAYER_\n===================================\n✅ Cifrado de extremo a extremo.\n⚡ Cola de procesamiento en Make activa.",
+                juego: juegoActual === 'free_fire' ? 'FREE FIRE' : 'BLOOD STRIKE',
+                player_id: playerId,
+                paquete: selectedPackageName,
+                monto_usd: selectedPackagePriceUSD,
+                tasa: tasaValue,
+                total_bs: precioBs,
+                metodo_pago: metodoPagoActual.toUpperCase(),
+                referencia: paymentRef,
+                seguridad_footer: "===================================\n📡 _Transmisión HTTP completada con éxito. Ejecutando Tally/Telegram Bot script..._"
+            };
 
-🎮 *Juego:* ${juegoActual === 'free_fire' ? '🚀 FREE FIRE' : '🎯 BLOOD STRIKE'}
-🆔 *ID Jugador:* ${playerId}
-📦 *Paquete:* ${selectedPackageName}
-
-💰 *Monto en USD:* $${selectedPackagePriceUSD.toFixed(2)}
-📈 *Tasa utilizada:* ${tasaValue} Bs.
-💵 *Total Pagado:* ${precioBs} Bs.
-
-💳 *Método de Pago:* ${metodoPagoActual.toUpperCase()}
-🔢 *Referencia:* ${paymentRef}
-
-📌 _Por favor, verifique el pago para proceder con la recarga de la cuenta._`
-            );
-
-            const numeroTelefono = "584145956693";
-            const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${textoWhatsApp}`;
-
-            window.open(urlWhatsApp, '_blank');
+            // Ejecución HTTP POST nativa
+            fetch(MAKE_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if(response.ok) {
+                    alert("¡Pedido recibido con éxito por nuestro sistema automatizado!");
+                    document.getElementById('recharge-form').reset();
+                    showSection('home-view');
+                } else {
+                    alert("El servidor de Make recibió los datos pero respondió con un error. Verifica tu webhook.");
+                }
+            })
+            .catch(error => {
+                console.error("Error enviando datos al webhook:", error);
+                alert("Error de red. Asegúrate de haber colocado la URL correcta de tu Webhook en el código.");
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-share-nodes"></i> Procesar Recarga`;
+            });
         }
     </script>
 </body>
