@@ -33,11 +33,13 @@
 </head>
 <body class="gradient-bg text-white font-sans min-h-screen antialiased">
 
+    <!-- HEADER -->
     <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-900 sticky top-0 z-50 p-4">
         <div class="container mx-auto flex justify-between items-center px-4">
             
+            <!-- SECTOR DEL LOGO Y TÍTULO -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home-view')">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo Master Game" class="w-9 h-9 object-contain rounded-md filter drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]">
+                <img src="TU_ENLACE_DE_LOGO_AQUI" alt="Logo Master Game" class="w-9 h-9 object-contain rounded-md filter drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]">
                 <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 bg-clip-text text-transparent">MASTER GAME</span>
             </div>
             
@@ -47,58 +49,113 @@
         </div>
     </header>
 
-    <section id="home-view" class="container mx-auto px-4 py-12 max-w-4xl">
+    <!-- VISTA 1: PÁGINA PRINCIPAL -->
+    <section id="home-view" class="container mx-auto px-4 py-12 max-w-6xl">
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">RECARGAS <span class="text-amber-500">DIRECTAS</span></h1>
-            <p class="text-slate-400 text-lg max-w-xl mx-auto">Elige tu juego favorito, ingresa tu ID y recibe tus diamantes o monedas al instante de forma segura.</p>
+            <p class="text-slate-400 text-lg max-w-xl mx-auto">Elige tu juego o plataforma favorita, ingresa tus datos de destino y recibe tu saldo de forma segura.</p>
         </div>
 
-        <div class="w-full max-w-2xl mx-auto mb-8">
+        <!-- BANNER DE IMAGEN PRINCIPAL (ARRIBA) -->
+        <div class="w-full max-w-3xl mx-auto mb-10">
             <div class="relative overflow-hidden rounded-3xl border border-amber-500/20 shadow-2xl shadow-amber-500/5">
-                <img src="https://i.pinimg.com/736x/7b/a2/a8/7ba2a82a918c1c55ddf727ec98868c1e.jpg" alt="Promoción Principal Master Game" class="w-full h-auto object-cover aspect-[21/9] md:aspect-[3/1]">
+                <img src="TU_ENLACE_DE_IMAGEN_AQUI" alt="Promoción Principal Master Game" class="w-full h-auto object-cover aspect-[21/9] md:aspect-[3/1]">
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+        <!-- REJILLA DE TARJETAS ADAPTABLE -->
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             
-            <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-amber-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-amber-950/10">
-                <div class="h-44 bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 transition-opacity duration-300">
-                    <div class="absolute inset-0 bg-slate-950/40"></div>
-                    
-                    <i class="fa-solid fa-fire-flame-curved text-5xl text-amber-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(245,158,11,0.6)] relative z-10"></i>
-                    <div class="absolute bottom-3 left-3 bg-slate-950/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-md border border-amber-500/20 z-10">ID Directo</div>
+            <!-- 1. Tarjeta Free Fire -->
+            <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-amber-500 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-amber-950/10">
+                <div class="h-36 bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 transition-opacity duration-300">
+                    <i class="fa-solid fa-fire-flame-curved text-4xl text-amber-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] relative z-10"></i>
+                    <div class="absolute bottom-2 left-2 bg-slate-950/90 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/20 z-10">ID Directo</div>
                 </div>
-                <h3 class="text-2xl font-black tracking-wide group-hover:text-amber-400 transition-colors">FREE FIRE</h3>
-                <p class="text-slate-400 text-sm mt-1">Diamantes por ID directo con abonos automatizados y bonificaciones en minutos.</p>
-                <button class="w-full mt-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
-                    Recargar Ahora <i class="fa-solid fa-chevron-right text-xs"></i>
+                <h3 class="text-lg md:text-xl font-black tracking-wide group-hover:text-amber-400 transition-colors">FREE FIRE</h3>
+                <p class="text-slate-400 text-xs mt-1 line-clamp-2">Diamantes por ID directo con abonos automatizados en minutos.</p>
+                <button class="w-full mt-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                    Recargar <i class="fa-solid fa-chevron-right text-[10px]"></i>
                 </button>
             </div>
 
-            <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-orange-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-orange-950/10">
-                <div class="h-44 bg-gradient-to-br from-slate-950 via-orange-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 transition-opacity duration-300">
-                    <div class="absolute inset-0 bg-slate-950/40"></div>
-                    
-                    <i class="fa-solid fa-crosshairs text-5xl text-orange-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(249,115,22,0.6)] relative z-10"></i>
-                    <div class="absolute bottom-3 left-3 bg-slate-950/90 text-orange-400 text-xs font-bold px-3 py-1 rounded-md border border-orange-500/20 z-10">Oro / Pases</div>
+            <!-- 2. Tarjeta Blood Strike -->
+            <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-orange-500 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-orange-950/10">
+                <div class="h-36 bg-gradient-to-br from-slate-950 via-orange-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 transition-opacity duration-300">
+                    <i class="fa-solid fa-crosshairs text-4xl text-orange-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(249,115,22,0.5)] relative z-10"></i>
+                    <div class="absolute bottom-2 left-2 bg-slate-950/90 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded border border-orange-500/20 z-10">Oro / Pases</div>
                 </div>
-                <h3 class="text-2xl font-black tracking-wide group-hover:text-orange-400 transition-colors">BLOOD STRIKE</h3>
-                <p class="text-slate-400 text-sm mt-1">Monedas de oro y pases de temporada de forma directa por ID.</p>
-                <button class="w-full mt-4 bg-orange-500 hover:bg-orange-600 text-slate-950 font-black py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
-                    Recargar Ahora <i class="fa-solid fa-chevron-right text-xs"></i>
+                <h3 class="text-lg md:text-xl font-black tracking-wide group-hover:text-orange-400 transition-colors">BLOOD STRIKE</h3>
+                <p class="text-slate-400 text-xs mt-1 line-clamp-2">Monedas de oro y pases de temporada de forma directa por ID.</p>
+                <button class="w-full mt-3 bg-orange-500 hover:bg-orange-600 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                    Recargar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 3. Tarjeta Call of Duty Mobile -->
+            <div onclick="openStore('cod_mobile')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-yellow-500 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-yellow-950/10">
+                <div class="h-36 bg-gradient-to-br from-slate-950 via-yellow-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <i class="fa-solid fa-person-rifle text-4xl text-yellow-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(234,179,8,0.5)] relative z-10"></i>
+                    <div class="absolute bottom-2 left-2 bg-slate-950/90 text-yellow-400 text-[10px] font-bold px-2 py-0.5 rounded border border-yellow-500/20 z-10">CP por UID</div>
+                </div>
+                <h3 class="text-lg md:text-xl font-black tracking-wide group-hover:text-yellow-400 transition-colors">COD MOBILE</h3>
+                <p class="text-slate-400 text-xs mt-1 line-clamp-2">CP oficiales directo a tu cuenta usando tu UID del perfil.</p>
+                <button class="w-full mt-3 bg-yellow-500 hover:bg-yellow-600 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                    Recargar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 4. Tarjeta Roblox -->
+            <div onclick="openStore('roblox')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-red-500 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-red-950/10">
+                <div class="h-36 bg-gradient-to-br from-slate-950 via-red-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <i class="fa-solid fa-cube text-4xl text-red-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(239,68,68,0.5)] relative z-10"></i>
+                    <div class="absolute bottom-2 left-2 bg-slate-950/90 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500/20 z-10">Robux Directo</div>
+                </div>
+                <h3 class="text-lg md:text-xl font-black tracking-wide group-hover:text-red-400 transition-colors">ROBLOX</h3>
+                <p class="text-slate-400 text-xs mt-1 line-clamp-2">Carga Robux de manera rápida en tu cuenta para comprar skins y pases.</p>
+                <button class="w-full mt-3 bg-red-500 hover:bg-red-600 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                    Recargar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 5. Tarjeta PlayStation Gift Cards -->
+            <div onclick="openStore('playstation')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-blue-500 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-blue-950/10">
+                <div class="h-36 bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <i class="fa-brands fa-playstation text-5xl text-blue-500 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] relative z-10"></i>
+                    <div class="absolute bottom-2 left-2 bg-slate-950/90 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 z-10">Código Digital</div>
+                </div>
+                <h3 class="text-lg md:text-xl font-black tracking-wide group-hover:text-blue-400 transition-colors">PLAYSTATION</h3>
+                <p class="text-slate-400 text-xs mt-1 line-clamp-2">Tarjetas de regalo para canjear saldo en la PlayStation Store americana.</p>
+                <button class="w-full mt-3 bg-blue-500 hover:bg-blue-600 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                    Comprar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 6. Tarjeta App Store Gift Cards -->
+            <div onclick="openStore('app_store')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-cyan-400 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-cyan-950/10">
+                <div class="h-36 bg-gradient-to-br from-slate-950 via-cyan-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
+                    <i class="fa-brands fa-apple text-4xl text-cyan-400 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(34,211,238,0.5)] relative z-10"></i>
+                    <div class="absolute bottom-2 left-2 bg-slate-950/90 text-cyan-400 text-[10px] font-bold px-2 py-0.5 rounded border border-cyan-500/20 z-10">Apple Card</div>
+                </div>
+                <h3 class="text-lg md:text-xl font-black tracking-wide group-hover:text-cyan-400 transition-colors">APP STORE</h3>
+                <p class="text-slate-400 text-xs mt-1 line-clamp-2">Tarjetas de regalo para añadir saldo a tu Apple ID de forma inmediata.</p>
+                <button class="w-full mt-3 bg-cyan-400 hover:bg-cyan-500 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                    Comprar <i class="fa-solid fa-chevron-right text-[10px]"></i>
                 </button>
             </div>
 
         </div>
     </section>
 
+    <!-- VISTA 2: FORMULARIO + CATÁLOGO INTEGRADO -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden">
         <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors">
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
         </button>
 
+        <!-- BANNER DE ADENTRO DEL JUEGO -->
         <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden">
             <img id="banner-img-src" src="" alt="Inside Game Banner" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
@@ -107,8 +164,10 @@
             </div>
         </div>
 
+        <!-- REJILLA PRINCIPAL -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
+            <!-- COLUMNA IZQUIERDA: CATÁLOGO DE PRODUCTOS -->
             <div class="lg:col-span-7 space-y-4">
                 <h3 class="text-md font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
                     <i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto
@@ -116,6 +175,7 @@
                 <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-2 gap-3.5"></div>
             </div>
 
+            <!-- COLUMNA DERECHA: FORMULARIO + RESUMEN -->
             <div class="lg:col-span-5">
                 <form id="form-recarga" class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-sm">
                     
@@ -123,12 +183,14 @@
                         <i class="fa-solid fa-user-pen text-amber-500"></i> Información Requerida
                     </h3>
 
+                    <!-- Campo ID -->
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
+                        <label id="id-field-label" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
                         <input type="text" id="player_id" required placeholder="Ej: 123456789" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
+                    <!-- Datos de Pago Móvil -->
                     <div class="bg-slate-950/50 border border-slate-800 rounded-2xl p-4 text-xs space-y-1.5 text-slate-300">
                         <div class="text-amber-400 font-bold mb-1 flex items-center gap-1.5">
                             <i class="fa-solid fa-mobile-screen-button"></i> Datos de Transferencia:
@@ -138,12 +200,14 @@
                         <p><span class="text-slate-500 font-medium">Cédula:</span> V-32562761</p>
                     </div>
 
+                    <!-- Campo Referencia Bancaria -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Referencia de Pago (6 dígitos)</label>
                         <input type="text" id="referencia" required placeholder="001234" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
+                    <!-- Subir Comprobante -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Comprobante de Pago</label>
                         <div class="flex items-center justify-center w-full">
@@ -158,6 +222,7 @@
                         </div>
                     </div>
 
+                    <!-- DETALLE Y MONTO TOTAL A PAGAR -->
                     <div class="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-4 space-y-2">
                         <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Resumen de la orden</div>
                         <div class="flex justify-between items-center text-xs">
@@ -170,6 +235,7 @@
                         </div>
                     </div>
 
+                    <!-- Botón de Envío -->
                     <button type="submit" id="btn-enviar" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black py-3.5 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-amber-500/10">
                         Confirmar Orden de Recarga
                     </button>
@@ -182,27 +248,40 @@
     <script>
         let juegoActual = "";
         
+        // Listado ampliado con los nuevos catálogos requeridos
         const listaPaquetes = {
             free_fire: [
                 { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Recarga Directa", price: "700", icon: "fa-gem" },
                 { id: "ff_310", name: "310 Diamantes + 62 Bono", bonus: "Recarga Directa", price: "2.050", icon: "fa-gem" },
                 { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Recarga Directa", price: "3.400", icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Recarga Directa", price: "6.300", icon: "fa-gem" },
-                { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Recarga Directa", price: "12.300", icon: "fa-gem" },
-                { id: "ff_5600", name: "5600 Diamantes + 1120 Bono", bonus: "Recarga Directa", price: "31.900", icon: "fa-gem" },
-                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Recibe Diamantes Diario", price: "2.150", icon: "fa-id-card" },
-                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "El Mayor Beneficio", price: "10.000", icon: "fa-box-open" }
+                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Recarga Directa", price: "6.300", icon: "fa-gem" }
             ],
             blood_strike: [
                 { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", price: "540", icon: "fa-coins" },
                 { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", price: "770", icon: "fa-coins" },
-                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "2.310", price: "2.310", icon: "fa-coins" },
-                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", price: "3.690", icon: "fa-coins" },
-                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", price: "7.315", icon: "fa-coins" },
-                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", price: "14.630", icon: "fa-coins" },
-                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", price: "34.650", icon: "fa-coins" },
-                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Abono Instantáneo", price: "3.250", icon: "fa-id-card" },
-                { id: "bs_pass_prem", name: "Strike Pass Premium", bonus: "Beneficios Máximos", price: "1750", icon: "fa-box-open" }
+                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "2.310", icon: "fa-coins" },
+                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Abono Instantáneo", price: "3.250", icon: "fa-id-card" }
+            ],
+            cod_mobile: [
+                { id: "cod_80", name: "80 CP", bonus: "Entrega por UID", price: "620", icon: "fa-gun" },
+                { id: "cod_420", name: "420 CP", bonus: "Entrega por UID", price: "2.850", icon: "fa-gun" },
+                { id: "cod_880", name: "880 CP", bonus: "Entrega por UID", price: "5.600", icon: "fa-gun" },
+                { id: "cod_p_supply", name: "Pase de Suministros", bonus: "Suscripción", price: "3.100", icon: "fa-box" }
+            ],
+            roblox: [
+                { id: "rob_400", name: "400 Robux", bonus: "Abono Directo", price: "2.400", icon: "fa-cube" },
+                { id: "rob_800", name: "800 Robux", bonus: "Abono Directo", price: "4.750", icon: "fa-cube" },
+                { id: "rob_1700", name: "1700 Robux", bonus: "Mejor Valor", price: "9.600", icon: "fa-cubes" }
+            ],
+            playstation: [
+                { id: "ps_10", name: "$10 PlayStation Card", bonus: "Código Región USA", price: "4.500", icon: "fa-ticket" },
+                { id: "ps_20", name: "$20 PlayStation Card", bonus: "Código Región USA", price: "8.900", icon: "fa-ticket" },
+                { id: "ps_50", name: "$50 PlayStation Card", bonus: "Código Región USA", price: "21.500", icon: "fa-ticket" }
+            ],
+            app_store: [
+                { id: "apple_10", name: "$10 Apple Gift Card", bonus: "Código Región USA", price: "4.600", icon: "fa-basket-shopping" },
+                { id: "apple_15", name: "$15 Apple Gift Card", bonus: "Código Región USA", price: "6.850", icon: "fa-basket-shopping" },
+                { id: "apple_25", name: "$25 Apple Gift Card", bonus: "Código Región USA", price: "11.200", icon: "fa-basket-shopping" }
             ]
         };
 
@@ -219,31 +298,59 @@
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
             const bannerImg = document.getElementById('banner-img-src');
+            const labelId = document.getElementById('id-field-label');
+            const inputId = document.getElementById('player_id');
             
             container.innerHTML = "";
             document.getElementById('file-name').classList.add('hidden');
             
+            // Ajustar textos e imágenes de fondo dinámicamente según la tarjeta elegida
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
                 bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
-                bannerContainer.classList.remove('hidden');
-            } else {
+                labelId.innerText = "ID de Jugador (Free Fire)";
+                inputId.placeholder = "Ej: 123456789";
+            } else if(juego === 'blood_strike') {
                 title.innerText = "Blood Strike";
                 bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
-                bannerContainer.classList.remove('hidden');
+                labelId.innerText = "ID de Usuario (Blood Strike)";
+                inputId.placeholder = "Ej: bstrike_9988";
+            } else if(juego === 'cod_mobile') {
+                title.innerText = "Call of Duty Mobile";
+                bannerImg.src = "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touch/hub/meta/codm-meta-image.jpg";
+                labelId.innerText = "UID de Cuenta (COD Mobile)";
+                inputId.placeholder = "Ej: 67234589101234567";
+            } else if(juego === 'roblox') {
+                title.innerText = "Roblox";
+                bannerImg.src = "https://images.rbxcdn.com/97486e9029e2f495147515ee3df3b88b.jpg";
+                labelId.innerText = "Nombre de Usuario (Debe ser exacto)";
+                inputId.placeholder = "Ej: GamerPro2026";
+            } else if(juego === 'playstation' || juego === 'app_store') {
+                title.innerText = juego === 'playstation' ? "PlayStation Store" : "App Store & iTunes";
+                bannerImg.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80";
+                labelId.innerText = "Correo electrónico de entrega";
+                inputId.placeholder = "Ej: tu-correo@gmail.com";
             }
 
+            bannerContainer.classList.remove('hidden');
+
+            // Renderizar los paquetes filtrados automáticamente
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const checked = idx === 0 ? "checked" : "";
-                const themeColor = "amber";
-                const iconClass = juego === 'free_fire' ? 'text-amber-400' : 'text-orange-400';
+                const isOrangeTheme = ['blood_strike', 'cod_mobile'].includes(juego);
+                const isBlueTheme = ['playstation', 'app_store'].includes(juego);
+                
+                let iconClass = 'text-amber-400';
+                if(isOrangeTheme) iconClass = 'text-orange-400';
+                if(isBlueTheme) iconClass = 'text-blue-400';
+                if(juego === 'roblox') iconClass = 'text-red-400';
 
                 const html = `
                     <label class="relative block cursor-pointer package-card group" onclick="updateTotalSummary('${pkg.name}', '${pkg.price}')">
                         <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name}" ${checked} class="hidden package-radio">
                         
                         <div class="package-content bg-slate-900/30 border-2 border-slate-800 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-200 relative overflow-hidden">
-                            <div class="check-icon opacity-0 scale-75 absolute top-3 right-3 bg-${themeColor}-500 text-slate-950 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200">
+                            <div class="check-icon opacity-0 scale-75 absolute top-3 right-3 bg-amber-500 text-slate-950 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200">
                                 <i class="fa-solid fa-check"></i>
                             </div>
 
