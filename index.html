@@ -131,11 +131,9 @@
             <div class="lg:col-span-7 space-y-4">
                 <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between px-1">
                     <span><i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto</span>
-                    <!-- CONTROL DE TASA INVISIBLE/SUTIL EN LA INTERFAZ -->
-                    <span class="text-[11px] font-bold text-slate-500">Tasa: <span id="tasa-display-val" class="text-amber-500">0.00</span> Bs/$</span>
-                </h3>
-                <div id="packages-container" class="grid grid-cols-2 gap-3.5"></div>
-            </div>
+                    
+                <!-- CONTROL DE TASA OCULTO PARA EL CLIENTE -->
+<span class="hidden">Tasa: <span id="tasa-display-val">45.50</span> Bs/$</span>
 
             <!-- COLUMNA DERECHA: FORMULARIO -->
             <div class="lg:col-span-5">
@@ -147,7 +145,7 @@
                     <!-- CALCULADORA INTERNA: MODIFICADOR DE TASA DEL DÍA -->
                     <div class="bg-slate-950/50 border border-slate-800/60 rounded-2xl p-3.5">
                         <label class="block text-[10px] font-bold uppercase tracking-wider text-amber-500/80 mb-1.5 flex justify-between">
-                            <span>ADMIN: Tasa del Día (Modificable)</span>
+                            <span>ADMIN: Tasa del Día (800)</span>
                             <span class="text-slate-400 font-medium">Cambia este valor cuando desees</span>
                         </label>
                         <div class="relative flex items-center">
