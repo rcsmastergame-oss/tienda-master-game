@@ -1,3 +1,4 @@
+// PROCESAMIENTO GENERAL DEL FORMULARIO Y ENVÍO A MAKE
 document.getElementById('form-recarga').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -5,13 +6,13 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     const statusMsg = document.getElementById('status-message');
     
     btn.disabled = true;
-    btn.innerText = "Procesando Pedido...";
+    btn.innerText = "Validando Pago...";
     
     const selectedRadio = document.querySelector('input[name="paquete"]:checked');
     if (!selectedRadio) {
-        alert("Por favor, selecciona un paquete de recarga.");
+        alert("Por favor, selecciona un lote de recarga primero.");
         btn.disabled = false;
-        btn.innerText = "Confirmar Orden de Recarga";
+        btn.innerText = "Procesar Recarga";
         return;
     }
     
@@ -19,7 +20,7 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     const packageUsd = parseFloat(selectedRadio.getAttribute('data-usd'));
     const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
     
-    // Calcular el monto exacto final en Bs para enviarlo limpio a Make
+    // Formatear precio final calculado en Bs para el reporte del webhook
     const finalPriceBs = (packageUsd * tasaValue).toFixed(2) + " Bs.";
     
     const playerId = document.getElementById('player_id').value;
@@ -38,7 +39,7 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
         juego: juegoActual === 'free_fire' ? 'Free Fire' : 'Blood Strike',
         id_jugador: playerId,
         paquete_seleccionado: packageName,
-        precio: finalPriceBs, // Monto calculado en bolívares según la tasa del momento
+        precio: finalPriceBs,
         referencia_pago: referencia,
         comprobante_base64: base64File,
         comprobante_nombre: fileName
@@ -53,21 +54,21 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
             body: JSON.stringify(payload)
         });
         
-        statusMsg.classList.remove('hidden', 'bg-red-950/40', 'border-red-500/30', 'text-red-400');
-        statusMsg.classList.add('bg-emerald-950/40', 'border', 'border-emerald-500/30', 'text-emerald-400');
-        statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Pedido Envíado! Tu recarga está siendo procesada.`;
+        statusMsg.classList.remove('hidden', 'bg-red-950/30', 'border-red-500/20', 'text-red-400');
+        statusMsg.classList.add('bg-emerald-950/30', 'border', 'border-emerald-500/20', 'text-emerald-400');
+        statusMsg.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> ¡Orden procesada con éxito! Tus recursos están en camino.`;
         
         document.getElementById('form-recarga').reset();
         document.getElementById('file-name').classList.add('hidden');
         
     } catch (error) {
-        console.error("Error enviando datos:", error);
-        statusMsg.classList.remove('hidden', 'bg-emerald-950/40', 'border-emerald-500/30', 'text-emerald-400');
-        statusMsg.classList.add('bg-red-950/40', 'border', 'border-red-500/30', 'text-red-400');
-        statusMsg.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Hubo un problema al procesar tu orden. Intenta nuevamente.`;
+        console.error("Error en la conexión a la base de datos:", error);
+        statusMsg.classList.remove('hidden', 'bg-emerald-950/30', 'border-emerald-500/20', 'text-emerald-400');
+        statusMsg.classList.add('bg-red-950/30', 'border', 'border-red-500/20', 'text-red-400');
+        statusMsg.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Error de pasarela. Intenta de nuevo o contacta a soporte.`;
     } finally {
         btn.disabled = false;
-        btn.innerText = "Confirmar Orden de Recarga";
+        btn.innerText = "Procesar Recarga";
     }
 });
 
@@ -79,3 +80,20 @@ function toBase64(file) {
         reader.onerror = error => reject(error);
     });
 }
+
+// 🔐 PANEL DE CONTROL ADMINISTRATIVO TOTALMENTE OCULTO
+// Haz doble clic en computadoras, o doble toque rápido en celulares sobre el logo de TMK Gaming.
+document.getElementById('logo-admin-trigger').addEventListener('dblclick', function(e) {
+    e.preventDefault();
+    
+    const tasaInput = document.getElementById('tasa_cambio');
+    const tasaActual = tasaInput.value;
+    
+    const nuevaTasa = prompt("🔐 SISTEMA ADM - TMK GAMING\n\nModificar la tasa referencial del día (Bs/$):", tasaActual);
+    
+    if (nuevaTasa !== null && !isNaN(nuevaTasa) && nuevaTasa > 0) {
+        tasaInput.value = parseFloat(nuevaTasa).toFixed(2);
+        recalculateAllPrices();
+        alert("📊 Tasa sincronizada de forma segura a: " + nuevaTasa + " Bs.");
+    }
+});
