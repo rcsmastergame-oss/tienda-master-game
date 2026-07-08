@@ -1,0 +1,39 @@
+/* ==========================================================
+   CONGELAR PANTALLA Y EVITAR DESBORDE HORIZONTAL
+   ========================================================== */
+
+/* Bloquea por completo el movimiento hacia los lados en el cel */
+html, body {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative;
+    box-sizing: border-box !important;
+}
+
+/* Evita que las secciones del juego rompan el margen del teléfono */
+#home-view, #form-view, .container, main, section, header, footer {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Ajusta las filas y columnas para que no empujen la pantalla */
+.grid, .flex {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Fuerza a los textos o correos largos a no estirar el diseño */
+p, span, div, h1, h2, h3, label, input {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+}
+
+/* Optimización táctil y fluidez */
+button, a, .package-card, [onclick] {
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation;
+}
