@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMK Gaming - Recargas Rápidas y Seguras</title>
+    <title>MASTR GAME - Recargas Rápidas y Seguras</title>
     <!-- Cargador de Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Cargador de Iconos FontAwesome -->
@@ -26,12 +26,24 @@
         .faq-item.active .faq-icon {
             transform: rotate(180deg);
         }
+        /* Animación suave para la aparición de métodos de pago */
+        .payment-info-box {
+            display: none;
+        }
+        .payment-info-box.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="relative min-h-screen pb-16">
 
     <!-- BOTÓN FLOTANTE DE WHATSAPP GAMER -->
-    <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+TMK+Gaming." 
+    <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTR+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
        class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
@@ -44,11 +56,11 @@
     <!-- ENCABEZADO / TOP BAR -->
     <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3.5">
         <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <!-- Zona del Logo (Doble clic aquí para el panel oculto de administración) -->
+            <!-- Zona del Logo (DOBLE CLIC AQUÍ PARA CAMBIAR LA TASA) -->
             <a href="#" id="logo-admin-trigger" class="flex items-center gap-3 group cursor-pointer">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo TMK" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner group-hover:border-amber-500/50 transition-colors">
+                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTR GAME" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner group-hover:border-amber-500/50 transition-colors">
                 <span class="font-black tracking-widest text-sm uppercase">
-                    TMK <span class="text-amber-500">Gaming</span>
+                    MASTR <span class="text-amber-500">GAME</span>
                 </span>
             </a>
             
@@ -58,9 +70,11 @@
         </div>
     </header>
 
+    <!-- INPUT OCULTO DE CONTROL DE TASA (Valor base de ejemplo) -->
+    <input type="hidden" id="tasa_cambio" value="45.50" onchange="recalculateAllPrices()">
+
     <!-- VISTA 1: PÁGINA PRINCIPAL -->
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-5xl relative z-10">
-        <!-- Luces Neón de Fondo de Fondo -->
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
@@ -80,12 +94,12 @@
         <!-- SECCIÓN DE JUEGOS DISPONIBLES -->
         <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 px-2">
-            <!-- Tarjeta Free Fire -->
+            <!-- Tarjeta Free Fire (A COLOR) -->
             <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:opacity-30 group-hover:scale-105 transition-all duration-500 filter grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent"></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
                         <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] group-hover:border-amber-500/30 transition-all duration-300">
                             <i class="fa-solid fa-fire-flame-curved text-3xl text-amber-500 filter drop-shadow-[0_0_6px_rgba(245,158,11,0.5)]"></i>
                         </div>
@@ -99,12 +113,12 @@
                 </div>
             </div>
 
-            <!-- Tarjeta Blood Strike -->
+            <!-- Tarjeta Blood Strike (A COLOR) -->
             <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:opacity-30 group-hover:scale-105 transition-all duration-500 filter grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent"></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
                         <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:border-orange-500/30 transition-all duration-300">
                             <i class="fa-solid fa-crosshairs text-3xl text-orange-500 filter drop-shadow-[0_0_6px_rgba(249,115,22,0.5)]"></i>
                         </div>
@@ -144,34 +158,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN: RESEÑAS / PRUEBA SOCIAL -->
-        <div class="max-w-4xl mx-auto mb-20">
-            <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Lo que dicen nuestros jugadores</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-slate-900/20 border border-slate-900 p-5 rounded-2xl relative">
-                    <div class="flex items-center gap-3 mb-2.5">
-                        <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-xs text-amber-500">C</div>
-                        <div>
-                            <div class="text-xs font-bold">Carlos Mendoza</div>
-                            <div class="text-[10px] text-amber-500"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                    </div>
-                    <p class="text-xs text-slate-400 font-medium leading-relaxed">"Súper recomendados, compré la tarjeta mensual de Free Fire y me llegó súper rápido por ID. El pago móvil se procesó al tiro."</p>
-                </div>
-                <div class="bg-slate-900/20 border border-slate-900 p-5 rounded-2xl relative">
-                    <div class="flex items-center gap-3 mb-2.5">
-                        <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-xs text-orange-500">A</div>
-                        <div>
-                            <div class="text-xs font-bold">Alejandro G.</div>
-                            <div class="text-[10px] text-amber-500"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                    </div>
-                    <p class="text-xs text-slate-400 font-medium leading-relaxed">"Primera vez que recargo Oro de Blood Strike aquí y excelente servicio. Muy confiable y transparente con los montos en Bs."</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+        <!-- SECCIÓN: PREGUNTAS FRECUENTES -->
         <div class="max-w-xl mx-auto mb-12">
             <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Preguntas Frecuentes</h2>
             <div class="space-y-3">
@@ -180,125 +167,199 @@
                         <h4 class="text-xs font-bold uppercase tracking-wide text-slate-200">¿Cuánto tiempo demora la recarga?</h4>
                         <i class="fa-solid fa-chevron-down text-xs text-slate-500 faq-icon transition-transform duration-300"></i>
                     </div>
-                    <div class="faq-answer text-xs text-slate-400 font-medium leading-relaxed">Generalmente el abono demora de 5 a 15 minutos una vez que validamos tu referencia de pago. En casos de mantenimiento del juego puede tomar un poco más, pero siempre notificamos.</div>
+                    <div class="faq-answer text-xs text-slate-400 font-medium leading-relaxed">Generalmente el abono demora de 5 a 15 minutos una vez que validamos tu referencia de pago. En casos de mantenimiento puede tomar un poco más.</div>
                 </div>
-                <div class="faq-item border border-slate-900 bg-slate-900/10 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-2">
-                        <h4 class="text-xs font-bold uppercase tracking-wide text-slate-200">¿Corro riesgo de ban en mi cuenta?</h4>
-                        <i class="fa-solid fa-chevron-down text-xs text-slate-500 faq-icon transition-transform duration-300"></i>
-                    </div>
-                    <div class="faq-answer text-xs text-slate-400 font-medium leading-relaxed">Ninguno. Las recargas son 100% directas y legales usando únicamente tu ID público de jugador. Jamás te pediremos datos de acceso o contraseñas.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FOOTER VISUAL DE METODOS DE PAGO -->
-        <div class="border-t border-slate-900 pt-8 text-center max-w-xl mx-auto">
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Múltiples métodos de procesamiento global</div>
-            <div class="flex justify-center items-center gap-5 text-sm text-slate-600">
-                <span class="font-bold text-[11px] border border-slate-900 px-2.5 py-1 rounded bg-slate-950">PAGO MÓVIL</span>
-                <span class="font-bold text-[11px] border border-slate-900 px-2.5 py-1 rounded bg-slate-950">BINANCE PAY</span>
-                <span class="font-bold text-[11px] border border-slate-900 px-2.5 py-1 rounded bg-slate-950">ZINLI</span>
-                <span class="font-bold text-[11px] border border-slate-900 px-2.5 py-1 rounded bg-slate-950">PAYPAL</span>
             </div>
         </div>
     </section>
 
-    <!-- VISTA 2: FORMULARIO + CATÁLOGO INTEGRADO -->
+    <!-- VISTA 2: FORMULARIO DE TIENDA Y PASARELA QR -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
-        <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors cursor-pointer text-xs uppercase tracking-wider">
-            <i class="fa-solid fa-arrow-left text-[10px]"></i> Volver a la Tienda
+        <!-- Botón Volver -->
+        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 hover:text-white transition-colors">
+            <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
         </button>
 
-        <div id="game-image-banner" class="w-full h-40 md:h-52 rounded-2xl mb-8 overflow-hidden relative shadow-xl border border-slate-900 hidden">
-            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-            <div class="absolute bottom-5 left-5 z-10">
-                <h2 id="selected-game-title" class="text-2xl md:text-3xl font-black tracking-wider uppercase drop-shadow-md"></h2>
+        <!-- Banner del Juego Seleccionado -->
+        <div id="game-image-banner" class="w-full h-36 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-xl">
+            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+            <div class="absolute bottom-5 left-6">
+                <span class="text-[10px] font-black uppercase bg-amber-500 text-slate-950 px-2 py-0.5 rounded tracking-widest mb-1.5 inline-block shadow-md">Tienda Oficial</span>
+                <h2 id="selected-game-title" class="text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow">JUEGO</h2>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <!-- COLUMNA IZQUIERDA: PRODUCTOS -->
-            <div class="lg:col-span-7 space-y-4">
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 px-1">
-                    <i class="fa-solid fa-layer-group text-amber-500 mr-1"></i> Selecciona el lote de recarga
-                </h3>
-                <div id="packages-container" class="grid grid-cols-2 gap-3.5"></div>
-            </div>
-
-            <!-- COLUMNA DERECHA: FORMULARIO -->
-            <div class="lg:col-span-5">
-                <form id="form-recarga" class="bg-slate-900/20 border border-slate-900 p-5 rounded-2xl space-y-4 shadow-xl backdrop-blur-md">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 border-b border-slate-900 pb-2.5 flex items-center gap-2">
-                        <i class="fa-solid fa-user-pen text-amber-500"></i> Datos de la orden
+        <form id="recharge-form" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start" onsubmit="event.preventDefault();">
+            
+            <!-- COLUMNA IZQUIERDA Y CENTRAL: CAMPOS Y PAGOS -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- PASO 1: DATOS JUGADOR -->
+                <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Identificación del Héroe
                     </h3>
-
-                    <!-- TASA INVISIBLE DE RESPALDO -->
-                    <div class="hidden">
-                        <input type="number" id="tasa_cambio" value="45.50" step="0.01" oninput="recalculateAllPrices()">
-                    </div>
-
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-wide text-slate-400 mb-1.5">ID de Jugador</label>
-                        <input type="text" id="player_id" required placeholder="Ingresa tu ID numérico" 
-                               class="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 text-xs font-medium">
-                    </div>
-
-                    <div class="bg-slate-950 border border-slate-900 rounded-xl p-3.5 text-[11px] space-y-1 text-slate-300">
-                        <div class="text-amber-400 font-black mb-1 uppercase tracking-wider flex items-center gap-1.5">
-                            <i class="fa-solid fa-mobile-screen-button"></i> Destinatario Pago Móvil
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">ID del Jugador</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold">ID</span>
+                                <input type="number" id="player_id" required placeholder="Ingresa el ID numérico de tu cuenta" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                            </div>
                         </div>
-                        <p><span class="text-slate-500 font-bold">Banco:</span> BANCO DE VENEZUELA</p>
-                        <p><span class="text-slate-500 font-bold">Teléfono:</span> 0414-5956693</p>
-                        <p><span class="text-slate-500 font-bold">Cédula:</span> V-32562761</p>
-                    </div>
-
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-wide text-slate-400 mb-1.5">Referencia (Últimos 6 dígitos)</label>
-                        <input type="text" id="referencia" required placeholder="Ej: 001234" 
-                               class="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 text-xs font-medium">
-                    </div>
-
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-wide text-slate-400 mb-1.5">Comprobante de Operación</label>
-                        <div class="flex items-center justify-center w-full">
-                            <label class="flex flex-col items-center justify-center w-full h-20 border-2 border-slate-900 border-dashed rounded-xl cursor-pointer bg-slate-950/20 hover:bg-slate-950/50 transition-colors">
-                                <div class="flex flex-col items-center justify-center py-1">
-                                    <i class="fa-solid fa-cloud-arrow-up text-md text-slate-500 mb-1"></i>
-                                    <p class="text-[10px] text-slate-400 font-medium">Adjuntar captura del pago</p>
-                                    <p id="file-name" class="text-[10px] text-emerald-400 mt-0.5 font-bold hidden"></p>
-                                </div>
-                                <input id="screenshot_file" type="file" accept="image/*" required class="hidden" onchange="updateFileName(this)" />
-                            </label>
+                        <div>
+                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Nombre en el Juego (Opcional)</label>
+                            <input type="text" id="player_name" placeholder="Ej: SniperGamer_YT" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
                         </div>
                     </div>
+                </div>
 
-                    <div class="bg-slate-950 border border-slate-900 rounded-xl p-3.5 space-y-1.5">
-                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Balance de Caja</div>
-                        <div class="flex justify-between items-center text-xs font-medium">
-                            <span class="text-slate-400" id="summary-package-name">Sin Selección</span>
-                            <span class="font-bold text-slate-300" id="summary-package-price">0.00 Bs.</span>
-                        </div>
-                        <div class="border-t border-slate-900/80 my-1.5 pt-1.5 flex justify-between items-center">
-                            <span class="text-xs font-bold text-slate-200 uppercase tracking-wide">Total a Transferir:</span>
-                            <span class="text-lg font-black text-amber-500 tracking-tight" id="summary-total-price">0.00 Bs.</span>
+                <!-- PASO 2: SELECCIÓN DE PAQUETE -->
+                <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">2</span> Selecciona tu Paquete
+                    </h3>
+                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <!-- Se llena dinámicamente con JS -->
+                    </div>
+                </div>
+
+                <!-- PASO 3: PASARELA DE PAGO DINÁMICA CON QR -->
+                <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">3</span> Información de Pago
+                    </h3>
+                    
+                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Selecciona tu Método</label>
+                    <div class="grid grid-cols-3 gap-2.5 mb-6">
+                        <!-- Botón Pago Móvil -->
+                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
+                            <i class="fa-solid fa-mobile-screen text-base text-amber-400"></i> PMóvil
+                        </button>
+                        <!-- Botón Binance -->
+                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
+                            <i class="fa-solid fa-coins text-base text-amber-500"></i> Binance
+                        </button>
+                        <!-- Botón Zinli -->
+                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
+                            <i class="fa-solid fa-credit-card text-base text-purple-400"></i> Zinli
+                        </button>
+                    </div>
+
+                    <!-- CAJAS DE INFORMACIÓN Y QR -->
+                    <!-- Info Pago Móvil -->
+                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
+                        <div class="flex flex-col sm:flex-row gap-4 items-center">
+                            <!-- Código QR Pago Móvil -->
+                            <div class="w-28 h-28 bg-white p-1.5 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PAGO_MOVIL_MASTR_GAME_04145956693" alt="QR Pago Móvil" class="w-full h-full object-contain">
+                            </div>
+                            <!-- Datos del Pago Móvil -->
+                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
+                                <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Transferencia</div>
+                                <p><span class="text-slate-500 font-bold">Banco:</span> BANESCO (0134)</p>
+                                <p><span class="text-slate-500 font-bold">Teléfono:</span> <span class="font-black text-slate-200">0414-5956693</span></p>
+                                <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-27.456.789</span></p>
+                                <button type="button" onclick="copyText('04145956693', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Datos</button>
+                            </div>
                         </div>
                     </div>
 
-                    <button type="submit" id="btn-enviar" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black py-3 rounded-xl transition-all uppercase tracking-wider text-xs shadow-md cursor-pointer">
-                        Procesar Recarga
-                    </button>
-                </form>
-                <div id="status-message" class="hidden mt-4 p-4 rounded-xl text-center font-medium border text-xs"></div>
+                    <!-- Info Binance Pay -->
+                    <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
+                        <div class="flex flex-col sm:flex-row gap-4 items-center">
+                            <!-- Código QR Binance -->
+                            <div class="w-28 h-28 bg-white p-1.5 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BINANCE_PAY_ID_88776655" alt="QR Binance Pay" class="w-full h-full object-contain">
+                            </div>
+                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
+                                <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Binance Pay</div>
+                                <p><span class="text-slate-500 font-bold">Binance ID:</span> <span class="font-black text-slate-200">88776655</span></p>
+                                <p><span class="text-slate-500 font-bold">Correo:</span> <span class="font-black text-slate-200">pagos@mastrgame.com</span></p>
+                                <button type="button" onclick="copyText('88776655', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar ID</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info Zinli -->
+                    <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
+                        <div class="flex flex-col sm:flex-row gap-4 items-center">
+                            <!-- Código QR Zinli -->
+                            <div class="w-28 h-28 bg-white p-1.5 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ZINLI_mastrgame@gmail.com" alt="QR Zinli" class="w-full h-full object-contain">
+                            </div>
+                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
+                                <div class="text-[10px] font-black tracking-wider text-purple-400 uppercase">Datos de Cuenta Zinli</div>
+                                <p><span class="text-slate-500 font-bold">Correo Zinli:</span> <span class="font-black text-slate-200">mastrgame@gmail.com</span></p>
+                                <p><span class="text-slate-500 font-bold">Titular:</span> MASTR GAME STORE</p>
+                                <button type="button" onclick="copyText('mastrgame@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORMULARIO DE REPORTE -->
+                    <div class="space-y-4 pt-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Número de Referencia / ID Pago</label>
+                                <input type="text" id="payment_ref" required placeholder="Últimos 4 o 6 dígitos" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Captura de Pantalla (Opcional)</label>
+                                <label class="w-full bg-slate-950/80 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
+                                    <span id="file-name" class="text-emerald-400 hidden font-bold">✓ Archivo cargado</span>
+                                    <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2"></i> Subir Comprobante</span>
+                                    <input type="file" id="receipt_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <!-- COLUMNA DERECHA: RESUMEN DE COMPRA FIJO -->
+            <div class="bg-slate-900/30 border border-slate-850 rounded-2xl p-5 sticky top-24 backdrop-blur-md">
+                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen del Pedido</h3>
+                
+                <div class="space-y-3.5 text-xs font-medium mb-5">
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Paquete:</span>
+                        <span id="summary-package-name" class="font-bold text-slate-200">Ninguno</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Subtotal:</span>
+                        <span id="summary-package-price" class="font-bold text-slate-200">0.00 Bs.</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Comisión de pasarela:</span>
+                        <span class="font-bold text-emerald-400 uppercase text-[10px]">0.00 Bs (Gratis)</span>
+                    </div>
+                    <div class="border-t border-slate-900 my-2 pt-3 flex justify-between items-baseline">
+                        <span class="text-sm font-black uppercase text-slate-300">Total a Pagar:</span>
+                        <span id="summary-total-price" class="text-lg font-black text-amber-400">0.00 Bs.</span>
+                    </div>
+                </div>
+
+                <button type="button" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(245,158,11,0.2)] hover:shadow-[0_4px_25px_rgba(245,158,11,0.3)] flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
+                </button>
+                <p class="text-center text-[10px] text-slate-500 font-medium mt-3 leading-relaxed">Al hacer clic, el reporte se enviará de manera prioritaria al panel de validación y abrirá tu confirmación.</p>
+            </div>
+        </form>
     </section>
 
+    <!-- FOOTER GENERAL -->
+    <footer class="w-full text-center py-6 text-[11px] text-slate-600 font-medium mt-12 border-t border-slate-950">
+        &copy; 2026 MASTR GAME. Todos los derechos reservados. Desarrollado con tecnología de alta velocidad.
+    </footer>
+
+    <!-- LÓGICA DE INTERFAZ INTEGRADA -->
     <script>
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
         let selectedPackageName = "";
+        let metodoPagoActual = "pago_movil"; // Valor por defecto
 
         const listaPaquetes = {
             free_fire: [
@@ -307,20 +368,15 @@
                 { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Entrega Inmediata", priceUSD: 5.00, icon: "fa-gem" },
                 { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Entrega Inmediata", priceUSD: 10.00, icon: "fa-gem" },
                 { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Entrega Inmediata", priceUSD: 20.00, icon: "fa-gem" },
-                { id: "ff_5600", name: "5600 Diamantes + 1120 Bono", bonus: "Entrega Inmediata", priceUSD: 50.00, icon: "fa-gem" },
                 { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Diamantes Diarios", priceUSD: 2.50, icon: "fa-id-card" },
                 { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "Máximo Descuento", priceUSD: 10.00, icon: "fa-box-open" }
             ],
             blood_strike: [
-                { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", priceUSD: 0.80, icon: "fa-coins" },
                 { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", priceUSD: 1.50, icon: "fa-coins" },
                 { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", priceUSD: 4.50, icon: "fa-coins" },
                 { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", priceUSD: 7.00, icon: "fa-coins" },
                 { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", priceUSD: 14.00, icon: "fa-coins" },
-                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", priceUSD: 27.50, icon: "fa-coins" },
-                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", priceUSD: 68.00, icon: "fa-coins" },
-                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Activación Directa", priceUSD: 6.00, icon: "fa-id-card" },
-                { id: "bs_pass_prem", name: "Strike Pass Premium", bonus: "Abono Premium", priceUSD: 3.50, icon: "fa-box-open" }
+                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Activación Directa", priceUSD: 6.00, icon: "fa-id-card" }
             ]
         };
 
@@ -344,7 +400,6 @@
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
             
             container.innerHTML = "";
-            document.getElementById('file-name').classList.add('hidden');
             
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
@@ -401,9 +456,7 @@
             });
 
             const innerDiv = element.querySelector('.package-content');
-            if (innerDiv) {
-                innerDiv.className = `package-content border rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden ${activeClasses}`;
-            }
+            if (innerDiv) innerDiv.className = `package-content border rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden ${activeClasses}`;
 
             const radio = element.querySelector('.package-radio');
             if (radio) radio.checked = true;
@@ -413,15 +466,52 @@
             updateTotalSummary();
         }
 
+        // CONTROLADORES DE CAMBIO DE PAGO DINÁMICO
+        function selectPaymentMethod(metodo) {
+            metodoPagoActual = metodo;
+            
+            // Remover estilos activos de todos los botones
+            document.querySelectorAll('.payment-method-btn').forEach(btn => {
+                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+            });
+
+            // Ocultar todas las cajas de info
+            document.querySelectorAll('.payment-info-box').forEach(box => {
+                box.classList.remove('active');
+            });
+
+            // Activar botón y caja seleccionada
+            if(metodo === 'pago_movil') {
+                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                document.getElementById('info-pago_movil').classList.add('active');
+            } else if (metodo === 'binance') {
+                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                document.getElementById('info-binance').classList.add('active');
+            } else if (metodo === 'zinli') {
+                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                document.getElementById('info-zinli').classList.add('active');
+            }
+        }
+
+        // COPIAR AL PORTAPAPELES SENCILLO
+        function copyText(texto, btn) {
+            navigator.clipboard.writeText(texto);
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "¡Copiado! ✓";
+            btn.classList.add('text-emerald-400');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('text-emerald-400');
+            }, 2000);
+        }
+
         function recalculateAllPrices() {
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            
             document.querySelectorAll('.card-price-render').forEach(el => {
                 const usd = parseFloat(el.getAttribute('data-usd'));
                 const newBs = (usd * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                 el.innerText = newBs + " Bs.";
             });
-
             updateTotalSummary();
         }
 
@@ -436,9 +526,11 @@
 
         function updateFileName(input) {
             const label = document.getElementById('file-name');
+            const placeholder = document.getElementById('file-placeholder');
             if(input.files && input.files[0]) {
-                label.innerText = "✓ " + input.files[0].name.substring(0, 15) + "...";
+                label.innerText = "✓ " + input.files[0].name.substring(0, 12) + "...";
                 label.classList.remove('hidden');
+                placeholder.classList.add('hidden');
             }
         }
     </script>
