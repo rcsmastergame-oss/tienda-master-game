@@ -1,48 +1,31 @@
 /* ==========================================================
-   OPTIMIZACIONES MÓVILES AVANZADAS (ESTILOS COMPLEMENTARIOS)
+   CONGELAR DESPLAZAMIENTO HORIZONTAL (EVITAR BAILE)
    ========================================================== */
 
-/* 1. Mejoras globales de renderizado y scroll nativo en móviles */
-html {
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    scroll-behavior: smooth;
-    overscroll-behavior-y: contain; /* Evita el molesto rebote elástico en iOS/Android */
+/* Fuerza a la estructura principal a no salirse jamás del ancho de la pantalla */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative;
 }
 
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* Evita que los contenedores grandes de las vistas se desborden en pantallas pequeñas */
+#home-view, #form-view, .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
 }
 
-/* 2. Optimización táctil (Elimina el flash azul horrible al tocar en el cel) */
-button, 
-a, 
-.package-card, 
-[onclick] {
-    -webkit-tap-highlight-color: transparent !important;
-    touch-action: manipulation; /* Elimina el retraso de 300ms del doble toque */
+/* Asegura que las cuadrículas de los paquetes y botones se achiquen correctamente en el cel */
+.grid {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
 }
 
-/* 3. Aceleración por Hardware (Fuerza al procesador gráfico del celular) */
-/* Esto hace que las animaciones al tocar tarjetas o botones vayan a 60 FPS fluidos */
-.package-content, 
-.payment-method-btn,
-#submit-btn {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    will-change: transform, border-color, background-color;
-}
-
-/* 4. Ajuste estético para barras de scroll en pantallas pequeñas */
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-::-webkit-scrollbar-track {
-    background: #030712;
-}
-::-webkit-scrollbar-thumb {
-    background: #1f2937;
-    border-radius: 10px;
+/* Si tienes textos o enlaces muy largos en las cajas de pago (como los correos), */
+/* esto los obliga a cortarse o saltar de línea en vez de estirar la pantalla */
+p, span, div {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
 }
