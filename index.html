@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASTER GAME</title>
+    <title>Tienda de Recargas</title>
+    <!-- Cargador de Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Cargador de Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -14,14 +16,27 @@
         }
     </style>
 </head>
-<body>
+<body class="relative min-h-screen pb-12">
 
+    <!-- BOTÓN FLOTANTE DE WHATSAPP GAMER -->
+    <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+TMK+Gaming." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] transition-all duration-300 hover:scale-110 group">
+        <i class="fa-brands fa-whatsapp animate-pulse"></i>
+        <!-- Tooltip flotante -->
+        <span class="absolute right-16 bg-slate-950/90 border border-slate-800 text-slate-200 text-[11px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-xl">
+            ¿Necesitas ayuda? Escríbenos
+        </span>
+    </a>
+
+    <!-- ENCABEZADO / TOP BAR -->
     <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
         <div class="container mx-auto flex justify-between items-center max-w-6xl">
             <a href="#" class="flex items-center gap-3 group">
                 <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo TMK" class="h-10 w-auto rounded-lg object-contain transition-transform group-hover:scale-105 border border-slate-800">
                 <span class="font-black tracking-wider text-sm uppercase hidden sm:block">
-                    MASTER <span class="text-amber-500">GAME</span>
+                    TMK <span class="text-amber-500">Gaming</span>
                 </span>
             </a>
             
@@ -31,8 +46,8 @@
         </div>
     </header>
 
+    <!-- VISTA 1: PÁGINA PRINCIPAL -->
     <section id="home-view" class="container mx-auto px-4 py-16 max-w-6xl relative overflow-hidden">
-        
         <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-orange-600/10 rounded-full blur-[150px] pointer-events-none"></div>
 
@@ -55,70 +70,49 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10 px-2">
-            
+            <!-- Tarjeta Free Fire -->
             <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-950/40 border-2 border-slate-900 hover:border-amber-500/80 rounded-[32px] overflow-hidden p-6 transition-all duration-500 shadow-2xl hover:shadow-amber-500/10 bg-gradient-to-b from-slate-900/40 via-slate-950/60 to-slate-950 flex flex-col justify-between relative backdrop-blur-md">
                 <div class="absolute inset-0 bg-gradient-to-t from-amber-500/0 via-amber-500/0 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                
                 <div>
                     <div class="h-48 bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-800/60 group-hover:border-amber-500/30 transition-colors duration-500 shadow-inner">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 group-hover:scale-105 transition-all duration-700 filter grayscale-[30%] group-hover:grayscale-0">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                        
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-950/80 border border-slate-800/80 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] group-hover:border-amber-500/50 transition-all duration-500">
                             <i class="fa-solid fa-fire-flame-curved text-4xl text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"></i>
                         </div>
-                        
-                        <div class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow-lg">
-                            ID Directo
-                        </div>
+                        <div class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow-lg">ID Directo</div>
                     </div>
-
                     <h3 class="text-2xl font-black tracking-wider group-hover:text-amber-400 transition-colors duration-300">FREE FIRE</h3>
-                    <p class="text-slate-400 text-xs md:text-sm mt-2 font-medium leading-relaxed">
-                        Diamantes directos a tu cuenta mediante ID de jugador. Procesos automatizados seguros y promociones activas las 24 horas.
-                    </p>
+                    <p class="text-slate-400 text-xs md:text-sm mt-2 font-medium leading-relaxed">Diamantes directos a tu cuenta mediante ID de jugador. Procesos automatizados seguros.</p>
                 </div>
-
                 <div class="mt-6 pt-4 border-t border-slate-900 group-hover:border-slate-900/0 transition-colors duration-500">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
-                        Recargar Ahora <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </button>
+                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">Recargar Ahora <i class="fa-solid fa-arrow-right text-xs"></i></button>
                 </div>
             </div>
 
+            <!-- Tarjeta Blood Strike -->
             <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-950/40 border-2 border-slate-900 hover:border-orange-500/80 rounded-[32px] overflow-hidden p-6 transition-all duration-500 shadow-2xl hover:shadow-orange-500/10 bg-gradient-to-b from-slate-900/40 via-slate-950/60 to-slate-950 flex flex-col justify-between relative backdrop-blur-md">
                 <div class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                
                 <div>
                     <div class="h-48 bg-gradient-to-br from-slate-950 via-orange-950/40 to-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-800/60 group-hover:border-orange-500/30 transition-colors duration-500 shadow-inner">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 group-hover:scale-105 transition-all duration-700 filter grayscale-[30%] group-hover:grayscale-0">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                        
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-950/80 border border-slate-800/80 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] group-hover:border-orange-500/50 transition-all duration-500">
                             <i class="fa-solid fa-crosshairs text-4xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"></i>
                         </div>
-                        
-                        <div class="absolute bottom-3 left-3 bg-orange-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow-lg">
-                            Oro / Pases
-                        </div>
+                        <div class="absolute bottom-3 left-3 bg-orange-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow-lg">Oro / Pases</div>
                     </div>
-
                     <h3 class="text-2xl font-black tracking-wider group-hover:text-orange-400 transition-colors duration-300">BLOOD STRIKE</h3>
-                    <p class="text-slate-400 text-xs md:text-sm mt-2 font-medium leading-relaxed">
-                        Carga oro de combate y pases de temporada premium directamente con tu ID de usuario sin complicaciones de inicio de sesión.
-                    </p>
+                    <p class="text-slate-400 text-xs md:text-sm mt-2 font-medium leading-relaxed">Carga oro de combate y pases de temporada premium directamente con tu ID de usuario.</p>
                 </div>
-
                 <div class="mt-6 pt-4 border-t border-slate-900 group-hover:border-slate-900/0 transition-colors duration-500">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-slate-950 font-black py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
-                        Recargar Ahora <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </button>
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-slate-950 font-black py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">Recargar Ahora <i class="fa-solid fa-arrow-right text-xs"></i></button>
                 </div>
             </div>
-
         </div>
     </section>
 
+    <!-- VISTA 2: FORMULARIO + CATÁLOGO INTEGRADO -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden">
         <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors cursor-pointer">
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
@@ -133,18 +127,35 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- COLUMNA IZQUIERDA: PRODUCTOS -->
             <div class="lg:col-span-7 space-y-4">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
-                    <i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between px-1">
+                    <span><i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto</span>
+                    <!-- CONTROL DE TASA INVISIBLE/SUTIL EN LA INTERFAZ -->
+                    <span class="text-[11px] font-bold text-slate-500">Tasa: <span id="tasa-display-val" class="text-amber-500">0.00</span> Bs/$</span>
                 </h3>
                 <div id="packages-container" class="grid grid-cols-2 gap-3.5"></div>
             </div>
 
+            <!-- COLUMNA DERECHA: FORMULARIO -->
             <div class="lg:col-span-5">
                 <form id="form-recarga" class="bg-slate-900/40 border border-slate-800 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-md">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 border-b border-slate-800 pb-3 flex items-center gap-2">
                         <i class="fa-solid fa-user-pen text-amber-500"></i> Información Requerida
                     </h3>
+
+                    <!-- CALCULADORA INTERNA: MODIFICADOR DE TASA DEL DÍA -->
+                    <div class="bg-slate-950/50 border border-slate-800/60 rounded-2xl p-3.5">
+                        <label class="block text-[10px] font-bold uppercase tracking-wider text-amber-500/80 mb-1.5 flex justify-between">
+                            <span>ADMIN: Tasa del Día (Modificable)</span>
+                            <span class="text-slate-400 font-medium">Cambia este valor cuando desees</span>
+                        </label>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3.5 text-xs font-bold text-slate-500">Bs.</span>
+                            <input type="number" id="tasa_cambio" value="45.50" step="0.01" oninput="recalculateAllPrices()" 
+                                   class="w-full bg-slate-950/90 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-white font-bold text-sm focus:outline-none focus:border-amber-500">
+                        </div>
+                    </div>
 
                     <div>
                         <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
@@ -204,28 +215,31 @@
 
     <script>
         let juegoActual = "";
-        
+        let selectedPackagePriceUSD = 0;
+        let selectedPackageName = "";
+
+        // BASE DE DATOS INTERNA EN DÓLARES ($) PARA SER MULTIPLICADA POR LA TASA
         const listaPaquetes = {
             free_fire: [
-                { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Recarga Directa", price: "700", icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes + 62 Bono", bonus: "Recarga Directa", price: "2.050", icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Recarga Directa", price: "3.400", icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Recarga Directa", price: "6.300", icon: "fa-gem" },
-                { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Recarga Directa", price: "12.300", icon: "fa-gem" },
-                { id: "ff_5600", name: "5600 Diamantes + 1120 Bono", bonus: "Recarga Directa", price: "31.900", icon: "fa-gem" },
-                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Recibe Diamantes Diario", price: "2.150", icon: "fa-id-card" },
-                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "El Mayor Beneficio", price: "10.000", icon: "fa-box-open" }
+                { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Recarga Directa", priceUSD: 1.00, icon: "fa-gem" },
+                { id: "ff_310", name: "310 Diamantes + 62 Bono", bonus: "Recarga Directa", priceUSD: 3.00, icon: "fa-gem" },
+                { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Recarga Directa", priceUSD: 5.00, icon: "fa-gem" },
+                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Recarga Directa", priceUSD: 10.00, icon: "fa-gem" },
+                { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Recarga Directa", priceUSD: 20.00, icon: "fa-gem" },
+                { id: "ff_5600", name: "5600 Diamantes + 1120 Bono", bonus: "Recarga Directa", priceUSD: 50.00, icon: "fa-gem" },
+                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Recibe Diamantes Diario", priceUSD: 2.50, icon: "fa-id-card" },
+                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "El Mayor Beneficio", priceUSD: 10.00, icon: "fa-box-open" }
             ],
             blood_strike: [
-                { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", price: "540", icon: "fa-coins" },
-                { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", price: "770", icon: "fa-coins" },
-                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "2.310", icon: "fa-coins" },
-                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", price: "3.690", icon: "fa-coins" },
-                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", price: "7.315", icon: "fa-coins" },
-                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", price: "14.630", icon: "fa-coins" },
-                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", price: "34.650", icon: "fa-coins" },
-                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Abono Instantáneo", price: "3.250", icon: "fa-id-card" },
-                { id: "bs_pass_prem", name: "Strike Pass Premium", bonus: "Beneficios Máximos", price: "1.750", icon: "fa-box-open" }
+                { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", priceUSD: 0.80, icon: "fa-coins" },
+                { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", priceUSD: 1.50, icon: "fa-coins" },
+                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", priceUSD: 4.50, icon: "fa-coins" },
+                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", priceUSD: 7.00, icon: "fa-coins" },
+                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", priceUSD: 14.00, icon: "fa-coins" },
+                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", priceUSD: 27.50, icon: "fa-coins" },
+                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", priceUSD: 68.00, icon: "fa-coins" },
+                { id: "bs_pass_elite", name: "Strike Pass Elite", bonus: "Abono Instantáneo", priceUSD: 6.00, icon: "fa-id-card" },
+                { id: "bs_pass_prem", name: "Strike Pass Premium", bonus: "Beneficios Máximos", priceUSD: 3.50, icon: "fa-box-open" }
             ]
         };
 
@@ -242,7 +256,9 @@
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
             const bannerImg = document.getElementById('banner-img-src');
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
             
+            document.getElementById('tasa-display-val').innerText = tasaValue.toFixed(2);
             container.innerHTML = "";
             document.getElementById('file-name').classList.add('hidden');
             
@@ -256,19 +272,20 @@
                 bannerContainer.classList.remove('hidden');
             }
 
-            // Clases de estilo para iluminar la tarjeta seleccionada de acuerdo al juego
             const activeBorderClass = juego === 'free_fire' ? 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.2)]' : 'border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.2)]';
             const iconClass = juego === 'free_fire' ? 'text-amber-400' : 'text-orange-400';
 
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const isChecked = idx === 0;
                 const checkedAttr = isChecked ? "checked" : "";
-                // El primer elemento empieza marcado e iluminado
                 const currentCardClass = isChecked ? activeBorderClass : 'border-slate-900 bg-slate-950/40';
+                
+                // Conversión inicial de la tasa
+                const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
                 const html = `
-                    <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', '${pkg.price}', '${activeBorderClass}')">
-                        <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
+                    <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD}, '${activeBorderClass}')">
+                        <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
                         <div class="package-content border-2 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentCardClass}">
                             <div>
                                 <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
@@ -277,8 +294,8 @@
                                 <div class="font-bold text-xs text-slate-200">${pkg.name}</div>
                                 <div class="text-[9px] font-bold text-emerald-400 mt-0.5">${pkg.bonus}</div>
                             </div>
-                            <div class="text-xs font-black text-slate-300 mt-2">
-                                ${pkg.price} Bs.
+                            <div class="text-xs font-black text-slate-300 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
+                                ${calculatedPriceBs} Bs.
                             </div>
                         </div>
                     </label>
@@ -287,14 +304,15 @@
             });
 
             if(listaPaquetes[juego].length > 0) {
-                updateTotalSummary(listaPaquetes[juego][0].name, listaPaquetes[juego][0].price);
+                selectedPackagePriceUSD = listaPaquetes[juego][0].priceUSD;
+                selectedPackageName = listaPaquetes[juego][0].name;
+                updateTotalSummary();
             }
 
             showSection('form-view');
         }
 
-        // Función que gestiona visualmente el remarcado activo neón
-        function selectPackage(element, name, price, activeClasses) {
+        function selectPackage(element, name, priceUSD, activeClasses) {
             document.querySelectorAll('.package-content').forEach(card => {
                 card.className = "package-content border-2 border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden";
             });
@@ -307,13 +325,34 @@
             const radio = element.querySelector('.package-radio');
             if (radio) radio.checked = true;
 
-            updateTotalSummary(name, price);
+            selectedPackagePriceUSD = priceUSD;
+            selectedPackageName = name;
+            updateTotalSummary();
         }
 
-        function updateTotalSummary(name, price) {
-            document.getElementById('summary-package-name').innerText = name;
-            document.getElementById('summary-package-price').innerText = price + " Bs.";
-            document.getElementById('summary-total-price').innerText = price + " Bs.";
+        // CONTROLADOR DE RECALCULACIÓN DE LA CALCULADORA EN TIEMPO REAL
+        function recalculateAllPrices() {
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+            document.getElementById('tasa-display-val').innerText = tasaValue.toFixed(2);
+            
+            // 1. Modificar los textos de los precios dentro de los cuadros del catálogo
+            document.querySelectorAll('.card-price-render').forEach(el => {
+                const usd = parseFloat(el.getAttribute('data-usd'));
+                const newBs = (usd * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                el.innerText = newBs + " Bs.";
+            });
+
+            // 2. Modificar el bloque de resumen final de la orden
+            updateTotalSummary();
+        }
+
+        function updateTotalSummary() {
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+            const finalPriceBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            document.getElementById('summary-package-name').innerText = selectedPackageName || "Ninguno";
+            document.getElementById('summary-package-price').innerText = finalPriceBs + " Bs.";
+            document.getElementById('summary-total-price').innerText = finalPriceBs + " Bs.";
         }
 
         function updateFileName(input) {
