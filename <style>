@@ -1,0 +1,48 @@
+/* ==========================================================
+   OPTIMIZACIONES MÓVILES AVANZADAS (ESTILOS COMPLEMENTARIOS)
+   ========================================================== */
+
+/* 1. Mejoras globales de renderizado y scroll nativo en móviles */
+html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain; /* Evita el molesto rebote elástico en iOS/Android */
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Optimización táctil (Elimina el flash azul horrible al tocar en el cel) */
+button, 
+a, 
+.package-card, 
+[onclick] {
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation; /* Elimina el retraso de 300ms del doble toque */
+}
+
+/* 3. Aceleración por Hardware (Fuerza al procesador gráfico del celular) */
+/* Esto hace que las animaciones al tocar tarjetas o botones vayan a 60 FPS fluidos */
+.package-content, 
+.payment-method-btn,
+#submit-btn {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform, border-color, background-color;
+}
+
+/* 4. Ajuste estético para barras de scroll en pantallas pequeñas */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #030712;
+}
+::-webkit-scrollbar-thumb {
+    background: #1f2937;
+    border-radius: 10px;
+}
