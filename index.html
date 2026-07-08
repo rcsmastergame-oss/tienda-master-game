@@ -33,29 +33,34 @@
 </head>
 <body class="gradient-bg text-white font-sans min-h-screen antialiased">
 
-    <!-- HEADER -->
     <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-900 sticky top-0 z-50 p-4">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <div class="flex items-center space-x-2 cursor-pointer" onclick="showSection('home-view')">
-                <i class="fa-solid fa-gamepad text-2xl text-amber-500"></i>
+            
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home-view')">
+                <img src="TU_ENLACE_DE_LOGO_AQUI" alt="Logo Master Game" class="w-9 h-9 object-contain rounded-md filter drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]">
                 <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 bg-clip-text text-transparent">MASTER GAME</span>
             </div>
+            
             <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> En Línea
             </span>
         </div>
     </header>
 
-    <!-- VISTA 1: PÁGINA PRINCIPAL -->
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-4xl">
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">RECARGAS <span class="text-amber-500">DIRECTAS</span></h1>
             <p class="text-slate-400 text-lg max-w-xl mx-auto">Elige tu juego favorito, ingresa tu ID y recibe tus diamantes o monedas al instante de forma segura.</p>
         </div>
 
+        <div class="w-full max-w-2xl mx-auto mb-8">
+            <div class="relative overflow-hidden rounded-3xl border border-amber-500/20 shadow-2xl shadow-amber-500/5">
+                <img src="TU_ENLACE_DE_IMAGEN_AQUI" alt="Promoción Principal Master Game" class="w-full h-auto object-cover aspect-[21/9] md:aspect-[3/1]">
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             
-            <!-- Tarjeta Principal Free Fire -->
             <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-amber-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-amber-950/10">
                 <div class="h-44 bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 transition-opacity duration-300">
@@ -71,7 +76,6 @@
                 </button>
             </div>
 
-            <!-- Tarjeta Principal Blood Strike -->
             <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-900/40 border-2 border-slate-800/80 hover:border-orange-500 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-orange-950/10">
                 <div class="h-44 bg-gradient-to-br from-slate-950 via-orange-950/40 to-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/50">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 transition-opacity duration-300">
@@ -90,13 +94,11 @@
         </div>
     </section>
 
-    <!-- VISTA 2: FORMULARIO + CATÁLOGO INTEGRADO -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden">
         <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors">
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
         </button>
 
-        <!-- BANNER DE ADENTRO DEL JUEGO -->
         <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden">
             <img id="banner-img-src" src="" alt="Inside Game Banner" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
@@ -105,10 +107,8 @@
             </div>
         </div>
 
-        <!-- REJILLA PRINCIPAL -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- COLUMNA IZQUIERDA: CATÁLOGO DE PRODUCTOS -->
             <div class="lg:col-span-7 space-y-4">
                 <h3 class="text-md font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
                     <i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto
@@ -116,7 +116,6 @@
                 <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-2 gap-3.5"></div>
             </div>
 
-            <!-- COLUMNA DERECHA: FORMULARIO + RESUMEN -->
             <div class="lg:col-span-5">
                 <form id="form-recarga" class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-sm">
                     
@@ -124,14 +123,12 @@
                         <i class="fa-solid fa-user-pen text-amber-500"></i> Información Requerida
                     </h3>
 
-                    <!-- Campo ID -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
                         <input type="text" id="player_id" required placeholder="Ej: 123456789" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
-                    <!-- Datos de Pago Móvil -->
                     <div class="bg-slate-950/50 border border-slate-800 rounded-2xl p-4 text-xs space-y-1.5 text-slate-300">
                         <div class="text-amber-400 font-bold mb-1 flex items-center gap-1.5">
                             <i class="fa-solid fa-mobile-screen-button"></i> Datos de Transferencia:
@@ -141,14 +138,12 @@
                         <p><span class="text-slate-500 font-medium">Cédula:</span> V-32562761</p>
                     </div>
 
-                    <!-- Campo Referencia Bancaria -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Referencia de Pago (6 dígitos)</label>
                         <input type="text" id="referencia" required placeholder="001234" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
-                    <!-- Subir Comprobante -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Comprobante de Pago</label>
                         <div class="flex items-center justify-center w-full">
@@ -163,7 +158,6 @@
                         </div>
                     </div>
 
-                    <!-- PARTE NUEVA: DETALLE Y MONTO TOTAL A PAGAR -->
                     <div class="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-4 space-y-2">
                         <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Resumen de la orden</div>
                         <div class="flex justify-between items-center text-xs">
@@ -176,7 +170,6 @@
                         </div>
                     </div>
 
-                    <!-- Botón de Envío -->
                     <button type="submit" id="btn-enviar" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black py-3.5 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-amber-500/10">
                         Confirmar Orden de Recarga
                     </button>
@@ -189,7 +182,6 @@
     <script>
         let juegoActual = "";
         
-        // Catálogos Oficiales con precios ejemplo en Bolívares (Cámbialos libremente)
         const listaPaquetes = {
             free_fire: [
                 { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Recarga Directa", price: "700", icon: "fa-gem" },
@@ -204,7 +196,7 @@
             blood_strike: [
                 { id: "bs_50", name: "50 de Oro", bonus: "+6 Bono", price: "540", icon: "fa-coins" },
                 { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", price: "770", icon: "fa-coins" },
-                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "2.310", icon: "fa-coins" },
+                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", price: "2.310", price: "2.310", icon: "fa-coins" },
                 { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", price: "3.690", icon: "fa-coins" },
                 { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", price: "7.315", icon: "fa-coins" },
                 { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", price: "14.630", icon: "fa-coins" },
@@ -241,7 +233,6 @@
                 bannerContainer.classList.remove('hidden');
             }
 
-            // Renderizar el catálogo visual dinámico
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const checked = idx === 0 ? "checked" : "";
                 const themeColor = "amber";
@@ -264,7 +255,6 @@
                                 <div class="text-[10px] font-bold text-emerald-400 mt-0.5 tracking-wide">${pkg.bonus}</div>
                             </div>
                             
-                            <!-- Cambiado el signo $ por Bs. -->
                             <div class="text-sm font-black text-slate-200 mt-2">
                                 ${pkg.price} Bs.
                             </div>
@@ -274,7 +264,6 @@
                 container.insertAdjacentHTML('beforeend', html);
             });
 
-            // Seleccionar por defecto los valores del primer paquete al abrir la tienda
             if(listaPaquetes[juego].length > 0) {
                 updateTotalSummary(listaPaquetes[juego][0].name, listaPaquetes[juego][0].price);
             }
@@ -282,7 +271,6 @@
             showSection('form-view');
         }
 
-        // Función dinámica encargada de actualizar el resumen total en tiempo real
         function updateTotalSummary(name, price) {
             document.getElementById('summary-package-name').innerText = name;
             document.getElementById('summary-package-price').innerText = price + " Bs.";
