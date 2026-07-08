@@ -4,11 +4,9 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     const btn = document.getElementById('btn-enviar');
     const statusMsg = document.getElementById('status-message');
     
-    // Cambiar estado del botón a cargando
     btn.disabled = true;
     btn.innerText = "Procesando Pedido...";
     
-    // Capturar el paquete seleccionado
     const selectedRadio = document.querySelector('input[name="paquete"]:checked');
     if (!selectedRadio) {
         alert("Por favor, selecciona un paquete de recarga.");
@@ -18,12 +16,16 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     }
     
     const packageName = selectedRadio.getAttribute('data-name');
-    const packagePrice = selectedRadio.getAttribute('data-price');
+    const packageUsd = parseFloat(selectedRadio.getAttribute('data-usd'));
+    const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+    
+    // Calcular el monto exacto final en Bs para enviarlo limpio a Make
+    const finalPriceBs = (packageUsd * tasaValue).toFixed(2) + " Bs.";
+    
     const playerId = document.getElementById('player_id').value;
     const referencia = document.getElementById('referencia').value;
     const fileInput = document.getElementById('screenshot_file');
     
-    // Leer el archivo de la captura y pasarlo a Base64
     let base64File = "";
     let fileName = "";
     if (fileInput.files.length > 0) {
@@ -32,19 +34,17 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
         base64File = await toBase64(file);
     }
     
-    // Construir el paquete JSON completo para tu Webhook
     const payload = {
         juego: juegoActual === 'free_fire' ? 'Free Fire' : 'Blood Strike',
         id_jugador: playerId,
         paquete_seleccionado: packageName,
-        precio: packagePrice + " Bs.",
+        precio: finalPriceBs, // Monto calculado en bolívares según la tasa del momento
         referencia_pago: referencia,
         comprobante_base64: base64File,
         comprobante_nombre: fileName
     };
     
     try {
-        // Tu URL de Make activa (ID 18 o la que uses de Custom Webhook)
         const response = await fetch('https://eu1.make.com/2051113/scenarios/6380627/edit', {
             method: 'POST',
             headers: {
@@ -55,7 +55,7 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
         
         statusMsg.classList.remove('hidden', 'bg-red-950/40', 'border-red-500/30', 'text-red-400');
         statusMsg.classList.add('bg-emerald-950/40', 'border', 'border-emerald-500/30', 'text-emerald-400');
-        statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Pedido Enviado! Tu recarga está siendo procesada.`;
+        statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Pedido Envíado! Tu recarga está siendo procesada.`;
         
         document.getElementById('form-recarga').reset();
         document.getElementById('file-name').classList.add('hidden');
@@ -71,12 +71,11 @@ document.getElementById('form-recarga').addEventListener('submit', async functio
     }
 });
 
-// Función auxiliar para codificar imágenes a Base64
 function toBase64(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result.split(',')[1]); // Saca el header de la cadena base64
+        reader.onload = () => resolve(reader.result.split(',')[1]);
         reader.onerror = error => reject(error);
     });
 }
