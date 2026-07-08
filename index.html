@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MASTER GAME - Recargas Rápidas y 100% Seguras</title>
-    <!-- Cargador de Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Cargador de Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -42,7 +40,6 @@
 </head>
 <body class="relative min-h-screen pb-16">
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP GAMER -->
     <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
@@ -53,10 +50,8 @@
         </span>
     </a>
 
-    <!-- ENCABEZADO / TOP BAR -->
     <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3.5">
         <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <!-- Zona del Logo Corregida a MASTER GAME -->
             <a href="#" id="logo-admin-trigger" class="flex items-center gap-3 group cursor-pointer">
                 <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner group-hover:border-amber-500/50 transition-colors">
                 <span class="font-black tracking-widest text-sm uppercase">
@@ -70,15 +65,12 @@
         </div>
     </header>
 
-    <!-- INPUT OCULTO DE CONTROL DE TASA -->
-    <input type="hidden" id="tasa_cambio" value="800" onchange="recalculateAllPrices()">
+    <input type="hidden" id="tasa_cambio" value="45.50" onchange="recalculateAllPrices()">
 
-    <!-- VISTA 1: PÁGINA PRINCIPAL REPOTENCIADA -->
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-5xl relative z-10">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-        <!-- HERO HEADER RESTAURADO CON ESTILO IMPACTANTE -->
         <div class="text-center mb-16">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black tracking-widest text-amber-400 uppercase mb-4 shadow-md">
                 <i class="fa-solid fa-shield-halved text-amber-500"></i> RECARGAS 100% SEGURAS, LEGALES Y SIN RIESGOS BANEO
@@ -96,10 +88,8 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE JUEGOS DISPONIBLES -->
         <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 px-2">
-            <!-- Tarjeta Free Fire -->
             <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
@@ -118,7 +108,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta Blood Strike -->
             <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
@@ -139,14 +128,11 @@
         </div>
     </section>
 
-    <!-- VISTA 2: FORMULARIO DE TIENDA Y PASARELA QR -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
-        <!-- Botón Volver -->
         <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 hover:text-white transition-colors">
             <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
         </button>
 
-        <!-- Banner del Juego Seleccionado -->
         <div id="game-image-banner" class="w-full h-36 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-xl">
             <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-40">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
@@ -158,10 +144,8 @@
 
         <form id="recharge-form" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start" onsubmit="event.preventDefault();">
             
-            <!-- CAMPOS DEL FORMULARIO -->
             <div class="lg:col-span-2 space-y-6">
                 
-                <!-- PASO 1: DATOS JUGADOR -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Identificación del Héroe
@@ -177,7 +161,6 @@
                     </div>
                 </div>
 
-                <!-- PASO 2: SELECCIÓN DE PAQUETE -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">2</span> Selecciona tu Paquete
@@ -185,7 +168,6 @@
                     <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
                 </div>
 
-                <!-- PASO 3: PASARELA DE PAGO CON TUS ENLACES REALES DE QR -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">3</span> Información de Pago
@@ -204,8 +186,6 @@
                         </button>
                     </div>
 
-                    <!-- CAJAS DE INFORMACIÓN ACTUALIZADAS CON TUS IMÁGENES QR -->
-                    <!-- Info Pago Móvil con tu QR Propio -->
                     <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
@@ -221,7 +201,6 @@
                         </div>
                     </div>
 
-                    <!-- Info Binance Pay con tu QR Propio -->
                     <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
@@ -235,7 +214,6 @@
                         </div>
                     </div>
 
-                    <!-- Info Zinli con tu QR Propio -->
                     <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
@@ -249,7 +227,6 @@
                         </div>
                     </div>
 
-                    <!-- FORMULARIO DE REPORTE -->
                     <div class="space-y-4 pt-2">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
@@ -269,7 +246,6 @@
                 </div>
             </div>
 
-            <!-- RESUMEN DE COMPRA FIJO -->
             <div class="bg-slate-900/30 border border-slate-850 rounded-2xl p-5 sticky top-24 backdrop-blur-md">
                 <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen del Pedido</h3>
                 
@@ -478,7 +454,66 @@
                 placeholder.classList.add('hidden');
             }
         }
+
+        // FUNCIÓN DEFINITIVA DE ENVÍO CON VALIDACIONES EXIGIDAS
+        function submitRecharge() {
+            const playerId = document.getElementById('player_id').value.trim();
+            const paymentRef = document.getElementById('payment_ref').value.trim();
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+            
+            // Validaciones obligatorias de caracteres mínimos
+            if (!playerId) {
+                alert("Por favor, ingresa el ID del jugador.");
+                document.getElementById('player_id').focus();
+                return;
+            }
+            if (playerId.length < 5) {
+                alert("El ID del jugador debe tener como mínimo 5 dígitos.");
+                document.getElementById('player_id').focus();
+                return;
+            }
+
+            if (!paymentRef) {
+                alert("Por favor, ingresa el número de referencia del pago.");
+                document.getElementById('payment_ref').focus();
+                return;
+            }
+            if (paymentRef.length < 4) {
+                alert("El número de referencia debe tener como mínimo 4 dígitos.");
+                document.getElementById('payment_ref').focus();
+                return;
+            }
+
+            if (!selectedPackageName) {
+                alert("Por favor, selecciona un paquete de diamantes u oro primero.");
+                return;
+            }
+
+            const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Mensaje Gamer ordenado y estético para WhatsApp
+            const textoWhatsApp = encodeURIComponent(
+`🔥 *NUEVO REPORTE DE PAGO - MASTER GAME* 🔥
+
+🎮 *Juego:* ${juegoActual === 'free_fire' ? '🚀 FREE FIRE' : '🎯 BLOOD STRIKE'}
+🆔 *ID Jugador:* ${playerId}
+📦 *Paquete:* ${selectedPackageName}
+
+💰 *Monto en USD:* $${selectedPackagePriceUSD.toFixed(2)}
+📈 *Tasa utilizada:* ${tasaValue} Bs.
+💵 *Total Pagado:* ${precioBs} Bs.
+
+💳 *Método de Pago:* ${metodoPagoActual.toUpperCase()}
+🔢 *Referencia:* ${paymentRef}
+
+📌 _Por favor, verifique el pago para proceder con la recarga de la cuenta._`
+            );
+
+            const numeroTelefono = "584145956693";
+            const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${textoWhatsApp}`;
+
+            window.open(urlWhatsApp, '_blank');
+        }
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
