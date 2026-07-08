@@ -70,7 +70,7 @@
         </div>
     </header>
 
-    <!-- INPUT OCULTO DE CONTROL DE TASA (Valor base de ejemplo) -->
+    <!-- INPUT OCULTO DE CONTROL DE TASA -->
     <input type="hidden" id="tasa_cambio" value="45.50" onchange="recalculateAllPrices()">
 
     <!-- VISTA 1: PÁGINA PRINCIPAL -->
@@ -94,7 +94,7 @@
         <!-- SECCIÓN DE JUEGOS DISPONIBLES -->
         <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 px-2">
-            <!-- Tarjeta Free Fire (A COLOR) -->
+            <!-- Tarjeta Free Fire -->
             <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-            <!-- Tarjeta Blood Strike (A COLOR) -->
+            <!-- Tarjeta Blood Strike -->
             <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
@@ -129,45 +129,6 @@
                 </div>
                 <div class="mt-5 pt-3 border-t border-slate-900">
                     <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECCIÓN: PILARES DE CONFIANZA -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-20 text-center">
-            <div class="p-6 bg-slate-900/20 border border-slate-900 rounded-2xl">
-                <div class="w-10 h-10 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 text-lg">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <h4 class="font-bold text-sm uppercase tracking-wide mb-1">Velocidad Gamer</h4>
-                <p class="text-xs text-slate-400 font-medium leading-relaxed">Procesamos y cargamos tus recursos en tu cuenta en un lapso estimado de 5 a 15 minutos.</p>
-            </div>
-            <div class="p-6 bg-slate-900/20 border border-slate-900 rounded-2xl">
-                <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 text-lg">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <h4 class="font-bold text-sm uppercase tracking-wide mb-1">Cuentas Protegidas</h4>
-                <p class="text-xs text-slate-400 font-medium leading-relaxed">No solicitamos contraseñas ni correos. Al usar solo tu ID de jugador, tu cuenta está 100% segura.</p>
-            </div>
-            <div class="p-6 bg-slate-900/20 border border-slate-900 rounded-2xl">
-                <div class="w-10 h-10 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 text-lg">
-                    <i class="fa-solid fa-headset"></i>
-                </div>
-                <h4 class="font-bold text-sm uppercase tracking-wide mb-1">Soporte Dedicado</h4>
-                <p class="text-xs text-slate-400 font-medium leading-relaxed">¿Ocurrió un inconveniente con tu pago? Nuestro equipo te atenderá vía WhatsApp de inmediato.</p>
-            </div>
-        </div>
-
-        <!-- SECCIÓN: PREGUNTAS FRECUENTES -->
-        <div class="max-w-xl mx-auto mb-12">
-            <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Preguntas Frecuentes</h2>
-            <div class="space-y-3">
-                <div class="faq-item border border-slate-900 bg-slate-900/10 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-2">
-                        <h4 class="text-xs font-bold uppercase tracking-wide text-slate-200">¿Cuánto tiempo demora la recarga?</h4>
-                        <i class="fa-solid fa-chevron-down text-xs text-slate-500 faq-icon transition-transform duration-300"></i>
-                    </div>
-                    <div class="faq-answer text-xs text-slate-400 font-medium leading-relaxed">Generalmente el abono demora de 5 a 15 minutos una vez que validamos tu referencia de pago. En casos de mantenimiento puede tomar un poco más.</div>
                 </div>
             </div>
         </div>
@@ -192,7 +153,7 @@
 
         <form id="recharge-form" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start" onsubmit="event.preventDefault();">
             
-            <!-- COLUMNA IZQUIERDA Y CENTRAL: CAMPOS Y PAGOS -->
+            <!-- CAMPOS DEL FORMULARIO -->
             <div class="lg:col-span-2 space-y-6">
                 
                 <!-- PASO 1: DATOS JUGADOR -->
@@ -208,10 +169,6 @@
                                 <input type="number" id="player_id" required placeholder="Ingresa el ID numérico de tu cuenta" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Nombre en el Juego (Opcional)</label>
-                            <input type="text" id="player_name" placeholder="Ej: SniperGamer_YT" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
-                        </div>
                     </div>
                 </div>
 
@@ -220,12 +177,10 @@
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">2</span> Selecciona tu Paquete
                     </h3>
-                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <!-- Se llena dinámicamente con JS -->
-                    </div>
+                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
                 </div>
 
-                <!-- PASO 3: PASARELA DE PAGO DINÁMICA CON QR -->
+                <!-- PASO 3: PASARELA DE PAGO REAL CON QR -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">3</span> Información de Pago
@@ -233,67 +188,59 @@
                     
                     <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Selecciona tu Método</label>
                     <div class="grid grid-cols-3 gap-2.5 mb-6">
-                        <!-- Botón Pago Móvil -->
                         <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
                             <i class="fa-solid fa-mobile-screen text-base text-amber-400"></i> PMóvil
                         </button>
-                        <!-- Botón Binance -->
                         <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
                             <i class="fa-solid fa-coins text-base text-amber-500"></i> Binance
                         </button>
-                        <!-- Botón Zinli -->
                         <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
                             <i class="fa-solid fa-credit-card text-base text-purple-400"></i> Zinli
                         </button>
                     </div>
 
-                    <!-- CAJAS DE INFORMACIÓN Y QR -->
-                    <!-- Info Pago Móvil -->
+                    <!-- CAJAS DE INFORMACIÓN REALES Y QR GENERADOS -->
+                    <!-- Info Pago Móvil Actualizado -->
                     <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <!-- Código QR Pago Móvil -->
                             <div class="w-28 h-28 bg-white p-1.5 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PAGO_MOVIL_MASTR_GAME_04145956693" alt="QR Pago Móvil" class="w-full h-full object-contain">
+                                <!-- QR Dinámico codificado con tus datos BDV -->
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PAGO_MOVIL_BDV_04145956693_V32562761" alt="QR Pago Móvil BDV" class="w-full h-full object-contain">
                             </div>
-                            <!-- Datos del Pago Móvil -->
                             <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
                                 <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Transferencia</div>
-                                <p><span class="text-slate-500 font-bold">Banco:</span> BANESCO (0134)</p>
+                                <p><span class="text-slate-500 font-bold">Banco:</span> BANCO DE VENEZUELA (0102)</p>
                                 <p><span class="text-slate-500 font-bold">Teléfono:</span> <span class="font-black text-slate-200">0414-5956693</span></p>
-                                <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-27.456.789</span></p>
-                                <button type="button" onclick="copyText('04145956693', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Datos</button>
+                                <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-32.562.761</span></p>
+                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Teléfono y Cédula</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Info Binance Pay -->
+                    <!-- Info Binance Pay Actualizado -->
                     <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <!-- Código QR Binance -->
                             <div class="w-28 h-28 bg-white p-1.5 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BINANCE_PAY_ID_88776655" alt="QR Binance Pay" class="w-full h-full object-contain">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BINANCE_PAY_snaidernarvaez18@gmail.com" alt="QR Binance Pay" class="w-full h-full object-contain">
                             </div>
                             <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
                                 <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Binance Pay</div>
-                                <p><span class="text-slate-500 font-bold">Binance ID:</span> <span class="font-black text-slate-200">88776655</span></p>
-                                <p><span class="text-slate-500 font-bold">Correo:</span> <span class="font-black text-slate-200">pagos@mastrgame.com</span></p>
-                                <button type="button" onclick="copyText('88776655', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar ID</button>
+                                <p><span class="text-slate-500 font-bold">Correo de Cuenta:</span> <span class="font-black text-slate-200">snaidernarvaez18@gmail.com</span></p>
+                                <button type="button" onclick="copyText('snaidernarvaez18@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Info Zinli -->
+                    <!-- Info Zinli Actualizado -->
                     <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <!-- Código QR Zinli -->
                             <div class="w-28 h-28 bg-white p-1.5 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ZINLI_mastrgame@gmail.com" alt="QR Zinli" class="w-full h-full object-contain">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ZINLI_rcsmastergame@gmail.com" alt="QR Zinli" class="w-full h-full object-contain">
                             </div>
                             <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
                                 <div class="text-[10px] font-black tracking-wider text-purple-400 uppercase">Datos de Cuenta Zinli</div>
-                                <p><span class="text-slate-500 font-bold">Correo Zinli:</span> <span class="font-black text-slate-200">mastrgame@gmail.com</span></p>
-                                <p><span class="text-slate-500 font-bold">Titular:</span> MASTR GAME STORE</p>
-                                <button type="button" onclick="copyText('mastrgame@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
+                                <p><span class="text-slate-500 font-bold">Correo Zinli:</span> <span class="font-black text-slate-200">rcsmastergame@gmail.com</span></p>
+                                <button type="button" onclick="copyText('rcsmastergame@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
                             </div>
                         </div>
                     </div>
@@ -318,7 +265,7 @@
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: RESUMEN DE COMPRA FIJO -->
+            <!-- RESUMEN DE COMPRA FIJO -->
             <div class="bg-slate-900/30 border border-slate-850 rounded-2xl p-5 sticky top-24 backdrop-blur-md">
                 <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen del Pedido</h3>
                 
@@ -331,35 +278,28 @@
                         <span class="text-slate-500">Subtotal:</span>
                         <span id="summary-package-price" class="font-bold text-slate-200">0.00 Bs.</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span class="text-slate-500">Comisión de pasarela:</span>
-                        <span class="font-bold text-emerald-400 uppercase text-[10px]">0.00 Bs (Gratis)</span>
-                    </div>
                     <div class="border-t border-slate-900 my-2 pt-3 flex justify-between items-baseline">
                         <span class="text-sm font-black uppercase text-slate-300">Total a Pagar:</span>
                         <span id="summary-total-price" class="text-lg font-black text-amber-400">0.00 Bs.</span>
                     </div>
                 </div>
 
-                <button type="button" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(245,158,11,0.2)] hover:shadow-[0_4px_25px_rgba(245,158,11,0.3)] flex items-center justify-center gap-2">
+                <button type="button" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(245,158,11,0.2)] flex items-center justify-center gap-2">
                     <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
                 </button>
-                <p class="text-center text-[10px] text-slate-500 font-medium mt-3 leading-relaxed">Al hacer clic, el reporte se enviará de manera prioritaria al panel de validación y abrirá tu confirmación.</p>
             </div>
         </form>
     </section>
 
-    <!-- FOOTER GENERAL -->
     <footer class="w-full text-center py-6 text-[11px] text-slate-600 font-medium mt-12 border-t border-slate-950">
-        &copy; 2026 MASTR GAME. Todos los derechos reservados. Desarrollado con tecnología de alta velocidad.
+        &copy; 2026 MASTR GAME. Todos los derechos reservados.
     </footer>
 
-    <!-- LÓGICA DE INTERFAZ INTEGRADA -->
     <script>
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
         let selectedPackageName = "";
-        let metodoPagoActual = "pago_movil"; // Valor por defecto
+        let metodoPagoActual = "pago_movil";
 
         const listaPaquetes = {
             free_fire: [
@@ -385,10 +325,6 @@
             document.getElementById('form-view').classList.add('hidden');
             document.getElementById(id).classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleFaq(element) {
-            element.classList.toggle('active');
         }
 
         function openStore(juego) {
@@ -466,21 +402,16 @@
             updateTotalSummary();
         }
 
-        // CONTROLADORES DE CAMBIO DE PAGO DINÁMICO
         function selectPaymentMethod(metodo) {
             metodoPagoActual = metodo;
-            
-            // Remover estilos activos de todos los botones
             document.querySelectorAll('.payment-method-btn').forEach(btn => {
                 btn.className = "payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
             });
 
-            // Ocultar todas las cajas de info
             document.querySelectorAll('.payment-info-box').forEach(box => {
                 box.classList.remove('active');
             });
 
-            // Activar botón y caja seleccionada
             if(metodo === 'pago_movil') {
                 document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
                 document.getElementById('info-pago_movil').classList.add('active');
@@ -493,11 +424,21 @@
             }
         }
 
-        // COPIAR AL PORTAPAPELES SENCILLO
         function copyText(texto, btn) {
             navigator.clipboard.writeText(texto);
             const originalText = btn.innerHTML;
             btn.innerHTML = "¡Copiado! ✓";
+            btn.classList.add('text-emerald-400');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('text-emerald-400');
+            }, 2000);
+        }
+
+        function copyPaymentData(telf, ced, btn) {
+            navigator.clipboard.writeText(`Teléfono: ${telf} \nCédula: ${ced}`);
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "¡Ambos Copiados! ✓";
             btn.classList.add('text-emerald-400');
             setTimeout(() => {
                 btn.innerHTML = originalText;
