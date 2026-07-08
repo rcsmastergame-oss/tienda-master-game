@@ -1,17 +1,38 @@
-border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> En Línea
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Recargas</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-4">
+        <div class="container mx-auto flex justify-between items-center max-w-6xl">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.6)]"></div>
+                <span class="font-black tracking-wider text-sm uppercase">TMK <span class="text-amber-500">Gaming</span></span>
+            </div>
+            <span class="border border-emerald-500/30 text-[10px] px-3 py-1 rounded-full font-bold flex items-center gap-1.5 bg-emerald-950/30 text-emerald-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> En Línea
             </span>
         </div>
     </header>
 
-    <!-- VISTA 1: PÁGINA PRINCIPAL (DISEÑO GAMER PREMIUM COCKPIT) -->
     <section id="home-view" class="container mx-auto px-4 py-16 max-w-6xl relative overflow-hidden">
         
-        <!-- Elementos de luz ambiental de fondo (Neon Glows) -->
         <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-orange-600/10 rounded-full blur-[150px] pointer-events-none"></div>
 
-        <!-- ENCABEZADO HERO MEJORADO -->
         <div class="text-center mb-16 relative z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[11px] font-bold tracking-widest text-amber-400 uppercase mb-4 shadow-inner">
                 <i class="fa-solid fa-shield-halved text-amber-500 animate-pulse"></i> Plataforma Asegurada al 100%
@@ -23,7 +44,6 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
                 Elige tu juego favorito, ingresa tu ID de jugador y recibe tus diamantes o monedas al instante con la mayor tasa de seguridad del mercado.
             </p>
 
-            <!-- Mini Contadores de Confianza -->
             <div class="flex justify-center items-center gap-8 mt-8 text-xs font-bold uppercase tracking-wider text-slate-500">
                 <div class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-500"></i> Entrega en minutos</div>
                 <div class="w-1.5 h-1.5 rounded-full bg-slate-800"></div>
@@ -31,21 +51,16 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
             </div>
         </div>
 
-        <!-- REJILLA DE TARJETAS CON EFECTOS DE IMPACTO -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10 px-2">
             
-            <!-- Tarjeta Principal Free Fire -->
             <div onclick="openStore('free_fire')" class="game-card group cursor-pointer bg-slate-950/40 border-2 border-slate-900 hover:border-amber-500/80 rounded-[32px] overflow-hidden p-6 transition-all duration-500 shadow-2xl hover:shadow-amber-500/10 bg-gradient-to-b from-slate-900/40 via-slate-950/60 to-slate-950 flex flex-col justify-between relative backdrop-blur-md">
-                <!-- Brillo interno en hover -->
                 <div class="absolute inset-0 bg-gradient-to-t from-amber-500/0 via-amber-500/0 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 
                 <div>
-                    <!-- Contenedor de Imagen de Portada Estilizado -->
                     <div class="h-48 bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-800/60 group-hover:border-amber-500/30 transition-colors duration-500 shadow-inner">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 group-hover:scale-105 transition-all duration-700 filter grayscale-[30%] group-hover:grayscale-0">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                         
-                        <!-- Ícono flotante con reflejo de neón -->
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-950/80 border border-slate-800/80 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] group-hover:border-amber-500/50 transition-all duration-500">
                             <i class="fa-solid fa-fire-flame-curved text-4xl text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"></i>
                         </div>
@@ -62,24 +77,20 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
                 </div>
 
                 <div class="mt-6 pt-4 border-t border-slate-900 group-hover:border-slate-900/0 transition-colors duration-500">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-md shadow-amber-500/10">
-                        Recargar Ahora <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        Recargar Ahora <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Tarjeta Principal Blood Strike -->
             <div onclick="openStore('blood_strike')" class="game-card group cursor-pointer bg-slate-950/40 border-2 border-slate-900 hover:border-orange-500/80 rounded-[32px] overflow-hidden p-6 transition-all duration-500 shadow-2xl hover:shadow-orange-500/10 bg-gradient-to-b from-slate-900/40 via-slate-950/60 to-slate-950 flex flex-col justify-between relative backdrop-blur-md">
-                <!-- Brillo interno en hover -->
                 <div class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 
                 <div>
-                    <!-- Contenedor de Imagen de Portada Estilizado -->
                     <div class="h-48 bg-gradient-to-br from-slate-950 via-orange-950/40 to-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-800/60 group-hover:border-orange-500/30 transition-colors duration-500 shadow-inner">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 group-hover:scale-105 transition-all duration-700 filter grayscale-[30%] group-hover:grayscale-0">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                         
-                        <!-- Ícono flotante con reflejo de neón -->
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-950/80 border border-slate-800/80 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] group-hover:border-orange-500/50 transition-all duration-500">
                             <i class="fa-solid fa-crosshairs text-4xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"></i>
                         </div>
@@ -96,8 +107,8 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
                 </div>
 
                 <div class="mt-6 pt-4 border-t border-slate-900 group-hover:border-slate-900/0 transition-colors duration-500">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-400 text-slate-950 font-black py-3.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-md shadow-orange-500/10">
-                        Recargar Ahora <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-slate-950 font-black py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        Recargar Ahora <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
             </div>
@@ -105,13 +116,11 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
         </div>
     </section>
 
-    <!-- VISTA 2: FORMULARIO + CATÁLOGO INTEGRADO -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden">
-        <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors">
+        <button onclick="showSection('home-view')" class="text-slate-400 hover:text-white font-medium mb-6 flex items-center gap-2 transition-colors cursor-pointer">
             <i class="fa-solid fa-arrow-left"></i> Volver a Tienda
         </button>
 
-        <!-- BANNER DE ADENTRO DEL JUEGO -->
         <div id="game-image-banner" class="w-full h-44 md:h-60 rounded-3xl mb-8 overflow-hidden relative shadow-2xl border border-slate-800/60 hidden">
             <img id="banner-img-src" src="" alt="Inside Game Banner" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
@@ -120,55 +129,46 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
             </div>
         </div>
 
-        <!-- REJILLA PRINCIPAL -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            <!-- COLUMNA IZQUIERDA: CATÁLOGO DE PRODUCTOS -->
             <div class="lg:col-span-7 space-y-4">
-                <h3 class="text-md font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 px-1">
                     <i class="fa-solid fa-layer-group text-amber-500"></i> Selecciona el producto
                 </h3>
-                <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-2 gap-3.5"></div>
+                <div id="packages-container" class="grid grid-cols-2 gap-3.5"></div>
             </div>
 
-            <!-- COLUMNA DERECHA: FORMULARIO + RESUMEN -->
             <div class="lg:col-span-5">
-                <form id="form-recarga" class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-sm">
-                    
-                    <h3 class="text-md font-bold uppercase tracking-wider text-slate-300 border-b border-slate-800 pb-3 flex items-center gap-2">
+                <form id="form-recarga" class="bg-slate-900/40 border border-slate-800 p-6 rounded-3xl space-y-5 shadow-2xl backdrop-blur-md">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 border-b border-slate-800 pb-3 flex items-center gap-2">
                         <i class="fa-solid fa-user-pen text-amber-500"></i> Información Requerida
                     </h3>
 
-                    <!-- Campo ID -->
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">ID de Usuario</label>
                         <input type="text" id="player_id" required placeholder="Ej: 123456789" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
-                    <!-- Datos de Pago Móvil -->
-                    <div class="bg-slate-950/50 border border-slate-800 rounded-2xl p-4 text-xs space-y-1.5 text-slate-300">
+                    <div class="bg-slate-950/80 border border-slate-900 rounded-2xl p-4 text-xs space-y-1.5 text-slate-300">
                         <div class="text-amber-400 font-bold mb-1 flex items-center gap-1.5">
                             <i class="fa-solid fa-mobile-screen-button"></i> Datos de Transferencia:
                         </div>
-                        <p><span class="text-slate-500 font-medium">Banco:</span> BANCO DE VENEZUELA</p>
-                        <p><span class="text-slate-500 font-medium">Teléfono:</span> 0414-5956693</p>
-                        <p><span class="text-slate-500 font-medium">Cédula:</span> V-32562761</p>
+                        <p><span class="text-slate-500">Banco:</span> BANCO DE VENEZUELA</p>
+                        <p><span class="text-slate-500">Teléfono:</span> 0414-5956693</p>
+                        <p><span class="text-slate-500">Cédula:</span> V-32562761</p>
                     </div>
 
-                    <!-- Campo Referencia Bancaria -->
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Referencia de Pago (6 dígitos)</label>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Referencia de Pago (6 dígitos)</label>
                         <input type="text" id="referencia" required placeholder="001234" 
                                class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium">
                     </div>
 
-                    <!-- Subir Comprobante -->
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Comprobante de Pago</label>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Comprobante de Pago</label>
                         <div class="flex items-center justify-center w-full">
                             <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-800 border-dashed rounded-xl cursor-pointer bg-slate-950/20 hover:bg-slate-950/40 transition-colors">
-                                <div class="flex flex-col items-center justify-center pt-2 pb-2">
+                                <div class="flex flex-col items-center justify-center py-2">
                                     <i class="fa-solid fa-cloud-arrow-up text-lg text-slate-500 mb-1"></i>
                                     <p class="text-[11px] text-slate-400">Adjuntar captura de pantalla</p>
                                     <p id="file-name" class="text-[11px] text-amber-400 mt-1 font-medium hidden"></p>
@@ -178,21 +178,19 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
                         </div>
                     </div>
 
-                    <!-- PARTE NUEVA: DETALLE Y MONTO TOTAL A PAGAR -->
-                    <div class="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-4 space-y-2">
-                        <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Resumen de la orden</div>
+                    <div class="bg-amber-500/5 border border-amber-500/10 rounded-2xl p-4 space-y-2">
+                        <div class="text-[10px] font-bold text-amber-400 uppercase tracking-wider">Resumen de la orden</div>
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-slate-400" id="summary-package-name">Ningún paquete seleccionado</span>
                             <span class="font-bold text-slate-200" id="summary-package-price">0.00 Bs.</span>
                         </div>
-                        <div class="border-t border-slate-800/80 my-2 pt-2 flex justify-between items-center">
-                            <span class="text-sm font-bold text-slate-100">Total a Pagar:</span>
+                        <div class="border-t border-slate-800/60 my-2 pt-2 flex justify-between items-center">
+                            <span class="text-xs font-bold text-slate-100">Total a Pagar:</span>
                             <span class="text-xl font-black text-amber-400 tracking-tight" id="summary-total-price">0.00 Bs.</span>
                         </div>
                     </div>
 
-                    <!-- Botón de Envío -->
-                    <button type="submit" id="btn-enviar" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black py-3.5 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-amber-500/10">
+                    <button type="submit" id="btn-enviar" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black py-3.5 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-amber-500/10 cursor-pointer">
                         Confirmar Orden de Recarga
                     </button>
                 </form>
@@ -204,7 +202,6 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
     <script>
         let juegoActual = "";
         
-        // Catálogos Oficiales con precios ejemplo en Bolívares (Cámbialos libremente)
         const listaPaquetes = {
             free_fire: [
                 { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Recarga Directa", price: "700", icon: "fa-gem" },
@@ -258,27 +255,20 @@ border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold flex items
 
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const checked = idx === 0 ? "checked" : "";
-                const themeColor = "amber";
                 const iconClass = juego === 'free_fire' ? 'text-amber-400' : 'text-orange-400';
 
                 const html = `
                     <label class="relative block cursor-pointer package-card group" onclick="updateTotalSummary('${pkg.name}', '${pkg.price}')">
                         <input type="radio" name="paquete" value="${pkg.id}" data-price="${pkg.price}" data-name="${pkg.name}" ${checked} class="hidden package-radio">
-                        
-                        <div class="package-content bg-slate-900/30 border-2 border-slate-800 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-200 relative overflow-hidden">
-                            <div class="check-icon opacity-0 scale-75 absolute top-3 right-3 bg-${themeColor}-500 text-slate-950 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-
+                        <div class="package-content bg-slate-950/40 border-2 border-slate-900 group-hover:border-amber-500/50 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden">
                             <div>
-                                <div class="w-9 h-9 rounded-lg bg-slate-950/60 flex items-center justify-center mb-2.5 border border-slate-800 group-hover:scale-105 transition-transform">
-                                    <i class="fa-solid ${pkg.icon} text-md ${iconClass}"></i>
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
+                                    <i class="fa-solid ${pkg.icon} text-sm ${iconClass}"></i>
                                 </div>
-                                <div class="font-extrabold text-sm text-slate-100 tracking-wide">${pkg.name}</div>
-                                <div class="text-[10px] font-bold text-emerald-400 mt-0.5 tracking-wide">${pkg.bonus}</div>
+                                <div class="font-bold text-xs text-slate-200">${pkg.name}</div>
+                                <div class="text-[9px] font-bold text-emerald-400 mt-0.5">${pkg.bonus}</div>
                             </div>
-                            
-                            <div class="text-sm font-black text-slate-200 mt-2">
+                            <div class="text-xs font-black text-slate-300 mt-2">
                                 ${pkg.price} Bs.
                             </div>
                         </div>
