@@ -66,7 +66,7 @@
         </div>
     </header>
 
-    <input type="hidden" id="tasa_cambio" value="800" onchange="recalculateAllPrices()">
+    <input type="hidden" id="tasa_cambio" value="840" onchange="recalculateAllPrices()">
 
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-5xl relative z-10">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
@@ -284,11 +284,11 @@
 
         const listaPaquetes = {
             free_fire: [
-                { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Entrega Inmediata", priceUSD: 1.00, icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes + 62 Bono", bonus: "Entrega Inmediata", priceUSD: 3.00, icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Entrega Inmediata", priceUSD: 5.00, icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Entrega Inmediata", priceUSD: 10.00, icon: "fa-gem" },
-                { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Entrega Inmediata", priceUSD: 20.00, icon: "fa-gem" },
+                { id: "ff_100", name: "100 Diamantes + 20 Bono", bonus: "Entrega Inmediata", priceUSD: 0.80, icon: "fa-gem" },
+                { id: "ff_310", name: "310 Diamantes + 62 Bono", bonus: "Entrega Inmediata", priceUSD: 2.40, icon: "fa-gem" },
+                { id: "ff_520", name: "520 Diamantes + 104 Bono", bonus: "Entrega Inmediata", priceUSD: 4.00, icon: "fa-gem" },
+                { id: "ff_1060", name: "1060 Diamantes + 212 Bono", bonus: "Entrega Inmediata", priceUSD: 7.80, icon: "fa-gem" },
+                { id: "ff_2180", name: "2160 Diamantes + 436 Bono", bonus: "Entrega Inmediata", priceUSD: 15.00, icon: "fa-gem" },
                 { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Diamantes Diarios", priceUSD: 2.50, icon: "fa-id-card" },
                 { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "Máximo Descuento", priceUSD: 10.00, icon: "fa-box-open" }
             ],
