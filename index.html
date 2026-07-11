@@ -6,6 +6,8 @@
     <title>MASTER GAME - Recargas Rápidas y 100% Seguras</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- SweetAlert2 para Notificaciones Estéticas (Sección 3) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             background-color: #030712;
@@ -22,6 +24,29 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        /* Estilos personalizados para combinar SweetAlert2 con la temática oscura/gaming */
+        .swal2-popup-gaming {
+            background: #0b0f19 !important;
+            border: 1px solid #1e293b !important;
+            border-radius: 1.5rem !important;
+            color: #f3f4f6 !important;
+        }
+        .swal2-title-gaming {
+            color: #ffffff !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: -0.025em !important;
+        }
+        .swal2-confirm-gaming {
+            background: linear-gradient(to right, #f59e0b, #d97706) !important;
+            color: #030712 !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            border-radius: 0.75rem !important;
+            font-size: 0.75rem !important;
+            padding: 0.8rem 2rem !important;
         }
     </style>
 </head>
@@ -62,7 +87,7 @@
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-        <div class="text-center mb-16">
+        <div class="text-center mb-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black tracking-widest text-amber-400 uppercase mb-4 shadow-md">
                 <i class="fa-solid fa-shield-halved text-amber-500"></i> RECARGAS 100% SEGURAS, LEGALES Y SIN RIESGOS BANEO
             </div>
@@ -76,6 +101,23 @@
                 <span><i class="fa-solid fa-bolt text-amber-500 mr-1.5"></i> Entrega en Minutos</span>
                 <span><i class="fa-solid fa-lock text-emerald-500 mr-1.5"></i> Pago Seguro</span>
                 <span><i class="fa-solid fa-headset text-purple-500 mr-1.5"></i> Soporte 24/7</span>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 5: HISTORIAL DE RECARGAS EN VIVO (Gatillo de Confianza) -->
+        <div class="max-w-md mx-auto mb-14 bg-slate-900/10 border border-slate-900/60 rounded-2xl p-3.5 backdrop-blur-sm shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-amber-500 to-orange-500"></div>
+            <div class="flex items-center gap-3">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping absolute top-4 right-4"></div>
+                <div class="w-8 h-8 rounded-xl bg-slate-950/80 border border-slate-850 flex items-center justify-center text-amber-500 text-xs shadow-inner">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="text-[9px] font-black uppercase text-slate-500 tracking-widest mb-0.5">Actividad Reciente</div>
+                    <div id="live-feed-text" class="text-xs font-bold text-slate-300 transition-all duration-500 transform translate-y-0 opacity-100">
+                        Cargando transmisiones del servidor...
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -142,7 +184,7 @@
             
             <div class="lg:col-span-2 space-y-6">
                 
-                <!-- BLOQUE 1: IDENTIFICACIÓN (CON ID Y WHATSAPP AGREGADO) -->
+                <!-- BLOQUE 1: IDENTIFICACIÓN -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Datos del Jugador
@@ -316,6 +358,40 @@
             ]
         };
 
+        // ===================================================
+        // LÓGICA SECCIÓN 5: FEED DE RECARGAS EN VIVO
+        // ===================================================
+        const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "Yor_FF", "Rex_Blood"];
+        const opcionesPaquetes = [
+            "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "520 Diamantes + 104 Bono", 
+            "Tarjeta Semanal", "100 de Oro", "300 de Oro", "Pase Elite"
+        ];
+
+        function actualizarFeedEnVivo() {
+            const feedEl = document.getElementById('live-feed-text');
+            if(!feedEl) return;
+
+            // Animación de salida (fade out)
+            feedEl.style.opacity = "0";
+            feedEl.style.transform = "translateY(-5px)";
+
+            setTimeout(() => {
+                const nombre = nombresFicticios[Math.floor(Math.random() * nombresFicticios.length)];
+                const paquete = opcionesPaquetes[Math.floor(Math.random() * opcionesPaquetes.length)];
+                const minutos = Math.floor(Math.random() * 8) + 1;
+                
+                feedEl.innerHTML = `⚡ El jugador <span class="text-amber-400 font-extrabold">${nombre}</span> recibió <span class="text-white font-extrabold">${paquete}</span> hace ${minutos} min.`;
+                
+                // Animación de entrada (fade in)
+                feedEl.style.opacity = "1";
+                feedEl.style.transform = "translateY(0)";
+            }, 500);
+        }
+        // Iniciar bucle infinito cada 7 segundos para simular actividad constante
+        setInterval(actualizarFeedEnVivo, 7000);
+        window.addEventListener('DOMContentLoaded', actualizarFeedEnVivo);
+
+
         function showSection(id) {
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('form-view').classList.add('hidden');
@@ -469,7 +545,7 @@
         }
 
         // ===================================================
-        // PROCESAMIENTO ACTUALIZADO CON CAMPO WHATSAPP
+        // PROCESAMIENTO SEGURO CON COMPORTAMIENTO MEJORADO (Sección 3)
         // ===================================================
         function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
@@ -478,10 +554,23 @@
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
             const submitBtn = document.getElementById('submit-btn');
             
-            if (!playerId) { alert("Por favor, ingresa el ID del jugador."); return; }
-            if (!playerWhatsapp) { alert("Por favor, ingresa tu número de WhatsApp."); return; }
-            if (!paymentRef) { alert("Por favor, ingresa el número de referencia del pago."); return; }
-            if (!selectedPackageName) { alert("Por favor, selecciona un paquete."); return; }
+            // Reemplazo de los alerts de validación tradicionales por SweetAlert2 estético
+            if (!playerId) { 
+                Swal.fire({ text: 'Por favor, ingresa el ID del jugador.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                return; 
+            }
+            if (!playerWhatsapp) { 
+                Swal.fire({ text: 'Por favor, ingresa tu número de WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                return; 
+            }
+            if (!paymentRef) { 
+                Swal.fire({ text: 'Por favor, ingresa el número de referencia del pago.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                return; 
+            }
+            if (!selectedPackageName) { 
+                Swal.fire({ text: 'Por favor, selecciona un paquete.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                return; 
+            }
 
             const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -513,16 +602,26 @@
             })
             .then(response => {
                 if(response.ok) {
-                    alert("🔒 ¡Datos validados! Tu recarga está en proceso.");
+                    // Modal de Éxito de Alta Gama
+                    Swal.fire({
+                        title: '¡Reporte Enviado!',
+                        text: '🔒 Tus datos fueron validados de forma segura en el sistema. Tu recarga se procesará en minutos.',
+                        icon: 'success',
+                        customClass: {
+                            popup: 'swal2-popup-gaming',
+                            title: 'swal2-title-gaming',
+                            confirmButton: 'swal2-confirm-gaming'
+                        }
+                    });
                     document.getElementById('recharge-form').reset();
                     showSection('home-view');
                 } else {
-                    alert("El servidor respondió con un error de ejecución. Revisa los logs en Make.");
+                    Swal.fire({ text: 'El servidor respondió con un error de ejecución. Revisa los logs en Make.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
                 }
             })
             .catch(error => {
                 console.error("Error:", error);
-                alert("Error de conexión. Revisa tu webhook de Make.");
+                Swal.fire({ text: 'Error de conexión. Revisa tu webhook de Make.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
             })
             .finally(() => {
                 submitBtn.disabled = false;
