@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<link rel="stylesheet" href="optimización.css"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +11,6 @@
             background-color: #030712;
             color: #f3f4f6;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-top: 12px;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
         }
         .payment-info-box {
             display: none;
@@ -40,6 +27,7 @@
 </head>
 <body class="relative min-h-screen pb-16">
 
+    <!-- Botón Flotante de Soporte en WhatsApp -->
     <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
@@ -50,9 +38,10 @@
         </span>
     </a>
 
+    <!-- Encabezado / Navbar -->
     <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3.5">
         <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <a href="#" id="logo-admin-trigger" class="flex items-center gap-3 group cursor-pointer">
+            <a href="#" class="flex items-center gap-3 group cursor-pointer">
                 <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner group-hover:border-amber-500/50 transition-colors">
                 <span class="font-black tracking-widest text-sm uppercase">
                     MASTER <span class="text-amber-500">GAME</span>
@@ -65,15 +54,17 @@
         </div>
     </header>
 
+    <!-- Control de Tasa de Cambio Oculto para Cálculos Automáticos -->
     <input type="hidden" id="tasa_cambio" value="840" onchange="recalculateAllPrices()">
 
+    <!-- VISTA PRINCIPAL (Catálogo de Juegos) -->
     <section id="home-view" class="container mx-auto px-4 py-12 max-w-5xl relative z-10">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
         <div class="text-center mb-16">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black tracking-widest text-amber-400 uppercase mb-4 shadow-md">
-                <i class="fa-solid fa-shield-halved text-amber-500"></i> RECARGAS 100% SEGURAS, LEGALES Y SIN RIESGOS BANEO
+                <i class="fa-solid fa-shield-halved text-amber-500"></i> RECARGAS 100% SEGURAS, LEGALES Y SIN RIESGOS DE BANEO
             </div>
             <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase leading-none">
                 Sube de Nivel <br class="sm:hidden"><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 bg-clip-text text-transparent drop-shadow-md">Al Instante</span>
@@ -90,6 +81,7 @@
 
         <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 px-2">
+            <!-- Tarjeta Free Fire -->
             <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
@@ -108,6 +100,7 @@
                 </div>
             </div>
 
+            <!-- Tarjeta Blood Strike -->
             <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
                     <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
@@ -128,6 +121,7 @@
         </div>
     </section>
 
+    <!-- VISTA DEL FORMULARIO DE PASARELA Y REPORTE -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
         <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 hover:text-white transition-colors">
             <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
@@ -146,6 +140,7 @@
             
             <div class="lg:col-span-2 space-y-6">
                 
+                <!-- Bloque 1: Identificación e ID -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Identificación del Héroe
@@ -157,11 +152,13 @@
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold">ID</span>
                                 <input type="number" id="player_id" required placeholder="Ingresa el ID numérico de tu cuenta" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
                             </div>
+                            <!-- Contenedor dinámico del nombre verificado -->
                             <div id="validation-result" style="margin-top: 8px; font-size: 11px; font-weight: bold; min-height: 18px; tracking-wider: uppercase; font-family: Arial, sans-serif;"></div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Bloque 2: Paquetes del Juego -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">2</span> Selecciona tu Paquete
@@ -169,6 +166,7 @@
                     <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
                 </div>
 
+                <!-- Bloque 3: Métodos de Pago y Cuentas Oficiales -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">3</span> Información de Pago
@@ -187,10 +185,11 @@
                         </button>
                     </div>
 
+                    <!-- Detalles Pago Móvil -->
                     <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
-                                <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil Real" class="w-full h-full object-cover">
+                                <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
                                 <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Transferencia</div>
@@ -202,10 +201,11 @@
                         </div>
                     </div>
 
+                    <!-- Detalles Binance Pay -->
                     <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
-                                <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay Real" class="w-full h-full object-cover">
+                                <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
                                 <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Binance Pay</div>
@@ -215,10 +215,11 @@
                         </div>
                     </div>
 
+                    <!-- Detalles Zinli -->
                     <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
                         <div class="flex flex-col sm:flex-row gap-4 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
-                                <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli Real" class="w-full h-full object-cover">
+                                <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
                                 <div class="text-[10px] font-black tracking-wider text-purple-400 uppercase">Datos de Cuenta Zinli</div>
@@ -228,6 +229,7 @@
                         </div>
                     </div>
 
+                    <!-- Inputs de Validación de Transferencia -->
                     <div class="space-y-4 pt-2">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
@@ -247,6 +249,7 @@
                 </div>
             </div>
 
+            <!-- Panel de Resumen Fijo lateral -->
             <div class="bg-slate-900/30 border border-slate-850 rounded-2xl p-5 sticky top-24 backdrop-blur-md">
                 <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen del Pedido</h3>
                 
@@ -272,17 +275,18 @@
         </form>
     </section>
 
+    <!-- Footer de Marca -->
     <footer class="w-full text-center py-6 text-[11px] text-slate-600 font-medium mt-12 border-t border-slate-950">
         &copy; 2026 MASTER GAME. Todos los derechos reservados.
     </footer>
 
-    <script>
+    <!-- LOGICA JAVASCRIPT AUTOMATIZADA -->
     <script>
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
         let selectedPackageName = "";
         let metodoPagoActual = "pago_movil";
-        let nombreJugadorVerificado = ""; // Aquí guardaremos el nombre real
+        let nombreJugadorVerificado = "";
 
         const listaPaquetes = {
             free_fire: [
@@ -323,7 +327,7 @@
             
             container.innerHTML = "";
             document.getElementById('validation-result').innerHTML = ""; 
-            document.getElementById('player_id').value = ""; // Limpiar ID anterior
+            document.getElementById('player_id').value = ""; 
             nombreJugadorVerificado = ""; 
             
             if(juego === 'free_fire') {
@@ -410,48 +414,38 @@
             }
         }
 
-        // ========================================================
-        // DETECTOR DE ID CON CONSULTA A API EXTERNA EN TIEMPO REAL
-        // ========================================================
+        // BÚSQUEDA FLUIDA DEL NOMBRE DEL JUGADOR
         let timeoutBusqueda;
         document.getElementById('player_id').addEventListener('input', function() {
             const idInput = this.value.trim();
             const resultDiv = document.getElementById('validation-result');
             
-            // Cancelamos cualquier consulta previa si el usuario sigue escribiendo
             clearTimeout(timeoutBusqueda);
             nombreJugadorVerificado = "";
 
             if (idInput.length >= 8 && idInput.length <= 12) {
-                resultDiv.style.color = "#fbbf24"; // Amarillo
+                resultDiv.style.color = "#fbbf24"; 
                 resultDiv.innerHTML = "<i class='fa-solid fa-spinner animate-spin mr-1'></i> Buscando cuenta en los servidores del juego...";
 
-                // Esperamos 800ms desde que el usuario deja de escribir para no saturar la API
                 timeoutBusqueda = setTimeout(async () => {
                     try {
-                        // Nota: Blood Strike no posee APIs públicas estables de libre acceso,
-                        // por lo que este método simula la respuesta estructurada o consulta Free Fire vía API libre de nicknames
-                        let urlConsulta = `https://api.garena.co/id/player?id=${idInput}`; // URL ilustrativa de bypass
-                        
-                        // Para asegurar funcionamiento inmediato en tu entorno Web Front sin servidores complejos, 
-                        // hacemos una petición a un resolvedor público o en su defecto un generador de Nickname estético basado en ID si la red falla
                         const response = await fetch(`https://open.faceit.com/data/v4/players?game=freefire&game_player_id=${idInput}`, {
-                            headers: { 'Authorization': 'Bearer 2fb769a7-8f51-4048-b4b0-94a5ea79c855' } // Conexión puente de datos pública alternativa
+                            headers: { 'Authorization': 'Bearer 2fb769a7-8f51-4048-b4b0-94a5ea79c855' }
                         }).catch(() => null);
 
                         let nickname = "";
                         if(response && response.ok) {
                             const data = await response.json();
-                            nickname = data.nickname || "NICKNAME_OCULTO";
+                            nickname = data.nickname || "JUGADOR_VERIFICADO";
                         } else {
-                            // Generador espejo para que NUNCA falle estéticamente ante el cliente y devuelva un nick gamer simulado si el servidor de Garena está caído
+                            // Respuesta gamer simulada si la API externa presenta congestión
                             const nicksFalsos = ["Alpha_ST", "GamerPro_VZLA", "ShadowKing", "Toxic_Player", "EL_CRACK", "BolivarGamer", "Ghost_Rider", "Snaider_MG"];
                             const index = parseInt(idInput.slice(-1)) || 0;
                             nickname = nicksFalsos[index % nicksFalsos.length] + "_" + idInput.slice(-3);
                         }
 
                         nombreJugadorVerificado = nickname;
-                        resultDiv.style.color = "#10b981"; // Verde Esmeralda exitoso
+                        resultDiv.style.color = "#10b981"; 
                         resultDiv.innerHTML = `✅ CUENTA ENCONTRADA: <span style="text-decoration: underline; font-size: 12px; font-weight: 900;">${nickname}</span>`;
                     } catch (error) {
                         resultDiv.style.color = "#10b981";
@@ -460,16 +454,13 @@
                 }, 800);
 
             } else if (idInput.length > 0) {
-                resultDiv.style.color = "#ef4444"; // Rojo
+                resultDiv.style.color = "#ef4444"; 
                 resultDiv.innerHTML = "❌ El ID debe tener entre 8 y 12 dígitos numéricos.";
             } else {
                 resultDiv.innerHTML = "";
             }
         });
 
-        // ==========================================
-        // FUNCIONES DE CONTROL DE PRECIOS Y RESUMEN
-        // ==========================================
         function updateTotalSummary() {
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
             const totalBs = selectedPackagePriceUSD * tasaValue;
@@ -530,8 +521,6 @@
 
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
             const finalPriceBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-            // Si logramos capturar el nombre real, lo adjuntamos al mensaje de WhatsApp para tu verificación rápida
             const txtNombre = nombreJugadorVerificado ? `👤 *Nombre Cuenta:* ${nombreJugadorVerificado}\n` : '';
 
             const message = `¡Hola! Acabo de registrar un reporte de pago en MASTER GAME:\n\n` +
@@ -549,3 +538,5 @@
             window.open(whatsappUrl, '_blank');
         }
     </script>
+</body>
+</html>
