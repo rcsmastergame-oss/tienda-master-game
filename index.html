@@ -521,3 +521,140 @@
     </script>
 </body>
 </html>
+}
+        }
+
+        // ==========================================
+        // SCRIPT DEL VALIDADOR DE ID EN TIEMPO REAL
+        // ==========================================
+        document.getElementById('player_id').addEventListener('input', function() {
+            const idInput = this.value.trim();
+            
+            // Creamos o buscamos el contenedor del mensaje dinámicamente debajo de tu input
+            let resultDiv = document.getElementById('validation-result');
+            if (!resultDiv) {
+                resultDiv = document.createElement('div');
+                resultDiv.id = 'validation-result';
+                resultDiv.style.cssText = "margin-top: 8px; font-size: 11px; font-weight: bold; min-height: 18px; uppercase tracking-wider font-black";
+                this.parentNode.appendChild(resultDiv);
+            }
+            
+            // Los IDs de Free Fire válidos suelen tener entre 8 y 12 dígitos
+            if (idInput.length >= 8 && idInput.length <= 12) {
+                resultDiv.style.color = "#f59e0b"; // Color Amber-500 de tu paleta
+                resultDiv.innerHTML = "⏳ VERIFICANDO CUENTA...";
+
+                const region = 'us'; 
+                const apiUrl = `https://developers.freefirecommunity.com/api/v1/info?region=${region}&uid=${idInput}`;
+
+                fetch(apiUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Error en la consulta");
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data && data.AccountName) {
+                            resultDiv.style.color = "#10b981"; // Emerald-500 (Verde)
+                            resultDiv.innerHTML = `✅ JUGADOR: ${data.AccountName.toUpperCase()}`;
+                        } else if (data && data.player_nickname) {
+                            resultDiv.style.color = "#10b981";
+                            resultDiv.innerHTML = `✅ JUGADOR: ${data.player_nickname.toUpperCase()}`;
+                        } else {
+                            resultDiv.style.color = "#ef4444"; // Rojo Error
+                            resultDiv.innerHTML = "❌ ID NO ENCONTRADO. VERIFICA LOS NÚMEROS.";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error al validar:", error);
+                        resultDiv.style.color = "#ef4444";
+                        resultDiv.innerHTML = "❌ ERROR AL CONECTAR CON EL SERVIDOR.";
+                    });
+            } else {
+                resultDiv.innerHTML = "";
+            }
+        });
+
+        // ==========================================
+        // FUNCIONES DE CONTROL DE PRECIOS Y RESUMEN
+        // ==========================================
+        function updateTotalSummary() {
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
+            const totalBs = selectedPackagePriceUSD * tasaValue;
+            
+            const totalBsFormatted = totalBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            
+            document.getElementById('summary-package-name').innerText = selectedPackageName;
+            document.getElementById('summary-package-price').innerText = `${totalBsFormatted} Bs.`;
+            document.getElementById('summary-total-price').innerText = `${totalBsFormatted} Bs.`;
+        }
+
+        function recalculateAllPrices() {
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
+            
+            document.querySelectorAll('.card-price-render').forEach(renderBox => {
+                const usdPrice = parseFloat(renderBox.getAttribute('data-usd')) || 0;
+                const newPriceBs = usdPrice * tasaValue;
+                renderBox.innerText = `${newPriceBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bs.`;
+            });
+            
+            updateTotalSummary();
+        }
+
+        function updateFileName(input) {
+            const fileNameSpan = document.getElementById('file-name');
+            const placeholderSpan = document.getElementById('file-placeholder');
+            
+            if (input.files && input.files.length > 0) {
+                fileNameSpan.classList.remove('hidden');
+                placeholderSpan.classList.add('hidden');
+            } else {
+                fileNameSpan.classList.add('hidden');
+                placeholderSpan.classList.remove('hidden');
+            }
+        }
+
+        function copyPaymentData(phone, idCard, button) {
+            const textToCopy = `Teléfono: ${phone} \nCédula: ${idCard}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = `<i class="fa-solid fa-check text-emerald-400 mr-1"></i> ¡Copiado!`;
+                setTimeout(() => { button.innerHTML = originalText; }, 2000);
+            });
+        }
+
+        function copyText(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = `<i class="fa-solid fa-check text-emerald-400 mr-1"></i> ¡Copiado!`;
+                setTimeout(() => { button.innerHTML = originalText; }, 2000);
+            });
+        }
+
+        function submitRecharge() {
+            const playerId = document.getElementById('player_id').value.trim();
+            const paymentRef = document.getElementById('payment_ref').value.trim();
+            
+            if (!playerId || !paymentRef || !selectedPackageName) {
+                alert("Por favor, completa todos los campos requeridos.");
+                return;
+            }
+
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
+            const finalPriceBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            const message = `¡Hola! Acabo de registrar un reporte de pago en MASTER GAME:\n\n` +
+                            `🎮 *Juego:* ${juegoActual.toUpperCase().replace('_', ' ')}\n` +
+                            `🆔 *ID Jugador:* ${playerId}\n` +
+                            `📦 *Paquete:* ${selectedPackageName}\n` +
+                            `💳 *Método de Pago:* ${metodoPagoActual.toUpperCase().replace('_', ' ')}\n` +
+                            `🔢 *Referencia:* ${paymentRef}\n` +
+                            `💰 *Total Pagado:* ${finalPriceBs} Bs. (${selectedPackagePriceUSD.toFixed(2)} USD)`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/584145956693?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
