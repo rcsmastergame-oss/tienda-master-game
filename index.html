@@ -123,11 +123,11 @@
 
         <!-- Catálogo de Juegos -->
         <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 px-2">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20 px-2">
             <!-- Tarjeta Free Fire -->
             <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
+                    <div class="h-40 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
                         <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] group-hover:border-amber-500/30 transition-all duration-300">
@@ -135,18 +135,18 @@
                         </div>
                         <div class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">ID Directo</div>
                     </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
+                    <h3 class="text-lg font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
                     <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Diamantes abonados de forma directa y legal a tu ID de juego en cuestión de minutos.</p>
                 </div>
                 <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 group-hover:from-amber-400 group-hover:to-amber-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 group-hover:from-amber-400 group-hover:to-amber-500 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
             <!-- Tarjeta Blood Strike -->
             <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
+                    <div class="h-40 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
                         <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:border-orange-500/30 transition-all duration-300">
@@ -154,11 +154,30 @@
                         </div>
                         <div class="absolute bottom-3 left-3 bg-orange-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">Oro / Pases</div>
                     </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
+                    <h3 class="text-lg font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
                     <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Carga oro de combate o adquiere tus pases de batalla de forma directa mediante tu ID de usuario.</p>
                 </div>
                 <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-500 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                </div>
+            </div>
+
+            <!-- NUEVA TARJETA: PlayStation Network -->
+            <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-blue-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between relative backdrop-blur-md">
+                <div>
+                    <div class="h-40 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
+                        <img src="https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
+                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30 transition-all duration-300">
+                            <i class="fa-brands fa-playstation text-3xl text-blue-500 filter drop-shadow-[0_0_6px_rgba(59,130,246,0.5)]"></i>
+                        </div>
+                        <div class="absolute bottom-3 left-3 bg-blue-600 text-slate-100 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">Gift Cards</div>
+                    </div>
+                    <h3 class="text-lg font-black tracking-wider group-hover:text-blue-400 transition-colors duration-250">PLAYSTATION STORE</h3>
+                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Códigos digitales prepagados para tu cuenta de PSN. Recarga tu saldo de forma ágil y compra juegos.</p>
+                </div>
+                <div class="mt-5 pt-3 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-blue-700 group-hover:from-blue-500 group-hover:to-blue-600 text-white font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ver Códigos <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
         </div>
@@ -187,14 +206,14 @@
                 <!-- BLOQUE 1: IDENTIFICACIÓN -->
                 <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Datos del Jugador
+                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Datos del Jugador / Cuenta
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">ID del Jugador</label>
+                            <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">ID del Jugador</label>
                             <div class="relative">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold">ID</span>
-                                <input type="number" id="player_id" required placeholder="Ingresa tu ID de juego" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                                <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold">ID</span>
+                                <input type="text" id="player_id" required placeholder="Ingresa tus datos" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
                             </div>
                         </div>
                         <div>
@@ -355,23 +374,27 @@
                 { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", priceUSD: 19.00, icon: "fa-coins" },
                 { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", priceUSD: 45.00, icon: "fa-coins" },
                 { id: "bs_pass_elite", name: "Pase Elite", bonus: "Activación Directa", priceUSD: 5.00, icon: "fa-id-card" }
+            ],
+            playstation: [
+                { id: "ps_10", name: "Tarjeta PSN $10", bonus: "Código Digital", priceUSD: 10.00, icon: "fa-folder-plus" },
+                { id: "ps_20", name: "Tarjeta PSN $20", bonus: "Código Digital", priceUSD: 20.00, icon: "fa-folder-plus" },
+                { id: "ps_30", name: "Tarjeta PSN $30", bonus: "Código Digital", priceUSD: 30.00, icon: "fa-folder-plus" },
+                { id: "ps_40", name: "Tarjeta PSN $40", bonus: "Código Digital", priceUSD: 40.00, icon: "fa-folder-plus" },
+                { id: "ps_50", name: "Tarjeta PSN $50", bonus: "Código Digital", priceUSD: 50.00, icon: "fa-folder-plus" }
             ]
         };
 
-        // ===================================================
         // LÓGICA SECCIÓN 5: FEED DE RECARGAS EN VIVO
-        // ===================================================
-        const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "Yor_FF", "Rex_Blood"];
+        const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "Yor_FF", "Rex_Blood", "PS5_Gamer"];
         const opcionesPaquetes = [
-            "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "520 Diamantes + 104 Bono", 
-            "Tarjeta Semanal", "100 de Oro", "300 de Oro", "Pase Elite"
+            "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "Tarjeta Semanal", 
+            "300 de Oro", "Pase Elite", "Tarjeta PSN $10", "Tarjeta PSN $20"
         ];
 
         function actualizarFeedEnVivo() {
             const feedEl = document.getElementById('live-feed-text');
             if(!feedEl) return;
 
-            // Animación de salida (fade out)
             feedEl.style.opacity = "0";
             feedEl.style.transform = "translateY(-5px)";
 
@@ -382,12 +405,10 @@
                 
                 feedEl.innerHTML = `⚡ El jugador <span class="text-amber-400 font-extrabold">${nombre}</span> recibió <span class="text-white font-extrabold">${paquete}</span> hace ${minutos} min.`;
                 
-                // Animación de entrada (fade in)
                 feedEl.style.opacity = "1";
                 feedEl.style.transform = "translateY(0)";
             }, 500);
         }
-        // Iniciar bucle infinito cada 7 segundos para simular actividad constante
         setInterval(actualizarFeedEnVivo, 7000);
         window.addEventListener('DOMContentLoaded', actualizarFeedEnVivo);
 
@@ -407,20 +428,45 @@
             const bannerImg = document.getElementById('banner-img-src');
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
             
+            // Adaptar etiquetas dinámicamente según el tipo de servicio
+            const idLabel = document.getElementById('id-field-label');
+            const idPrefix = document.getElementById('id-field-prefix');
+            const idInput = document.getElementById('player_id');
+
+            if(juego === 'playstation') {
+                idLabel.innerText = "Correo de tu Cuenta PSN / ID";
+                idPrefix.innerText = "PSN";
+                idInput.placeholder = "Ej: usuario@email.com o tu ID";
+            } else {
+                idLabel.innerText = "ID del Jugador";
+                idPrefix.innerText = "ID";
+                idInput.placeholder = "Ingresa tu ID de juego";
+            }
+
             container.innerHTML = "";
             
+            let activeBorderClass = 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.15)]';
+            let iconClass = 'text-amber-400';
+
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
                 bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
                 bannerContainer.classList.remove('hidden');
-            } else {
+                activeBorderClass = 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.15)]';
+                iconClass = 'text-amber-400';
+            } else if(juego === 'blood_strike') {
                 title.innerText = "Blood Strike";
                 bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
                 bannerContainer.classList.remove('hidden');
+                activeBorderClass = 'border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.15)]';
+                iconClass = 'text-orange-400';
+            } else if(juego === 'playstation') {
+                title.innerText = "PlayStation Network";
+                bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
+                bannerContainer.classList.remove('hidden');
+                activeBorderClass = 'border-blue-500 bg-blue-500/5 shadow-[0_0_15px_rgba(59,130,246,0.15)]';
+                iconClass = 'text-blue-400';
             }
-
-            const activeBorderClass = juego === 'free_fire' ? 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.15)]' : 'border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.15)]';
-            const iconClass = juego === 'free_fire' ? 'text-amber-400' : 'text-orange-400';
 
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const isChecked = idx === 0;
@@ -544,9 +590,6 @@
             }
         }
 
-        // ===================================================
-        // PROCESAMIENTO SEGURO CON COMPORTAMIENTO MEJORADO (Sección 3)
-        // ===================================================
         function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
@@ -554,9 +597,8 @@
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
             const submitBtn = document.getElementById('submit-btn');
             
-            // Reemplazo de los alerts de validación tradicionales por SweetAlert2 estético
             if (!playerId) { 
-                Swal.fire({ text: 'Por favor, ingresa el ID del jugador.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                Swal.fire({ text: 'Por favor, rellena el campo de ID o Cuenta solicitado.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
                 return; 
             }
             if (!playerWhatsapp) { 
@@ -579,9 +621,13 @@
 
             const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/faxu7f5rakpv5981o4okcgvh6o4b4pqb"; 
 
+            let nombreJuegoPayload = "FREE FIRE";
+            if(juegoActual === 'blood_strike') { nombreJuegoPayload = "BLOOD STRIKE"; }
+            else if(juegoActual === 'playstation') { nombreJuegoPayload = "PLAYSTATION NETWORK"; }
+
             const payload = {
                 header_decorativo: "🔒 *TRANSACCIÓN VERIFICADA Y SEGURA* 🔒\n🛡️ _MASTER GAME AUTH SERVICE_\n===================================\n✅ Transacción protegida por cifrado SSL.\n⚡ Procesamiento inmediato en cola automatizada.\n💎 Estado de recarga: Pendiente de Confirmación.",
-                juego: juegoActual === 'free_fire' ? 'FREE FIRE' : 'BLOOD STRIKE',
+                juego: nombreJuegoPayload,
                 id_jugador: playerId,
                 whatsapp_cliente: playerWhatsapp,
                 paquete: selectedPackageName,
@@ -602,10 +648,9 @@
             })
             .then(response => {
                 if(response.ok) {
-                    // Modal de Éxito de Alta Gama
                     Swal.fire({
                         title: '¡Reporte Enviado!',
-                        text: '🔒 Tus datos fueron validados de forma segura en el sistema. Tu recarga se procesará en minutos.',
+                        text: '🔒 Tus datos fueron validados de forma segura en el sistema. Tu servicio se procesará en minutos.',
                         icon: 'success',
                         customClass: {
                             popup: 'swal2-popup-gaming',
