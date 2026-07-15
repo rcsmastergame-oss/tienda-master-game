@@ -3,199 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASTER GAME - Recargas Rápidas y 100% Seguras</title>
+    <title>MASTER GAME - Portal de Recargas Gaming N° 1</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- SweetAlert2 para Notificaciones Estéticas (Sección 3) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
-            background-color: #030712;
-            color: #f3f4f6;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 1));
+            background-attachment: fixed;
         }
+        
+        /* Efecto de cuadrícula digital de fondo */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+        }
+
         .payment-info-box {
             display: none;
         }
         .payment-info-box.active {
             display: block;
-            animation: fadeIn 0.3s ease-out;
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Estilos personalizados para combinar SweetAlert2 con la temática oscura/gaming */
+        
+        /* SweetAlert2 Tema Gaming Premium */
         .swal2-popup-gaming {
-            background: #0b0f19 !important;
-            border: 1px solid #1e293b !important;
-            border-radius: 1.5rem !important;
-            color: #f3f4f6 !important;
+            background: rgba(11, 15, 30, 0.95) !important;
+            border: 2px solid #334155 !important;
+            border-radius: 2rem !important;
+            backdrop-filter: blur(12px);
+            color: #f8fafc !important;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15) !important;
         }
         .swal2-title-gaming {
             color: #ffffff !important;
             font-weight: 900 !important;
             text-transform: uppercase !important;
-            letter-spacing: -0.025em !important;
+            letter-spacing: -0.01em !important;
         }
         .swal2-confirm-gaming {
-            background: linear-gradient(to right, #f59e0b, #d97706) !important;
-            color: #030712 !important;
+            background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
+            color: #020617 !important;
             font-weight: 900 !important;
             text-transform: uppercase !important;
             letter-spacing: 0.05em !important;
-            border-radius: 0.75rem !important;
-            font-size: 0.75rem !important;
-            padding: 0.8rem 2rem !important;
+            border-radius: 1rem !important;
+            padding: 0.8rem 2.5rem !important;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
         }
     </style>
 </head>
-<body class="relative min-h-screen pb-16 bg-slate-950 text-slate-100">
+<body class="relative min-h-screen pb-16 bg-grid">
 
-    <!-- Botón Flotante de Soporte -->
     <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
-        <i class="fa-brands fa-whatsapp animate-pulse"></i>
-        <span class="absolute right-16 bg-slate-950/90 border border-slate-800 text-slate-200 text-[11px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-xl">
-            ¿Soporte inmediato? Escríbenos
+       class="fixed bottom-6 right-6 z-50 bg-gradient-to-tr from-emerald-500 to-green-400 text-slate-950 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute right-20 bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold px-4 py-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-2xl">
+            ¿Soporte VIP? Escríbenos
         </span>
     </a>
 
-    <!-- Navbar Principal -->
-    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3.5">
+    <header class="border-b border-slate-900 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-50 px-4 py-4">
         <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <a href="#" class="flex items-center gap-3 group cursor-pointer">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-9 w-auto rounded-lg border border-slate-800 shadow-inner group-hover:border-amber-500/50 transition-colors">
-                <span class="font-black tracking-widest text-sm uppercase">
-                    MASTER <span class="text-amber-500">GAME</span>
+            <a href="#" class="flex items-center gap-3.5 group cursor-pointer">
+                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-10 w-auto rounded-xl border border-slate-800 shadow-lg group-hover:border-amber-500/50 transition-all duration-300 group-hover:scale-105">
+                <span class="font-black tracking-widest text-base uppercase">
+                    MASTER <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">GAME</span>
                 </span>
             </a>
             
-            <span class="border border-emerald-500/20 text-[10px] px-3 py-1 rounded-full font-bold flex items-center gap-1.5 bg-emerald-950/20 text-emerald-400 uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Servidor Activo
-            </span>
+            <div class="flex items-center gap-4">
+                <span class="hidden sm:inline-flex border border-slate-800 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold bg-slate-900/50 text-slate-400 uppercase tracking-wider">
+                    ⭐ Calificación 5/5
+                </span>
+                <span class="border border-emerald-500/30 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold flex items-center gap-2 bg-emerald-950/30 text-emerald-400 uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Servidor En Línea
+                </span>
+            </div>
         </div>
     </header>
 
-    <!-- Tasa de Cambio Oculta -->
-    <input type="hidden" id="tasa_cambio" value="900" onchange="recalculateAllPrices()">
+    <input type="hidden" id="tasa_cambio" value="880" onchange="recalculateAllPrices()">
 
-    <!-- SECCIÓN DE BIENVENIDA / HERO BANNER -->
-    <section id="home-view" class="container mx-auto px-4 py-12 max-w-5xl relative z-10">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
-        <div class="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="home-view" class="container mx-auto px-4 py-8 max-w-5xl relative z-10">
+        
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="absolute top-40 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[160px] pointer-events-none"></div>
 
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black tracking-widest text-amber-400 uppercase mb-4 shadow-md">
-                <i class="fa-solid fa-shield-halved text-amber-500"></i> RECARGAS 100% SEGURAS, LEGALES Y SIN RIESGOS BANEO
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-black tracking-widest text-amber-400 uppercase mb-5 shadow-lg">
+                <i class="fa-solid fa-fire text-amber-500"></i> EL MEJOR PORTAL DE AUTOMATIZACIÓN DE VENEZUELA
             </div>
-            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase leading-none">
-                Sube de Nivel <br class="sm:hidden"><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 bg-clip-text text-transparent drop-shadow-md">Al Instante</span>
+            <h1 class="text-4xl md:text-7xl font-black mb-5 tracking-tight uppercase leading-none">
+                RECARGAS DIRECTAS <br><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.2)]">100% AUTOMÁTICAS</span>
             </h1>
-            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">
-                ¡Olvídate de las esperas! Proveemos diamantes y monedas de tus juegos favoritos de forma directa mediante tu ID de jugador. Sistema automático, rápido y garantizado con la mayor confianza en toda Venezuela.
+            <p class="text-slate-300 text-sm md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+                Ingresa tu ID, selecciona el paquete que deseas, procesa el pago y observa cómo se acredita el saldo a tu cuenta al instante. Sin registros molestos, rápido, legal y seguro.
             </p>
-            <div class="flex justify-center gap-6 mt-6 text-xs text-slate-500 font-bold">
-                <span><i class="fa-solid fa-bolt text-amber-500 mr-1.5"></i> Entrega en Minutos</span>
-                <span><i class="fa-solid fa-lock text-emerald-500 mr-1.5"></i> Pago Seguro</span>
-                <span><i class="fa-solid fa-headset text-purple-500 mr-1.5"></i> Soporte 24/7</span>
+        </div>
+
+        <div class="w-full mb-12 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/20 backdrop-blur-md p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-blue-600/10 opacity-30 pointer-events-none"></div>
+            <div class="space-y-3 z-10 text-center md:text-left">
+                <span class="bg-amber-500 text-slate-950 font-black text-[10px] tracking-widest uppercase px-3 py-1 rounded-full shadow-md">EVENTO LIMITADO</span>
+                <h3 class="text-2xl md:text-3xl font-black tracking-tight text-white uppercase">🔥 BONO EXTRA ACTIVADO</h3>
+                <p class="text-slate-400 text-sm max-w-md font-medium">Obtén hasta un 20% adicional en diamantes Free Fire en tus compras de hoy. Tu cuenta de jugador te lo agradecerá.</p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-1 text-xs font-bold text-slate-300">
+                    <span><i class="fa-solid fa-shield text-emerald-400 mr-1.5"></i> Anti-Ban</span>
+                    <span><i class="fa-solid fa-clock text-amber-400 mr-1.5"></i> Autoverificación Móvil</span>
+                </div>
+            </div>
+            <div class="relative z-10 w-full md:w-auto flex-shrink-0">
+                <div class="bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-800 p-5 rounded-2xl flex items-center gap-4 shadow-xl">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="FF Promo" class="w-16 h-16 object-cover rounded-xl border border-slate-800">
+                    <div>
+                        <div class="text-[10px] font-black uppercase text-amber-500 tracking-wider">La promo más vendida</div>
+                        <div class="text-sm font-black text-slate-200">520 Diamantes FF</div>
+                        <div class="text-xs text-emerald-400 font-extrabold mt-0.5">Bono +104 incluido</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- SECCIÓN 5: HISTORIAL DE RECARGAS EN VIVO (Gatillo de Confianza) -->
-        <div class="max-w-md mx-auto mb-14 bg-slate-900/10 border border-slate-900/60 rounded-2xl p-3.5 backdrop-blur-sm shadow-xl relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-amber-500 to-orange-500"></div>
-            <div class="flex items-center gap-3">
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping absolute top-4 right-4"></div>
-                <div class="w-8 h-8 rounded-xl bg-slate-950/80 border border-slate-850 flex items-center justify-center text-amber-500 text-xs shadow-inner">
-                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <div class="max-w-xl mx-auto mb-16 bg-slate-950/60 border border-slate-900 rounded-2xl p-4 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-amber-500 via-orange-500 to-amber-600"></div>
+            <div class="flex items-center gap-4">
+                <div class="relative flex items-center justify-center">
+                    <span class="absolute w-3 h-3 bg-emerald-500 rounded-full animate-ping opacity-75"></span>
+                    <span class="relative w-2 h-2 bg-emerald-500 rounded-full"></span>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-[9px] font-black uppercase text-slate-500 tracking-widest mb-0.5">Actividad Reciente</div>
+                    <div class="text-[9px] font-black uppercase text-slate-500 tracking-widest mb-0.5">Sincronización del Servidor en Vivo</div>
                     <div id="live-feed-text" class="text-xs font-bold text-slate-300 transition-all duration-500 transform translate-y-0 opacity-100">
-                        Cargando transmisiones del servidor...
+                        Buscando últimas transacciones de pago...
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Catálogo de Juegos -->
-        <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6 text-center">Selecciona tu campo de batalla</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20 px-2">
-            <!-- Tarjeta Free Fire -->
-            <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-amber-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between relative backdrop-blur-md">
+        <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-8 text-center"><i class="fa-solid fa-gamepad text-amber-500 mr-2"></i> Selecciona tu juego para iniciar la recarga</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 px-2">
+            <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-amber-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(245,158,11,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-40 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] group-hover:border-amber-500/30 transition-all duration-300">
-                            <i class="fa-solid fa-fire-flame-curved text-3xl text-amber-500 filter drop-shadow-[0_0_6px_rgba(245,158,11,0.5)]"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] group-hover:border-amber-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-fire-flame-curved text-4xl text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"></i>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">ID Directo</div>
+                        <div class="absolute bottom-4 left-4 bg-amber-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">ID Directo</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Diamantes abonados de forma directa y legal a tu ID de juego en cuestión de minutos.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Suministro legal y veloz de diamantes directo a tu ID sin necesidad de contraseñas.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 group-hover:from-amber-400 group-hover:to-amber-500 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-amber-500 to-orange-500 group-hover:from-amber-400 group-hover:to-orange-400 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Ingresar ID de Jugador <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <!-- Tarjeta Blood Strike -->
-            <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-orange-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-orange-500/5 flex flex-col justify-between relative backdrop-blur-md">
+            <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-orange-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(249,115,22,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl group-hover:bg-orange-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-40 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:border-orange-500/30 transition-all duration-300">
-                            <i class="fa-solid fa-crosshairs text-3xl text-orange-500 filter drop-shadow-[0_0_6px_rgba(249,115,22,0.5)]"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] group-hover:border-orange-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-crosshairs text-4xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"></i>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-orange-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">Oro / Pases</div>
+                        <div class="absolute bottom-4 left-4 bg-orange-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Oro Directo</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Carga oro de combate o adquiere tus pases de batalla de forma directa mediante tu ID de usuario.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Adquiere Oro de combate, Pases de Batalla y cosméticos directos a tu ID de usuario.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-500 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ingresar ID <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 group-hover:from-orange-400 group-hover:to-red-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Oro <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <!-- NUEVA TARJETA: PlayStation Network -->
-            <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-900/30 border border-slate-850 hover:border-blue-500/50 rounded-3xl overflow-hidden p-5 transition-all duration-300 shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between relative backdrop-blur-md">
+            <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-blue-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(59,130,246,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-40 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-850 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30 transition-all duration-300">
-                            <i class="fa-brands fa-playstation text-3xl text-blue-500 filter drop-shadow-[0_0_6px_rgba(59,130,246,0.5)]"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] group-hover:border-blue-500/40 transition-all duration-300">
+                            <i class="fa-brands fa-playstation text-4xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"></i>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-blue-600 text-slate-100 text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md z-10 shadow-md">Gift Cards</div>
+                        <div class="absolute bottom-4 left-4 bg-blue-600 text-slate-100 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Pines Digitales</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-blue-400 transition-colors duration-250">PLAYSTATION STORE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Códigos digitales prepagados para tu cuenta de PSN. Recarga tu saldo de forma ágil y compra juegos.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-blue-400 transition-colors duration-250">PLAYSTATION STORE</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Códigos de Gift Card válidos y seguros para cargar saldo en tu monedero de PSN.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-blue-600 to-blue-700 group-hover:from-blue-500 group-hover:to-blue-600 text-white font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all">Ver Códigos <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:from-blue-500 group-hover:to-indigo-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Ver Gift Cards <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 border-t border-slate-900 pt-16">
+            <h3 class="text-center font-black text-slate-400 tracking-widest text-xs uppercase mb-12">¿Por qué comprar en MASTER GAME VENEZUELA?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-950/30 border border-slate-900/60 backdrop-blur-sm">
+                    <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xl rounded-xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-rocket"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-slate-200">Entrega Express en 5 Minutos</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed font-medium">Nuestro sistema está sincronizado con tu ID. Una vez verificado tu pago móvil, se procesa en cola exprés.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-950/30 border border-slate-900/60 backdrop-blur-sm">
+                    <div class="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xl rounded-xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-slate-200">Suministro 100% Oficial</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed font-medium">No usamos hack o métodos prohibidos. Tu cuenta está 100% segura contra bloqueos, baneos y reclamos de saldo.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-950/30 border border-slate-900/60 backdrop-blur-sm">
+                    <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xl rounded-xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-headset"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-slate-200">Asistencia por WhatsApp</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed font-medium">Si la referencia del banco falla o tienes alguna duda, nuestro personal te guiará y solventará por WhatsApp en minutos.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FORMULARIO DE REPORTE Y PASARELA DE RECARGA -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
-        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 hover:text-white transition-colors">
+        
+        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900/40 border border-slate-800 px-4 py-2 rounded-xl">
             <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
         </button>
 
-        <!-- Dynamic Game Banner -->
-        <div id="game-image-banner" class="w-full h-36 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-xl">
-            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-            <div class="absolute bottom-5 left-6">
-                <span class="text-[10px] font-black uppercase bg-amber-500 text-slate-950 px-2 py-0.5 rounded tracking-widest mb-1.5 inline-block shadow-md">Tienda Oficial</span>
-                <h2 id="selected-game-title" class="text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow">JUEGO</h2>
+        <div id="game-image-banner" class="w-full h-44 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-2xl">
+            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-35">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
+            <div class="absolute bottom-6 left-8">
+                <span class="text-[10px] font-black uppercase bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 px-3 py-1 rounded-full tracking-widest mb-2 inline-block shadow-lg">Canal Autorizado</span>
+                <h2 id="selected-game-title" class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">JUEGO</h2>
             </div>
         </div>
 
@@ -203,112 +264,106 @@
             
             <div class="lg:col-span-2 space-y-6">
                 
-                <!-- BLOQUE 1: IDENTIFICACIÓN -->
-                <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
+                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">1</span> Datos del Jugador / Cuenta
+                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">1</span> Datos de Cuenta de Juego
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">ID del Jugador</label>
+                            <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">ID del Jugador</label>
                             <div class="relative">
-                                <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold">ID</span>
-                                <input type="text" id="player_id" required placeholder="Ingresa tus datos" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                                <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold uppercase tracking-wider">ID</span>
+                                <input type="text" id="player_id" required placeholder="Ingresa tus datos" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Tu número de WhatsApp</label>
+                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                <input type="tel" id="player_whatsapp" required placeholder="Ej: 04141234567" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                                <input type="tel" id="player_whatsapp" required placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- BLOQUE 2: CATÁLOGO DINÁMICO -->
-                <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">2</span> Selecciona tu Paquete
+                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">2</span> Selecciona tu Paquete
                     </h3>
-                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
                 </div>
 
-                <!-- BLOQUE 3: PASARELA DE MÉTODOS DE PAGO -->
-                <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] font-bold border border-amber-500/20">3</span> Información de Pago
+                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">3</span> Información de Pago
                     </h3>
                     
-                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Selecciona tu Método</label>
-                    <div class="grid grid-cols-3 gap-2.5 mb-6">
-                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
-                            <i class="fa-solid fa-mobile-screen text-base text-amber-400"></i> PMóvil
+                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-3">Selecciona tu Método</label>
+                    <div class="grid grid-cols-3 gap-3 mb-6">
+                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
+                            <i class="fa-solid fa-mobile-screen text-lg text-amber-400"></i> PMóvil
                         </button>
-                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
-                            <i class="fa-solid fa-coins text-base text-amber-500"></i> Binance
+                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
+                            <i class="fa-solid fa-coins text-lg text-amber-500"></i> Binance
                         </button>
-                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all">
-                            <i class="fa-solid fa-credit-card text-base text-purple-400"></i> Zinli
+                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
+                            <i class="fa-solid fa-credit-card text-lg text-purple-450"></i> Zinli
                         </button>
                     </div>
 
-                    <!-- Pago Móvil Cuentas -->
-                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
+                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
+                        <div class="flex flex-col sm:flex-row gap-5 items-center">
+                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
                                 <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Transferencia</div>
+                            <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
+                                <div class="text-[10px] font-black tracking-widest text-amber-500 uppercase mb-1">Datos de Transferencia Pago Móvil</div>
                                 <p><span class="text-slate-500 font-bold">Banco:</span> BANCO DE VENEZUELA (0102)</p>
                                 <p><span class="text-slate-500 font-bold">Teléfono:</span> <span class="font-black text-slate-200">0414-5956693</span></p>
                                 <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-32.562.761</span></p>
-                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Teléfono y Cédula</button>
+                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Teléfono y Cédula</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Binance Pay Cuentas -->
-                    <div id="info-binance" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
+                    <div id="info-binance" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
+                        <div class="flex flex-col sm:flex-row gap-5 items-center">
+                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
                                 <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-wider text-amber-500 uppercase">Datos de Binance Pay</div>
+                            <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
+                                <div class="text-[10px] font-black tracking-widest text-amber-500 uppercase mb-1">Datos de Binance Pay</div>
                                 <p><span class="text-slate-500 font-bold">Correo de Cuenta:</span> <span class="font-black text-slate-200">snaidernarvaez18@gmail.com</span></p>
-                                <button type="button" onclick="copyText('snaidernarvaez18@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
+                                <button type="button" onclick="copyText('snaidernarvaez18@gmail.com', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Zinli Cuentas -->
-                    <div id="info-zinli" class="payment-info-box bg-slate-950/60 border border-slate-850 rounded-xl p-4 mb-4">
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-lg flex-shrink-0 border border-slate-800 shadow-lg overflow-hidden">
+                    <div id="info-zinli" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
+                        <div class="flex flex-col sm:flex-row gap-5 items-center">
+                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
                                 <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex-1 text-xs space-y-1.5 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-wider text-purple-400 uppercase">Datos de Cuenta Zinli</div>
+                            <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
+                                <div class="text-[10px] font-black tracking-widest text-purple-400 uppercase mb-1">Datos de Cuenta Zinli</div>
                                 <p><span class="text-slate-500 font-bold">Correo Zinli:</span> <span class="font-black text-slate-200">rcsmastergame@gmail.com</span></p>
-                                <button type="button" onclick="copyText('rcsmastergame@gmail.com', this)" class="mt-1 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-slate-800 transition-colors"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
+                                <button type="button" onclick="copyText('rcsmastergame@gmail.com', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Referencia e Imagen -->
                     <div class="space-y-4 pt-2">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Número de Referencia / ID Pago</label>
-                                <input type="text" id="payment_ref" required placeholder="Últimos 4 o 6 dígitos" class="w-full bg-slate-950/80 border border-slate-850 focus:border-amber-500/50 rounded-xl py-3 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Número de Referencia / ID Pago</label>
+                                <input type="text" id="payment_ref" required placeholder="Últimos 4, 6 u 8 dígitos" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
                             </div>
                             <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Captura de Pantalla (Opcional)</label>
-                                <label class="w-full bg-slate-950/80 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Captura de Pantalla (Opcional)</label>
+                                <label class="w-full bg-slate-950 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3.5 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
                                     <span id="file-name" class="text-emerald-400 hidden font-bold">✓ Archivo cargado</span>
-                                    <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2"></i> Subir Comprobante</span>
+                                    <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2 text-slate-400"></i> Subir Comprobante</span>
                                     <input type="file" id="receipt_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
                                 </label>
                             </div>
@@ -317,38 +372,44 @@
                 </div>
             </div>
 
-            <!-- RESUMEN LATERAL DEL PEDIDO -->
-            <div class="bg-slate-900/30 border border-slate-850 rounded-2xl p-5 sticky top-24 backdrop-blur-md">
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-4 pb-2 border-b border-slate-900">Resumen del Pedido</h3>
+            <div class="bg-slate-950/80 border border-slate-900 rounded-3xl p-6 sticky top-28 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
+                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-5 pb-3 border-b border-slate-900 flex items-center justify-between">
+                    <span>Resumen del Pedido</span>
+                    <i class="fa-solid fa-receipt text-slate-500"></i>
+                </h3>
                 
-                <div class="space-y-3.5 text-xs font-medium mb-5">
-                    <div class="flex justify-between">
-                        <span class="text-slate-500">Paquete:</span>
-                        <span id="summary-package-name" class="font-bold text-slate-200">Ninguno</span>
+                <div class="space-y-4 text-xs font-medium mb-6">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500">Paquete seleccionado:</span>
+                        <span id="summary-package-name" class="font-extrabold text-slate-200 text-right">Ninguno</span>
                     </div>
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-center">
                         <span class="text-slate-500">Subtotal:</span>
-                        <span id="summary-package-price" class="font-bold text-slate-200">0.00 Bs.</span>
+                        <span id="summary-package-price" class="font-extrabold text-slate-200">0.00 Bs.</span>
                     </div>
-                    <div class="border-t border-slate-900 my-2 pt-3 flex justify-between items-baseline">
-                        <span class="text-sm font-black uppercase text-slate-300">Total a Pagar:</span>
-                        <span id="summary-total-price" class="text-lg font-black text-amber-400">0.00 Bs.</span>
+                    <div class="flex justify-between items-center text-[10px] text-slate-500 font-bold pt-1">
+                        <span>Canal de Entrega:</span>
+                        <span class="text-emerald-400 uppercase">⚡ Automático</span>
+                    </div>
+                    <div class="border-t border-slate-900 my-2 pt-4 flex justify-between items-baseline">
+                        <span class="text-sm font-black uppercase text-slate-300">Total en Bs.</span>
+                        <span id="summary-total-price" class="text-xl font-black text-amber-400 tracking-tight">0.00 Bs.</span>
                     </div>
                 </div>
 
-                <button type="button" id="submit-btn" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(245,158,11,0.2)] flex items-center justify-center gap-2">
+                <button type="button" id="submit-btn" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
                 </button>
             </div>
         </form>
     </section>
 
-    <!-- Footer -->
-    <footer class="w-full text-center py-6 text-[11px] text-slate-600 font-medium mt-12 border-t border-slate-950">
-        &copy; 2026 MASTER GAME. Todos los derechos reservados.
+    <footer class="w-full text-center py-8 text-xs text-slate-600 font-medium mt-16 border-t border-slate-950">
+        &copy; 2026 MASTER GAME VENEZUELA. Todos los derechos reservados. <br>
+        <span class="text-[10px] text-slate-700 mt-1 block">Términos, condiciones y marcas comerciales registradas son propiedad de sus respectivos dueños.</span>
     </footer>
 
-    <!-- CONTROLADORES Y LÓGICA CORE -->
     <script>
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
@@ -384,7 +445,7 @@
             ]
         };
 
-        // LÓGICA SECCIÓN 5: FEED DE RECARGAS EN VIVO
+        // FEED DE RECARGAS EN VIVO
         const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "Yor_FF", "Rex_Blood", "PS5_Gamer"];
         const opcionesPaquetes = [
             "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "Tarjeta Semanal", 
@@ -428,7 +489,6 @@
             const bannerImg = document.getElementById('banner-img-src');
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
             
-            // Adaptar etiquetas dinámicamente según el tipo de servicio
             const idLabel = document.getElementById('id-field-label');
             const idPrefix = document.getElementById('id-field-prefix');
             const idInput = document.getElementById('player_id');
@@ -445,48 +505,48 @@
 
             container.innerHTML = "";
             
-            let activeBorderClass = 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.15)]';
+            let activeBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
             let iconClass = 'text-amber-400';
 
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
                 bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
                 bannerContainer.classList.remove('hidden');
-                activeBorderClass = 'border-amber-500 bg-amber-500/5 shadow-[0_0_15px_rgba(245,158,11,0.15)]';
+                activeBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
                 iconClass = 'text-amber-400';
             } else if(juego === 'blood_strike') {
                 title.innerText = "Blood Strike";
                 bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
                 bannerContainer.classList.remove('hidden');
-                activeBorderClass = 'border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.15)]';
+                activeBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
                 iconClass = 'text-orange-400';
             } else if(juego === 'playstation') {
                 title.innerText = "PlayStation Network";
                 bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
                 bannerContainer.classList.remove('hidden');
-                activeBorderClass = 'border-blue-500 bg-blue-500/5 shadow-[0_0_15px_rgba(59,130,246,0.15)]';
+                activeBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
                 iconClass = 'text-blue-400';
             }
 
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const isChecked = idx === 0;
                 const checkedAttr = isChecked ? "checked" : "";
-                const currentCardClass = isChecked ? activeBorderClass : 'border-slate-900 bg-slate-950/20';
+                const currentCardClass = isChecked ? activeBorderClass : 'border-slate-900 bg-slate-950/40';
                 
                 const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
                 const html = `
                     <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD}, '${activeBorderClass}')">
                         <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
-                        <div class="package-content border rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden ${currentCardClass}">
+                        <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentCardClass}">
                             <div>
-                                <div class="w-7 h-7 rounded-lg bg-slate-900 flex items-center justify-center mb-1.5 border border-slate-800">
-                                    <i class="fa-solid ${pkg.icon} text-xs ${iconClass}"></i>
+                                <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
+                                    <i class="fa-solid ${pkg.icon} text-sm ${iconClass}"></i>
                                 </div>
-                                <div class="font-bold text-[11px] text-slate-200 leading-tight">${pkg.name}</div>
-                                <div class="text-[9px] font-bold text-emerald-400 mt-0.5">${pkg.bonus}</div>
+                                <div class="font-bold text-xs text-slate-200 leading-tight">${pkg.name}</div>
+                                <div class="text-[9px] font-black text-emerald-400 mt-1 tracking-wider uppercase">${pkg.bonus}</div>
                             </div>
-                            <div class="text-xs font-black text-slate-200 mt-1 card-price-render" data-usd="${pkg.priceUSD}">
+                            <div class="text-sm font-black text-slate-200 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
                                 ${calculatedPriceBs} Bs.
                             </div>
                         </div>
@@ -506,11 +566,11 @@
 
         function selectPackage(element, name, priceUSD, activeClasses) {
             document.querySelectorAll('.package-content').forEach(card => {
-                card.className = "package-content border border-slate-900 bg-slate-950/20 rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden";
+                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden";
             });
 
             const innerDiv = element.querySelector('.package-content');
-            if (innerDiv) innerDiv.className = `package-content border rounded-xl p-3.5 flex flex-col justify-between h-32 transition-all duration-200 relative overflow-hidden ${activeClasses}`;
+            if (innerDiv) innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${activeClasses}`;
 
             selectedPackagePriceUSD = priceUSD;
             selectedPackageName = name;
@@ -520,7 +580,7 @@
         function selectPaymentMethod(metodo) {
             metodoPagoActual = metodo;
             document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/20 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
             });
 
             document.querySelectorAll('.payment-info-box').forEach(box => {
@@ -528,13 +588,13 @@
             });
 
             if(metodo === 'pago_movil') {
-                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
                 document.getElementById('info-pago_movil').classList.add('active');
             } else if (metodo === 'binance') {
-                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
                 document.getElementById('info-binance').classList.add('active');
             } else if (metodo === 'zinli') {
-                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-xs transition-all";
+                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
                 document.getElementById('info-zinli').classList.add('active');
             }
         }
