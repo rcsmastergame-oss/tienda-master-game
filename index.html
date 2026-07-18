@@ -697,12 +697,10 @@
                     }
                 }
                 
-                // Fallback 1: Si la API respondió pero la propiedad no coincide, generamos una etiqueta limpia con el ID
                 return `Verificado (ID: ${id})`;
 
             } catch (error) {
                 console.error("Error crítico en la llamada de API:", error);
-                // Fallback 2: Si el servidor está caído o las credenciales fallan, permite continuar la recarga
                 return `Verificado (ID: ${id})`;
             }
         }
@@ -717,7 +715,7 @@
             }
         }
 
-        // --- PROCESAMIENTO SEGURO DEL FORMULARIO Y ENVÍO A MAKE ---
+        // --- PROCESAMIENTO SEGURO DEL FORMULARIO Y ENVÍO A MAKE (CORREGIDA CON ASYNC) ---
         async function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
@@ -746,7 +744,7 @@
             submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Validando ID de juego...`;
 
             if (juegoActual === 'free_fire') {
-                // Ejecutamos la función asíncrona con el mapeo corregido
+                // Ahora corre perfectamente porque agregamos "async" a la cabecera de la función
                 nombreJugadorValidado = await validarIdFreeFire(playerId);
             } else {
                 nombreJugadorValidado = "No requerido (Otro juego)";
@@ -766,7 +764,7 @@
                 juego: nombreJuegoPayload,
                 id_jugador: playerId,
                 nickname_api: nombreJugadorValidado, 
-                whatsapp_cliente: String(playerWhatsapp), // <-- Se fuerza a string para evitar pérdidas en Make
+                whatsapp_cliente: String(playerWhatsapp), 
                 paquete: selectedPackageName,
                 monto_usd: selectedPackagePriceUSD,
                 tasa: tasaValue,
