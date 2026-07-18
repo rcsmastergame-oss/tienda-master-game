@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-<link rel="stylesheet" href="optimización.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg">
     <title>MASTER GAME - Portal de Recargas Gaming N° 1</title>
+    
+    <!-- Hojas de estilo y Scripts externos (Dentro del Head para optimización de carga) -->
+    <link rel="stylesheet" href="optimización.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
         body {
             background-color: #020617;
@@ -70,6 +73,7 @@
 </head>
 <body class="relative min-h-screen pb-16 bg-grid">
 
+    <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
@@ -80,6 +84,7 @@
         </span>
     </a>
 
+    <!-- Encabezado -->
     <header class="border-b border-slate-900 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-50 px-4 py-4">
         <div class="container mx-auto flex justify-between items-center max-w-5xl">
             <a href="#" class="flex items-center gap-3.5 group cursor-pointer">
@@ -102,6 +107,7 @@
 
     <input type="hidden" id="tasa_cambio" value="900" onchange="recalculateAllPrices()">
 
+    <!-- Vista de Inicio -->
     <section id="home-view" class="container mx-auto px-4 py-8 max-w-5xl relative z-10">
         
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[160px] pointer-events-none"></div>
@@ -119,6 +125,7 @@
             </p>
         </div>
 
+        <!-- Banner de Evento -->
         <div class="w-full mb-12 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/20 backdrop-blur-md p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative shadow-2xl">
             <div class="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-blue-600/10 opacity-30 pointer-events-none"></div>
             <div class="space-y-3 z-10 text-center md:text-left">
@@ -142,6 +149,7 @@
             </div>
         </div>
 
+        <!-- Feed en Vivo -->
         <div class="max-w-xl mx-auto mb-16 bg-slate-950/60 border border-slate-900 rounded-2xl p-4 backdrop-blur-xl shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-amber-500 via-orange-500 to-amber-600"></div>
             <div class="flex items-center gap-4">
@@ -160,7 +168,9 @@
 
         <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-8 text-center"><i class="fa-solid fa-gamepad text-amber-500 mr-2"></i> Selecciona tu juego para iniciar la recarga</h2>
         
+        <!-- Cuadrícula de Juegos -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 px-2">
+            <!-- Free Fire -->
             <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-amber-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(245,158,11,0.1)] flex flex-col justify-between relative backdrop-blur-md">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors pointer-events-none"></div>
                 <div>
@@ -180,6 +190,7 @@
                 </div>
             </div>
 
+            <!-- Blood Strike -->
             <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-orange-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(249,115,22,0.1)] flex flex-col justify-between relative backdrop-blur-md">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl group-hover:bg-orange-500/10 transition-colors pointer-events-none"></div>
                 <div>
@@ -199,6 +210,7 @@
                 </div>
             </div>
 
+            <!-- PlayStation -->
             <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-blue-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(59,130,246,0.1)] flex flex-col justify-between relative backdrop-blur-md">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-colors pointer-events-none"></div>
                 <div>
@@ -219,6 +231,7 @@
             </div>
         </div>
 
+        <!-- Sección de Características -->
         <div class="mt-16 border-t border-slate-900 pt-16">
             <h3 class="text-center font-black text-slate-400 tracking-widest text-xs uppercase mb-12">¿Por qué comprar en MASTER GAME VENEZUELA?</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -247,6 +260,7 @@
         </div>
     </section>
 
+    <!-- Vista de Formulario / Tienda -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
         
         <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900/40 border border-slate-800 px-4 py-2 rounded-xl">
@@ -266,6 +280,7 @@
             
             <div class="lg:col-span-2 space-y-6">
                 
+                <!-- Paso 1 -->
                 <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-16 h-16 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
@@ -289,6 +304,7 @@
                     </div>
                 </div>
 
+                <!-- Paso 2 -->
                 <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">2</span> Selecciona tu Paquete
@@ -296,6 +312,7 @@
                     <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
                 </div>
 
+                <!-- Paso 3 -->
                 <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">3</span> Información de Pago
@@ -314,6 +331,7 @@
                         </button>
                     </div>
 
+                    <!-- Cuadros de Datos de Pago -->
                     <div id="info-pago_movil" class="payment-info-box active bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-5 items-center">
                             <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
@@ -374,6 +392,7 @@
                 </div>
             </div>
 
+            <!-- Resumen flotante lateral -->
             <div class="bg-slate-950/80 border border-slate-900 rounded-3xl p-6 sticky top-28 backdrop-blur-xl shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
                 <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-5 pb-3 border-b border-slate-900 flex items-center justify-between">
@@ -407,16 +426,20 @@
         </form>
     </section>
 
+    <!-- Pie de página -->
     <footer class="w-full text-center py-8 text-xs text-slate-600 font-medium mt-16 border-t border-slate-950">
         &copy; 2026 MASTER GAME VENEZUELA. Todos los derechos reservados. <br>
         <span class="text-[10px] text-slate-700 mt-1 block">Términos, condiciones y marcas comerciales registradas son propiedad de sus respectivos dueños.</span>
     </footer>
 
+    <!-- Lógica de Control Dinámico y APIs -->
     <script>
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
         let selectedPackageName = "";
         let metodoPagoActual = "pago_movil";
+        let currentActiveBorderClass = ""; 
+        let nombreJugadorValidado = ""; 
 
         const listaPaquetes = {
             free_fire: [
@@ -447,7 +470,6 @@
             ]
         };
 
-        // FEED DE RECARGAS EN VIVO
         const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "Yor_FF", "Rex_Blood", "PS5_Gamer"];
         const opcionesPaquetes = [
             "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "Tarjeta Semanal", 
@@ -475,7 +497,6 @@
         setInterval(actualizarFeedEnVivo, 7000);
         window.addEventListener('DOMContentLoaded', actualizarFeedEnVivo);
 
-
         function showSection(id) {
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('form-view').classList.add('hidden');
@@ -485,6 +506,7 @@
 
         function openStore(juego) {
             juegoActual = juego;
+            nombreJugadorValidado = ""; 
             const container = document.getElementById('packages-container');
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
@@ -506,39 +528,37 @@
             }
 
             container.innerHTML = "";
-            
-            let activeBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
             let iconClass = 'text-amber-400';
 
             if(juego === 'free_fire') {
                 title.innerText = "Free Fire";
                 bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
                 bannerContainer.classList.remove('hidden');
-                activeBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
+                currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
                 iconClass = 'text-amber-400';
             } else if(juego === 'blood_strike') {
                 title.innerText = "Blood Strike";
                 bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
                 bannerContainer.classList.remove('hidden');
-                activeBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
+                currentActiveBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
                 iconClass = 'text-orange-400';
             } else if(juego === 'playstation') {
                 title.innerText = "PlayStation Network";
                 bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
                 bannerContainer.classList.remove('hidden');
-                activeBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
+                currentActiveBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
                 iconClass = 'text-blue-400';
             }
 
             listaPaquetes[juego].forEach((pkg, idx) => {
                 const isChecked = idx === 0;
                 const checkedAttr = isChecked ? "checked" : "";
-                const currentCardClass = isChecked ? activeBorderClass : 'border-slate-900 bg-slate-950/40';
+                const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
                 
                 const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
                 const html = `
-                    <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD}, '${activeBorderClass}')">
+                    <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
                         <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
                         <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentCardClass}">
                             <div>
@@ -566,13 +586,18 @@
             showSection('form-view');
         }
 
-        function selectPackage(element, name, priceUSD, activeClasses) {
+        function selectPackage(element, name, priceUSD) {
             document.querySelectorAll('.package-content').forEach(card => {
                 card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden";
             });
 
             const innerDiv = element.querySelector('.package-content');
-            if (innerDiv) innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${activeClasses}`;
+            if (innerDiv) {
+                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
+            }
+
+            const radio = element.querySelector('.package-radio');
+            if(radio) radio.checked = true;
 
             selectedPackagePriceUSD = priceUSD;
             selectedPackageName = name;
@@ -652,7 +677,32 @@
             }
         }
 
-        function submitRecharge() {
+        // --- CONEXIÓN DE API RAPIDAPI ---
+        async function validarIdFreeFire(id) {
+            const url = `https://id-game-checker.p.rapidapi.com/ff-global/${id}`;
+            const opciones = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': 'ece75fb231mshea44d6c7d2b7760p1ca90fjsn66b0967f03ac',
+                    'x-rapidapi-host': 'id-game-checker.p.rapidapi.com',
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            try {
+                const respuesta = await fetch(url, opciones);
+                if (!respuesta.ok) return null;
+                
+                const resultado = await respuesta.json();
+                return resultado.name || resultado.nickname || resultado.username || null;
+            } catch (error) {
+                console.error("Error al validar el ID en RapidAPI:", error);
+                return null;
+            }
+        }
+
+        // --- ENVÍO DE DATOS SEGURO AL WEBHOOK ---
+        async function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
             const paymentRef = document.getElementById('payment_ref').value.trim();
@@ -676,11 +726,31 @@
                 return; 
             }
 
-            const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
             submitBtn.disabled = true;
-            submitBtn.innerText = "Procesando de forma segura...";
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Validando ID de juego...`;
 
+            if (juegoActual === 'free_fire') {
+                const nickencontrado = await validarIdFreeFire(playerId);
+                
+                if (!nickencontrado) {
+                    Swal.fire({ 
+                        title: 'ID Inválido',
+                        text: 'El ID de Free Fire ingresado no existe en Garena. Por favor, compruébalo e intenta de nuevo.', 
+                        icon: 'error', 
+                        customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } 
+                    });
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago`;
+                    return;
+                }
+                nombreJugadorValidado = nickencontrado;
+            } else {
+                nombreJugadorValidado = "No requerido (Otro juego)";
+            }
+
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Subiendo reporte...`;
+
+            const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/faxu7f5rakpv5981o4okcgvh6o4b4pqb"; 
 
             let nombreJuegoPayload = "FREE FIRE";
@@ -691,7 +761,8 @@
                 header_decorativo: "🔒 *TRANSACCIÓN VERIFICADA Y SEGURA* 🔒\n🛡️ _MASTER GAME AUTH SERVICE_\n===================================\n✅ Transacción protegida por cifrado SSL.\n⚡ Procesamiento inmediato en cola automatizada.\n💎 Estado de recarga: Pendiente de Confirmación.",
                 juego: nombreJuegoPayload,
                 id_jugador: playerId,
-                whatsapp_cliente: playerWhatsapp,
+                nickname_api: nombreJugadorValidado, 
+                whatsapp_cliente: String(playerWhatsapp), // <-- Garantiza que llegue como string completo de texto en el JSON
                 paquete: selectedPackageName,
                 monto_usd: selectedPackagePriceUSD,
                 tasa: tasaValue,
@@ -712,7 +783,7 @@
                 if(response.ok) {
                     Swal.fire({
                         title: '¡Reporte Enviado!',
-                        text: '🔒 Tus datos fueron validados de forma segura en el sistema. Tu servicio se procesará en minutos.',
+                        html: `🔒 ID verificado con éxito como: <b>${nombreJugadorValidado}</b>.<br><br>Tus fondos están siendo validados. Tu saldo se acreditará en breve.`,
                         icon: 'success',
                         customClass: {
                             popup: 'swal2-popup-gaming',
@@ -723,12 +794,12 @@
                     document.getElementById('recharge-form').reset();
                     showSection('home-view');
                 } else {
-                    Swal.fire({ text: 'El servidor respondió con un error de ejecución. Revisa los logs en Make.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                    Swal.fire({ text: 'Error de respuesta del servidor del webhook.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
                 }
             })
             .catch(error => {
                 console.error("Error:", error);
-                Swal.fire({ text: 'Error de conexión. Revisa tu webhook de Make.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                Swal.fire({ text: 'Error de red. Asegúrate de que el módulo en Make esté activo.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
             })
             .finally(() => {
                 submitBtn.disabled = false;
