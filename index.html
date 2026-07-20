@@ -289,7 +289,6 @@
                             <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">ID del Jugador</label>
                             <div class="relative">
                                 <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold uppercase tracking-wider">ID</span>
-                                <!-- Se agrega onchange y onkeyup para validación en tiempo real -->
                                 <input type="text" id="player_id" required placeholder="Ingresa tus datos" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                             <!-- Contenedor visual para mostrar el Nickname de la API inmediatamente -->
@@ -509,7 +508,6 @@
             juegoActual = juego;
             nombreJugadorValidado = ""; 
             
-            // Ocultar el estado de validación en vivo al cambiar de juego
             const statusLabel = document.getElementById('live-api-status');
             statusLabel.className = "mt-2 text-xs font-bold hidden";
             statusLabel.innerText = "";
@@ -674,7 +672,6 @@
             document.getElementById('summary-total-price').innerText = finalPriceBs + " Bs.";
         }
 
-        // NUEVA FUNCIÓN: Validación inmediata apenas el cliente sale o termina de escribir en el campo ID
         async function verificarIdEnTiempoReal() {
             const playerId = document.getElementById('player_id').value.trim();
             const statusLabel = document.getElementById('live-api-status');
@@ -684,7 +681,6 @@
                 return;
             }
 
-            // Solo corremos la API de RapidAPI si es Free Fire
             if (juegoActual !== 'free_fire') {
                 statusLabel.className = "mt-2 text-xs font-bold text-slate-400 block";
                 statusLabel.innerText = "✓ ID ingresado listo para reporte.";
@@ -708,33 +704,26 @@
             }
         }
 
-        // Lógica nativa de tu consulta API aislada
+        // CORRECCIÓN: Ahora llama de forma interna y segura a tu Serverless Function local
         async function consultarAPI(id) {
-            const url = `https://id-game-checker.p.rapidapi.com/ff-global/${id}`;
-            const opciones = {
-                method: 'GET',
-                headers: {
-                    'x-rapidapi-key': 'ece75fb231mshea44d6c7d2b7760p1ca90fjsn66b0967f03ac',
-                    'x-rapidapi-host': 'id-game-checker.p.rapidapi.com',
-                    'Content-Type': 'application/json'
-                }
-            };
-
             try {
-                const respuesta = await fetch(url, opciones);
+                const respuesta = await fetch('/api/verificar-id', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ playerId: id })
+                });
+
                 if (respuesta.ok) {
                     const resultado = await respuesta.json();
-                    const nickname = resultado.name || 
-                                     resultado.nickname || 
-                                     resultado.username || 
-                                     resultado.player_name || 
-                                     (resultado.data && resultado.data.nickname) ||
-                                     (resultado.data && resultado.data.name);
-                    if (nickname) return nickname;
+                    if (resultado.success && resultado.nickname) {
+                        return resultado.nickname;
+                    }
                 }
                 return "Error";
             } catch (error) {
-                console.error("Error API:", error);
+                console.error("Error en llamada local a API proxy:", error);
                 return "Error";
             }
         }
@@ -749,7 +738,6 @@
             }
         }
 
-        // Función de envío final a Make
         async function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
@@ -777,7 +765,6 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Subiendo reporte...`;
 
-            // Si por alguna razón no se ha validado el nombre aún, se extrae de respaldo veloz
             if (!nombreJugadorValidado) {
                 nombreJugadorValidado = juegoActual === 'free_fire' ? `ID: ${playerId}` : "No requerido";
             }
