@@ -417,7 +417,8 @@
                     </div>
                 </div>
 
-                <button type="button" id="submit-btn" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+                <!-- BOTÓN CORREGIDO PARA HACER SUBMIT Y LLAMAR A TU FUNCIÓN -->
+                <button type="submit" id="submit-btn" onclick="submitRecharge(); return false;" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
                 </button>
             </div>
@@ -665,7 +666,7 @@
             document.getElementById('summary-total-price').innerText = finalPriceBs + " Bs.";
         }
 
-        // --- URL CORREGIDA SEGÚN TU PLAYGROUND DE RAPIDAPI ---
+        // Validación de ID conectada a tu API de RapidAPI
         async function validarIdFreeFire(id) {
             const url = `https://id-game-checker.p.rapidapi.com/ff-global/${id}`;
             const opciones = {
@@ -714,7 +715,7 @@
             }
         }
 
-        // --- PROCESAMIENTO SEGURO DEL FORMULARIO Y ENVÍO A MAKE ---
+        // Función que recolecta campos, procesa validación y empuja a Make
         async function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
