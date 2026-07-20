@@ -289,8 +289,11 @@
                             <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">ID del Jugador</label>
                             <div class="relative">
                                 <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold uppercase tracking-wider">ID</span>
-                                <input type="text" id="player_id" required placeholder="Ingresa tus datos" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <!-- Se agrega onchange y onkeyup para validación en tiempo real -->
+                                <input type="text" id="player_id" required placeholder="Ingresa tus datos" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
+                            <!-- Contenedor visual para mostrar el Nickname de la API inmediatamente -->
+                            <div id="live-api-status" class="mt-2 text-xs font-bold hidden transition-all duration-300"></div>
                         </div>
                         <div>
                             <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
@@ -417,7 +420,6 @@
                     </div>
                 </div>
 
-                <!-- BOTÓN CORREGIDO PARA HACER SUBMIT Y LLAMAR A TU FUNCIÓN -->
                 <button type="submit" id="submit-btn" onclick="submitRecharge(); return false;" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
                 </button>
@@ -506,6 +508,12 @@
         function openStore(juego) {
             juegoActual = juego;
             nombreJugadorValidado = ""; 
+            
+            // Ocultar el estado de validación en vivo al cambiar de juego
+            const statusLabel = document.getElementById('live-api-status');
+            statusLabel.className = "mt-2 text-xs font-bold hidden";
+            statusLabel.innerText = "";
+
             const container = document.getElementById('packages-container');
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
@@ -666,8 +674,42 @@
             document.getElementById('summary-total-price').innerText = finalPriceBs + " Bs.";
         }
 
-        // Validación de ID conectada a tu API de RapidAPI
-        async function validarIdFreeFire(id) {
+        // NUEVA FUNCIÓN: Validación inmediata apenas el cliente sale o termina de escribir en el campo ID
+        async function verificarIdEnTiempoReal() {
+            const playerId = document.getElementById('player_id').value.trim();
+            const statusLabel = document.getElementById('live-api-status');
+
+            if (!playerId) {
+                statusLabel.className = "mt-2 text-xs font-bold hidden";
+                return;
+            }
+
+            // Solo corremos la API de RapidAPI si es Free Fire
+            if (juegoActual !== 'free_fire') {
+                statusLabel.className = "mt-2 text-xs font-bold text-slate-400 block";
+                statusLabel.innerText = "✓ ID ingresado listo para reporte.";
+                nombreJugadorValidado = "No requerido (Otro juego)";
+                return;
+            }
+
+            statusLabel.className = "mt-2 text-xs font-bold text-amber-400 block animate-pulse";
+            statusLabel.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Buscando nickname en los servidores de Garena...`;
+
+            const nickname = await consultarAPI(playerId);
+
+            if (nickname && !nickname.startsWith("Error")) {
+                statusLabel.className = "mt-2 text-xs font-bold text-emerald-400 block";
+                statusLabel.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Jugador encontrado: <span class="underline">${nickname}</span>`;
+                nombreJugadorValidado = nickname;
+            } else {
+                statusLabel.className = "mt-2 text-xs font-bold text-rose-400 block";
+                statusLabel.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-1"></i> No se pudo confirmar el Nickname, pero puedes enviar el reporte.`;
+                nombreJugadorValidado = `Verificado (ID: ${playerId})`;
+            }
+        }
+
+        // Lógica nativa de tu consulta API aislada
+        async function consultarAPI(id) {
             const url = `https://id-game-checker.p.rapidapi.com/ff-global/${id}`;
             const opciones = {
                 method: 'GET',
@@ -680,28 +722,20 @@
 
             try {
                 const respuesta = await fetch(url, opciones);
-                
                 if (respuesta.ok) {
                     const resultado = await respuesta.json();
-                    console.log("Respuesta de la API:", resultado); 
-
                     const nickname = resultado.name || 
                                      resultado.nickname || 
                                      resultado.username || 
                                      resultado.player_name || 
                                      (resultado.data && resultado.data.nickname) ||
                                      (resultado.data && resultado.data.name);
-
-                    if (nickname) {
-                        return nickname;
-                    }
+                    if (nickname) return nickname;
                 }
-                
-                return `Verificado (ID: ${id})`;
-
+                return "Error";
             } catch (error) {
-                console.error("Error en la llamada de API:", error);
-                return `Verificado (ID: ${id})`;
+                console.error("Error API:", error);
+                return "Error";
             }
         }
 
@@ -715,7 +749,7 @@
             }
         }
 
-        // Función que recolecta campos, procesa validación y empuja a Make
+        // Función de envío final a Make
         async function submitRecharge() {
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
@@ -741,15 +775,12 @@
             }
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Validando ID de juego...`;
-
-            if (juegoActual === 'free_fire') {
-                nombreJugadorValidado = await validarIdFreeFire(playerId);
-            } else {
-                nombreJugadorValidado = "No requerido (Otro juego)";
-            }
-
             submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Subiendo reporte...`;
+
+            // Si por alguna razón no se ha validado el nombre aún, se extrae de respaldo veloz
+            if (!nombreJugadorValidado) {
+                nombreJugadorValidado = juegoActual === 'free_fire' ? `ID: ${playerId}` : "No requerido";
+            }
 
             const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/faxu7f5rakpv5981o4okcgvh6o4b4pqb"; 
@@ -793,6 +824,7 @@
                         }
                     });
                     document.getElementById('recharge-form').reset();
+                    document.getElementById('live-api-status').className = "hidden";
                     showSection('home-view');
                 } else {
                     Swal.fire({ text: 'Error de respuesta del servidor del webhook.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
