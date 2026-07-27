@@ -189,7 +189,7 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl group-hover:bg-red-500/10 transition-colors pointer-events-none"></div>
                 <div>
                     <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp">
+                        <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp" alt="Roblox Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(239,68,68,0.4)] group-hover:border-red-500/40 transition-all duration-300">
                             <i class="fa-solid fa-cube text-4xl text-red-500 filter drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
@@ -209,7 +209,7 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/10 transition-colors pointer-events-none"></div>
                 <div>
                     <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg">
+                        <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg" alt="COD Mobile Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] group-hover:border-emerald-500/40 transition-all duration-300">
                             <i class="fa-solid fa-gun text-4xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]"></i>
@@ -249,7 +249,7 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition-colors pointer-events-none"></div>
                 <div>
                     <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg">
+                        <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg" alt="Zinli Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
                         <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(168,85,247,0.4)] group-hover:border-purple-500/40 transition-all duration-300">
                             <i class="fa-solid fa-credit-card text-4xl text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]"></i>
@@ -698,19 +698,18 @@
                     const checkedAttr = isChecked ? "checked" : "";
                     const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
                     
-                    // Cálculo con PRECIO BASE sin recargo extra por defecto
                     const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
                     const html = `
-                        <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
+                        <label class="relative block cursor-pointer package-card group h-full" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
                             <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
-                            <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentCardClass}">
+                            <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden ${currentCardClass}">
                                 <div>
                                     <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
                                         <i class="fa-solid ${pkg.icon} text-sm ${iconClass}"></i>
                                     </div>
-                                    <div class="font-bold text-xs text-slate-200 leading-tight">${pkg.name}</div>
-                                    <div class="text-[9px] font-black text-emerald-400 mt-1 tracking-wider uppercase">${pkg.bonus}</div>
+                                    <div class="font-bold text-xs text-slate-200 leading-tight line-clamp-2">${pkg.name}</div>
+                                    <div class="text-[9px] font-black text-emerald-400 mt-1 tracking-wider uppercase truncate">${pkg.bonus}</div>
                                 </div>
                                 <div class="text-sm font-black text-slate-200 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
                                     ${calculatedPriceBs} Bs.
@@ -740,12 +739,12 @@
 
         function selectPackage(element, name, priceUSD) {
             document.querySelectorAll('.package-content').forEach(card => {
-                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden";
+                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden";
             });
 
             const innerDiv = element.querySelector('.package-content');
             if (innerDiv) {
-                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
+                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
             }
 
             const radio = element.querySelector('.package-radio');
@@ -777,7 +776,6 @@
                 document.getElementById('info-zinli').classList.add('active');
             }
 
-            // Recalcular precios según el método seleccionado
             updateTotalSummary();
         }
 
@@ -813,7 +811,6 @@
             updateTotalSummary();
         }
 
-        // LÓGICA DE CÁLCULO: Solo suma el 10% si paga con Zinli o compra Saldo Zinli
         function updateTotalSummary() {
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
             const rowFee = document.getElementById('row-fee');
@@ -822,7 +819,6 @@
             let comisionBs = 0;
             let totalBs = precioBaseBs;
 
-            // Condición: Se aplica el 10% solo si el pago es por Zinli o si la tienda actual es "Venta de Zinli"
             if (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale') {
                 comisionBs = precioBaseBs * 0.10;
                 totalBs = precioBaseBs + comisionBs;
@@ -915,14 +911,12 @@
                 return; 
             }
 
-            // Aplicar 10% en la orden final SOLO SI el método es Zinli o la opción es Saldo Zinli
             const requiereRecargo = (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale');
             const factorRecargo = requiereRecargo ? 1.10 : 1.00;
 
             const precioFinalUSD = selectedPackagePriceUSD * factorRecargo;
             const precioBs = (precioFinalUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-            // Redirección por WhatsApp para Roblox / COD Mobile
             if (juegoActual === 'roblox' || juegoActual === 'cod_mobile') {
                 const accountUser = document.getElementById('account_user').value.trim();
                 const accountPass = document.getElementById('account_pass').value.trim();
@@ -962,7 +956,6 @@
                 return;
             }
 
-            // Enviar a Webhook de Make para juegos por ID y Zinli
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
 
