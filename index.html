@@ -366,7 +366,7 @@
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-purple-400 font-extrabold text-sm">$</span>
                                 <input type="number" id="zinli_custom_usd" step="0.5" min="1" placeholder="Ej: 5.00" oninput="onZinliCustomAmountChange()" class="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl py-3 pl-8 pr-4 text-base font-black text-white outline-none">
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-2 font-medium">El equivalente en Bolívares (con el 10% de recargo del servicio Zinli) se calculará automáticamente.</p>
+                            <p class="text-[11px] text-slate-400 mt-2 font-medium">El equivalente en Bolívares se calculará automáticamente al cambio oficial.</p>
                         </div>
                     </div>
                 </div>
@@ -506,7 +506,16 @@
         let currentActiveBorderClass = ""; 
         let nombreJugadorValidado = ""; 
 
-        // PRECIOS BASE REALES (sin comisión del 10% incluida de forma fija)
+        // IMÁGENES DE PAQUETES
+        const imagenesPaquetes = {
+            free_fire: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10",
+            blood_strike: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10",
+            roblox: "https://images.rbxcdn.com/7b328a30ef14be8e85eb662d5e75d045",
+            cod_mobile: "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/store/codm-hero.jpg",
+            playstation: "https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg"
+        };
+
+        // PRECIOS BASE REALES
         const listaPaquetes = {
             free_fire: [
                 { id: "ff_100", name: "100 Diamantes + 10 Bono", bonus: "Entrega Inmediata", priceUSD: 0.85, icon: "fa-gem" },
@@ -693,26 +702,30 @@
                 customZinliBox.classList.add('hidden');
                 container.classList.remove('hidden');
 
+                const cardImgSrc = imagenesPaquetes[juego] || "";
+
                 listaPaquetes[juego].forEach((pkg, idx) => {
                     const isChecked = idx === 0;
                     const checkedAttr = isChecked ? "checked" : "";
                     const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
                     
-                    // Cálculo con PRECIO BASE sin recargo extra por defecto
                     const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
                     const html = `
                         <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
                             <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
-                            <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentCardClass}">
-                                <div>
-                                    <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
-                                        <i class="fa-solid ${pkg.icon} text-sm ${iconClass}"></i>
+                            <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-48 transition-all duration-300 relative overflow-hidden ${currentCardClass}">
+                                <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity">
+                                    <img src="${cardImgSrc}" alt="Background" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="w-10 h-10 rounded-xl bg-slate-900/80 flex items-center justify-center mb-2 border border-slate-800 shadow-md">
+                                        <i class="fa-solid ${pkg.icon} text-base ${iconClass}"></i>
                                     </div>
                                     <div class="font-bold text-xs text-slate-200 leading-tight">${pkg.name}</div>
                                     <div class="text-[9px] font-black text-emerald-400 mt-1 tracking-wider uppercase">${pkg.bonus}</div>
                                 </div>
-                                <div class="text-sm font-black text-slate-200 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
+                                <div class="relative z-10 text-sm font-black text-slate-200 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
                                     ${calculatedPriceBs} Bs.
                                 </div>
                             </div>
@@ -740,12 +753,12 @@
 
         function selectPackage(element, name, priceUSD) {
             document.querySelectorAll('.package-content').forEach(card => {
-                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden";
+                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-48 transition-all duration-300 relative overflow-hidden";
             });
 
             const innerDiv = element.querySelector('.package-content');
             if (innerDiv) {
-                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-36 transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
+                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-48 transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
             }
 
             const radio = element.querySelector('.package-radio');
@@ -813,7 +826,7 @@
             updateTotalSummary();
         }
 
-        // LÓGICA DE CÁLCULO: Solo suma el 10% si paga con Zinli o compra Saldo Zinli
+        // LÓGICA DE CÁLCULO: Se aplica el 10% SOLO cuando se selecciona el Método de Pago Zinli
         function updateTotalSummary() {
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
             const rowFee = document.getElementById('row-fee');
@@ -822,8 +835,8 @@
             let comisionBs = 0;
             let totalBs = precioBaseBs;
 
-            // Condición: Se aplica el 10% solo si el pago es por Zinli o si la tienda actual es "Venta de Zinli"
-            if (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale') {
+            // La condición se activa EXCLUSIVAMENTE si el cliente paga mediante Zinli
+            if (metodoPagoActual === 'zinli') {
                 comisionBs = precioBaseBs * 0.10;
                 totalBs = precioBaseBs + comisionBs;
                 
@@ -915,8 +928,8 @@
                 return; 
             }
 
-            // Aplicar 10% en la orden final SOLO SI el método es Zinli o la opción es Saldo Zinli
-            const requiereRecargo = (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale');
+            // Se aplica el 10% únicamente al usar el método Zinli
+            const requiereRecargo = (metodoPagoActual === 'zinli');
             const factorRecargo = requiereRecargo ? 1.10 : 1.00;
 
             const precioFinalUSD = selectedPackagePriceUSD * factorRecargo;
