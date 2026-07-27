@@ -366,7 +366,7 @@
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-purple-400 font-extrabold text-sm">$</span>
                                 <input type="number" id="zinli_custom_usd" step="0.5" min="1" placeholder="Ej: 5.00" oninput="onZinliCustomAmountChange()" class="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl py-3 pl-8 pr-4 text-base font-black text-white outline-none">
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-2 font-medium">El equivalente en Bolívares se calculará automáticamente en el resumen del pedido.</p>
+                            <p class="text-[11px] text-slate-400 mt-2 font-medium">El equivalente en Bolívares (incluyendo el 10% de servicio) se calculará automáticamente.</p>
                         </div>
                     </div>
                 </div>
@@ -461,21 +461,25 @@
                     <i class="fa-solid fa-receipt text-slate-500"></i>
                 </h3>
                 
-                <div class="space-y-4 text-xs font-medium mb-6">
+                <div class="space-y-3 text-xs font-medium mb-6">
                     <div class="flex justify-between items-center">
                         <span class="text-slate-500">Paquete / Cantidad:</span>
                         <span id="summary-package-name" class="font-extrabold text-slate-200 text-right">Ninguno</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-slate-500">Subtotal:</span>
-                        <span id="summary-package-price" class="font-extrabold text-slate-200">0.00 Bs.</span>
+                        <span class="text-slate-500">Precio Base:</span>
+                        <span id="summary-base-price" class="font-extrabold text-slate-200">0.00 Bs.</span>
+                    </div>
+                    <div class="flex justify-between items-center text-amber-400 font-bold">
+                        <span>Comisión / Servicio (10%):</span>
+                        <span id="summary-fee-price">0.00 Bs.</span>
                     </div>
                     <div class="flex justify-between items-center text-[10px] text-slate-500 font-bold pt-1">
                         <span>Canal de Entrega:</span>
                         <span id="summary-delivery-channel" class="text-emerald-400 uppercase">⚡ Automático</span>
                     </div>
                     <div class="border-t border-slate-900 my-2 pt-4 flex justify-between items-baseline">
-                        <span class="text-sm font-black uppercase text-slate-300">Total en Bs.</span>
+                        <span class="text-sm font-black uppercase text-slate-300">Total a Pagar (Bs.)</span>
                         <span id="summary-total-price" class="text-xl font-black text-amber-400 tracking-tight">0.00 Bs.</span>
                     </div>
                 </div>
@@ -495,6 +499,9 @@
 
     <!-- Script principal -->
     <script>
+        // Constante para el recargo del 10%
+        const FACTOR_RECARGO = 1.10;
+
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
         let selectedPackageName = "";
@@ -603,7 +610,6 @@
             const deliveryChannel = document.getElementById('summary-delivery-channel');
             const loginTypeSelect = document.getElementById('account_login_type');
 
-            // Configuración de tipo de inicio de sesión según el juego
             if (juego === 'cod_mobile') {
                 loginTypeSelect.value = "Activision";
                 loginTypeSelect.disabled = true;
@@ -614,7 +620,6 @@
                 loginTypeSelect.disabled = false;
             }
 
-            // Alternar vista entre campos por ID o por Credenciales
             if (juego === 'roblox' || juego === 'cod_mobile') {
                 idContainer.classList.add('hidden');
                 credContainer.classList.remove('hidden');
@@ -695,7 +700,9 @@
                     const checkedAttr = isChecked ? "checked" : "";
                     const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
                     
-                    const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    // Cálculo con el 10% de recargo incorporado
+                    const precioConRecargoUSD = pkg.priceUSD * FACTOR_RECARGO;
+                    const calculatedPriceBs = (precioConRecargoUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
                     const html = `
                         <label class="relative block cursor-pointer package-card group" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
@@ -800,7 +807,7 @@
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
             document.querySelectorAll('.card-price-render').forEach(el => {
                 const usd = parseFloat(el.getAttribute('data-usd'));
-                const newBs = (usd * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                const newBs = (usd * FACTOR_RECARGO * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                 el.innerText = newBs + " Bs.";
             });
             updateTotalSummary();
@@ -808,11 +815,15 @@
 
         function updateTotalSummary() {
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            const finalPriceBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            
+            const precioBaseBs = selectedPackagePriceUSD * tasaValue;
+            const comisionBs = (selectedPackagePriceUSD * 0.10) * tasaValue;
+            const totalBs = (selectedPackagePriceUSD * FACTOR_RECARGO) * tasaValue;
 
             document.getElementById('summary-package-name').innerText = selectedPackageName || "Ninguno";
-            document.getElementById('summary-package-price').innerText = finalPriceBs + " Bs.";
-            document.getElementById('summary-total-price').innerText = finalPriceBs + " Bs.";
+            document.getElementById('summary-base-price').innerText = precioBaseBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
+            document.getElementById('summary-fee-price').innerText = "+ " + comisionBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
+            document.getElementById('summary-total-price').innerText = totalBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
         }
 
         async function verificarIdEnTiempoReal() {
@@ -892,7 +903,8 @@
                 return; 
             }
 
-            const precioBs = (selectedPackagePriceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const precioFinalUSD = selectedPackagePriceUSD * FACTOR_RECARGO;
+            const precioBs = (precioFinalUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
             // Redirección por WhatsApp para Roblox / COD Mobile
             if (juegoActual === 'roblox' || juegoActual === 'cod_mobile') {
@@ -910,7 +922,7 @@
 
                 const msjWhatsApp = `¡Hola MASTER GAME! 👋 Acabo de realizar un pago para *${nombreJuego}*.%0A%0A` +
                     `📌 *Paquete:* ${selectedPackageName}%0A` +
-                    `💵 *Monto:* ${selectedPackagePriceUSD} USD (${precioBs} Bs.)%0A` +
+                    `💵 *Monto Total (+10% serv.):* ${precioFinalUSD.toFixed(2)} USD (${precioBs} Bs.)%0A` +
                     `💳 *Método:* ${metodoPagoActual.toUpperCase()}%0A` +
                     `🔢 *Referencia:* ${paymentRef}%0A%0A` +
                     `🔑 *DATOS DE LA CUENTA:*%0A` +
@@ -964,7 +976,9 @@
                 nickname_api: nombreJugadorValidado, 
                 whatsapp_cliente: String(playerWhatsapp), 
                 paquete: selectedPackageName,
-                monto_usd: selectedPackagePriceUSD,
+                monto_base_usd: selectedPackagePriceUSD,
+                monto_total_usd: Number(precioFinalUSD.toFixed(2)),
+                recargo_aplicado: "10%",
                 tasa: tasaValue,
                 total_bs: precioBs,
                 metodo_pago: metodoPagoActual.toUpperCase(),
