@@ -2,1028 +2,1057 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg">
-    <title>MASTER GAME - Portal de Recargas Gaming N° 1</title>
-    
-    <!-- Hojas de estilo y Scripts externos -->
-    <link rel="stylesheet" href="optimización.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Hauss | Importaciones Globales y Catálogo Pro</title>
     <style>
-        body {
-            background-color: #020617;
-            color: #f8fafc;
-            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-                linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 1));
-            background-attachment: fixed;
-        }
-        
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-deep: #030305;
+            --bg-card: rgba(15, 15, 23, 0.85);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-hover: rgba(0, 210, 255, 0.4);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --neon-pink: #ff007f;
+            --whatsapp-green: #00f576;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
-        .payment-info-box {
-            display: none;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
-        .payment-info-box.active {
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.2;
+            animation: drift 15s infinite alternate ease-in-out;
+        }
+
+        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--neon-purple); }
+        .orb-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: var(--neon-blue); animation-delay: -5s; }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 30px) scale(1.1); }
+        }
+
+        .top-ticker {
+            background: linear-gradient(90deg, #ff007f, #9d4edd, #00d2ff);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 12px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 15px rgba(157, 78, 221, 0.4);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        header {
+            background: rgba(3, 3, 5, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .header-brand h1 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .header-brand h1 span {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            background: rgba(0, 245, 118, 0.1);
+            color: var(--whatsapp-green);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 245, 118, 0.3);
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--whatsapp-green);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--whatsapp-green);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 10px;
+            width: 100%;
+        }
+
+        .search-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .search-bar-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 14px;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn-search {
+            padding: 0 18px;
+            font-size: 12px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .ebay-filters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 10px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .ebay-filters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .filter-group label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .filter-select {
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 7px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .category-tags {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 2px 0 10px 0;
+            scrollbar-width: none;
+        }
+
+        .category-tags::-webkit-scrollbar { display: none; }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tag:hover, .tag.active {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Secciones y Carruseles */
+        .section-block {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+
+        .section-title span {
+            font-size: 10px;
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            padding: 2px 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            font-weight: 600;
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-purple) rgba(255,255,255,0.05);
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            height: 4px;
+        }
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: var(--neon-purple);
+            border-radius: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            min-width: 175px;
+            max-width: 200px;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                min-width: 230px;
+                max-width: none;
+                padding: 16px;
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-glass-hover);
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.15);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 125px;
+            background: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .card-img-container { height: 160px; }
+        }
+
+        .card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .card h3 {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.3;
+            height: 32px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+        }
+
+        @media (min-width: 768px) {
+            .card h3 { font-size: 13px; height: 38px; }
+        }
+
+        .price-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .price-main {
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .price-main { font-size: 19px; }
+        }
+
+        .price-main span {
+            color: #f43f5e;
+            font-size: 11px;
+        }
+
+        .price-sub {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .btn-details {
             display: block;
-            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            transition: 0.2s;
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .btn-details:hover {
+            background: var(--neon-blue);
+            color: #030305;
+            border-color: var(--neon-blue);
         }
-        
-        .swal2-popup-gaming {
-            background: rgba(11, 15, 30, 0.95) !important;
-            border: 2px solid #334155 !important;
-            border-radius: 2rem !important;
-            backdrop-filter: blur(12px);
-            color: #f8fafc !important;
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15) !important;
+
+        /* MODAL DE DETALLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 3, 5, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        .swal2-title-gaming {
-            color: #ffffff !important;
-            font-weight: 900 !important;
-            text-transform: uppercase !important;
-            letter-spacing: -0.01em !important;
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
         }
-        .swal2-confirm-gaming {
-            background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
-            color: #020617 !important;
-            font-weight: 900 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.05em !important;
-            border-radius: 1rem !important;
-            padding: 0.8rem 2.5rem !important;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
+
+        .modal-content {
+            background: #0b0b12;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 18px;
+            width: 100%;
+            max-width: 850px;
+            max-height: 92vh;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 14px; right: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #f43f5e;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .modal-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .main-img-display {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+        }
+
+        @media (min-width: 768px) {
+            .main-img-display { height: 300px; }
+        }
+
+        .main-img-display img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnails-row {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .thumb-box {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+
+        .thumb-box.active, .thumb-box:hover {
+            border-color: var(--neon-blue);
+            opacity: 1;
+        }
+
+        .thumb-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-info h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .seller-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 12px;
+        }
+
+        .seller-card h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .seller-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .seller-details strong {
+            color: white;
+        }
+
+        .product-description-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 14px;
+            max-height: 110px;
+            overflow-y: auto;
+        }
+
+        .product-description-box h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #e2e8f0;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .product-description-box p {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .btn-whatsapp-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #00df6f, #00b050);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 223, 111, 0.3);
+            transition: 0.2s;
+        }
+
+        .btn-whatsapp-modal:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #00f576, #00c853);
+        }
+
+        .loading, .message-state {
+            text-align: center;
+            padding: 30px 15px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer {
+            background: #020204;
+            border-top: 1px solid var(--border-glass);
+            padding: 30px 15px;
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.75rem;
         }
     </style>
 </head>
-<body class="relative min-h-screen pb-16 bg-grid">
+<body>
 
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 bg-gradient-to-tr from-emerald-500 to-green-400 text-slate-950 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span class="absolute right-20 bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold px-4 py-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-2xl">
-            ¿Soporte VIP? Escríbenos
-        </span>
-    </a>
+<div class="ambient-glow">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+</div>
 
-    <!-- Encabezado -->
-    <header class="border-b border-slate-900 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-50 px-4 py-4">
-        <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <a href="#" onclick="showSection('home-view'); return false;" class="flex items-center gap-3.5 group cursor-pointer">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-10 w-auto rounded-xl border border-slate-800 shadow-lg group-hover:border-amber-500/50 transition-all duration-300 group-hover:scale-105">
-                <span class="font-black tracking-widest text-base uppercase">
-                    MASTER <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">GAME</span>
-                </span>
-            </a>
-            
-            <div class="flex items-center gap-4">
-                <span class="hidden sm:inline-flex border border-slate-800 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold bg-slate-900/50 text-slate-400 uppercase tracking-wider">
-                    ⭐ Calificación 5/5
-                </span>
-                <span class="border border-emerald-500/30 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold flex items-center gap-2 bg-emerald-950/30 text-emerald-400 uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Servidor En Línea
-                </span>
-            </div>
-        </div>
-    </header>
+<div class="top-ticker">
+    ⚡ VITRINA GLOBAL INTELIGENTE • IMPORTACIÓN DIRECTA A VENEZUELA SIN INTERMEDIARIOS ⚡
+</div>
 
-    <input type="hidden" id="tasa_cambio" value="900" onchange="recalculateAllPrices()">
+<header>
+    <div class="header-brand">
+        <img src="https://i.ibb.co/3m041Q3/smart-hauss-logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/45'">
+        <h1>Smart <span>Hauss</span></h1>
+    </div>
+    <div class="header-status">
+        <div class="status-dot"></div>
+        <span>API Sincronizada</span>
+    </div>
+</header>
 
-    <!-- Vista de Inicio -->
-    <section id="home-view" class="container mx-auto px-4 py-8 max-w-5xl relative z-10">
-        
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[160px] pointer-events-none"></div>
-        <div class="absolute top-40 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[160px] pointer-events-none"></div>
+<div class="main-container">
 
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-black tracking-widest text-amber-400 uppercase mb-5 shadow-lg">
-                <i class="fa-solid fa-fire text-amber-500"></i> EL MEJOR PORTAL DE AUTOMATIZACIÓN DE VENEZUELA
-            </div>
-            <h1 class="text-4xl md:text-7xl font-black mb-5 tracking-tight uppercase leading-none">
-                RECARGAS DIRECTAS <br><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.2)]">100% AUTOMÁTICAS Y VIP</span>
-            </h1>
-            <p class="text-slate-300 text-sm md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
-                Selecciona tu juego favorito, procesa el pago y recibe tus saldos de forma directa e inmediata. Seguro, rápido y confiable.
-            </p>
+    <!-- Panel de Búsqueda y Filtros -->
+    <div class="search-panel">
+        <div class="search-bar-wrapper">
+            <input type="text" id="keyword" placeholder="Busca en eBay (Ej: MacBook, RTX, Garmin...)" onkeypress="handleKeyPress(event)">
+            <button class="btn-search" onclick="realizarBusquedaManual()">Buscar</button>
         </div>
 
-        <!-- Feed en Vivo -->
-        <div class="max-w-xl mx-auto mb-16 bg-slate-950/60 border border-slate-900 rounded-2xl p-4 backdrop-blur-xl shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-amber-500 via-orange-500 to-amber-600"></div>
-            <div class="flex items-center gap-4">
-                <div class="relative flex items-center justify-center">
-                    <span class="absolute w-3 h-3 bg-emerald-500 rounded-full animate-ping opacity-75"></span>
-                    <span class="relative w-2 h-2 bg-emerald-500 rounded-full"></span>
-                </div>
-                <div class="flex-1 min-w-0">
-                    <div class="text-[9px] font-black uppercase text-slate-500 tracking-widest mb-0.5">Sincronización del Servidor en Vivo</div>
-                    <div id="live-feed-text" class="text-xs font-bold text-slate-300 transition-all duration-500 transform translate-y-0 opacity-100">
-                        Buscando últimas transacciones de pago...
-                    </div>
-                </div>
-            </div>
+        <div class="category-tags">
+            <span class="tag" onclick="filtrarCategoria('laptop gamer', this)">Laptops Gamer</span>
+            <span class="tag" onclick="filtrarCategoria('smart watch', this)">Smartwatches</span>
+            <span class="tag" onclick="filtrarCategoria('dji drone', this)">Drones</span>
+            <span class="tag" onclick="filtrarCategoria('sony camera', this)">Cámaras</span>
+            <span class="tag" onclick="filtrarCategoria('mechanical keyboard', this)">Teclados Pro</span>
         </div>
 
-        <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-8 text-center"><i class="fa-solid fa-gamepad text-amber-500 mr-2"></i> Selecciona tu opción o juego para iniciar</h2>
-        
-        <!-- Cuadrícula de Opciones -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 px-2">
-            <!-- Free Fire -->
-            <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-amber-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(245,158,11,0.1)] flex flex-col justify-between relative backdrop-blur-md">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors pointer-events-none"></div>
-                <div>
-                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] group-hover:border-amber-500/40 transition-all duration-300">
-                            <i class="fa-solid fa-fire-flame-curved text-4xl text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"></i>
-                        </div>
-                        <div class="absolute bottom-4 left-4 bg-amber-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">ID Directo</div>
-                    </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
-                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Suministro legal y veloz de diamantes directo a tu ID sin necesidad de contraseñas.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-orange-500 group-hover:from-amber-400 group-hover:to-orange-400 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Ingresar ID de Jugador <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
+        <div class="ebay-filters-grid">
+            <div class="filter-group">
+                <label>Condición</label>
+                <select id="filterCondition" class="filter-select" onchange="realizarBusquedaManual()">
+                    <option value="">Todas</option>
+                    <option value="NEW">Nuevo</option>
+                    <option value="USED">Usado</option>
+                </select>
             </div>
 
-            <!-- Blood Strike -->
-            <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-orange-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(249,115,22,0.1)] flex flex-col justify-between relative backdrop-blur-md">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl group-hover:bg-orange-500/10 transition-colors pointer-events-none"></div>
-                <div>
-                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] group-hover:border-orange-500/40 transition-all duration-300">
-                            <i class="fa-solid fa-crosshairs text-4xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"></i>
-                        </div>
-                        <div class="absolute bottom-4 left-4 bg-orange-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Oro Directo</div>
-                    </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
-                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Adquiere Oro de combate, Pases de Batalla y cosméticos directos a tu ID de usuario.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 group-hover:from-orange-400 group-hover:to-red-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Oro <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
+            <div class="filter-group">
+                <label>Compra</label>
+                <select id="filterBuyingFormat" class="filter-select" onchange="realizarBusquedaManual()">
+                    <option value="">Cualquiera</option>
+                    <option value="FIXED_PRICE">Comprar Ya</option>
+                    <option value="AUCTION">Subasta</option>
+                </select>
             </div>
 
-            <!-- Roblox -->
-            <div onclick="openStore('roblox')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-red-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(239,68,68,0.1)] flex flex-col justify-between relative backdrop-blur-md">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl group-hover:bg-red-500/10 transition-colors pointer-events-none"></div>
-                <div>
-                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp" alt="Roblox Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(239,68,68,0.4)] group-hover:border-red-500/40 transition-all duration-300">
-                            <i class="fa-solid fa-cube text-4xl text-red-500 filter drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
-                        </div>
-                        <div class="absolute bottom-4 left-4 bg-red-600 text-white text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Carga VIP WhatsApp</div>
-                    </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-red-400 transition-colors duration-250">ROBLOX</h3>
-                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Recarga tus Robux de forma rápida enviando tu usuario por WhatsApp tras tu pago.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-red-600 to-rose-600 group-hover:from-red-500 group-hover:to-rose-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Robux <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
-            </div>
-
-            <!-- Call of Duty Mobile -->
-            <div onclick="openStore('cod_mobile')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-emerald-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(16,185,129,0.1)] flex flex-col justify-between relative backdrop-blur-md">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/10 transition-colors pointer-events-none"></div>
-                <div>
-                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg" alt="COD Mobile Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] group-hover:border-emerald-500/40 transition-all duration-300">
-                            <i class="fa-solid fa-gun text-4xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]"></i>
-                        </div>
-                        <div class="absolute bottom-4 left-4 bg-emerald-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">CP Directos WhatsApp</div>
-                    </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-emerald-400 transition-colors duration-250">COD MOBILE</h3>
-                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Puntos CP para Pases de Batalla y ruletas enviando tu login por WhatsApp.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 group-hover:from-emerald-400 group-hover:to-teal-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar CP <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
-            </div>
-
-            <!-- PlayStation -->
-            <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-blue-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(59,130,246,0.1)] flex flex-col justify-between relative backdrop-blur-md">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-colors pointer-events-none"></div>
-                <div>
-                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] group-hover:border-blue-500/40 transition-all duration-300">
-                            <i class="fa-brands fa-playstation text-4xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"></i>
-                        </div>
-                        <div class="absolute bottom-4 left-4 bg-blue-600 text-slate-100 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Pines Digitales</div>
-                    </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-blue-400 transition-colors duration-250">PLAYSTATION STORE</h3>
-                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Códigos de Gift Card válidos y seguros para cargar saldo en tu monedero de PSN.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:from-blue-500 group-hover:to-indigo-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Ver Gift Cards <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
-            </div>
-
-            <!-- Venta de Saldo Zinli -->
-            <div onclick="openStore('zinli_sale')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-purple-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(168,85,247,0.1)] flex flex-col justify-between relative backdrop-blur-md">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition-colors pointer-events-none"></div>
-                <div>
-                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg" alt="Zinli Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(168,85,247,0.4)] group-hover:border-purple-500/40 transition-all duration-300">
-                            <i class="fa-solid fa-credit-card text-4xl text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]"></i>
-                        </div>
-                        <div class="absolute bottom-4 left-4 bg-purple-600 text-white text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Monto Libre en USD</div>
-                    </div>
-                    <h3 class="text-xl font-black tracking-wider group-hover:text-purple-400 transition-colors duration-250">COMPRA SALDO ZINLI</h3>
-                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Adquiere saldo directo para tu monedero Zinli pagando en Bolívares. Elige la cantidad que necesites.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-900">
-                    <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 group-hover:from-purple-500 group-hover:to-indigo-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Saldo USD <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-                </div>
+            <div class="filter-group">
+                <label>Ordenar</label>
+                <select id="sortOrder" class="filter-select" onchange="ordenarResultadosActuales()">
+                    <option value="default">Relevancia</option>
+                    <option value="low">Menor Precio</option>
+                    <option value="high">Mayor Precio</option>
+                </select>
             </div>
         </div>
+    </div>
 
-    </section>
+    <!-- CONTENEDOR DE RESULTADOS DE BÚSQUEDA MANUAL -->
+    <div id="searchContainer" class="section-block" style="display: none;">
+        <div class="section-title">Resultados de Búsqueda <span>Live eBay</span></div>
+        <div id="loadingSearch" class="loading" style="display: none;">Buscando en servidores globales...</div>
+        <div id="searchResultsGrid" class="grid"></div>
+    </div>
 
-    <!-- Vista de Formulario / Tienda -->
-    <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
-        
-        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900/40 border border-slate-800 px-4 py-2 rounded-xl">
-            <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
-        </button>
+    <!-- SECCIÓN 1: CARRUSEL DE TENDENCIAS / DESTACADOS -->
+    <div class="section-block">
+        <div class="section-title">🔥 Tendencias Globales <span>Top Ventas</span></div>
+        <div id="loadingTrending" class="loading">Cargando tendencias aleatorias...</div>
+        <div id="carouselTrending" class="carousel-container" style="display: none;"></div>
+    </div>
 
-        <div id="game-image-banner" class="w-full h-44 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-2xl">
-            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-35">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-            <div class="absolute bottom-6 left-8">
-                <span class="text-[10px] font-black uppercase bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 px-3 py-1 rounded-full tracking-widest mb-2 inline-block shadow-lg">Canal Autorizado</span>
-                <h2 id="selected-game-title" class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">JUEGO</h2>
+    <!-- SECCIÓN 2: UNA GESTIÓN PARA TI (RECOMENDADOS) -->
+    <div class="section-block">
+        <div class="section-title">⭐ Una gestión para ti <span>Curaduría Smart</span></div>
+        <div id="loadingCurated" class="loading">Preparando recomendaciones...</div>
+        <div id="carouselCurated" class="carousel-container" style="display: none;"></div>
+    </div>
+
+    <!-- SECCIÓN 3: ÚLTIMOS VISTOS -->
+    <div class="section-block" id="recentBlock" style="display: none;">
+        <div class="section-title">🕒 Últimos Vistos <span>Tu Historial</span></div>
+        <div id="carouselRecent" class="carousel-container"></div>
+    </div>
+
+</div>
+
+<!-- MODAL DE DETALLES -->
+<div id="productModal" class="modal-overlay" onclick="cerrarModalFuera(event)">
+    <div class="modal-content">
+        <button class="modal-close" onclick="cerrarModal()">✕</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<footer>
+    <p><strong>Smart Hauss</strong> — Tu pasarela de importación tecnológica directa.</p>
+    <p>Seguridad y cotización automatizada en tiempo real para Venezuela.</p>
+</footer>
+
+<script>
+    const numeroWhatsApp = "584120000000"; // CAMBIA POR TU NÚMERO REAL
+    let productosBusquedaActual = [];
+    let todosLosProductosCargados = {}; 
+
+    const terminosAleatorios1 = ['MacBook Pro', 'PlayStation 5', 'Garmin Watch', 'GoPro Hero'];
+    const terminosAleatorios2 = ['iPad Air', 'Nintendo Switch', 'Mechanical Keyboard', 'AirPods Pro'];
+
+    window.onload = () => {
+        cargarVitrinaInicial();
+        renderizarUltimosVistos();
+    };
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            realizarBusquedaManual();
+        }
+    }
+
+    function filtrarCategoria(termino, elementoTag) {
+        document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+        if(elementoTag) elementoTag.classList.add('active');
+        document.getElementById('keyword').value = termino;
+        realizarBusquedaManual();
+    }
+
+    async function cargarVitrinaInicial() {
+        const query1 = terminosAleatorios1[Math.floor(Math.random() * terminosAleatorios1.length)];
+        const query2 = terminosAleatorios2[Math.floor(Math.random() * terminosAleatorios2.length)];
+
+        try {
+            const res1 = await fetch(`/api/search?q=${encodeURIComponent(query1)}`);
+            const data1 = await res1.json();
+            document.getElementById('loadingTrending').style.display = 'none';
+            if (data1.success && data1.items) {
+                renderizarCarrusel('carouselTrending', data1.items);
+            }
+        } catch (e) {
+            document.getElementById('loadingTrending').innerText = 'No se pudieron cargar las tendencias.';
+        }
+
+        try {
+            const res2 = await fetch(`/api/search?q=${encodeURIComponent(query2)}`);
+            const data2 = await res2.json();
+            document.getElementById('loadingCurated').style.display = 'none';
+            if (data2.success && data2.items) {
+                renderizarCarrusel('carouselCurated', data2.items);
+            }
+        } catch (e) {
+            document.getElementById('loadingCurated').innerText = 'No se pudieron cargar las recomendaciones.';
+        }
+    }
+
+    async function realizarBusquedaManual() {
+        const query = document.getElementById('keyword').value.trim();
+        const searchContainer = document.getElementById('searchContainer');
+        const loadingSearch = document.getElementById('loadingSearch');
+        const searchResultsGrid = document.getElementById('searchResultsGrid');
+
+        if (!query) {
+            searchContainer.style.display = 'none';
+            return;
+        }
+
+        searchContainer.style.display = 'block';
+        searchResultsGrid.innerHTML = '';
+        loadingSearch.style.display = 'block';
+
+        const condition = document.getElementById('filterCondition').value;
+        const buyingFormat = document.getElementById('filterBuyingFormat').value;
+
+        let url = `/api/search?q=${encodeURIComponent(query)}`;
+        if (condition) url += `&condition=${condition}`;
+        if (buyingFormat) url += `&buyingFormat=${buyingFormat}`;
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            loadingSearch.style.display = 'none';
+
+            if (data.success && data.items && data.items.length > 0) {
+                productosBusquedaActual = data.items;
+                renderizarGrilla(searchResultsGrid, productosBusquedaActual);
+            } else {
+                searchResultsGrid.innerHTML = '<div class="message-state">No se encontraron productos con estos criterios.</div>';
+            }
+        } catch (error) {
+            loadingSearch.style.display = 'none';
+            searchResultsGrid.innerHTML = '<div class="message-state" style="color: #f43f5e;">Error de conexión con la API.</div>';
+        }
+    }
+
+    function renderizarCarrusel(elementId, items) {
+        const container = document.getElementById(elementId);
+        container.style.display = 'flex';
+        container.innerHTML = '';
+
+        items.forEach((item) => {
+            const cardHtml = crearTarjetaHTML(item);
+            container.appendChild(cardHtml);
+            guardarEnDiccionario(item);
+        });
+    }
+
+    function renderizarGrilla(containerElement, items) {
+        containerElement.innerHTML = '';
+        items.forEach((item) => {
+            const cardHtml = crearTarjetaHTML(item);
+            containerElement.appendChild(cardHtml);
+            guardarEnDiccionario(item);
+        });
+    }
+
+    function crearTarjetaHTML(item) {
+        const title = item.title;
+        const price = item.calculatedPrice;
+        const currency = item.currency || 'USD';
+        const image = item.image ? item.image.imageUrl : 'https://via.placeholder.com/200';
+        const itemId = item.itemId || Math.random().toString(36).substr(2, 9);
+        item.tempId = itemId;
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => abrirModalProducto(item);
+        card.innerHTML = `
+            <div class="card-badge">Smart Pro</div>
+            <div>
+                <div class="card-img-container">
+                    <img src="${image}" alt="${title}">
+                </div>
+                <h3>${title}</h3>
             </div>
-        </div>
-
-        <form id="recharge-form" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start" onsubmit="event.preventDefault();">
-            
-            <div class="lg:col-span-2 space-y-6">
-                
-                <!-- Paso 1 -->
-                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">1</span> Datos de la Cuenta / Receptor
-                    </h3>
-
-                    <!-- CONTENEDOR 1: PARA JUEGOS POR ID O ZINLI -->
-                    <div id="id-login-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">ID del Jugador</label>
-                            <div class="relative">
-                                <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold uppercase tracking-wider">ID</span>
-                                <input type="text" id="player_id" placeholder="Ingresa tus datos" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-14 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
-                            </div>
-                            <div id="live-api-status" class="mt-2 text-xs font-bold hidden transition-all duration-300"></div>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                <input type="tel" id="player_whatsapp" placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CONTENEDOR 2: PARA JUEGOS POR LOGIN (Roblox, COD Mobile) -->
-                    <div id="credentials-login-container" class="space-y-4 hidden">
-                        <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300 font-medium flex items-center gap-2">
-                            <i class="fa-solid fa-lock text-amber-400 text-base"></i>
-                            Este servicio requiere credenciales. Al reportar el pago serás redirigido a WhatsApp para enviarnos estos datos de forma privada.
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Usuario / Correo de Cuenta</label>
-                                <input type="text" id="account_user" placeholder="Ej: Usuario o Correo" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Contraseña de Cuenta</label>
-                                <input type="password" id="account_pass" placeholder="••••••••••••" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Método de Inicio de Sesión</label>
-                                <select id="account_login_type" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold text-slate-200 outline-none transition-all">
-                                    <option value="Usuario Roblox / Directo">Usuario Roblox / Directo</option>
-                                    <option value="Activision">Activision</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Google">Cuenta Google</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                    <input type="tel" id="player_whatsapp_cred" placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+            <div>
+                <div class="price-box">
+                    <div class="price-main">$${price} <span>${currency}</span></div>
+                    <div class="price-sub">Incluye 7% aplicado (Sin flete/impuestos)</div>
                 </div>
+                <button class="btn-details">Ver Detalles</button>
+            </div>
+        `;
+        return card;
+    }
 
-                <!-- Paso 2 -->
-                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">2</span> Selecciona tu Paquete / Monto
-                    </h3>
+    function guardarEnDiccionario(item) {
+        todosLosProductosCargados[item.tempId || item.itemId] = item;
+    }
 
-                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+    function abrirModalProducto(item) {
+        registrarUltimoVisto(item);
 
-                    <div id="zinli-custom-amount-container" class="hidden space-y-4">
-                        <div class="p-4 bg-purple-950/30 border border-purple-500/30 rounded-2xl">
-                            <label class="block text-xs font-black uppercase text-purple-300 tracking-wider mb-2">Ingresa la cantidad exacta de Saldo Zinli (USD $) que deseas comprar:</label>
-                            <div class="relative max-w-xs">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-purple-400 font-extrabold text-sm">$</span>
-                                <input type="number" id="zinli_custom_usd" step="0.5" min="1" placeholder="Ej: 5.00" oninput="onZinliCustomAmountChange()" class="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl py-3 pl-8 pr-4 text-base font-black text-white outline-none">
+        const title = item.title;
+        const price = item.calculatedPrice;
+        const currency = item.currency || 'USD';
+        const itemUrl = item.itemWebUrl;
+
+        let imagenes = [];
+        if (item.image && item.image.imageUrl) imagenes.push(item.image.imageUrl);
+        if (item.additionalImages && Array.isArray(item.additionalImages)) {
+            item.additionalImages.forEach(img => {
+                if (img.imageUrl && !imagenes.includes(img.imageUrl)) imagenes.push(img.imageUrl);
+            });
+        }
+        if (imagenes.length === 0) imagenes.push('https://via.placeholder.com/300');
+
+        const sellerName = item.seller ? item.seller.username : 'Vendedor Verificado eBay';
+        const sellerScore = item.seller && item.seller.feedbackPercentage ? `${item.seller.feedbackPercentage}% Positivo` : 'Alta Reputación';
+        const sellerFeedbackCount = item.seller && item.seller.feedbackScore ? `(${item.seller.feedbackScore} votos)` : '';
+        const shortDesc = item.shortDescription || item.description || 'Artículo verificado en la red global de eBay con garantía de origen y especificaciones originales.';
+
+        const mensajeWhatsApp = encodeURIComponent(`Hola Smart Hauss, deseo encargar este producto:\n\n📦 *${title}*\n💲 *Precio Base + 7%:* $${price} ${currency}\n🔗 *Enlace:* ${itemUrl}`);
+        const whatsappLink = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
+
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `
+            <div class="modal-grid">
+                <div class="gallery-container">
+                    <div class="main-img-display">
+                        <img id="mainModalImg" src="${imagenes[0]}" alt="${title}">
+                    </div>
+                    <div class="thumbnails-row">
+                        ${imagenes.map((img, i) => `
+                            <div class="thumb-box ${i === 0 ? 'active' : ''}" onclick="cambiarImagenPrincipal('${img}', this)">
+                                <img src="${img}" alt="Thumb">
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-2 font-medium">El equivalente en Bolívares (con el 10% de recargo del servicio Zinli) se calculará automáticamente.</p>
-                        </div>
+                        `).join('')}
                     </div>
                 </div>
-
-                <!-- Paso 3 -->
-                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">3</span> Información de Pago
-                    </h3>
-                    
-                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-3">Selecciona tu Método de Pago</label>
-                    <div class="grid grid-cols-3 gap-3 mb-6">
-                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
-                            <i class="fa-solid fa-mobile-screen text-lg text-amber-400"></i> PMóvil
-                        </button>
-                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
-                            <i class="fa-solid fa-coins text-lg text-amber-500"></i> Binance
-                        </button>
-                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
-                            <i class="fa-solid fa-credit-card text-lg text-purple-400"></i> Zinli
-                        </button>
-                    </div>
-
-                    <!-- Datos Pago Móvil -->
-                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
-                        <div class="flex flex-col sm:flex-row gap-5 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
-                                <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-widest text-amber-500 uppercase mb-1">Datos de Transferencia Pago Móvil</div>
-                                <p><span class="text-slate-500 font-bold">Banco:</span> BANCO DE VENEZUELA (0102)</p>
-                                <p><span class="text-slate-500 font-bold">Teléfono:</span> <span class="font-black text-slate-200">0414-5956693</span></p>
-                                <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-32.562.761</span></p>
-                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Teléfono y Cédula</button>
-                            </div>
+                <div class="modal-info">
+                    <h2>${title}</h2>
+                    <div class="seller-card">
+                        <h4>Reputación del Vendedor</h4>
+                        <div class="seller-details">
+                            <span>👤 <strong>${sellerName}</strong> ${sellerFeedbackCount}</span>
+                            <span>⭐ <strong>${sellerScore}</strong></span>
                         </div>
                     </div>
-
-                    <!-- Datos Binance -->
-                    <div id="info-binance" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
-                        <div class="flex flex-col sm:flex-row gap-5 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
-                                <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-widest text-amber-500 uppercase mb-1">Datos de Binance Pay</div>
-                                <p><span class="text-slate-500 font-bold">Correo de Cuenta:</span> <span class="font-black text-slate-200">snaidernarvaez18@gmail.com</span></p>
-                                <button type="button" onclick="copyText('snaidernarvaez18@gmail.com', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
-                            </div>
-                        </div>
+                    <div class="product-description-box">
+                        <h4>Descripción Oficial</h4>
+                        <p>${shortDesc}</p>
                     </div>
-
-                    <!-- Datos Zinli -->
-                    <div id="info-zinli" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
-                        <div class="flex flex-col sm:flex-row gap-5 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
-                                <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-widest text-purple-400 uppercase mb-1">Datos de Cuenta Zinli Receptor</div>
-                                <p><span class="text-slate-500 font-bold">Correo Receptor:</span> <span class="font-black text-slate-200">rcsmastergame@gmail.com</span></p>
-                                <button type="button" onclick="copyText('rcsmastergame@gmail.com', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo Receptor</button>
-                            </div>
-                        </div>
+                    <div class="price-box" style="margin-bottom: 12px;">
+                        <div class="price-main">$${price} <span>${currency}</span></div>
+                        <div class="price-sub">Incluye recargo del 7% (Flete e impuestos no incluidos)</div>
                     </div>
-
-                    <div class="space-y-4 pt-2">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Número de Referencia / ID Pago</label>
-                                <input type="text" id="payment_ref" required placeholder="Últimos 4, 6 u 8 dígitos" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Captura de Pantalla (Opcional)</label>
-                                <label class="w-full bg-slate-950 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3.5 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
-                                    <span id="file-name" class="text-emerald-400 hidden font-bold">✓ Archivo cargado</span>
-                                    <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2 text-slate-400"></i> Subir Comprobante</span>
-                                    <input type="file" id="receipt_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="${whatsappLink}" target="_blank" class="btn-whatsapp-modal">
+                        💬 Gestionar Importación por WhatsApp
+                    </a>
                 </div>
             </div>
+        `;
 
-            <!-- Resumen lateral -->
-            <div class="bg-slate-950/80 border border-slate-900 rounded-3xl p-6 sticky top-28 backdrop-blur-xl shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-5 pb-3 border-b border-slate-900 flex items-center justify-between">
-                    <span>Resumen del Pedido</span>
-                    <i class="fa-solid fa-receipt text-slate-500"></i>
-                </h3>
-                
-                <div class="space-y-3 text-xs font-medium mb-6">
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">Paquete / Cantidad:</span>
-                        <span id="summary-package-name" class="font-extrabold text-slate-200 text-right">Ninguno</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">Precio Base:</span>
-                        <span id="summary-base-price" class="font-extrabold text-slate-200">0.00 Bs.</span>
-                    </div>
-                    <div id="row-fee" class="flex justify-between items-center text-amber-400 font-bold hidden">
-                        <span>Comisión Zinli (10%):</span>
-                        <span id="summary-fee-price">0.00 Bs.</span>
-                    </div>
-                    <div class="flex justify-between items-center text-[10px] text-slate-500 font-bold pt-1">
-                        <span>Canal de Entrega:</span>
-                        <span id="summary-delivery-channel" class="text-emerald-400 uppercase">⚡ Automático</span>
-                    </div>
-                    <div class="border-t border-slate-900 my-2 pt-4 flex justify-between items-baseline">
-                        <span class="text-sm font-black uppercase text-slate-300">Total a Pagar (Bs.)</span>
-                        <span id="summary-total-price" class="text-xl font-black text-amber-400 tracking-tight">0.00 Bs.</span>
-                    </div>
-                </div>
+        document.getElementById('productModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
-                <button type="submit" id="submit-btn" onclick="submitRecharge(); return false;" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
-                    <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
-                </button>
-            </div>
-        </form>
-    </section>
+    function cambiarImagenPrincipal(urlImagen, elementoThumb) {
+        document.getElementById('mainModalImg').src = urlImagen;
+        document.querySelectorAll('.thumb-box').forEach(t => t.classList.remove('active'));
+        elementoThumb.classList.add('active');
+    }
 
-    <!-- Pie de página -->
-    <footer class="w-full text-center py-8 text-xs text-slate-600 font-medium mt-16 border-t border-slate-950">
-        &copy; 2026 MASTER GAME VENEZUELA. Todos los derechos reservados. <br>
-        <span class="text-[10px] text-slate-700 mt-1 block">Términos, condiciones y marcas comerciales registradas son propiedad de sus respectivos dueños.</span>
-    </footer>
+    function cerrarModal() {
+        document.getElementById('productModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 
-    <!-- Script principal -->
-    <script>
-        let juegoActual = "";
-        let selectedPackagePriceUSD = 0;
-        let selectedPackageName = "";
-        let metodoPagoActual = "pago_movil";
-        let currentActiveBorderClass = ""; 
-        let nombreJugadorValidado = ""; 
-
-        // PRECIOS BASE REALES (sin comisión del 10% incluida de forma fija)
-        const listaPaquetes = {
-            free_fire: [
-                { id: "ff_100", name: "100 Diamantes + 10 Bono", bonus: "Entrega Inmediata", priceUSD: 0.85, icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes + 31 Bono", bonus: "Entrega Inmediata", priceUSD: 2.50, icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes + 52 Bono", bonus: "Entrega Inmediata", priceUSD: 4.15, icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes + 106 Bono", bonus: "Entrega Inmediata", priceUSD: 7.80, icon: "fa-gem" },
-                { id: "ff_2180", name: "2160 Diamantes + 218 Bono", bonus: "Entrega Inmediata", priceUSD: 14.80, icon: "fa-gem" },
-                { id: "ff_5600", name: "5600 Diamantes + 560 Bono", bonus: "Entrega Inmediata", priceUSD: 38.00, icon: "fa-gem" },
-                { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Diamantes Diarios", priceUSD: 2.80, icon: "fa-id-card" },
-                { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "Máximo Descuento", priceUSD: 13.00, icon: "fa-box-open" }
-            ],
-            blood_strike: [
-                { id: "bs_100", name: "100 de Oro", bonus: "+16 Bono", priceUSD: 1.00, icon: "fa-coins" },
-                { id: "bs_300", name: "300 de Oro", bonus: "+52 Bono", priceUSD: 3.00, icon: "fa-coins" },
-                { id: "bs_500", name: "500 de Oro", bonus: "+94 Bono", priceUSD: 4.80, icon: "fa-coins" },
-                { id: "bs_1000", name: "1000 de Oro", bonus: "+210 Bono", priceUSD: 9.50, icon: "fa-coins" },
-                { id: "bs_2000", name: "2000 de Oro", bonus: "+486 Bono", priceUSD: 19.00, icon: "fa-coins" },
-                { id: "bs_5000", name: "5000 de Oro", bonus: "+1380 Bono", priceUSD: 45.00, icon: "fa-coins" },
-                { id: "bs_pass_elite", name: "Pase Elite", bonus: "Activación Directa", priceUSD: 5.00, icon: "fa-id-card" }
-            ],
-            roblox: [
-                { id: "rb_80", name: "80 Robux", bonus: "Vía Login", priceUSD: 1.30, icon: "fa-cube" },
-                { id: "rb_400", name: "400 Robux", bonus: "Vía Login", priceUSD: 6.00, icon: "fa-cube" },
-                { id: "rb_800", name: "800 Robux", bonus: "Vía Login", priceUSD: 12.00, icon: "fa-cube" },
-                { id: "rb_1700", name: "1700 Robux", bonus: "Vía Login", priceUSD: 23.00, icon: "fa-cube" },
-                { id: "rb_4500", name: "4500 Robux", bonus: "Vía Login", priceUSD: 55.00, icon: "fa-cube" }
-            ],
-            cod_mobile: [
-                { id: "cod_80", name: "80 CP Puntos", bonus: "Vía Login", priceUSD: 1.30, icon: "fa-gun" },
-                { id: "cod_420", name: "420 CP Puntos", bonus: "Vía Login", priceUSD: 6.00, icon: "fa-gun" },
-                { id: "cod_880", name: "880 CP Puntos", bonus: "Vía Login", priceUSD: 12.00, icon: "fa-gun" },
-                { id: "cod_2400", name: "2400 CP Puntos", bonus: "Vía Login", priceUSD: 28.00, icon: "fa-gun" },
-                { id: "cod_5000", name: "5000 CP Puntos", bonus: "Vía Login", priceUSD: 55.00, icon: "fa-gun" }
-            ],
-            playstation: [
-                { id: "ps_10", name: "Tarjeta PSN $10", bonus: "Código Digital", priceUSD: 11.00, icon: "fa-folder-plus" },
-                { id: "ps_20", name: "Tarjeta PSN $20", bonus: "Código Digital", priceUSD: 22.00, icon: "fa-folder-plus" },
-                { id: "ps_30", name: "Tarjeta PSN $30", bonus: "Código Digital", priceUSD: 33.00, icon: "fa-folder-plus" },
-                { id: "ps_40", name: "Tarjeta PSN $40", bonus: "Código Digital", priceUSD: 44.00, icon: "fa-folder-plus" },
-                { id: "ps_50", name: "Tarjeta PSN $50", bonus: "Código Digital", priceUSD: 55.00, icon: "fa-folder-plus" }
-            ]
-        };
-
-        const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "RobloxKing", "COD_Master"];
-        const opcionesPaquetes = [
-            "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "400 Robux", 
-            "300 de Oro", "420 CP COD Mobile", "Tarjeta PSN $10", "Saldo Zinli $10 USD"
-        ];
-
-        function actualizarFeedEnVivo() {
-            const feedEl = document.getElementById('live-feed-text');
-            if(!feedEl) return;
-
-            feedEl.style.opacity = "0";
-            feedEl.style.transform = "translateY(-5px)";
-
-            setTimeout(() => {
-                const nombre = nombresFicticios[Math.floor(Math.random() * nombresFicticios.length)];
-                const paquete = opcionesPaquetes[Math.floor(Math.random() * opcionesPaquetes.length)];
-                const minutos = Math.floor(Math.random() * 8) + 1;
-                
-                feedEl.innerHTML = `⚡ El cliente <span class="text-amber-400 font-extrabold">${nombre}</span> procesó <span class="text-white font-extrabold">${paquete}</span> hace ${minutos} min.`;
-                
-                feedEl.style.opacity = "1";
-                feedEl.style.transform = "translateY(0)";
-            }, 500);
+    function cerrarModalFuera(e) {
+        if (e.target.id === 'productModal') {
+            cerrarModal();
         }
-        setInterval(actualizarFeedEnVivo, 7000);
-        window.addEventListener('DOMContentLoaded', actualizarFeedEnVivo);
+    }
 
-        function showSection(id) {
-            document.getElementById('home-view').classList.add('hidden');
-            document.getElementById('form-view').classList.add('hidden');
-            document.getElementById(id).classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    function registrarUltimoVisto(item) {
+        let recents = JSON.parse(localStorage.getItem('smart_hauss_recent') || '[]');
+        recents = recents.filter(r => r.tempId !== item.tempId && r.itemId !== item.itemId);
+        recents.unshift(item);
+        if (recents.length > 8) recents.pop();
+        localStorage.setItem('smart_hauss_recent', JSON.stringify(recents));
+        renderizarUltimosVistos();
+    }
+
+    function renderizarUltimosVistos() {
+        const recents = JSON.parse(localStorage.getItem('smart_hauss_recent') || '[]');
+        const recentBlock = document.getElementById('recentBlock');
+        const container = document.getElementById('carouselRecent');
+
+        if (recents.length === 0) {
+            recentBlock.style.display = 'none';
+            return;
         }
 
-        function openStore(juego) {
-            juegoActual = juego;
-            nombreJugadorValidado = ""; 
-            
-            const statusLabel = document.getElementById('live-api-status');
-            statusLabel.className = "mt-2 text-xs font-bold hidden";
-            statusLabel.innerText = "";
+        recentBlock.style.display = 'block';
+        container.innerHTML = '';
+        recents.forEach(item => {
+            const cardHtml = crearTarjetaHTML(item);
+            container.appendChild(cardHtml);
+        });
+    }
 
-            const container = document.getElementById('packages-container');
-            const customZinliBox = document.getElementById('zinli-custom-amount-container');
-            const title = document.getElementById('selected-game-title');
-            const bannerContainer = document.getElementById('game-image-banner');
-            const bannerImg = document.getElementById('banner-img-src');
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
-            
-            const idLabel = document.getElementById('id-field-label');
-            const idPrefix = document.getElementById('id-field-prefix');
-            const idInput = document.getElementById('player_id');
+    function ordenarResultadosActuales() {
+        const criterio = document.getElementById('sortOrder').value;
+        if (productosBusquedaActual.length === 0) return;
 
-            const idContainer = document.getElementById('id-login-container');
-            const credContainer = document.getElementById('credentials-login-container');
-            const deliveryChannel = document.getElementById('summary-delivery-channel');
-            const loginTypeSelect = document.getElementById('account_login_type');
-
-            if (juego === 'cod_mobile') {
-                loginTypeSelect.value = "Activision";
-                loginTypeSelect.disabled = true;
-            } else if (juego === 'roblox') {
-                loginTypeSelect.value = "Usuario Roblox / Directo";
-                loginTypeSelect.disabled = true;
-            } else {
-                loginTypeSelect.disabled = false;
-            }
-
-            if (juego === 'roblox' || juego === 'cod_mobile') {
-                idContainer.classList.add('hidden');
-                credContainer.classList.remove('hidden');
-                deliveryChannel.innerText = "📲 Soporte WhatsApp";
-                deliveryChannel.className = "text-amber-400 uppercase font-black";
-            } else {
-                credContainer.classList.add('hidden');
-                idContainer.classList.remove('hidden');
-                deliveryChannel.innerText = "⚡ Automático";
-                deliveryChannel.className = "text-emerald-400 uppercase font-black";
-
-                if(juego === 'playstation') {
-                    idLabel.innerText = "Correo de tu Cuenta PSN / ID";
-                    idPrefix.innerText = "PSN";
-                    idInput.placeholder = "Ej: usuario@email.com o tu ID";
-                } else if(juego === 'zinli_sale') {
-                    idLabel.innerText = "Tu Correo Zinli (Donde recibirás el saldo)";
-                    idPrefix.innerText = "ZINLI";
-                    idInput.placeholder = "Ej: tu_correo@zinli.com";
-                } else {
-                    idLabel.innerText = "ID del Jugador";
-                    idPrefix.innerText = "ID";
-                    idInput.placeholder = "Ingresa tu ID de juego";
-                }
-            }
-
-            container.innerHTML = "";
-            let iconClass = 'text-amber-400';
-
-            if(juego === 'free_fire') {
-                title.innerText = "Free Fire";
-                bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
-                iconClass = 'text-amber-400';
-            } else if(juego === 'blood_strike') {
-                title.innerText = "Blood Strike";
-                bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
-                iconClass = 'text-orange-400';
-            } else if(juego === 'roblox') {
-                title.innerText = "Roblox";
-                bannerImg.src = "https://images.rbxcdn.com/7b328a30ef14be8e85eb662d5e75d045";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-red-500 bg-red-500/10 shadow-[0_0_20px_rgba(239,68,68,0.2)]';
-                iconClass = 'text-red-400';
-            } else if(juego === 'cod_mobile') {
-                title.innerText = "Call of Duty Mobile";
-                bannerImg.src = "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/store/codm-hero.jpg";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-emerald-500 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
-                iconClass = 'text-emerald-400';
-            } else if(juego === 'playstation') {
-                title.innerText = "PlayStation Network";
-                bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
-                iconClass = 'text-blue-400';
-            } else if(juego === 'zinli_sale') {
-                title.innerText = "Compra de Saldo Zinli";
-                bannerImg.src = "https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-purple-500 bg-purple-500/10 shadow-[0_0_20px_rgba(168,85,247,0.2)]';
-            }
-
-            if(juego === 'zinli_sale') {
-                container.classList.add('hidden');
-                customZinliBox.classList.remove('hidden');
-                document.getElementById('zinli_custom_usd').value = "5"; 
-                onZinliCustomAmountChange();
-            } else {
-                customZinliBox.classList.add('hidden');
-                container.classList.remove('hidden');
-
-                listaPaquetes[juego].forEach((pkg, idx) => {
-                    const isChecked = idx === 0;
-                    const checkedAttr = isChecked ? "checked" : "";
-                    const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
-                    
-                    const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-                    const html = `
-                        <label class="relative block cursor-pointer package-card group h-full" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
-                            <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
-                            <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden ${currentCardClass}">
-                                <div>
-                                    <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
-                                        <i class="fa-solid ${pkg.icon} text-sm ${iconClass}"></i>
-                                    </div>
-                                    <div class="font-bold text-xs text-slate-200 leading-tight line-clamp-2">${pkg.name}</div>
-                                    <div class="text-[9px] font-black text-emerald-400 mt-1 tracking-wider uppercase truncate">${pkg.bonus}</div>
-                                </div>
-                                <div class="text-sm font-black text-slate-200 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
-                                    ${calculatedPriceBs} Bs.
-                                </div>
-                            </div>
-                        </label>
-                    `;
-                    container.insertAdjacentHTML('beforeend', html);
-                });
-
-                if(listaPaquetes[juego].length > 0) {
-                    selectedPackagePriceUSD = listaPaquetes[juego][0].priceUSD;
-                    selectedPackageName = listaPaquetes[juego][0].name;
-                    updateTotalSummary();
-                }
-            }
-
-            showSection('form-view');
+        let ordenada = [...productosBusquedaActual];
+        if (criterio === 'low') {
+            ordenada.sort((a, b) => parseFloat(a.calculatedPrice) - parseFloat(b.calculatedPrice));
+        } else if (criterio === 'high') {
+            ordenada.sort((a, b) => parseFloat(b.calculatedPrice) - parseFloat(a.calculatedPrice));
         }
+        renderizarGrilla(document.getElementById('searchResultsGrid'), ordenada);
+    }
+</script>
 
-        function onZinliCustomAmountChange() {
-            const inputVal = parseFloat(document.getElementById('zinli_custom_usd').value) || 0;
-            selectedPackagePriceUSD = inputVal;
-            selectedPackageName = `Saldo Zinli $${inputVal.toFixed(2)} USD`;
-            updateTotalSummary();
-        }
-
-        function selectPackage(element, name, priceUSD) {
-            document.querySelectorAll('.package-content').forEach(card => {
-                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden";
-            });
-
-            const innerDiv = element.querySelector('.package-content');
-            if (innerDiv) {
-                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
-            }
-
-            const radio = element.querySelector('.package-radio');
-            if(radio) radio.checked = true;
-
-            selectedPackagePriceUSD = priceUSD;
-            selectedPackageName = name;
-            updateTotalSummary();
-        }
-
-        function selectPaymentMethod(metodo) {
-            metodoPagoActual = metodo;
-            document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
-            });
-
-            document.querySelectorAll('.payment-info-box').forEach(box => {
-                box.classList.remove('active');
-            });
-
-            if(metodo === 'pago_movil') {
-                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
-                document.getElementById('info-pago_movil').classList.add('active');
-            } else if (metodo === 'binance') {
-                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
-                document.getElementById('info-binance').classList.add('active');
-            } else if (metodo === 'zinli') {
-                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
-                document.getElementById('info-zinli').classList.add('active');
-            }
-
-            updateTotalSummary();
-        }
-
-        function copyText(texto, btn) {
-            navigator.clipboard.writeText(texto);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "¡Copiado! ✓";
-            btn.classList.add('text-emerald-400');
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('text-emerald-400');
-            }, 2000);
-        }
-
-        function copyPaymentData(telf, ced, btn) {
-            navigator.clipboard.writeText(`Teléfono: ${telf} \nCédula: ${ced}`);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "¡Ambos Copiados! ✓";
-            btn.classList.add('text-emerald-400');
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('text-emerald-400');
-            }, 2000);
-        }
-
-        function recalculateAllPrices() {
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            document.querySelectorAll('.card-price-render').forEach(el => {
-                const usd = parseFloat(el.getAttribute('data-usd'));
-                const newBs = (usd * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                el.innerText = newBs + " Bs.";
-            });
-            updateTotalSummary();
-        }
-
-        function updateTotalSummary() {
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            const rowFee = document.getElementById('row-fee');
-            
-            const precioBaseBs = selectedPackagePriceUSD * tasaValue;
-            let comisionBs = 0;
-            let totalBs = precioBaseBs;
-
-            if (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale') {
-                comisionBs = precioBaseBs * 0.10;
-                totalBs = precioBaseBs + comisionBs;
-                
-                document.getElementById('summary-fee-price').innerText = "+ " + comisionBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
-                rowFee.classList.remove('hidden');
-            } else {
-                rowFee.classList.add('hidden');
-            }
-
-            document.getElementById('summary-package-name').innerText = selectedPackageName || "Ninguno";
-            document.getElementById('summary-base-price').innerText = precioBaseBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
-            document.getElementById('summary-total-price').innerText = totalBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
-        }
-
-        async function verificarIdEnTiempoReal() {
-            const playerId = document.getElementById('player_id').value.trim();
-            const statusLabel = document.getElementById('live-api-status');
-
-            if (!playerId) {
-                statusLabel.className = "mt-2 text-xs font-bold hidden";
-                return;
-            }
-
-            if (juegoActual !== 'free_fire') {
-                statusLabel.className = "mt-2 text-xs font-bold text-slate-400 block";
-                statusLabel.innerText = "✓ Dato ingresado correctamente.";
-                nombreJugadorValidado = "No requerido";
-                return;
-            }
-
-            statusLabel.className = "mt-2 text-xs font-bold text-amber-400 block animate-pulse";
-            statusLabel.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Buscando nickname en los servidores de Garena...`;
-
-            const nickname = await consultarAPI(playerId);
-
-            if (nickname && !nickname.startsWith("Error")) {
-                statusLabel.className = "mt-2 text-xs font-bold text-emerald-400 block";
-                statusLabel.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Jugador encontrado: <span class="underline">${nickname}</span>`;
-                nombreJugadorValidado = nickname;
-            } else {
-                statusLabel.className = "mt-2 text-xs font-bold text-rose-400 block";
-                statusLabel.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-1"></i> No se pudo confirmar el Nickname, pero puedes enviar el reporte.`;
-                nombreJugadorValidado = `Verificado (ID: ${playerId})`;
-            }
-        }
-
-        async function consultarAPI(id) {
-            try {
-                const respuesta = await fetch('/api/verificar-id', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ playerId: id })
-                });
-
-                if (respuesta.ok) {
-                    const resultado = await respuesta.json();
-                    if (resultado.success && resultado.nickname) {
-                        return resultado.nickname;
-                    }
-                }
-                return "Error";
-            } catch (error) {
-                console.error("Error en llamada local a API proxy:", error);
-                return "Error";
-            }
-        }
-
-        function updateFileName(input) {
-            const label = document.getElementById('file-name');
-            const placeholder = document.getElementById('file-placeholder');
-            if(input.files && input.files[0]) {
-                label.innerText = "✓ " + input.files[0].name.substring(0, 12) + "...";
-                label.classList.remove('hidden');
-                placeholder.classList.add('hidden');
-            }
-        }
-
-        async function submitRecharge() {
-            const paymentRef = document.getElementById('payment_ref').value.trim();
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
-            const submitBtn = document.getElementById('submit-btn');
-
-            if (!paymentRef) { 
-                Swal.fire({ text: 'Por favor, ingresa el número de referencia del pago.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                return; 
-            }
-            if (!selectedPackageName || selectedPackagePriceUSD <= 0) { 
-                Swal.fire({ text: 'Por favor, ingresa o selecciona una cantidad/monto válido.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                return; 
-            }
-
-            const requiereRecargo = (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale');
-            const factorRecargo = requiereRecargo ? 1.10 : 1.00;
-
-            const precioFinalUSD = selectedPackagePriceUSD * factorRecargo;
-            const precioBs = (precioFinalUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-            if (juegoActual === 'roblox' || juegoActual === 'cod_mobile') {
-                const accountUser = document.getElementById('account_user').value.trim();
-                const accountPass = document.getElementById('account_pass').value.trim();
-                const accountLoginType = document.getElementById('account_login_type').value;
-                const playerWhatsappCred = document.getElementById('player_whatsapp_cred').value.trim();
-
-                if (!accountUser || !accountPass || !playerWhatsappCred) {
-                    Swal.fire({ text: 'Por favor, ingresa usuario, contraseña y tu WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                    return;
-                }
-
-                const nombreJuego = juegoActual === 'roblox' ? "ROBLOX" : "CALL OF DUTY MOBILE";
-
-                const msjWhatsApp = `¡Hola MASTER GAME! 👋 Acabo de realizar un pago para *${nombreJuego}*.%0A%0A` +
-                    `📌 *Paquete:* ${selectedPackageName}%0A` +
-                    `💵 *Monto Total:* ${precioFinalUSD.toFixed(2)} USD (${precioBs} Bs.)%0A` +
-                    `💳 *Método:* ${metodoPagoActual.toUpperCase()}%0A` +
-                    `🔢 *Referencia:* ${paymentRef}%0A%0A` +
-                    `🔑 *DATOS DE LA CUENTA:*%0A` +
-                    `👤 *Usuario/Correo:* ${accountUser}%0A` +
-                    `🔒 *Contraseña:* ${accountPass}%0A` +
-                    `🌐 *Tipo Login:* ${accountLoginType}%0A` +
-                    `📱 *WhatsApp:* ${playerWhatsappCred}%0A%0A` +
-                    `Quedo a la espera de la carga. ¡Muchas gracias!`;
-
-                Swal.fire({
-                    title: '¡Redirigiendo a WhatsApp!',
-                    html: `Se abrirá un chat directo con el soporte de MASTER GAME para procesar la recarga de tu cuenta de <b>${nombreJuego}</b>.`,
-                    icon: 'success',
-                    customClass: { popup: 'swal2-popup-gaming', title: 'swal2-title-gaming', confirmButton: 'swal2-confirm-gaming' }
-                }).then(() => {
-                    window.open(`https://wa.me/584145956693?text=${msjWhatsApp}`, '_blank');
-                    document.getElementById('recharge-form').reset();
-                    showSection('home-view');
-                });
-
-                return;
-            }
-
-            const playerId = document.getElementById('player_id').value.trim();
-            const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
-
-            if (!playerId || !playerWhatsapp) { 
-                Swal.fire({ text: 'Por favor, rellena los datos de la cuenta y tu número de WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                return; 
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Subiendo reporte...`;
-
-            if (!nombreJugadorValidado) {
-                nombreJugadorValidado = juegoActual === 'free_fire' ? `ID: ${playerId}` : "No requerido";
-            }
-
-            const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/faxu7f5rakpv5981o4okcgvh6o4b4pqb"; 
-
-            let nombreJuegoPayload = "FREE FIRE";
-            if(juegoActual === 'blood_strike') { nombreJuegoPayload = "BLOOD STRIKE"; }
-            else if(juegoActual === 'playstation') { nombreJuegoPayload = "PLAYSTATION NETWORK"; }
-            else if(juegoActual === 'zinli_sale') { nombreJuegoPayload = "COMPRA DE SALDO ZINLI"; }
-
-            const payload = {
-                header_decorativo: "🔒 *TRANSACCIÓN VERIFICADA Y SEGURA* 🔒\n🛡️ _MASTER GAME AUTH SERVICE_\n===================================\n✅ Transacción protegida por cifrado SSL.\n⚡ Procesamiento inmediato en cola automatizada.\n💎 Estado de recarga: Pendiente de Confirmación.",
-                juego: nombreJuegoPayload,
-                id_jugador: playerId,
-                nickname_api: nombreJugadorValidado, 
-                whatsapp_cliente: String(playerWhatsapp), 
-                paquete: selectedPackageName,
-                monto_base_usd: selectedPackagePriceUSD,
-                monto_total_usd: Number(precioFinalUSD.toFixed(2)),
-                recargo_aplicado: requiereRecargo ? "10%" : "0%",
-                tasa: tasaValue,
-                total_bs: precioBs,
-                metodo_pago: metodoPagoActual.toUpperCase(),
-                referencia: paymentRef,
-                footer_decorativo: "===================================\n📡 _Señal enviada a la cola del servidor. Verificando fondos..._"
-            };
-
-            fetch(MAKE_WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if(response.ok) {
-                    Swal.fire({
-                        title: '¡Reporte Enviado!',
-                        html: `🔒 Datos verificados correctamente.<br><br>Los fondos están en proceso de validación automática. Tu pedido se acreditará en breve.`,
-                        icon: 'success',
-                        customClass: { popup: 'swal2-popup-gaming', title: 'swal2-title-gaming', confirmButton: 'swal2-confirm-gaming' }
-                    });
-                    document.getElementById('recharge-form').reset();
-                    document.getElementById('live-api-status').className = "hidden";
-                    showSection('home-view');
-                } else {
-                    Swal.fire({ text: 'Error de respuesta del servidor del webhook.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                Swal.fire({ text: 'Error de red. Asegúrate de que el módulo en Make esté activo.', icon: 'error', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago`;
-            });
-        }
-    </script>
 </body>
 </html>
