@@ -115,6 +115,12 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .header-status {
             display: flex;
             align-items: center;
@@ -134,6 +140,26 @@
             background: var(--whatsapp-green);
             border-radius: 50%;
             box-shadow: 0 0 6px var(--whatsapp-green);
+        }
+
+        .btn-user-account {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+
+        .btn-user-account:hover {
+            border-color: var(--neon-blue);
+            background: rgba(0, 210, 255, 0.1);
         }
 
         .main-container {
@@ -159,7 +185,7 @@
             margin-bottom: 12px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="email"], input[type="password"] {
             flex: 1;
             padding: 10px 14px;
             font-size: 13px;
@@ -170,9 +196,10 @@
             font-weight: 500;
             outline: none;
             transition: all 0.3s;
+            width: 100%;
         }
 
-        input[type="text"]:focus {
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
             border-color: var(--neon-blue);
             box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
         }
@@ -439,7 +466,7 @@
             border-color: var(--neon-blue);
         }
 
-        /* MODAL DE DETALLES */
+        /* MODAL GENERAL Y DE CLIENTES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -652,6 +679,152 @@
             background: linear-gradient(135deg, #00f576, #00c853);
         }
 
+        /* Panel de Portal de Cliente */
+        .auth-container {
+            max-width: 420px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .auth-container h2 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            color: white;
+        }
+
+        .auth-container p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .btn-auth-submit {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-auth-submit:hover {
+            opacity: 0.9;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .auth-switch span {
+            color: var(--neon-blue);
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* Dashboard de Pedidos del Cliente */
+        .client-dashboard {
+            text-align: left;
+        }
+
+        .client-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 10px;
+        }
+
+        .client-header-flex h2 {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .btn-logout {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: #f43f5e;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .order-card-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .order-top-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .order-status-badge {
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .status-recibido { background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: 1px solid rgba(0, 210, 255, 0.3); }
+        .status-transito { background: rgba(157, 78, 221, 0.15); color: #d8b4fe; border: 1px solid rgba(157, 78, 221, 0.3); }
+        .status-venezuela { background: rgba(255, 159, 28, 0.15); color: #ff9f1c; border: 1px solid rgba(255, 159, 28, 0.3); }
+        .status-entregado { background: rgba(0, 245, 118, 0.15); color: var(--whatsapp-green); border: 1px solid rgba(0, 245, 118, 0.3); }
+
+        .order-details-text {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Panel de Administrador (Para ti) */
+        .admin-secret-panel {
+            background: rgba(255, 159, 28, 0.05);
+            border: 1px dashed rgba(255, 159, 28, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+
+        .admin-secret-panel h4 {
+            color: #ff9f1c;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
         .loading, .message-state {
             text-align: center;
             padding: 30px 15px;
@@ -686,9 +859,14 @@
         <img src="https://i.ibb.co/3m041Q3/smart-hauss-logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/45'">
         <h1>Smart <span>Hauss</span></h1>
     </div>
-    <div class="header-status">
-        <div class="status-dot"></div>
-        <span>API Sincronizada</span>
+    <div class="header-actions">
+        <div class="header-status">
+            <div class="status-dot"></div>
+            <span>API Sincronizada</span>
+        </div>
+        <button class="btn-user-account" onclick="abrirPortalCliente()">
+            👤 <span id="btnAccountText">Mi Cuenta</span>
+        </button>
     </div>
 </header>
 
@@ -768,7 +946,7 @@
 
 </div>
 
-<!-- MODAL DE DETALLES -->
+<!-- MODAL DE DETALLES Y CUENTAS -->
 <div id="productModal" class="modal-overlay" onclick="cerrarModalFuera(event)">
     <div class="modal-content">
         <button class="modal-close" onclick="cerrarModal()">✕</button>
@@ -792,6 +970,7 @@
     window.onload = () => {
         cargarVitrinaInicial();
         renderizarUltimosVistos();
+        actualizarBotonCuentaUI();
     };
 
     function handleKeyPress(e) {
@@ -950,7 +1129,10 @@
         const sellerFeedbackCount = item.seller && item.seller.feedbackScore ? `(${item.seller.feedbackScore} votos)` : '';
         const shortDesc = item.shortDescription || item.description || 'Artículo verificado en la red global de eBay con garantía de origen y especificaciones originales.';
 
-        const mensajeWhatsApp = encodeURIComponent(`Hola Smart Hauss, deseo encargar este producto:\n\n📦 *${title}*\n💲 *Precio Base + 7%:* $${price} ${currency}\n🔗 *Enlace:* ${itemUrl}`);
+        const currentUser = obtenerUsuarioLogueado();
+        const userEmailTxt = currentUser ? currentUser.email : 'Sin registrar (Recomendado iniciar sesión para asociar pedido)';
+
+        const mensajeWhatsApp = encodeURIComponent(`Hola Smart Hauss, deseo encargar este producto:\n\n📦 *${title}*\n💲 *Precio Base + 7%:* $${price} ${currency}\n👤 *Cuenta de Cliente:* ${userEmailTxt}\n🔗 *Enlace:* ${itemUrl}`);
         const whatsappLink = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
 
         const modalBody = document.getElementById('modalBody');
@@ -1000,6 +1182,229 @@
         document.getElementById('mainModalImg').src = urlImagen;
         document.querySelectorAll('.thumb-box').forEach(t => t.classList.remove('active'));
         elementoThumb.classList.add('active');
+    }
+
+    // --- SISTEMA DE CUENTAS Y ESTATUS DE PEDIDOS ---
+    function obtenerUsuarioLogueado() {
+        const u = localStorage.getItem('smart_hauss_current_user');
+        return u ? JSON.parse(u) : null;
+    }
+
+    function actualizarBotonCuentaUI() {
+        const user = obtenerUsuarioLogueado();
+        const btnText = document.getElementById('btnAccountText');
+        if (user) {
+            btnText.innerText = user.nombre.split(' ')[0];
+        } else {
+            btnText.innerText = 'Mi Cuenta';
+        }
+    }
+
+    function abrirPortalCliente() {
+        const user = obtenerUsuarioLogueado();
+        if (user) {
+            renderizarDashboardCliente(user);
+        } else {
+            renderizarFormularioLogin();
+        }
+        document.getElementById('productModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function renderizarFormularioLogin() {
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `
+            <div class="auth-container">
+                <h2>Portal de Clientes</h2>
+                <p>Inicia sesión o regístrate para consultar el estatus en tiempo real de tus importaciones.</p>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="authEmail" placeholder="tucorreo@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="authPassword" placeholder="••••••••">
+                </div>
+                <button class="btn-auth-submit" onclick="procesarLogin()">Ingresar / Registrarse</button>
+                <div class="auth-switch">
+                    ¿Eres administrador? <span onclick="mostrarPanelAdminLogin()">Acceso Admin</span>
+                </div>
+            </div>
+        `;
+    }
+
+    function procesarLogin() {
+        const email = document.getElementById('authEmail').value.trim();
+        const pass = document.getElementById('authPassword').value.trim();
+
+        if (!email || !pass) {
+            alert('Por favor completa todos los campos.');
+            return;
+        }
+
+        // Modo Admin rápido integrado
+        if (email === 'admin@smarthauss.com' && pass === 'admin2026') {
+            localStorage.setItem('smart_hauss_current_user', JSON.stringify({ email, nombre: 'Administrador', role: 'admin' }));
+            actualizarBotonCuentaUI();
+            abrirPortalCliente();
+            return;
+        }
+
+        let users = JSON.parse(localStorage.getItem('smart_hauss_users') || '[]');
+        let user = users.find(u => u.email === email);
+
+        if (!user) {
+            // Registro automático sencillo si no existe
+            user = { email, pass, nombre: email.split('@')[0], role: 'client' };
+            users.push(user);
+            localStorage.setItem('smart_hauss_users', JSON.stringify(users));
+            alert('¡Cuenta creada y registrada con éxito!');
+        }
+
+        localStorage.setItem('smart_hauss_current_user', JSON.stringify(user));
+        actualizarBotonCuentaUI();
+        abrirPortalCliente();
+    }
+
+    function mostrarPanelAdminLogin() {
+        document.getElementById('authEmail').value = 'admin@smarthauss.com';
+        document.getElementById('authPassword').placeholder = 'Contraseña admin...';
+    }
+
+    function cerrarSesion() {
+        localStorage.removeItem('smart_hauss_current_user');
+        actualizarBotonCuentaUI();
+        abrirPortalCliente();
+    }
+
+    function renderizarDashboardCliente(user) {
+        const modalBody = document.getElementById('modalBody');
+
+        if (user.role === 'admin') {
+            // Panel de Control para ti (Administrador)
+            modalBody.innerHTML = `
+                <div class="client-dashboard">
+                    <div class="client-header-flex">
+                        <h2>Panel de Control (Admin)</h2>
+                        <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Gestiona y actualiza el estatus de los pedidos de tus clientes registrados.</p>
+                    
+                    <div class="form-group">
+                        <label>Correo del Cliente</label>
+                        <input type="text" id="admClientEmail" placeholder="cliente@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción del Producto / Pedido</label>
+                        <input type="text" id="admProductDesc" placeholder="Ej: MacBook Pro M3">
+                    </div>
+                    <div class="form-group">
+                        <label>Estatus del Pedido</label>
+                        <select id="admStatusSelect" class="filter-select" style="width:100%; padding: 10px;">
+                            <option value="recibido">1. Recibido / Confirmado</option>
+                            <option value="transito">2. En Tránsito a Miami</option>
+                            <option value="venezuela">3. En Aduana / Vía Venezuela</option>
+                            <option value="entregado">4. Listo para Retiro / Entregado</option>
+                        </select>
+                    </div>
+                    <button class="btn-auth-submit" onclick="adminCrearOActualizarPedido()">Guardar / Asignar Pedido</button>
+
+                    <div class="admin-secret-panel">
+                        <h4>Pedidos Registrados en el Sistema</h4>
+                        <div id="adminOrdersList" style="max-height: 180px; overflow-y: auto; margin-top: 8px;"></div>
+                    </div>
+                </div>
+            `;
+            cargarListaAdminPedidos();
+            return;
+        }
+
+        // Vista del Cliente Final
+        let allOrders = JSON.parse(localStorage.getItem('smart_hauss_orders') || '[]');
+        let myOrders = allOrders.filter(o => o.email === user.email);
+
+        modalBody.innerHTML = `
+            <div class="client-dashboard">
+                <div class="client-header-flex">
+                    <h2>Mis Pedidos e Importaciones</h2>
+                    <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+                </div>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Bienvenido, <strong>${user.nombre}</strong> (${user.email}). Aquí puedes verificar el estado de tus encargos en tiempo real.</p>
+                
+                <div id="myOrdersContainer">
+                    ${myOrders.length === 0 ? '<div class="message-state">No tienes pedidos activos registrados aún. Cuando realices un encargo por WhatsApp, el administrador asociará tu estatus aquí.</div>' : 
+                        myOrders.map(o => `
+                            <div class="order-card-item">
+                                <div class="order-top-row">
+                                    <span>📦 ${o.producto}</span>
+                                    <span class="order-status-badge status-${o.estatus}">${formatearEstatusTexto(o.estatus)}</span>
+                                </div>
+                                <div class="order-details-text">
+                                    Actualizado: ${o.fecha}
+                                </div>
+                            </div>
+                        `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    function formatearEstatusTexto(status) {
+        if (status === 'recibido') return 'Recibido';
+        if (status === 'transito') return 'En Tránsito';
+        if (status === 'venezuela') return 'En Venezuela';
+        if (status === 'entregado') return 'Entregado';
+        return status;
+    }
+
+    function adminCrearOActualizarPedido() {
+        const email = document.getElementById('admClientEmail').value.trim();
+        const producto = document.getElementById('admProductDesc').value.trim();
+        const estatus = document.getElementById('admStatusSelect').value;
+
+        if (!email || !producto) {
+            alert('Ingresa el correo del cliente y la descripción del producto.');
+            return;
+        }
+
+        let allOrders = JSON.parse(localStorage.getItem('smart_hauss_orders') || '[]');
+        const fecha = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        
+        allOrders.unshift({ email, producto, estatus, fecha });
+        localStorage.setItem('smart_hauss_orders', JSON.stringify(allOrders));
+
+        alert('¡Estatus de pedido actualizado con éxito!');
+        document.getElementById('admClientEmail').value = '';
+        document.getElementById('admProductDesc').value = '';
+        cargarListaAdminPedidos();
+    }
+
+    function cargarListaAdminPedidos() {
+        let allOrders = JSON.parse(localStorage.getItem('smart_hauss_orders') || '[]');
+        const listDiv = document.getElementById('adminOrdersList');
+        if (!listDiv) return;
+
+        if (allOrders.length === 0) {
+            listDiv.innerHTML = '<p style="font-size: 11px; color: var(--text-muted);">No hay pedidos registrados.</p>';
+            return;
+        }
+
+        listDiv.innerHTML = allOrders.map((o, idx) => `
+            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 8px; margin-bottom: 6px; font-size: 11px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong>${o.email}</strong><br>
+                    <span>${o.producto}</span> - <span style="color: var(--neon-blue);">${formatearEstatusTexto(o.estatus)}</span>
+                </div>
+                <button onclick="eliminarPedidoAdmin(${idx})" style="background: #f43f5e; color:white; border:none; padding: 4px 8px; border-radius: 4px; font-size: 9px; cursor:pointer;">Eliminar</button>
+            </div>
+        `).join('');
+    }
+
+    function eliminarPedidoAdmin(idx) {
+        let allOrders = JSON.parse(localStorage.getItem('smart_hauss_orders') || '[]');
+        allOrders.splice(idx, 1);
+        localStorage.setItem('smart_hauss_orders', JSON.stringify(allOrders));
+        cargarListaAdminPedidos();
     }
 
     function cerrarModal() {
