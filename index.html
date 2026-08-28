@@ -6,6 +6,7 @@
     <link rel="icon" type="image/jpeg" href="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg">
     <title>MASTER GAME - Portal de Recargas Gaming N° 1</title>
     
+    <!-- Hojas de estilo y Scripts externos -->
     <link rel="stylesheet" href="optimización.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,8 +18,8 @@
             color: #f8fafc;
             font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.07) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
                 linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 1));
             background-attachment: fixed;
         }
@@ -26,8 +27,8 @@
         .bg-grid {
             background-size: 40px 40px;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+                linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
         }
 
         .payment-info-box {
@@ -35,33 +36,26 @@
         }
         .payment-info-box.active {
             display: block;
-            animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.97) translateY(8px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        /* Animaciones fluidas para tarjetas */
-        .game-card-hover {
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .game-card-hover:hover {
-            transform: translateY(-6px) scale(1.01);
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .swal2-popup-gaming {
-            background: rgba(11, 15, 30, 0.96) !important;
+            background: rgba(11, 15, 30, 0.95) !important;
             border: 2px solid #334155 !important;
             border-radius: 2rem !important;
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px);
             color: #f8fafc !important;
-            box-shadow: 0 0 40px rgba(245, 158, 11, 0.2) !important;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15) !important;
         }
         .swal2-title-gaming {
             color: #ffffff !important;
             font-weight: 900 !important;
             text-transform: uppercase !important;
+            letter-spacing: -0.01em !important;
         }
         .swal2-confirm-gaming {
             background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
@@ -71,40 +65,39 @@
             letter-spacing: 0.05em !important;
             border-radius: 1rem !important;
             padding: 0.8rem 2.5rem !important;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4) !important;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
         }
     </style>
 </head>
-<body class="relative min-h-screen pb-20 bg-grid">
+<body class="relative min-h-screen pb-16 bg-grid">
 
+    <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/584145956693?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 bg-gradient-to-tr from-emerald-500 to-green-400 text-slate-950 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:shadow-[0_0_40px_rgba(16,185,129,0.8)] transition-all duration-300 hover:scale-110 group animate-bounce">
+       class="fixed bottom-6 right-6 z-50 bg-gradient-to-tr from-emerald-500 to-green-400 text-slate-950 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="absolute right-20 bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold px-4 py-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-2xl">
-            💬 ¿Necesitas ayuda VIP? Escríbenos
+            ¿Soporte VIP? Escríbenos
         </span>
     </a>
 
-    <header class="border-b border-slate-900/80 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 px-4 py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center max-w-6xl">
+    <!-- Encabezado -->
+    <header class="border-b border-slate-900 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-50 px-4 py-4">
+        <div class="container mx-auto flex justify-between items-center max-w-5xl">
             <a href="#" onclick="showSection('home-view'); return false;" class="flex items-center gap-3.5 group cursor-pointer">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-11 w-auto rounded-2xl border border-slate-800 shadow-md group-hover:border-amber-500/60 transition-all duration-300 group-hover:scale-105">
-                <div class="flex flex-col">
-                    <span class="font-black tracking-wider text-base uppercase leading-none">
-                        MASTER <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">GAME</span>
-                    </span>
-                    <span class="text-[9px] font-bold text-slate-400 tracking-widest mt-1 uppercase">Portal Oficial N°1</span>
-                </div>
+                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-10 w-auto rounded-xl border border-slate-800 shadow-lg group-hover:border-amber-500/50 transition-all duration-300 group-hover:scale-105">
+                <span class="font-black tracking-widest text-base uppercase">
+                    MASTER <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">GAME</span>
+                </span>
             </a>
             
-            <div class="flex items-center gap-3">
-                <span class="hidden sm:inline-flex border border-slate-800 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold bg-slate-900/60 text-slate-300 uppercase tracking-wider">
+            <div class="flex items-center gap-4">
+                <span class="hidden sm:inline-flex border border-slate-800 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold bg-slate-900/50 text-slate-400 uppercase tracking-wider">
                     ⭐ Calificación 5/5
                 </span>
-                <span class="border border-emerald-500/30 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold flex items-center gap-2 bg-emerald-950/40 text-emerald-400 uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Servidor En Línea
+                <span class="border border-emerald-500/30 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold flex items-center gap-2 bg-emerald-950/30 text-emerald-400 uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Servidor En Línea
                 </span>
             </div>
         </div>
@@ -112,24 +105,26 @@
 
     <input type="hidden" id="tasa_cambio" value="980" onchange="recalculateAllPrices()">
 
-    <section id="home-view" class="container mx-auto px-4 py-10 max-w-6xl relative z-10">
+    <!-- Vista de Inicio -->
+    <section id="home-view" class="container mx-auto px-4 py-8 max-w-5xl relative z-10">
         
-        <div class="absolute top-10 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
-        <div class="absolute top-48 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="absolute top-40 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[160px] pointer-events-none"></div>
 
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-black tracking-widest text-amber-400 uppercase mb-4 shadow-md">
-                <i class="fa-solid fa-bolt text-amber-500"></i> PROCESAMIENTO RÁPIDO Y SEGURO EN VENEZUELA
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-black tracking-widest text-amber-400 uppercase mb-5 shadow-lg">
+                <i class="fa-solid fa-fire text-amber-500"></i> EL MEJOR PORTAL DE AUTOMATIZACIÓN DE VENEZUELA
             </div>
-            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase leading-tight">
-                SELECCIONA TU JUEGO O <br><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent">SERVICIO FAVORITO</span>
+            <h1 class="text-4xl md:text-7xl font-black mb-5 tracking-tight uppercase leading-none">
+                RECARGAS DIRECTAS <br><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.2)]">100% AUTOMÁTICAS Y VIP</span>
             </h1>
-            <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed">
-                Haz clic en la opción de tu preferencia para comenzar tu recarga instantánea de forma totalmente guiada y automatizada.
+            <p class="text-slate-300 text-sm md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+                Selecciona tu juego favorito, procesa el pago y recibe tus saldos de forma directa e inmediata. Seguro, rápido y confiable.
             </p>
         </div>
 
-        <div class="max-w-xl mx-auto mb-14 bg-slate-950/80 border border-slate-900 rounded-2xl p-4 backdrop-blur-xl shadow-xl relative overflow-hidden">
+        <!-- Feed en Vivo -->
+        <div class="max-w-xl mx-auto mb-16 bg-slate-950/60 border border-slate-900 rounded-2xl p-4 backdrop-blur-xl shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-amber-500 via-orange-500 to-amber-600"></div>
             <div class="flex items-center gap-4">
                 <div class="relative flex items-center justify-center">
@@ -137,164 +132,153 @@
                     <span class="relative w-2 h-2 bg-emerald-500 rounded-full"></span>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-[9px] font-black uppercase text-slate-400 tracking-widest mb-0.5">Actividad Reciente del Servidor</div>
-                    <div id="live-feed-text" class="text-xs font-bold text-slate-200 transition-all duration-500 transform translate-y-0 opacity-100">
-                        Cargando transacciones en tiempo real...
+                    <div class="text-[9px] font-black uppercase text-slate-500 tracking-widest mb-0.5">Sincronización del Servidor en Vivo</div>
+                    <div id="live-feed-text" class="text-xs font-bold text-slate-300 transition-all duration-500 transform translate-y-0 opacity-100">
+                        Buscando últimas transacciones de pago...
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="flex items-center justify-between mb-6 px-2">
-            <h2 class="text-xs font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-gamepad text-amber-500 text-sm"></i> Catálogo de Juegos y Monederos Disponibles
-            </h2>
-            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider hidden sm:inline">Desliza o elige abajo</span>
-        </div>
+        <h2 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-8 text-center"><i class="fa-solid fa-gamepad text-amber-500 mr-2"></i> Selecciona tu opción o juego para iniciar</h2>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
-            
-            <div onclick="openStore('free_fire')" class="game-card-hover cursor-pointer bg-slate-900/50 border border-slate-800/80 hover:border-amber-500/60 rounded-3xl overflow-hidden p-5 shadow-xl flex flex-col justify-between relative backdrop-blur-md group">
-                <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/15 transition-all pointer-events-none"></div>
+        <!-- Cuadrícula de Opciones -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 px-2">
+            <!-- Free Fire -->
+            <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-amber-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(245,158,11,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/60 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] group-hover:border-amber-500/60 transition-all duration-300">
-                            <i class="fa-solid fa-fire-flame-curved text-3xl text-amber-500"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] group-hover:border-amber-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-fire-flame-curved text-4xl text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"></i>
                         </div>
-                        <span class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow">ID Directo</span>
+                        <div class="absolute bottom-4 left-4 bg-amber-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">ID Directo</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-amber-400 transition-colors">FREE FIRE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Diamantes rápidos y seguros directamente a tu ID de jugador.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors duration-250">FREE FIRE</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Suministro legal y veloz de diamantes directo a tu ID sin necesidad de contraseñas.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-800/60">
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-orange-500 group-hover:from-amber-400 group-hover:to-orange-400 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">
-                        Recargar Diamantes <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-amber-500 to-orange-500 group-hover:from-amber-400 group-hover:to-orange-400 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Ingresar ID de Jugador <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <div onclick="openStore('blood_strike')" class="game-card-hover cursor-pointer bg-slate-900/50 border border-slate-800/80 hover:border-orange-500/60 rounded-3xl overflow-hidden p-5 shadow-xl flex flex-col justify-between relative backdrop-blur-md group">
-                <div class="absolute top-0 right-0 w-28 h-28 bg-orange-500/5 rounded-full blur-2xl group-hover:bg-orange-500/15 transition-all pointer-events-none"></div>
+            <!-- Blood Strike -->
+            <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-orange-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(249,115,22,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl group-hover:bg-orange-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/60 shadow-inner">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] group-hover:border-orange-500/60 transition-all duration-300">
-                            <i class="fa-solid fa-crosshairs text-3xl text-orange-500"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] group-hover:border-orange-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-crosshairs text-4xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"></i>
                         </div>
-                        <span class="absolute bottom-3 left-3 bg-orange-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow">Oro Directo</span>
+                        <div class="absolute bottom-4 left-4 bg-orange-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Oro Directo</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-orange-400 transition-colors">BLOOD STRIKE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Adquiere Oro de combate y pases élite al instante.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors duration-250">BLOOD STRIKE</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Adquiere Oro de combate, Pases de Batalla y cosméticos directos a tu ID de usuario.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-800/60">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 group-hover:from-orange-400 group-hover:to-red-500 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">
-                        Comprar Oro <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 group-hover:from-orange-400 group-hover:to-red-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Oro <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <div onclick="openStore('roblox')" class="game-card-hover cursor-pointer bg-slate-900/50 border border-slate-800/80 hover:border-red-500/60 rounded-3xl overflow-hidden p-5 shadow-xl flex flex-col justify-between relative backdrop-blur-md group">
-                <div class="absolute top-0 right-0 w-28 h-28 bg-red-500/5 rounded-full blur-2xl group-hover:bg-red-500/15 transition-all pointer-events-none"></div>
+            <!-- Roblox -->
+            <div onclick="openStore('roblox')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-red-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(239,68,68,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl group-hover:bg-red-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/60 shadow-inner">
-                        <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp" alt="Roblox" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] group-hover:border-red-500/60 transition-all duration-300">
-                            <i class="fa-solid fa-cube text-3xl text-red-500"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp" alt="Roblox Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(239,68,68,0.4)] group-hover:border-red-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-cube text-4xl text-red-500 filter drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"></i>
                         </div>
-                        <span class="absolute bottom-3 left-3 bg-red-600 text-white text-[9px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow">Vía Login VIP</span>
+                        <div class="absolute bottom-4 left-4 bg-red-600 text-white text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Carga VIP WhatsApp</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-red-400 transition-colors">ROBLOX</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Recarga tus Robux de forma rápida y confiable.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-red-400 transition-colors duration-250">ROBLOX</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Recarga tus Robux de forma rápida enviando tu usuario por WhatsApp tras tu pago.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-800/60">
-                    <button class="w-full bg-gradient-to-r from-red-600 to-rose-600 group-hover:from-red-500 group-hover:to-rose-500 text-white font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">
-                        Comprar Robux <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-red-600 to-rose-600 group-hover:from-red-500 group-hover:to-rose-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Robux <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <div onclick="openStore('cod_mobile')" class="game-card-hover cursor-pointer bg-slate-900/50 border border-slate-800/80 hover:border-emerald-500/60 rounded-3xl overflow-hidden p-5 shadow-xl flex flex-col justify-between relative backdrop-blur-md group">
-                <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/15 transition-all pointer-events-none"></div>
+            <!-- Call of Duty Mobile -->
+            <div onclick="openStore('cod_mobile')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-emerald-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(16,185,129,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/60 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg" alt="COD Mobile" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] group-hover:border-emerald-500/60 transition-all duration-300">
-                            <i class="fa-solid fa-gun text-3xl text-emerald-500"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg" alt="COD Mobile Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] group-hover:border-emerald-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-gun text-4xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]"></i>
                         </div>
-                        <span class="absolute bottom-3 left-3 bg-emerald-500 text-slate-950 text-[9px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow">CP Directos</span>
+                        <div class="absolute bottom-4 left-4 bg-emerald-500 text-slate-950 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">CP Directos WhatsApp</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-emerald-400 transition-colors">COD MOBILE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Puntos CP para ruletas y pases de batalla activos.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-emerald-400 transition-colors duration-250">COD MOBILE</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Puntos CP para Pases de Batalla y ruletas enviando tu login por WhatsApp.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-800/60">
-                    <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 group-hover:from-emerald-400 group-hover:to-teal-500 text-slate-950 font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">
-                        Comprar CP <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 group-hover:from-emerald-400 group-hover:to-teal-500 text-slate-950 font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar CP <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <div onclick="openStore('playstation')" class="game-card-hover cursor-pointer bg-slate-900/50 border border-slate-800/80 hover:border-blue-500/60 rounded-3xl overflow-hidden p-5 shadow-xl flex flex-col justify-between relative backdrop-blur-md group">
-                <div class="absolute top-0 right-0 w-28 h-28 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/15 transition-all pointer-events-none"></div>
+            <!-- PlayStation -->
+            <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-blue-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(59,130,246,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/60 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation" class="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] group-hover:border-blue-500/60 transition-all duration-300">
-                            <i class="fa-brands fa-playstation text-3xl text-blue-500"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] group-hover:border-blue-500/40 transition-all duration-300">
+                            <i class="fa-brands fa-playstation text-4xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"></i>
                         </div>
-                        <span class="absolute bottom-3 left-3 bg-blue-600 text-white text-[9px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow">Pines Digitales</span>
+                        <div class="absolute bottom-4 left-4 bg-blue-600 text-slate-100 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Pines Digitales</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-blue-400 transition-colors">PLAYSTATION STORE</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Gift Cards de EE. UU. seguras para tu monedero de PSN.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-blue-400 transition-colors duration-250">PLAYSTATION STORE USA</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Códigos de Gift Card válidos y seguros para cargar saldo en tu monedero de PSN.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-800/60">
-                    <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:from-blue-500 group-hover:to-indigo-500 text-white font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">
-                        Ver Gift Cards <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:from-blue-500 group-hover:to-indigo-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Ver Gift Cards <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
 
-            <div onclick="openStore('zinli_sale')" class="game-card-hover cursor-pointer bg-slate-900/50 border border-slate-800/80 hover:border-purple-500/60 rounded-3xl overflow-hidden p-5 shadow-xl flex flex-col justify-between relative backdrop-blur-md group">
-                <div class="absolute top-0 right-0 w-28 h-28 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/15 transition-all pointer-events-none"></div>
+            <!-- Venta de Saldo Zinli -->
+            <div onclick="openStore('zinli_sale')" class="group cursor-pointer bg-slate-950/40 border border-slate-900 hover:border-purple-500/50 rounded-3xl overflow-hidden p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_35px_rgba(168,85,247,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition-colors pointer-events-none"></div>
                 <div>
-                    <div class="h-44 bg-slate-950 rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-800/60 shadow-inner">
-                        <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg" alt="Zinli" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
-                        <div class="relative z-10 w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] group-hover:border-purple-500/60 transition-all duration-300">
-                            <i class="fa-solid fa-credit-card text-3xl text-purple-400"></i>
+                    <div class="h-48 bg-slate-950 rounded-2xl mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                        <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg" alt="Zinli Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(168,85,247,0.4)] group-hover:border-purple-500/40 transition-all duration-300">
+                            <i class="fa-solid fa-credit-card text-4xl text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]"></i>
                         </div>
-                        <span class="absolute bottom-3 left-3 bg-purple-600 text-white text-[9px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md z-10 shadow">Monto Libre USD</span>
+                        <div class="absolute bottom-4 left-4 bg-purple-600 text-white text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-lg">Monto Libre en USD</div>
                     </div>
-                    <h3 class="text-lg font-black tracking-wider group-hover:text-purple-400 transition-colors">SALDO ZINLI</h3>
-                    <p class="text-slate-400 text-xs mt-1.5 font-medium leading-relaxed">Compra la cantidad exacta de dólares USD que necesites para tu tarjeta.</p>
+                    <h3 class="text-xl font-black tracking-wider group-hover:text-purple-400 transition-colors duration-250">COMPRA SALDO ZINLI</h3>
+                    <p class="text-slate-400 text-xs mt-2 font-medium leading-relaxed">Adquiere saldo directo para tu monedero Zinli pagando en Bolívares. Elige la cantidad que necesites.</p>
                 </div>
-                <div class="mt-5 pt-3 border-t border-slate-800/60">
-                    <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 group-hover:from-purple-500 group-hover:to-indigo-500 text-white font-black py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">
-                        Comprar Saldo USD <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                <div class="mt-6 pt-4 border-t border-slate-900">
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 group-hover:from-purple-500 group-hover:to-indigo-500 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all shadow-md">Comprar Saldo USD <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                 </div>
             </div>
-
         </div>
 
     </section>
 
-    <section id="form-view" class="container mx-auto px-4 py-8 max-w-5xl hidden relative z-10">
+    <!-- Vista de Formulario / Tienda -->
+    <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
         
-        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-300 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900 border border-slate-800 px-4 py-2.5 rounded-xl shadow-md">
-            <i class="fa-solid fa-arrow-left-long"></i> Volver al Catálogo
+        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900/40 border border-slate-800 px-4 py-2 rounded-xl">
+            <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
         </button>
 
-        <div id="game-image-banner" class="w-full h-40 md:h-48 rounded-3xl overflow-hidden mb-8 relative border border-slate-800 hidden shadow-2xl">
-            <img id="banner-img-src" src="" alt="Banner Juego" class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40"></div>
+        <div id="game-image-banner" class="w-full h-44 rounded-3xl overflow-hidden mb-8 relative border border-slate-900 hidden shadow-2xl">
+            <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-35">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
             <div class="absolute bottom-6 left-8">
-                <span class="text-[10px] font-black uppercase bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 px-3.5 py-1 rounded-full tracking-widest mb-2 inline-block shadow">Canal Verificado MASTER GAME</span>
+                <span class="text-[10px] font-black uppercase bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 px-3 py-1 rounded-full tracking-widest mb-2 inline-block shadow-lg">Canal Autorizado</span>
                 <h2 id="selected-game-title" class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">JUEGO</h2>
             </div>
         </div>
@@ -303,18 +287,20 @@
             
             <div class="lg:col-span-2 space-y-6">
                 
-                <div class="bg-slate-900/60 border border-slate-800/80 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden shadow-xl">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-400 mb-4 flex items-center gap-2.5">
-                        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs font-black border border-amber-500/30">1</span> Datos de Cuenta o Destino
+                <!-- Paso 1 -->
+                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">1</span> Datos de la Cuenta / Receptor
                     </h3>
 
+                    <!-- CONTENEDOR 1: PARA JUEGOS POR ID O ZINLI -->
                     <div id="id-login-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">ID del Jugador</label>
                             <div class="relative">
-                                <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 text-xs font-bold uppercase tracking-wider">ID</span>
-                                <input type="text" id="player_id" placeholder="Ingresa tu ID" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 pl-14 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold uppercase tracking-wider">ID</span>
+                                <input type="text" id="player_id" placeholder="Ingresa tus datos" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-14 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                             <div id="live-api-status" class="mt-2 text-xs font-bold hidden transition-all duration-300"></div>
                         </div>
@@ -322,30 +308,31 @@
                             <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                <input type="tel" id="player_whatsapp" placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <input type="tel" id="player_whatsapp" placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                         </div>
                     </div>
 
+                    <!-- CONTENEDOR 2: PARA JUEGOS POR LOGIN (Roblox, COD Mobile) -->
                     <div id="credentials-login-container" class="space-y-4 hidden">
-                        <div class="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-xs text-amber-300 font-medium flex items-center gap-3">
-                            <i class="fa-solid fa-lock text-amber-400 text-lg"></i>
-                            Este servicio requiere inicio de sesión. Al reportar tu pago se abrirá un chat seguro en WhatsApp con tus datos cifrados.
+                        <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300 font-medium flex items-center gap-2">
+                            <i class="fa-solid fa-lock text-amber-400 text-base"></i>
+                            Este servicio requiere credenciales. Al reportar el pago serás redirigido a WhatsApp para enviarnos estos datos de forma privada.
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Usuario / Correo</label>
-                                <input type="text" id="account_user" placeholder="Ej: Usuario o Correo" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Usuario / Correo de Cuenta</label>
+                                <input type="text" id="account_user" placeholder="Ej: Usuario o Correo" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                             <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Contraseña</label>
-                                <input type="password" id="account_pass" placeholder="••••••••••••" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Contraseña de Cuenta</label>
+                                <input type="password" id="account_pass" placeholder="••••••••••••" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tipo de Inicio de Sesión</label>
-                                <select id="account_login_type" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 px-4 text-sm font-bold text-slate-200 outline-none transition-all">
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Método de Inicio de Sesión</label>
+                                <select id="account_login_type" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold text-slate-200 outline-none transition-all">
                                     <option value="Usuario Roblox / Directo">Usuario Roblox / Directo</option>
                                     <option value="Activision">Activision</option>
                                     <option value="Facebook">Facebook</option>
@@ -356,7 +343,7 @@
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                    <input type="tel" id="player_whatsapp_cred" placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                    <input type="tel" id="player_whatsapp_cred" placeholder="Ej: 04141234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                                 </div>
                             </div>
                         </div>
@@ -364,167 +351,169 @@
 
                 </div>
 
-                <div class="bg-slate-900/60 border border-slate-800/80 p-6 rounded-3xl backdrop-blur-xl shadow-xl">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-400 mb-5 flex items-center gap-2.5">
-                        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs font-black border border-amber-500/30">2</span> Selecciona tu Paquete o Monto
+                <!-- Paso 2 -->
+                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">2</span> Selecciona tu Paquete / Monto
                     </h3>
 
-                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3.5"></div>
+                    <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
 
                     <div id="zinli-custom-amount-container" class="hidden space-y-4">
-                        <div class="p-5 bg-purple-950/25 border border-purple-500/30 rounded-2xl">
-                            <label class="block text-xs font-black uppercase text-purple-300 tracking-wider mb-2.5">Indica la cantidad exacta en Dólares (USD $):</label>
+                        <div class="p-4 bg-purple-950/30 border border-purple-500/30 rounded-2xl">
+                            <label class="block text-xs font-black uppercase text-purple-300 tracking-wider mb-2">Ingresa la cantidad exacta de Saldo Zinli (USD $) que deseas comprar:</label>
                             <div class="relative max-w-xs">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-purple-400 font-black text-sm">$</span>
-                                <input type="number" id="zinli_custom_usd" step="0.5" min="1" placeholder="Ej: 10.00" oninput="onZinliCustomAmountChange()" class="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl py-3.5 pl-8 pr-4 text-base font-black text-white outline-none">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-purple-400 font-extrabold text-sm">$</span>
+                                <input type="number" id="zinli_custom_usd" step="0.5" min="1" placeholder="Ej: 5.00" oninput="onZinliCustomAmountChange()" class="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl py-3 pl-8 pr-4 text-base font-black text-white outline-none">
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-2.5 font-medium">El equivalente en Bolívares (incluyendo el 10% de recargo del servicio Zinli) se calcula automáticamente.</p>
+                            <p class="text-[11px] text-slate-400 mt-2 font-medium">El equivalente en Bolívares (con el 10% de recargo del servicio Zinli) se calculará automáticamente.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-900/60 border border-slate-800/80 p-6 rounded-3xl backdrop-blur-xl shadow-xl">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-400 mb-5 flex items-center gap-2.5">
-                        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs font-black border border-amber-500/30">3</span> Método de Pago y Referencia
+                <!-- Paso 3 -->
+                <div class="bg-slate-950/60 border border-slate-900 p-6 rounded-3xl backdrop-blur-xl">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">3</span> Información de Pago
                     </h3>
-
+                    
+                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-3">Selecciona tu Método de Pago</label>
                     <div class="grid grid-cols-3 gap-3 mb-6">
-                        <button type="button" id="btn-pm" onclick="selectPaymentMethod('pago_movil')" class="payment-method-btn border border-amber-500 bg-amber-500/10 text-slate-100 rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer shadow-md">
-                            <i class="fa-solid fa-mobile-screen-button text-base text-amber-400"></i> Pago Móvil
+                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
+                            <i class="fa-solid fa-mobile-screen text-lg text-amber-400"></i> PMóvil
                         </button>
-                        <button type="button" id="btn-binance" onclick="selectPaymentMethod('binance')" class="payment-method-btn border border-slate-800 bg-slate-950/50 text-slate-400 hover:text-white rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer">
-                            <i class="fa-solid fa-coins text-base text-amber-400"></i> Binance Pay
+                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
+                            <i class="fa-solid fa-coins text-lg text-amber-500"></i> Binance
                         </button>
-                        <button type="button" id="btn-zinli" onclick="selectPaymentMethod('zinli')" class="payment-method-btn border border-slate-800 bg-slate-950/50 text-slate-400 hover:text-white rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer">
-                            <i class="fa-solid fa-credit-card text-base text-purple-400"></i> Zinli
+                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer">
+                            <i class="fa-solid fa-credit-card text-lg text-purple-400"></i> Zinli
                         </button>
                     </div>
 
-                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/80 border border-slate-800/80 rounded-2xl p-5 mb-6 shadow-inner">
+                    <!-- Datos Pago Móvil -->
+                    <div id="info-pago_movil" class="payment-info-box active bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-5 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-2xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
+                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
                                 <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-widest text-amber-400 uppercase mb-1">Datos de Transferencia Pago Móvil</div>
+                                <div class="text-[10px] font-black tracking-widest text-amber-500 uppercase mb-1">Datos de Transferencia Pago Móvil</div>
                                 <p><span class="text-slate-500 font-bold">Banco:</span> BANCO DE VENEZUELA (0102)</p>
                                 <p><span class="text-slate-500 font-bold">Teléfono:</span> <span class="font-black text-slate-200">0414-5956693</span></p>
                                 <p><span class="text-slate-500 font-bold">Cédula:</span> <span class="font-black text-slate-200">V-32.562.761</span></p>
-                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-2 text-[10px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3.5 py-2 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer shadow">
-                                    <i class="fa-regular fa-copy mr-1.5"></i> Copiar Teléfono y Cédula
-                                </button>
+                                <button type="button" onclick="copyPaymentData('04145956693', '32562761', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Teléfono y Cédula</button>
                             </div>
                         </div>
                     </div>
 
-                    <div id="info-binance" class="payment-info-box bg-slate-950/80 border border-slate-800/80 rounded-2xl p-5 mb-6 shadow-inner">
+                    <!-- Datos Binance -->
+                    <div id="info-binance" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-5 items-center">
-                            <div class="w-28 h-28 bg-slate-900 rounded-2xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
+                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
                                 <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-widest text-amber-400 uppercase mb-1">Datos de Binance Pay (USDT / USD)</div>
-                                <p><span class="text-slate-500 font-bold">Binance Pay ID:</span> <span class="font-black text-slate-200">482910384</span></p>
-                                <p><span class="text-slate-500 font-bold">Correo asociado:</span> <span class="font-black text-slate-200">pagosmastergame@gmail.com</span></p>
-                                <button type="button" onclick="copyText('482910384', this)" class="mt-2 text-[10px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3.5 py-2 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer shadow">
-                                    <i class="fa-regular fa-copy mr-1.5"></i> Copiar Binance ID
-                                </button>
+                                <div class="text-[10px] font-black tracking-widest text-amber-500 uppercase mb-1">Datos de Binance Pay</div>
+                                <p><span class="text-slate-500 font-bold">Correo de Cuenta:</span> <span class="font-black text-slate-200">snaidernarvaez18@gmail.com</span></p>
+                                <button type="button" onclick="copyText('snaidernarvaez18@gmail.com', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo</button>
                             </div>
                         </div>
                     </div>
 
-                    <div id="info-zinli" class="payment-info-box bg-slate-950/80 border border-purple-500/30 rounded-2xl p-5 mb-6 shadow-inner">
+                    <!-- Datos Zinli -->
+                    <div id="info-zinli" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-5 items-center">
-                            <div class="w-28 h-28 bg-purple-950/40 rounded-2xl flex-shrink-0 border border-purple-500/30 shadow-xl flex items-center justify-center">
-                                <i class="fa-solid fa-credit-card text-4xl text-purple-400"></i>
+                            <div class="w-28 h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
+                                <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
-                                <div class="text-[10px] font-black tracking-widest text-purple-400 uppercase mb-1">Datos de Zinli</div>
-                                <p><span class="text-slate-500 font-bold">Correo Zinli:</span> <span class="font-black text-slate-200">zinlimastergame@gmail.com</span></p>
-                                <p><span class="text-slate-500 font-bold">Titular:</span> <span class="font-black text-slate-200">Master Game VIP</span></p>
-                                <button type="button" onclick="copyText('zinlimastergame@gmail.com', this)" class="mt-2 text-[10px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3.5 py-2 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer shadow">
-                                    <i class="fa-regular fa-copy mr-1.5"></i> Copiar Correo Zinli
-                                </button>
+                                <div class="text-[10px] font-black tracking-widest text-purple-400 uppercase mb-1">Datos de Cuenta Zinli Receptor</div>
+                                <p><span class="text-slate-500 font-bold">Correo Receptor:</span> <span class="font-black text-slate-200">rcsmastergame@gmail.com</span></p>
+                                <button type="button" onclick="copyText('rcsmastergame@gmail.com', this)" class="mt-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"><i class="fa-regular fa-copy mr-1"></i> Copiar Correo Receptor</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Número de Referencia o Captura</label>
-                            <input type="text" id="payment_ref" placeholder="Últimos 4 o 6 dígitos" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Comprobante de Pago (Opcional)</label>
-                            <label class="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-xl py-3 px-4 flex items-center justify-between cursor-pointer transition-all">
-                                <span id="file-placeholder" class="text-xs text-slate-500 font-bold">Subir archivo o foto</span>
-                                <span id="file-name" class="text-xs text-emerald-400 font-bold hidden"></span>
-                                <i class="fa-solid fa-cloud-arrow-up text-slate-400"></i>
-                                <input type="file" id="payment_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
-                            </label>
+                    <div class="space-y-4 pt-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Número de Referencia / ID Pago</label>
+                                <input type="text" id="payment_ref" required placeholder="Últimos 4, 6 u 8 dígitos" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Captura de Pantalla (Opcional)</label>
+                                <label class="w-full bg-slate-950 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3.5 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
+                                    <span id="file-name" class="text-emerald-400 hidden font-bold">✓ Archivo cargado</span>
+                                    <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2 text-slate-400"></i> Subir Comprobante</span>
+                                    <input type="file" id="receipt_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
+                                </label>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
 
-            <div class="bg-slate-900/80 border border-slate-800/80 rounded-3xl p-6 sticky top-28 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+            <!-- Resumen lateral -->
+            <div class="bg-slate-950/80 border border-slate-900 rounded-3xl p-6 sticky top-28 backdrop-blur-xl shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-200 mb-5 pb-3 border-b border-slate-800 flex items-center justify-between">
-                    <span>Resumen del Pedido</span> <i class="fa-solid fa-receipt text-amber-400"></i>
+                <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-5 pb-3 border-b border-slate-900 flex items-center justify-between">
+                    <span>Resumen del Pedido</span>
+                    <i class="fa-solid fa-receipt text-slate-500"></i>
                 </h3>
-                <div class="space-y-3.5 text-xs font-medium mb-6">
+                
+                <div class="space-y-3 text-xs font-medium mb-6">
                     <div class="flex justify-between items-center">
-                        <span class="text-slate-400">Paquete / Monto:</span>
-                        <span id="summary-package-name" class="font-extrabold text-slate-100 text-right">Ninguno</span>
+                        <span class="text-slate-500">Paquete / Cantidad:</span>
+                        <span id="summary-package-name" class="font-extrabold text-slate-200 text-right">Ninguno</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-slate-400">Precio Base:</span>
-                        <span id="summary-base-price" class="font-extrabold text-slate-100">0.00 Bs.</span>
+                        <span class="text-slate-500">Precio Base:</span>
+                        <span id="summary-base-price" class="font-extrabold text-slate-200">0.00 Bs.</span>
                     </div>
                     <div id="row-fee" class="flex justify-between items-center text-amber-400 font-bold hidden">
                         <span>Comisión Zinli (10%):</span>
                         <span id="summary-fee-price">0.00 Bs.</span>
                     </div>
-                    <div class="flex justify-between items-center text-[10px] text-slate-400 font-bold pt-1">
+                    <div class="flex justify-between items-center text-[10px] text-slate-500 font-bold pt-1">
                         <span>Canal de Entrega:</span>
-                        <span id="summary-delivery-channel" class="text-emerald-400 uppercase font-extrabold">⚡ Automático</span>
+                        <span id="summary-delivery-channel" class="text-emerald-400 uppercase">⚡ Automático</span>
                     </div>
-                    <div class="border-t border-slate-800 my-2 pt-4 flex justify-between items-baseline">
-                        <span class="text-sm font-black uppercase text-slate-200">Total a Pagar:</span>
-                        <div class="text-right">
-                            <div id="summary-total-bs" class="text-lg font-black text-amber-400">0.00 Bs.</div>
-                            <div id="summary-total-usd" class="text-[11px] font-bold text-slate-400">≈ $0.00 USD</div>
-                        </div>
+                    <div class="border-t border-slate-900 my-2 pt-4 flex justify-between items-baseline">
+                        <span class="text-sm font-black uppercase text-slate-300">Total a Pagar (Bs.)</span>
+                        <span id="summary-total-price" class="text-xl font-black text-amber-400 tracking-tight">0.00 Bs.</span>
                     </div>
                 </div>
 
-                <button type="button" id="submit-btn" onclick="submitRecharge()" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black py-4 rounded-2xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_4px_25px_rgba(245,158,11,0.3)] cursor-pointer hover:scale-[1.02]">
-                    <i class="fa-solid fa-paper-plane text-sm"></i> Enviar Reporte de Pago
+                <button type="submit" id="submit-btn" onclick="submitRecharge(); return false;" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
                 </button>
             </div>
-
         </form>
-
     </section>
 
-    <script>
-        let juegoActual = '';
-        let selectedPackagePriceUSD = 0;
-        let selectedPackageName = '';
-        let metodoPagoActual = 'pago_movil';
-        let nombreJugadorValidado = '';
-        let currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
-        let iconClass = 'text-amber-400';
+    <!-- Pie de página -->
+    <footer class="w-full text-center py-8 text-xs text-slate-600 font-medium mt-16 border-t border-slate-950">
+        &copy; 2026 MASTER GAME VENEZUELA. Todos los derechos reservados. <br>
+        <span class="text-[10px] text-slate-700 mt-1 block">Términos, condiciones y marcas comerciales registradas son propiedad de sus respectivos dueños.</span>
+    </footer>
 
-        const paquetesPorJuego = {
+    <!-- Script principal -->
+    <script>
+        let juegoActual = "";
+        let selectedPackagePriceUSD = 0;
+        let selectedPackageName = "";
+        let metodoPagoActual = "pago_movil";
+        let currentActiveBorderClass = ""; 
+        let nombreJugadorValidado = ""; 
+
+        // PRECIOS BASE REALES (sin comisión del 10% incluida de forma fija)
+        const listaPaquetes = {
             free_fire: [
-                { id: "ff_100", name: "100 Diamantes + 10 Bono", bonus: "Entrega Inmediata", priceUSD: 1.00, icon: "fa-gem" },
-                { id: "ff_310", name: "310 Diamantes + 31 Bono", bonus: "Más Popular", priceUSD: 3.00, icon: "fa-gem" },
-                { id: "ff_520", name: "520 Diamantes + 52 Bono", bonus: "Ahorro del 10%", priceUSD: 4.80, icon: "fa-gem" },
-                { id: "ff_1060", name: "1060 Diamantes + 106 Bono", bonus: "Bono Doble", priceUSD: 9.50, icon: "fa-gem" },
-                { id: "ff_2180", name: "2180 Diamantes + 218 Bono", bonus: "Especial VIP", priceUSD: 19.00, icon: "fa-gem" },
+                { id: "ff_100", name: "100 Diamantes + 10 Bono", bonus: "Entrega Inmediata", priceUSD: 0.83, icon: "fa-gem" },
+                { id: "ff_310", name: "310 Diamantes + 31 Bono", bonus: "Entrega Inmediata", priceUSD: 2.40, icon: "fa-gem" },
+                { id: "ff_520", name: "520 Diamantes + 52 Bono", bonus: "Entrega Inmediata", priceUSD: 4.00, icon: "fa-gem" },
+                { id: "ff_1060", name: "1060 Diamantes + 106 Bono", bonus: "Entrega Inmediata", priceUSD: 7.50, icon: "fa-gem" },
+                { id: "ff_2180", name: "2160 Diamantes + 218 Bono", bonus: "Entrega Inmediata", priceUSD: 14.80, icon: "fa-gem" },
                 { id: "ff_5600", name: "5600 Diamantes + 560 Bono", bonus: "Entrega Inmediata", priceUSD: 37.00, icon: "fa-gem" },
                 { id: "ff_weekly", name: "Tarjeta Semanal", bonus: "Diamantes Diarios", priceUSD: 2.80, icon: "fa-id-card" },
                 { id: "ff_monthly", name: "Tarjeta Mensual", bonus: "Máximo Descuento", priceUSD: 13.00, icon: "fa-box-open" }
@@ -542,42 +531,50 @@
                 { id: "rb_80", name: "80 Robux", bonus: "Vía Login", priceUSD: 1.30, icon: "fa-cube" },
                 { id: "rb_400", name: "400 Robux", bonus: "Vía Login", priceUSD: 6.00, icon: "fa-cube" },
                 { id: "rb_800", name: "800 Robux", bonus: "Vía Login", priceUSD: 12.00, icon: "fa-cube" },
-                { id: "rb_1700", name: "1700 Robux", bonus: "Vía Login", priceUSD: 24.00, icon: "fa-cube" },
-                { id: "rb_4500", name: "4500 Robux", bonus: "Vía Login", priceUSD: 58.00, icon: "fa-cube" }
+                { id: "rb_1700", name: "1700 Robux", bonus: "Vía Login", priceUSD: 23.00, icon: "fa-cube" },
+                { id: "rb_4500", name: "4500 Robux", bonus: "Vía Login", priceUSD: 55.00, icon: "fa-cube" }
             ],
             cod_mobile: [
-                { id: "cod_80", name: "80 Puntos CP", bonus: "Vía Login", priceUSD: 1.20, icon: "fa-gun" },
-                { id: "cod_420", name: "420 Puntos CP", bonus: "Vía Login", priceUSD: 5.50, icon: "fa-gun" },
-                { id: "cod_880", name: "880 Puntos CP", bonus: "Vía Login", priceUSD: 11.00, icon: "fa-gun" },
-                { id: "cod_2400", name: "2400 Puntos CP", bonus: "Vía Login", priceUSD: 28.00, icon: "fa-gun" },
-                { id: "cod_5000", name: "5000 Puntos CP", bonus: "Vía Login", priceUSD: 55.00, icon: "fa-gun" }
+                { id: "cod_80", name: "80 CP Puntos", bonus: "Vía Login", priceUSD: 1.30, icon: "fa-gun" },
+                { id: "cod_420", name: "420 CP Puntos", bonus: "Vía Login", priceUSD: 6.00, icon: "fa-gun" },
+                { id: "cod_880", name: "880 CP Puntos", bonus: "Vía Login", priceUSD: 12.00, icon: "fa-gun" },
+                { id: "cod_2400", name: "2400 CP Puntos", bonus: "Vía Login", priceUSD: 28.00, icon: "fa-gun" },
+                { id: "cod_5000", name: "5000 CP Puntos", bonus: "Vía Login", priceUSD: 55.00, icon: "fa-gun" }
             ],
             playstation: [
-                { id: "ps_10", name: "Tarjeta PSN $10", bonus: "Código Digital", priceUSD: 11.50, icon: "fa-folder-plus" },
-                { id: "ps_20", name: "Tarjeta PSN $20", bonus: "Código Digital", priceUSD: 22.50, icon: "fa-folder-plus" },
-                { id: "ps_25", name: "Tarjeta PSN $25", bonus: "Código Digital", priceUSD: 28.00, icon: "fa-folder-plus" },
+                { id: "ps_10", name: "Tarjeta PSN $10", bonus: "Código Digital", priceUSD: 11.00, icon: "fa-folder-plus" },
+                { id: "ps_20", name: "Tarjeta PSN $20", bonus: "Código Digital", priceUSD: 22.00, icon: "fa-folder-plus" },
+                { id: "ps_30", name: "Tarjeta PSN $30", bonus: "Código Digital", priceUSD: 33.00, icon: "fa-folder-plus" },
+                { id: "ps_40", name: "Tarjeta PSN $40", bonus: "Código Digital", priceUSD: 44.00, icon: "fa-folder-plus" },
                 { id: "ps_50", name: "Tarjeta PSN $50", bonus: "Código Digital", priceUSD: 55.00, icon: "fa-folder-plus" }
             ]
         };
 
         const nombresFicticios = ["Snaider_FF", "GhostPro", "VzlaGamer", "Zero_Strike", "BolivarKng", "Alfa_01", "Catira_FF", "Turok_Ve", "RobloxKing", "COD_Master"];
-        const opcionesPaquetes = [ "100 Diamantes + 10 Bono", "310 Diamantes + 31 Bono", "400 Robux", "300 de Oro", "420 CP COD Mobile", "Tarjeta PSN $10", "Saldo Zinli $10 USD" ];
+        const opcionesPaquetes = [
+            "100 Diamantes + 20 Bono", "310 Diamantes + 62 Bono", "400 Robux", 
+            "300 de Oro", "420 CP COD Mobile", "Tarjeta PSN $10", "Saldo Zinli $10 USD"
+        ];
 
         function actualizarFeedEnVivo() {
             const feedEl = document.getElementById('live-feed-text');
             if(!feedEl) return;
+
             feedEl.style.opacity = "0";
-            feedEl.style.transform = "translateY(-4px)";
+            feedEl.style.transform = "translateY(-5px)";
+
             setTimeout(() => {
                 const nombre = nombresFicticios[Math.floor(Math.random() * nombresFicticios.length)];
                 const paquete = opcionesPaquetes[Math.floor(Math.random() * opcionesPaquetes.length)];
-                const minutos = Math.floor(Math.random() * 6) + 1;
-                feedEl.innerHTML = `⚡ El usuario <span class="text-amber-400 font-extrabold">${nombre}</span> recargó con éxito <span class="text-white font-extrabold">${paquete}</span> hace ${minutos} min.`;
+                const minutos = Math.floor(Math.random() * 8) + 1;
+                
+                feedEl.innerHTML = `⚡ El cliente <span class="text-amber-400 font-extrabold">${nombre}</span> procesó <span class="text-white font-extrabold">${paquete}</span> hace ${minutos} min.`;
+                
                 feedEl.style.opacity = "1";
                 feedEl.style.transform = "translateY(0)";
-            }, 400);
+            }, 500);
         }
-        setInterval(actualizarFeedEnVivo, 6500);
+        setInterval(actualizarFeedEnVivo, 7000);
         window.addEventListener('DOMContentLoaded', actualizarFeedEnVivo);
 
         function showSection(id) {
@@ -589,20 +586,23 @@
 
         function openStore(juego) {
             juegoActual = juego;
-            nombreJugadorValidado = "";
+            nombreJugadorValidado = ""; 
+            
             const statusLabel = document.getElementById('live-api-status');
             statusLabel.className = "mt-2 text-xs font-bold hidden";
             statusLabel.innerText = "";
-            
+
             const container = document.getElementById('packages-container');
             const customZinliBox = document.getElementById('zinli-custom-amount-container');
             const title = document.getElementById('selected-game-title');
             const bannerContainer = document.getElementById('game-image-banner');
             const bannerImg = document.getElementById('banner-img-src');
             const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
+            
             const idLabel = document.getElementById('id-field-label');
             const idPrefix = document.getElementById('id-field-prefix');
             const idInput = document.getElementById('player_id');
+
             const idContainer = document.getElementById('id-login-container');
             const credContainer = document.getElementById('credentials-login-container');
             const deliveryChannel = document.getElementById('summary-delivery-channel');
@@ -611,129 +611,145 @@
             if (juego === 'cod_mobile') {
                 loginTypeSelect.value = "Activision";
                 loginTypeSelect.disabled = true;
+            } else if (juego === 'roblox') {
+                loginTypeSelect.value = "Usuario Roblox / Directo";
+                loginTypeSelect.disabled = true;
             } else {
                 loginTypeSelect.disabled = false;
-            }
-
-            if (juego === 'free_fire') {
-                title.innerText = "Free Fire";
-                bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
-                iconClass = 'text-amber-400';
-            } else if (juego === 'blood_strike') {
-                title.innerText = "Blood Strike";
-                bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
-                iconClass = 'text-orange-400';
-            } else if (juego === 'roblox') {
-                title.innerText = "Roblox";
-                bannerImg.src = "https://images.rbxcdn.com/7b328a30ef14be8e85eb662d5e75d045";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-red-500 bg-red-500/10 shadow-[0_0_20px_rgba(239,68,68,0.2)]';
-                iconClass = 'text-red-400';
-            } else if (juego === 'cod_mobile') {
-                title.innerText = "Call of Duty Mobile";
-                bannerImg.src = "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/store/codm-hero.jpg";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-emerald-500 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
-                iconClass = 'text-emerald-400';
-            } else if (juego === 'playstation') {
-                title.innerText = "PlayStation Network";
-                bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
-                iconClass = 'text-blue-400';
-            } else if (juego === 'zinli_sale') {
-                title.innerText = "Compra de Saldo Zinli";
-                bannerImg.src = "https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded79ef88a1838d726b2.jpg";
-                bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-purple-500 bg-purple-500/10 shadow-[0_0_20px_rgba(168,85,247,0.2)]';
-                iconClass = 'text-purple-400';
             }
 
             if (juego === 'roblox' || juego === 'cod_mobile') {
                 idContainer.classList.add('hidden');
                 credContainer.classList.remove('hidden');
-                deliveryChannel.innerText = "💬 Vía WhatsApp (Credenciales)";
+                deliveryChannel.innerText = "📲 Soporte WhatsApp";
+                deliveryChannel.className = "text-amber-400 uppercase font-black";
             } else {
-                idContainer.classList.remove('hidden');
                 credContainer.classList.add('hidden');
-                deliveryChannel.innerText = "⚡ Automático al ID";
-                if (juego === 'zinli_sale') {
-                    idLabel.innerText = "Correo o Teléfono Zinli";
-                    idPrefix.innerText = "Zinli";
-                    idInput.placeholder = "Tus datos Zinli";
-                } else if (juego === 'playstation') {
-                    idLabel.innerText = "Correo de Cuenta PSN";
+                idContainer.classList.remove('hidden');
+                deliveryChannel.innerText = "⚡ Automático";
+                deliveryChannel.className = "text-emerald-400 uppercase font-black";
+
+                if(juego === 'playstation') {
+                    idLabel.innerText = "Correo de tu Cuenta PSN / ID";
                     idPrefix.innerText = "PSN";
-                    idInput.placeholder = "Correo para enviar PIN";
+                    idInput.placeholder = "Ej: usuario@email.com o tu ID";
+                } else if(juego === 'zinli_sale') {
+                    idLabel.innerText = "Tu Correo Zinli (Donde recibirás el saldo)";
+                    idPrefix.innerText = "ZINLI";
+                    idInput.placeholder = "Ej: tu_correo@zinli.com";
                 } else {
                     idLabel.innerText = "ID del Jugador";
                     idPrefix.innerText = "ID";
-                    idInput.placeholder = "Ingresa tu ID de usuario";
+                    idInput.placeholder = "Ingresa tu ID de juego";
                 }
             }
 
             container.innerHTML = "";
-            selectedPackagePriceUSD = 0;
-            selectedPackageName = "";
+            let iconClass = 'text-amber-400';
 
-            if (juego === 'zinli_sale') {
-                customZinliBox.classList.remove('hidden');
+            if(juego === 'free_fire') {
+                title.innerText = "Free Fire";
+                bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
+                bannerContainer.classList.remove('hidden');
+                currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
+                iconClass = 'text-amber-400';
+            } else if(juego === 'blood_strike') {
+                title.innerText = "Blood Strike";
+                bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
+                bannerContainer.classList.remove('hidden');
+                currentActiveBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
+                iconClass = 'text-orange-400';
+            } else if(juego === 'roblox') {
+                title.innerText = "Roblox";
+                bannerImg.src = "https://images.rbxcdn.com/7b328a30ef14be8e85eb662d5e75d045";
+                bannerContainer.classList.remove('hidden');
+                currentActiveBorderClass = 'border-red-500 bg-red-500/10 shadow-[0_0_20px_rgba(239,68,68,0.2)]';
+                iconClass = 'text-red-400';
+            } else if(juego === 'cod_mobile') {
+                title.innerText = "Call of Duty Mobile";
+                bannerImg.src = "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/store/codm-hero.jpg";
+                bannerContainer.classList.remove('hidden');
+                currentActiveBorderClass = 'border-emerald-500 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
+                iconClass = 'text-emerald-400';
+            } else if(juego === 'playstation') {
+                title.innerText = "PlayStation Network";
+                bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
+                bannerContainer.classList.remove('hidden');
+                currentActiveBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
+                iconClass = 'text-blue-400';
+            } else if(juego === 'zinli_sale') {
+                title.innerText = "Compra de Saldo Zinli";
+                bannerImg.src = "https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg";
+                bannerContainer.classList.remove('hidden');
+                currentActiveBorderClass = 'border-purple-500 bg-purple-500/10 shadow-[0_0_20px_rgba(168,85,247,0.2)]';
+            }
+
+            if(juego === 'zinli_sale') {
                 container.classList.add('hidden');
-                document.getElementById('row-fee').classList.remove('hidden');
-                selectedPackageName = "Saldo Zinli $0.00 USD";
-                selectedPackagePriceUSD = 0;
+                customZinliBox.classList.remove('hidden');
+                document.getElementById('zinli_custom_usd').value = "5"; 
+                onZinliCustomAmountChange();
             } else {
                 customZinliBox.classList.add('hidden');
                 container.classList.remove('hidden');
-                document.getElementById('row-fee').classList.add('hidden');
-                
-                const lista = paquetesPorJuego[juego] || [];
-                lista.forEach((pkg, index) => {
-                    const precioBs = (pkg.priceUSD * tasaValue).toFixed(2);
-                    const div = document.createElement('div');
-                    div.className = "package-card border border-slate-800 bg-slate-950/60 hover:border-amber-500/50 rounded-2xl p-4 cursor-pointer transition-all duration-250 flex flex-col justify-between group";
-                    div.onclick = () => selectPackage(div, pkg.priceUSD, pkg.name);
+
+                listaPaquetes[juego].forEach((pkg, idx) => {
+                    const isChecked = idx === 0;
+                    const checkedAttr = isChecked ? "checked" : "";
+                    const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
                     
-                    div.innerHTML = `
-                        <div>
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-xs ${iconClass}">
-                                    <i class="fa-solid ${pkg.icon}"></i>
-                                </span>
-                                <input type="radio" name="selected_package" class="package-radio accent-amber-500" ${index === 0 ? 'checked' : ''}>
+                    const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+                    const html = `
+                        <label class="relative block cursor-pointer package-card group h-full" onclick="selectPackage(this, '${pkg.name}', ${pkg.priceUSD})">
+                            <input type="radio" name="paquete" value="${pkg.id}" data-usd="${pkg.priceUSD}" data-name="${pkg.name}" ${checkedAttr} class="hidden package-radio">
+                            <div class="package-content border rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden ${currentCardClass}">
+                                <div>
+                                    <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center mb-2 border border-slate-800">
+                                        <i class="fa-solid ${pkg.icon} text-sm ${iconClass}"></i>
+                                    </div>
+                                    <div class="font-bold text-xs text-slate-200 leading-tight line-clamp-2">${pkg.name}</div>
+                                    <div class="text-[9px] font-black text-emerald-400 mt-1 tracking-wider uppercase truncate">${pkg.bonus}</div>
+                                </div>
+                                <div class="text-sm font-black text-slate-200 mt-2 card-price-render" data-usd="${pkg.priceUSD}">
+                                    ${calculatedPriceBs} Bs.
+                                </div>
                             </div>
-                            <div class="text-xs font-black uppercase text-slate-200 group-hover:text-amber-400 transition-colors">${pkg.name}</div>
-                            <div class="text-[10px] text-slate-400 font-bold mt-1">${pkg.bonus}</div>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-900/80 flex items-baseline justify-between">
-                            <span class="text-xs font-black text-amber-400">$${pkg.priceUSD.toFixed(2)}</span>
-                            <span class="text-[10px] font-bold text-slate-400">${precioBs} Bs.</span>
-                        </div>
+                        </label>
                     `;
-                    container.appendChild(div);
-                    if (index === 0) {
-                        selectPackage(div, pkg.priceUSD, pkg.name);
-                    }
+                    container.insertAdjacentHTML('beforeend', html);
                 });
+
+                if(listaPaquetes[juego].length > 0) {
+                    selectedPackagePriceUSD = listaPaquetes[juego][0].priceUSD;
+                    selectedPackageName = listaPaquetes[juego][0].name;
+                    updateTotalSummary();
+                }
             }
-            updateTotalSummary();
+
             showSection('form-view');
         }
 
-        function selectPackage(element, priceUSD, name) {
-            document.querySelectorAll('.package-card').forEach(card => {
-                card.className = "package-card border border-slate-800 bg-slate-950/60 hover:border-amber-500/50 rounded-2xl p-4 cursor-pointer transition-all duration-250 flex flex-col justify-between group";
-                const r = card.querySelector('.package-radio');
-                if(r) r.checked = false;
+        function onZinliCustomAmountChange() {
+            const inputVal = parseFloat(document.getElementById('zinli_custom_usd').value) || 0;
+            selectedPackagePriceUSD = inputVal;
+            selectedPackageName = `Saldo Zinli $${inputVal.toFixed(2)} USD`;
+            updateTotalSummary();
+        }
+
+        function selectPackage(element, name, priceUSD) {
+            document.querySelectorAll('.package-content').forEach(card => {
+                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden";
             });
-            element.className = `package-card border ${currentActiveBorderClass} rounded-2xl p-4 cursor-pointer transition-all duration-250 flex flex-col justify-between group`;
+
+            const innerDiv = element.querySelector('.package-content');
+            if (innerDiv) {
+                innerDiv.className = `package-content border rounded-2xl p-4 flex flex-col justify-between h-full min-h-[150px] transition-all duration-300 relative overflow-hidden ${currentActiveBorderClass}`;
+            }
+
             const radio = element.querySelector('.package-radio');
             if(radio) radio.checked = true;
-            
+
             selectedPackagePriceUSD = priceUSD;
             selectedPackageName = name;
             updateTotalSummary();
@@ -742,22 +758,24 @@
         function selectPaymentMethod(metodo) {
             metodoPagoActual = metodo;
             document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.className = "payment-method-btn border border-slate-800 bg-slate-950/50 text-slate-400 hover:text-white rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer";
+                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
             });
+
             document.querySelectorAll('.payment-info-box').forEach(box => {
                 box.classList.remove('active');
             });
 
-            if (metodo === 'pago_movil') {
-                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/10 text-slate-100 rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer shadow-md";
+            if(metodo === 'pago_movil') {
+                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
                 document.getElementById('info-pago_movil').classList.add('active');
             } else if (metodo === 'binance') {
-                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/10 text-slate-100 rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer shadow-md";
+                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
                 document.getElementById('info-binance').classList.add('active');
             } else if (metodo === 'zinli') {
-                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/10 text-slate-100 rounded-2xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-extrabold text-xs transition-all cursor-pointer shadow-md";
+                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1.5 font-bold text-xs transition-all cursor-pointer";
                 document.getElementById('info-zinli').classList.add('active');
             }
+
             updateTotalSummary();
         }
 
@@ -783,59 +801,67 @@
             }, 2000);
         }
 
-        function onZinliCustomAmountChange() {
-            const inputVal = parseFloat(document.getElementById('zinli_custom_usd').value) || 0;
-            selectedPackagePriceUSD = inputVal;
-            selectedPackageName = `Saldo Zinli $${inputVal.toFixed(2)} USD`;
-            updateTotalSummary();
-        }
-
         function recalculateAllPrices() {
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+            document.querySelectorAll('.card-price-render').forEach(el => {
+                const usd = parseFloat(el.getAttribute('data-usd'));
+                const newBs = (usd * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                el.innerText = newBs + " Bs.";
+            });
             updateTotalSummary();
         }
 
         function updateTotalSummary() {
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
-            let precioFinalUSD = selectedPackagePriceUSD;
-            let feeBs = 0;
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
+            const rowFee = document.getElementById('row-fee');
+            
+            const precioBaseBs = selectedPackagePriceUSD * tasaValue;
+            let comisionBs = 0;
+            let totalBs = precioBaseBs;
 
-            if (juegoActual === 'zinli_sale') {
-                const comision = selectedPackagePriceUSD * 0.10;
-                precioFinalUSD += comision;
-                feeBs = comision * tasaValue;
-                document.getElementById('row-fee').classList.remove('hidden');
-                document.getElementById('summary-fee-price').innerText = `${feeBs.toFixed(2)} Bs.`;
+            if (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale') {
+                comisionBs = precioBaseBs * 0.10;
+                totalBs = precioBaseBs + comisionBs;
+                
+                document.getElementById('summary-fee-price').innerText = "+ " + comisionBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
+                rowFee.classList.remove('hidden');
             } else {
-                document.getElementById('row-fee').classList.add('hidden');
+                rowFee.classList.add('hidden');
             }
 
-            const precioBs = precioFinalUSD * tasaValue;
-
-            document.getElementById('summary-package-name').innerText = selectedPackageName || 'Ninguno';
-            document.getElementById('summary-base-price').innerText = `${(selectedPackagePriceUSD * tasaValue).toFixed(2)} Bs.`;
-            document.getElementById('summary-total-bs').innerText = `${precioBs.toFixed(2)} Bs.`;
-            document.getElementById('summary-total-usd').innerText = `≈ $${precioFinalUSD.toFixed(2)} USD`;
+            document.getElementById('summary-package-name').innerText = selectedPackageName || "Ninguno";
+            document.getElementById('summary-base-price').innerText = precioBaseBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
+            document.getElementById('summary-total-price').innerText = totalBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Bs.";
         }
 
         async function verificarIdEnTiempoReal() {
-            if (juegoActual !== 'free_fire') return;
             const playerId = document.getElementById('player_id').value.trim();
             const statusLabel = document.getElementById('live-api-status');
-            if (!playerId || playerId.length < 5) {
+
+            if (!playerId) {
                 statusLabel.className = "mt-2 text-xs font-bold hidden";
                 return;
             }
+
+            if (juegoActual !== 'free_fire') {
+                statusLabel.className = "mt-2 text-xs font-bold text-slate-400 block";
+                statusLabel.innerText = "✓ Dato ingresado correctamente.";
+                nombreJugadorValidado = "No requerido";
+                return;
+            }
+
             statusLabel.className = "mt-2 text-xs font-bold text-amber-400 block animate-pulse";
-            statusLabel.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Buscando ID en los servidores...`;
-            
+            statusLabel.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Buscando nickname en los servidores de Garena...`;
+
             const nickname = await consultarAPI(playerId);
+
             if (nickname && !nickname.startsWith("Error")) {
                 statusLabel.className = "mt-2 text-xs font-bold text-emerald-400 block";
-                statusLabel.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Jugador: <span class="underline">${nickname}</span>`;
+                statusLabel.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Jugador encontrado: <span class="underline">${nickname}</span>`;
                 nombreJugadorValidado = nickname;
             } else {
                 statusLabel.className = "mt-2 text-xs font-bold text-rose-400 block";
-                statusLabel.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-1"></i> No se confirmó el Nickname automático, pero puedes continuar.`;
+                statusLabel.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-1"></i> No se pudo confirmar el Nickname, pero puedes enviar el reporte.`;
                 nombreJugadorValidado = `Verificado (ID: ${playerId})`;
             }
         }
@@ -847,6 +873,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ playerId: id })
                 });
+
                 if (respuesta.ok) {
                     const resultado = await respuesta.json();
                     if (resultado.success && resultado.nickname) {
@@ -855,7 +882,7 @@
                 }
                 return "Error";
             } catch (error) {
-                console.error("Error en llamada local:", error);
+                console.error("Error en llamada local a API proxy:", error);
                 return "Error";
             }
         }
@@ -872,24 +899,23 @@
 
         async function submitRecharge() {
             const paymentRef = document.getElementById('payment_ref').value.trim();
-            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 1;
+            const tasaValue = parseFloat(document.getElementById('tasa_cambio').value) || 0;
             const submitBtn = document.getElementById('submit-btn');
 
-            if (!paymentRef) {
+            if (!paymentRef) { 
                 Swal.fire({ text: 'Por favor, ingresa el número de referencia del pago.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                return;
+                return; 
             }
-            if (!selectedPackageName || selectedPackagePriceUSD <= 0) {
-                Swal.fire({ text: 'Por favor, selecciona un paquete o monto válido.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                return;
+            if (!selectedPackageName || selectedPackagePriceUSD <= 0) { 
+                Swal.fire({ text: 'Por favor, ingresa o selecciona una cantidad/monto válido.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                return; 
             }
 
-            let precioFinalUSD = selectedPackagePriceUSD;
-            if (juegoActual === 'zinli_sale') {
-                precioFinalUSD += selectedPackagePriceUSD * 0.10;
-            }
-            const precioBs = (precioFinalUSD * tasaValue).toFixed(2);
-            let nombreJuego = document.getElementById('selected-game-title').innerText;
+            const requiereRecargo = (metodoPagoActual === 'zinli' || juegoActual === 'zinli_sale');
+            const factorRecargo = requiereRecargo ? 1.10 : 1.00;
+
+            const precioFinalUSD = selectedPackagePriceUSD * factorRecargo;
+            const precioBs = (precioFinalUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
             if (juegoActual === 'roblox' || juegoActual === 'cod_mobile') {
                 const accountUser = document.getElementById('account_user').value.trim();
@@ -898,11 +924,13 @@
                 const playerWhatsappCred = document.getElementById('player_whatsapp_cred').value.trim();
 
                 if (!accountUser || !accountPass || !playerWhatsappCred) {
-                    Swal.fire({ text: 'Por favor, completa todos los campos de usuario, contraseña y WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                    Swal.fire({ text: 'Por favor, ingresa usuario, contraseña y tu WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
                     return;
                 }
 
-                const msjWhatsApp = `¡Hola! Reporto un pago para *${nombreJuego}*.%0A%0A` +
+                const nombreJuego = juegoActual === 'roblox' ? "ROBLOX" : "CALL OF DUTY MOBILE";
+
+                const msjWhatsApp = `¡Hola MASTER GAME! 👋 Acabo de realizar un pago para *${nombreJuego}*.%0A%0A` +
                     `📌 *Paquete:* ${selectedPackageName}%0A` +
                     `💵 *Monto Total:* ${precioFinalUSD.toFixed(2)} USD (${precioBs} Bs.)%0A` +
                     `💳 *Método:* ${metodoPagoActual.toUpperCase()}%0A` +
@@ -924,37 +952,53 @@
                     document.getElementById('recharge-form').reset();
                     showSection('home-view');
                 });
+
                 return;
             }
 
             const playerId = document.getElementById('player_id').value.trim();
             const playerWhatsapp = document.getElementById('player_whatsapp').value.trim();
 
-            if (!playerId || !playerWhatsapp) {
-                Swal.fire({ text: 'Por favor, ingresa tu ID de jugador y número de WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
-                return;
+            if (!playerId || !playerWhatsapp) { 
+                Swal.fire({ text: 'Por favor, rellena los datos de la cuenta y tu número de WhatsApp.', icon: 'warning', customClass: { popup: 'swal2-popup-gaming', confirmButton: 'swal2-confirm-gaming' } });
+                return; 
             }
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Verificando y Enviando...`;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Subiendo reporte...`;
 
-            const webhookData = {
-                juego: nombreJuego,
+            if (!nombreJugadorValidado) {
+                nombreJugadorValidado = juegoActual === 'free_fire' ? `ID: ${playerId}` : "No requerido";
+            }
+
+            const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/faxu7f5rakpv5981o4okcgvh6o4b4pqb"; 
+
+            let nombreJuegoPayload = "FREE FIRE";
+            if(juegoActual === 'blood_strike') { nombreJuegoPayload = "BLOOD STRIKE"; }
+            else if(juegoActual === 'playstation') { nombreJuegoPayload = "PLAYSTATION NETWORK"; }
+            else if(juegoActual === 'zinli_sale') { nombreJuegoPayload = "COMPRA DE SALDO ZINLI"; }
+
+            const payload = {
+                header_decorativo: "🔒 *TRANSACCIÓN VERIFICADA Y SEGURA* 🔒\n🛡️ _MASTER GAME AUTH SERVICE_\n===================================\n✅ Transacción protegida por cifrado SSL.\n⚡ Procesamiento inmediato en cola automatizada.\n💎 Estado de recarga: Pendiente de Confirmación.",
+                juego: nombreJuegoPayload,
+                id_jugador: playerId,
+                nickname_api: nombreJugadorValidado, 
+                whatsapp_cliente: String(playerWhatsapp), 
                 paquete: selectedPackageName,
-                playerId: playerId,
-                nicknameValidado: nombreJugadorValidado || 'No requerido',
-                whatsapp: playerWhatsapp,
-                metodoPago: metodoPagoActual,
+                monto_base_usd: selectedPackagePriceUSD,
+                monto_total_usd: Number(precioFinalUSD.toFixed(2)),
+                recargo_aplicado: requiereRecargo ? "10%" : "0%",
+                tasa: tasaValue,
+                total_bs: precioBs,
+                metodo_pago: metodoPagoActual.toUpperCase(),
                 referencia: paymentRef,
-                montoUSD: precioFinalUSD.toFixed(2),
-                montoBs: precioBs,
-                fecha: new Date().toISOString()
+                footer_decorativo: "===================================\n📡 _Señal enviada a la cola del servidor. Verificando fondos..._"
             };
 
-            fetch('https://hook.eu2.make.com/tu-webhook-aqui', {
+            fetch(MAKE_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(webhookData)
+                body: JSON.stringify(payload)
             })
             .then(response => {
                 if(response.ok) {
