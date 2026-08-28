@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg">
-    <title>MASTER GAME - Portal de Recargas y Streaming N° 1</title>
+    <title>MASTER GAME - Portal Oficial de Recargas, Cuentas y Streaming N° 1 en Venezuela</title>
     
-    <!-- Hojas de estilo y Scripts externos -->
+    <!-- Hojas de estilo y Scripts externos de alta gama -->
     <link rel="stylesheet" href="optimización.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
             background-color: #020617;
             color: #f8fafc;
-            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
                 linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 1));
             background-attachment: fixed;
+            overflow-x: hidden;
         }
         
         .bg-grid {
             background-size: 40px 40px;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(11, 15, 30, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.15);
         }
 
         .payment-info-box {
@@ -36,20 +60,30 @@
         }
         .payment-info-box.active {
             display: block;
-            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .animate-pulse-slow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
         
         .swal2-popup-gaming {
-            background: rgba(11, 15, 30, 0.95) !important;
-            border: 2px solid #334155 !important;
+            background: rgba(11, 15, 30, 0.98) !important;
+            border: 1px solid rgba(245, 158, 11, 0.3) !important;
             border-radius: 2rem !important;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             color: #f8fafc !important;
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15) !important;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.2) !important;
         }
         .swal2-title-gaming {
             color: #ffffff !important;
@@ -64,116 +98,160 @@
             text-transform: uppercase !important;
             letter-spacing: 0.05em !important;
             border-radius: 1rem !important;
-            padding: 0.8rem 2.5rem !important;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
+            padding: 0.9rem 2.5rem !important;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4) !important;
+            transition: all 0.3s ease !important;
+        }
+        .swal2-confirm-gaming:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.6) !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
         }
     </style>
 </head>
-<body class="relative min-h-screen pb-16 bg-grid">
+<body class="relative min-h-screen pb-20 bg-grid selection:bg-amber-500 selection:text-slate-950">
 
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/584244525080?text=%C2%A1Hola%21+Necesito+ayuda+con+una+recarga+en+MASTER+GAME." 
+    <!-- Top Announcement Bar / Aviso Global -->
+    <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-500 text-slate-950 text-[11px] font-black tracking-widest uppercase py-2 px-4 text-center relative z-50 shadow-md">
+        <div class="container mx-auto flex items-center justify-center gap-3">
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-950 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-950"></span>
+            </span>
+            <span>🚀 SOPORTE VIP ACTIVO 24/7 • ENTREGA INMEDIATA GARANTIZADA EN VENEZUELA</span>
+            <span class="hidden md:inline-block bg-slate-950/10 px-2.5 py-0.5 rounded-full text-[10px]">Tasa Actualizada</span>
+        </div>
+    </div>
+
+    <!-- Botón Flotante de WhatsApp Corporativo -->
+    <a href="https://wa.me/584244525080?text=%C2%A1Hola%21+Necesito+asesor%C3%ada+VIP+con+una+recarga+o+servicio+en+MASTER+GAME." 
        target="_blank" 
        rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 bg-gradient-to-tr from-emerald-500 to-green-400 text-slate-950 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 group">
+       class="fixed bottom-6 right-6 z-50 bg-gradient-to-tr from-emerald-500 to-green-400 text-slate-950 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:shadow-[0_0_45px_rgba(16,185,129,0.8)] transition-all duration-300 hover:scale-110 group cursor-pointer">
         <i class="fa-brands fa-whatsapp"></i>
-        <span class="absolute right-20 bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold px-4 py-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-2xl hidden md:block">
-            ¿Soporte VIP? Escríbenos
+        <span class="absolute right-20 bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold px-4 py-2.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-2xl hidden md:block">
+            💬 ¿Necesitas ayuda? Escríbenos
         </span>
     </a>
 
-    <!-- Encabezado con Elementos de Confianza -->
-    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 px-4 py-3.5">
-        <div class="container mx-auto flex justify-between items-center max-w-5xl">
-            <a href="#" onclick="showSection('home-view'); return false;" class="flex items-center gap-3 group cursor-pointer">
-                <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="h-9 w-9 md:h-10 md:w-10 rounded-xl border border-slate-800 shadow-lg group-hover:border-amber-500/50 transition-all duration-300 group-hover:scale-105 object-cover">
-                <span class="font-black tracking-widest text-sm md:text-base uppercase">
-                    MASTER <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">GAME</span>
-                </span>
+    <!-- Encabezado Principal Estructurado -->
+    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-40 px-4 py-3.5">
+        <div class="container mx-auto flex justify-between items-center max-w-6xl">
+            <a href="#" onclick="showSection('home-view'); return false;" class="flex items-center gap-3.5 group cursor-pointer">
+                <div class="relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-300"></div>
+                    <img src="https://i.pinimg.com/736x/e9/99/70/e999708f0bd3b859ac081fe330be0e7d.jpg" alt="Logo MASTER GAME" class="relative h-10 w-10 md:h-11 md:w-11 rounded-xl border border-slate-800 object-cover">
+                </div>
+                <div>
+                    <span class="font-black tracking-widest text-sm md:text-base uppercase block leading-none">
+                        MASTER <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">GAME</span>
+                    </span>
+                    <span class="text-[9px] font-extrabold text-slate-500 tracking-wider uppercase">Portal Oficial N° 1</span>
+                </div>
             </a>
             
             <div class="flex items-center gap-2 md:gap-3">
-                <span class="hidden sm:inline-flex border border-slate-800 text-[10px] px-3 py-1.5 rounded-full font-extrabold bg-slate-900/50 text-slate-300 uppercase tracking-wider">
-                    ⭐ 5.0 (1.4k+ Órdenes)
-                </span>
-                <span class="border border-emerald-500/30 text-[9px] md:text-[10px] px-3 py-1.5 rounded-full font-extrabold flex items-center gap-1.5 bg-emerald-950/30 text-emerald-400 uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 100% Seguro
-                </span>
+                <div class="hidden sm:flex items-center gap-1.5 border border-slate-800 text-[10px] px-3.5 py-1.5 rounded-full font-extrabold bg-slate-900/50 text-slate-300 uppercase tracking-wider">
+                    <span class="text-amber-400">⭐</span> 5.0 <span class="text-slate-500 font-normal">|</span> 1.4k+ Órdenes
+                </div>
+                <div class="border border-emerald-500/30 text-[9px] md:text-[10px] px-3 py-1.5 rounded-full font-extrabold flex items-center gap-2 bg-emerald-950/30 text-emerald-400 uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Servidor Blindado
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- Tasa de Cambio Oculta (Mantiene la lógica original intacta) -->
     <input type="hidden" id="tasa_cambio" value="980" onchange="recalculateAllPrices()">
 
-    <!-- Vista de Inicio -->
-    <section id="home-view" class="container mx-auto px-4 py-6 md:py-8 max-w-5xl relative z-10">
+    <!-- Vista de Inicio / Catálogo General -->
+    <section id="home-view" class="container mx-auto px-4 py-8 md:py-12 max-w-6xl relative z-10">
         
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/15 rounded-full blur-[160px] pointer-events-none"></div>
-        <div class="absolute top-40 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[160px] pointer-events-none"></div>
+        <!-- Elementos decorativos de fondo de alta gama -->
+        <div class="absolute top-10 left-1/4 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[180px] pointer-events-none animate-pulse-slow"></div>
+        <div class="absolute top-96 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[180px] pointer-events-none animate-pulse-slow"></div>
 
-        <div class="text-center mb-8 md:mb-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] font-black tracking-widest text-amber-400 uppercase mb-4 shadow-lg">
-                <i class="fa-solid fa-shield-halved text-amber-500"></i> PLATAFORMA CERTIFICADA EN VENEZUELA
+        <!-- Hero Section -->
+        <div class="text-center mb-12 md:mb-16 relative">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] font-black tracking-widest text-amber-400 uppercase mb-5 shadow-xl backdrop-blur-md">
+                <i class="fa-solid fa-shield-halved text-amber-500"></i> PLATAFORMA AUTORIZADA DE RECARGAS Y STREAMING
             </div>
-            <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-4 tracking-tight uppercase leading-tight">
-                RECARGAS Y CUENTAS <br><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.2)]">100% AUTOMÁTICAS Y VIP</span>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 tracking-tight uppercase leading-[1.1]">
+                RECARGAS Y CUENTAS <br><span class="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(245,158,11,0.25)]">100% AUTOMÁTICAS Y VIP</span>
             </h1>
             <p class="text-slate-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed px-2">
-                Procesa tus pagos de forma blindada, recibe soporte prioritario y obtén tus diamantes, saldo o servicios de streaming de forma inmediata.
+                Procesa tus pagos de forma blindada, recibe atención prioritaria en Venezuela y obtén tus diamantes, saldo o servicios de entretenimiento de forma inmediata[cite: 2].
             </p>
         </div>
 
-        <!-- Feed en Vivo -->
-        <div class="max-w-xl mx-auto mb-12 bg-slate-950/60 border border-slate-900 rounded-2xl p-3.5 md:p-4 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+        <!-- Feed en Vivo Dinámico -->
+        <div class="max-w-xl mx-auto mb-14 glass-panel rounded-2xl p-3.5 md:p-4 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-amber-500 via-orange-500 to-amber-600"></div>
-            <div class="flex items-center gap-3 md:gap-4">
+            <div class="flex items-center gap-3.5 md:gap-4">
                 <div class="relative flex items-center justify-center flex-shrink-0">
                     <span class="absolute w-3 h-3 bg-emerald-500 rounded-full animate-ping opacity-75"></span>
                     <span class="relative w-2 h-2 bg-emerald-500 rounded-full"></span>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-[9px] font-black uppercase text-slate-500 tracking-widest mb-0.5">Sincronización del Servidor en Vivo</div>
-                    <div id="live-feed-text" class="text-xs font-bold text-slate-300 transition-all duration-500 transform translate-y-0 opacity-100 truncate">
-                        Buscando últimas transacciones de pago...
+                    <div class="text-[9px] font-black uppercase text-slate-400 tracking-widest mb-0.5">Sincronización del Servidor en Vivo</div>
+                    <div id="live-feed-text" class="text-xs font-bold text-slate-200 transition-all duration-500 transform translate-y-0 opacity-100 truncate">
+                        Buscando últimas transacciones de pago en los servidores...
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- CATEGORÍA 1: VIDEOJUEGOS Y SALDOS -->
-        <div class="mb-12">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="p-2 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-400 text-sm"><i class="fa-solid fa-gamepad"></i></div>
-                <h2 class="text-sm md:text-base font-black uppercase tracking-wider text-slate-200">Videojuegos y Billeteras Digitales</h2>
+        <div class="mb-16">
+            <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-900">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-400 text-base shadow-inner"><i class="fa-solid fa-gamepad"></i></div>
+                    <h2 class="text-base md:text-lg font-black uppercase tracking-wider text-slate-100">Videojuegos y Billeteras Digitales</h2>
+                </div>
+                <span class="text-xs font-extrabold text-slate-500 uppercase tracking-wider hidden sm:block">Entrega Directa ID</span>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3.5 md:gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 <!-- Free Fire -->
-                <div onclick="openStore('free_fire')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-amber-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(245,158,11,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('free_fire')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph6F7GPWBlpy3aM8ymdQKDOVZUVGdWcyOdq1rIG2Zxg&s=10" alt="Free Fire Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transition-all">
                                 <i class="fa-solid fa-fire-flame-curved text-2xl md:text-4xl text-amber-500"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-amber-500 text-slate-950 text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">ID Directo</span>
                         </div>
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-amber-400 transition-colors">FREE FIRE</h3>
-                        <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Diamantes directo a tu ID de forma legal y rápida.</p>
+                        <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Diamantes directo a tu ID de forma legal y verificada.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Recargar <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Recargar <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- Blood Strike -->
-                <div onclick="openStore('blood_strike')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-orange-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(249,115,22,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('blood_strike')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AbMCOiiQAvD7jqudP8L6Mpdw4hRHobQzwyRvuMFltQgGrk188R6KUPsy&s=10" alt="Blood Strike Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(249,115,22,0.5)] transition-all">
                                 <i class="fa-solid fa-crosshairs text-2xl md:text-4xl text-orange-500"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-orange-500 text-slate-950 text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Oro Directo</span>
@@ -181,18 +259,18 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-orange-400 transition-colors">BLOOD STRIKE</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Oro de combate y pases de batalla a tu ID.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Recargar <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Recargar <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- Roblox -->
-                <div onclick="openStore('roblox')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-red-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(239,68,68,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('roblox')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp" alt="Roblox Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://i.pinimg.com/vwebp/1200x/64/12/21/64122160e5ac45779fa3dacfcc980c49.webp" alt="Roblox Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] transition-all">
                                 <i class="fa-solid fa-cube text-2xl md:text-4xl text-red-500"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-red-600 text-white text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Vía WhatsApp</span>
@@ -200,18 +278,18 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-red-400 transition-colors">ROBLOX</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Recarga de Robux segura con asistencia por WhatsApp.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-red-600 to-rose-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Comprar <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-red-600 to-rose-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Comprar <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- Call of Duty Mobile -->
-                <div onclick="openStore('cod_mobile')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-emerald-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(16,185,129,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('cod_mobile')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg" alt="COD Mobile Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://i.pinimg.com/736x/60/66/e4/6066e42229dfe9263f1ec7e6beaa2e5c.jpg" alt="COD Mobile Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all">
                                 <i class="fa-solid fa-gun text-2xl md:text-4xl text-emerald-500"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-emerald-500 text-slate-950 text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">CP Directos</span>
@@ -219,18 +297,18 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-emerald-400 transition-colors">COD MOBILE</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Puntos CP para pases y ruletas de forma garantizada.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Comprar CP <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Comprar CP <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- PlayStation -->
-                <div onclick="openStore('playstation')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-blue-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(59,130,246,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('playstation')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://i.pinimg.com/736x/47/83/64/47836425fc8fdf2182783d3cc7715aa3.jpg" alt="PlayStation Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all">
                                 <i class="fa-brands fa-playstation text-2xl md:text-4xl text-blue-500"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-blue-600 text-slate-100 text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Pines Digitales</span>
@@ -238,18 +316,18 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-blue-400 transition-colors">PLAYSTATION</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Gift Cards oficiales para tu cuenta de PSN Store USA.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Ver Pines <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Ver Pines <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- Zinli -->
-                <div onclick="openStore('zinli_sale')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-purple-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(168,85,247,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('zinli_sale')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg" alt="Zinli Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://i.pinimg.com/736x/83/a4/b4/83a4b41e4757f02a720839d515b11878.jpg" alt="Zinli Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900/90 border border-slate-800 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all">
                                 <i class="fa-solid fa-credit-card text-2xl md:text-4xl text-purple-400"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-purple-600 text-white text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Monto Libre</span>
@@ -257,28 +335,31 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-purple-400 transition-colors">SALDO ZINLI</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Compra saldo en dólares para tu tarjeta Zinli pagando en Bs.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Comprar Saldo <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Comprar Saldo <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- CATEGORÍA 2: STREAMING Y ENTRETENIMIENTO (NUEVO) -->
-        <div class="mb-12">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="p-2 bg-rose-500/10 border border-rose-500/20 rounded-xl text-rose-400 text-sm"><i class="fa-solid fa-tv"></i></div>
-                <h2 class="text-sm md:text-base font-black uppercase tracking-wider text-slate-200">Streaming y Entretenimiento</h2>
+        <!-- CATEGORÍA 2: STREAMING Y ENTRETENIMIENTO -->
+        <div class="mb-16">
+            <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-900">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-rose-500/10 border border-rose-500/20 rounded-xl text-rose-400 text-base shadow-inner"><i class="fa-solid fa-tv"></i></div>
+                    <h2 class="text-base md:text-lg font-black uppercase tracking-wider text-slate-100">Streaming y Entretenimiento</h2>
+                </div>
+                <span class="text-xs font-extrabold text-slate-500 uppercase tracking-wider hidden sm:block">Pantallas y Cuentas VIP</span>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 <!-- Netflix -->
-                <div onclick="openStore('netflix')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-red-600/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(220,38,38,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('netflix')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=600&auto=format&fit=crop" alt="Netflix Background" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=600&auto=format&fit=crop" alt="Netflix Background" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-70 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-red-600/20 border border-red-500/40 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(220,38,38,0.6)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-red-600/20 border border-red-500/40 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(220,38,38,0.7)] transition-all">
                                 <span class="text-2xl md:text-3xl font-black text-red-600 tracking-tighter">N</span>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-red-600 text-white text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Pantalla / Cuenta Completa</span>
@@ -286,18 +367,18 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-red-500 transition-colors">NETFLIX VIP</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Disfruta de tus series y películas favoritas en Ultra HD sin caídas.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-red-600 to-rose-700 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Ver Planes Netflix <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-red-600 to-rose-700 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Ver Planes Netflix <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- Prime Video -->
-                <div onclick="openStore('prime_video')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-cyan-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(6,182,212,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('prime_video')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=600&auto=format&fit=crop" alt="Prime Video Background" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=600&auto=format&fit=crop" alt="Prime Video Background" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-70 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(6,182,212,0.7)] transition-all">
                                 <i class="fa-solid fa-play text-xl md:text-2xl text-cyan-400"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-cyan-600 text-slate-950 text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Acceso Inmediato</span>
@@ -305,18 +386,18 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-cyan-400 transition-colors">PRIME VIDEO</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Cuentas estables y garantizadas de Amazon Prime Video.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Ver Planes Prime <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-slate-950 font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Ver Planes Prime <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
                 </div>
 
                 <!-- Disney Plus -->
-                <div onclick="openStore('disney_plus')" class="group cursor-pointer bg-slate-950/50 border border-slate-900 hover:border-indigo-500/50 rounded-2xl md:rounded-3xl overflow-hidden p-3.5 md:p-6 transition-all duration-300 shadow-xl hover:shadow-[0_10px_30px_rgba(99,102,241,0.1)] flex flex-col justify-between relative backdrop-blur-md">
+                <div onclick="openStore('disney_plus')" class="group cursor-pointer glass-card rounded-2xl md:rounded-3xl overflow-hidden p-4 md:p-6 flex flex-col justify-between relative">
                     <div>
-                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-3 md:mb-5 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600&auto=format&fit=crop" alt="Disney Plus Background" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-all duration-500">
+                        <div class="h-32 md:h-44 bg-slate-950 rounded-xl md:rounded-2xl mb-4 overflow-hidden flex items-center justify-center relative border border-slate-900 shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600&auto=format&fit=crop" alt="Disney Plus Background" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-70 transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20"></div>
-                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(99,102,241,0.6)] transition-all">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center group-hover:shadow-[0_0_25px_rgba(99,102,241,0.7)] transition-all">
                                 <i class="fa-solid fa-wand-magic-sparkles text-xl md:text-2xl text-indigo-400"></i>
                             </div>
                             <span class="absolute bottom-2.5 left-2.5 bg-indigo-600 text-white text-[9px] md:text-[10px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded-lg z-10 shadow">Garantía Total</span>
@@ -324,27 +405,50 @@
                         <h3 class="text-sm md:text-xl font-black tracking-wider group-hover:text-indigo-400 transition-colors">DISNEY+</h3>
                         <p class="text-slate-400 text-[11px] md:text-xs mt-1.5 font-medium line-clamp-2">Todo el contenido de Disney, Pixar, Marvel y Star en alta definición.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-900">
-                        <button class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md">Ver Planes Disney <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
+                    <div class="mt-5 pt-3.5 border-t border-slate-900/80">
+                        <button class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-black py-2.5 md:py-3 rounded-xl flex items-center justify-center gap-1.5 text-[10px] md:text-xs uppercase tracking-wider shadow-md group-hover:brightness-110 transition-all">Ver Planes Disney <i class="fa-solid fa-chevron-right text-[8px]"></i></button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Informativa de Confianza y Pasos -->
+        <div class="glass-panel rounded-3xl p-6 md:p-10 mb-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <h3 class="text-center text-lg md:text-2xl font-black uppercase tracking-wider mb-8 text-white">¿Cómo Comprar en Master Game?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 font-black text-lg flex items-center justify-center mx-auto mb-4 border border-amber-500/20">1</div>
+                    <h4 class="font-extrabold text-sm uppercase text-white mb-2">Elige tu Producto</h4>
+                    <p class="text-xs text-slate-400 font-medium">Selecciona el videojuego, paquete o servicio de streaming que deseas adquirir.</p>
+                </div>
+                <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 font-black text-lg flex items-center justify-center mx-auto mb-4 border border-amber-500/20">2</div>
+                    <h4 class="font-extrabold text-sm uppercase text-white mb-2">Realiza el Pago</h4>
+                    <p class="text-xs text-slate-400 font-medium">Transfiere por Pago Móvil, Binance Pay o Zinli usando los datos oficiales de la plataforma.</p>
+                </div>
+                <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 font-black text-lg flex items-center justify-center mx-auto mb-4 border border-amber-500/20">3</div>
+                    <h4 class="font-extrabold text-sm uppercase text-white mb-2">Recibe al Instante</h4>
+                    <p class="text-xs text-slate-400 font-medium">Envía tu comprobante y automatiza la recarga en tu cuenta en cuestión de minutos.</p>
                 </div>
             </div>
         </div>
 
     </section>
 
-    <!-- Vista de Formulario / Tienda -->
+    <!-- Vista de Formulario / Tienda Interactiva -->
     <section id="form-view" class="container mx-auto px-4 py-8 max-w-4xl hidden relative z-10">
         
-        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900/40 border border-slate-800 px-4 py-2 rounded-xl">
-            <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
+        <button onclick="showSection('home-view')" class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors duration-250 cursor-pointer bg-slate-900/60 border border-slate-800 px-4 py-2.5 rounded-xl">
+            <i class="fa-solid fa-arrow-left-long"></i> Volver al Catálogo Principal
         </button>
 
-        <div id="game-image-banner" class="w-full h-36 md:h-44 rounded-2xl md:rounded-3xl overflow-hidden mb-6 md:mb-8 relative border border-slate-900 hidden shadow-2xl">
+        <div id="game-image-banner" class="w-full h-36 md:h-48 rounded-2xl md:rounded-3xl overflow-hidden mb-6 md:mb-8 relative border border-slate-900 hidden shadow-2xl">
             <img id="banner-img-src" src="" alt="Game Banner" class="w-full h-full object-cover opacity-35">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30"></div>
             <div class="absolute bottom-5 left-6 md:bottom-6 md:left-8">
-                <span class="text-[9px] md:text-[10px] font-black uppercase bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 px-3 py-1 rounded-full tracking-widest mb-1.5 md:mb-2 inline-block shadow-lg">Canal Autorizado</span>
+                <span class="text-[9px] md:text-[10px] font-black uppercase bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 px-3 py-1 rounded-full tracking-widest mb-1.5 md:mb-2 inline-block shadow-lg">Canal Oficial Autorizado</span>
                 <h2 id="selected-game-title" class="text-xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">JUEGO</h2>
             </div>
         </div>
@@ -353,9 +457,9 @@
             
             <div class="lg:col-span-2 space-y-6">
                 
-                <!-- Paso 1 -->
-                <div class="bg-slate-950/60 border border-slate-900 p-5 md:p-6 rounded-2xl md:rounded-3xl backdrop-blur-xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
+                <!-- Paso 1: Datos de la Cuenta -->
+                <div class="glass-panel p-5 md:p-6 rounded-2xl md:rounded-3xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">1</span> Datos de la Cuenta / Receptor
                     </h3>
@@ -366,7 +470,7 @@
                             <label id="id-field-label" class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">ID del Jugador</label>
                             <div class="relative">
                                 <span id="id-field-prefix" class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 text-xs font-bold uppercase tracking-wider">ID</span>
-                                <input type="text" id="player_id" placeholder="Ingresa tus datos" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-14 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <input type="text" id="player_id" placeholder="Ingresa tus datos" onchange="verificarIdEnTiempoReal()" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-14 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                             <div id="live-api-status" class="mt-2 text-xs font-bold hidden transition-all duration-300"></div>
                         </div>
@@ -374,31 +478,31 @@
                             <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                <input type="tel" id="player_whatsapp" placeholder="Ej: 04241234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <input type="tel" id="player_whatsapp" placeholder="Ej: 04241234567" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                         </div>
                     </div>
 
                     <!-- CONTENEDOR 2: PARA JUEGOS / STREAMING POR CREDENCIALES O WHATSAPP -->
                     <div id="credentials-login-container" class="space-y-4 hidden">
-                        <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300 font-medium flex items-center gap-2">
+                        <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300 font-medium flex items-center gap-2.5">
                             <i class="fa-solid fa-lock text-amber-400 text-base flex-shrink-0"></i>
-                            Este servicio requiere datos específicos. Al reportar el pago serás redirigido a WhatsApp para gestionarlo de forma privada y segura.
+                            Este servicio requiere gestión personalizada. Al reportar el pago serás redirigido a nuestro WhatsApp oficial para gestionarlo de forma privada y segura.
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Usuario / Correo de Cuenta</label>
-                                <input type="text" id="account_user" placeholder="Ej: Usuario o Correo" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <input type="text" id="account_user" placeholder="Ej: Usuario o Correo" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Contraseña / Notas (Si aplica)</label>
-                                <input type="password" id="account_pass" placeholder="••••••••••••" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                <input type="password" id="account_pass" placeholder="••••••••••••" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Método de Acceso / Plataforma</label>
-                                <select id="account_login_type" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold text-slate-200 outline-none transition-all">
+                                <select id="account_login_type" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold text-slate-200 outline-none transition-all">
                                     <option value="Usuario Roblox / Directo">Usuario Roblox / Directo</option>
                                     <option value="Activision">Activision</option>
                                     <option value="Facebook">Facebook</option>
@@ -412,7 +516,7 @@
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Tu número de WhatsApp</label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i></span>
-                                    <input type="tel" id="player_whatsapp_cred" placeholder="Ej: 04241234567" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
+                                    <input type="tel" id="player_whatsapp_cred" placeholder="Ej: 04241234567" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 pl-10 pr-4 text-sm font-bold placeholder-slate-600 outline-none transition-all">
                                 </div>
                             </div>
                         </div>
@@ -420,8 +524,8 @@
 
                 </div>
 
-                <!-- Paso 2 -->
-                <div class="bg-slate-950/60 border border-slate-900 p-5 md:p-6 rounded-2xl md:rounded-3xl backdrop-blur-xl">
+                <!-- Paso 2: Selección de Paquete -->
+                <div class="glass-panel p-5 md:p-6 rounded-2xl md:rounded-3xl">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">2</span> Selecciona tu Paquete / Monto
                     </h3>
@@ -429,7 +533,7 @@
                     <div id="packages-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4"></div>
 
                     <div id="zinli-custom-amount-container" class="hidden space-y-4">
-                        <div class="p-4 bg-purple-950/30 border border-purple-500/30 rounded-2xl">
+                        <div class="p-4 bg-purple-950/20 border border-purple-500/30 rounded-2xl">
                             <label class="block text-xs font-black uppercase text-purple-300 tracking-wider mb-2">Ingresa la cantidad exacta de Saldo Zinli (USD $) que deseas comprar:</label>
                             <div class="relative max-w-xs">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-purple-400 font-extrabold text-sm">$</span>
@@ -440,21 +544,21 @@
                     </div>
                 </div>
 
-                <!-- Paso 3 -->
-                <div class="bg-slate-950/60 border border-slate-900 p-5 md:p-6 rounded-2xl md:rounded-3xl backdrop-blur-xl">
+                <!-- Paso 3: Información de Pago -->
+                <div class="glass-panel p-5 md:p-6 rounded-2xl md:rounded-3xl">
                     <h3 class="text-xs font-black uppercase tracking-widest text-amber-500 mb-5 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-black border border-amber-500/20">3</span> Información de Pago
                     </h3>
                     
                     <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-3">Selecciona tu Método de Pago</label>
                     <div class="grid grid-cols-3 gap-2.5 md:gap-3 mb-6">
-                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer">
+                        <button type="button" onclick="selectPaymentMethod('pago_movil')" id="btn-pm" class="payment-method-btn border border-amber-500 bg-amber-500/10 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer shadow-md">
                             <i class="fa-solid fa-mobile-screen text-base md:text-lg text-amber-400"></i> PMóvil
                         </button>
-                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer">
+                        <button type="button" onclick="selectPaymentMethod('binance')" id="btn-binance" class="payment-method-btn border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer">
                             <i class="fa-solid fa-coins text-base md:text-lg text-amber-500"></i> Binance
                         </button>
-                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer">
+                        <button type="button" onclick="selectPaymentMethod('zinli')" id="btn-zinli" class="payment-method-btn border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer">
                             <i class="fa-solid fa-credit-card text-base md:text-lg text-purple-400"></i> Zinli
                         </button>
                     </div>
@@ -462,7 +566,7 @@
                     <!-- Datos Pago Móvil -->
                     <div id="info-pago_movil" class="payment-info-box active bg-slate-950/80 border border-slate-900 rounded-2xl p-4 md:p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-4 md:gap-5 items-center">
-                            <div class="w-24 h-24 md:w-28 md:h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
+                            <div class="w-24 h-24 md:w-28 md:h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative">
                                 <img src="https://i.pinimg.com/736x/7b/6f/d7/7b6fd7dc3ce531b9f2a92699e3304ce4.jpg" alt="QR Pago Móvil" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
@@ -478,7 +582,7 @@
                     <!-- Datos Binance -->
                     <div id="info-binance" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-4 md:p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-4 md:gap-5 items-center">
-                            <div class="w-24 h-24 md:w-28 md:h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
+                            <div class="w-24 h-24 md:w-28 md:h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative">
                                 <img src="https://i.pinimg.com/736x/61/47/45/6147451e10fd4e67c699bfc260dd937a.jpg" alt="QR Binance Pay" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
@@ -492,7 +596,7 @@
                     <!-- Datos Zinli -->
                     <div id="info-zinli" class="payment-info-box bg-slate-950/80 border border-slate-900 rounded-2xl p-4 md:p-5 mb-5 shadow-inner">
                         <div class="flex flex-col sm:flex-row gap-4 md:gap-5 items-center">
-                            <div class="w-24 h-24 md:w-28 md:h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative group">
+                            <div class="w-24 h-24 md:w-28 md:h-28 bg-slate-900 rounded-xl flex-shrink-0 border border-slate-800 shadow-xl overflow-hidden relative">
                                 <img src="https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg" alt="QR Zinli" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 text-xs space-y-2 text-center sm:text-left w-full">
@@ -507,11 +611,11 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Número de Referencia / ID Pago</label>
-                                <input type="text" id="payment_ref" required placeholder="Últimos 4, 6 u 8 dígitos" class="w-full bg-slate-950 border border-slate-850 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
+                                <input type="text" id="payment_ref" required placeholder="Últimos 4, 6 u 8 dígitos" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 rounded-xl py-3.5 px-4 text-sm font-bold placeholder-slate-600 outline-none transition-colors">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Captura de Pantalla (Opcional)</label>
-                                <label class="w-full bg-slate-950 border border-slate-850 border-dashed hover:border-amber-500/30 rounded-xl py-3.5 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
+                                <label class="w-full bg-slate-950 border border-slate-800 border-dashed hover:border-amber-500/40 rounded-xl py-3.5 px-4 text-xs font-bold text-slate-500 flex items-center justify-between cursor-pointer transition-all">
                                     <span id="file-name" class="text-emerald-400 hidden font-bold">✓ Archivo cargado</span>
                                     <span id="file-placeholder"><i class="fa-solid fa-cloud-arrow-up mr-2 text-slate-400"></i> Subir Comprobante</span>
                                     <input type="file" id="receipt_file" accept="image/*" class="hidden" onchange="updateFileName(this)">
@@ -522,8 +626,8 @@
                 </div>
             </div>
 
-            <!-- Resumen lateral -->
-            <div class="bg-slate-950/80 border border-slate-900 rounded-2xl md:rounded-3xl p-5 md:p-6 sticky top-24 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+            <!-- Resumen lateral estático de alta gama -->
+            <div class="glass-panel rounded-2xl md:rounded-3xl p-5 md:p-6 sticky top-24 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
                 <h3 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-5 pb-3 border-b border-slate-900 flex items-center justify-between">
                     <span>Resumen del Pedido</span>
@@ -553,20 +657,27 @@
                     </div>
                 </div>
 
-                <button type="submit" id="submit-btn" onclick="submitRecharge(); return false;" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-3.5 md:py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_20px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+                <button type="submit" id="submit-btn" onclick="submitRecharge(); return false;" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black py-3.5 md:py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-[0_4px_25px_rgba(245,158,11,0.3)] flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-paper-plane"></i> Enviar Reporte de Pago
                 </button>
             </div>
         </form>
     </section>
 
-    <!-- Pie de página -->
-    <footer class="w-full text-center py-8 text-xs text-slate-600 font-medium mt-16 border-t border-slate-950">
-        &copy; 2026 MASTER GAME VENEZUELA. Todos los derechos reservados. <br>
-        <span class="text-[10px] text-slate-700 mt-1 block">Términos, condiciones y marcas comerciales registradas son propiedad de sus respectivos dueños.</span>
+    <!-- Pie de página Institucional -->
+    <footer class="w-full text-center py-10 text-xs text-slate-500 font-medium mt-20 border-t border-slate-900 bg-slate-950/40">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex items-center justify-center gap-2 mb-3">
+                <span class="font-black text-sm tracking-widest uppercase text-slate-300">MASTER <span class="text-amber-500">GAME</span></span>
+                <span class="text-slate-700">•</span>
+                <span class="text-[11px] text-slate-400 font-bold">Venezuela</span>
+            </div>
+            &copy; 2026 MASTER GAME. Todos los derechos reservados. <br>
+            <span class="text-[10px] text-slate-600 mt-1 block">Términos, condiciones y marcas comerciales registradas son propiedad de sus respectivos dueños. Operando de forma segura[cite: 2].</span>
+        </div>
     </footer>
 
-    <!-- Script principal -->
+    <!-- Script principal de lógica y pasarelas -->
     <script>
         let juegoActual = "";
         let selectedPackagePriceUSD = 0;
@@ -575,7 +686,7 @@
         let currentActiveBorderClass = ""; 
         let nombreJugadorValidado = ""; 
 
-        // PRECIOS BASE REALES (incluyendo streaming con opciones de pantallas/cuentas)
+        // PRECIOS Y CONFIGURACIONES ORIGINALES PRESERVADAS EXACTAMENTE
         const listaPaquetes = {
             free_fire: [
                 { id: "ff_100", name: "100 Diamantes + 10 Bono", bonus: "Entrega Inmediata", priceUSD: 0.83, icon: "fa-gem" },
@@ -653,7 +764,7 @@
                 
                 feedEl.style.opacity = "1";
                 feedEl.style.transform = "translateY(0)";
-            }, 500);
+            }, 400);
         }
         setInterval(actualizarFeedEnVivo, 7000);
         window.addEventListener('DOMContentLoaded', actualizarFeedEnVivo);
@@ -741,54 +852,54 @@
                 title.innerText = "Free Fire";
                 bannerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wlC_xncTGt-eGqxTL-4xAgWD8OlhmPtV12b5KBtOr3yjAIn_ljL1LvOX&s=10";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(245,158,11,0.2)]';
+                currentActiveBorderClass = 'border-amber-500 bg-amber-500/10 shadow-[0_0_25px_rgba(245,158,11,0.25)]';
                 iconClass = 'text-amber-400';
             } else if(juego === 'blood_strike') {
                 title.innerText = "Blood Strike";
                 bannerImg.src = "https://www.blood-strike.com/m/gw/20230920165203/data/share.jpg";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]';
+                currentActiveBorderClass = 'border-orange-500 bg-orange-500/10 shadow-[0_0_25px_rgba(249,115,22,0.25)]';
                 iconClass = 'text-orange-400';
             } else if(juego === 'roblox') {
                 title.innerText = "Roblox";
                 bannerImg.src = "https://images.rbxcdn.com/7b328a30ef14be8e85eb662d5e75d045";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-red-500 bg-red-500/10 shadow-[0_0_20px_rgba(239,68,68,0.2)]';
+                currentActiveBorderClass = 'border-red-500 bg-red-500/10 shadow-[0_0_25px_rgba(239,68,68,0.25)]';
                 iconClass = 'text-red-400';
             } else if(juego === 'cod_mobile') {
                 title.innerText = "Call of Duty Mobile";
                 bannerImg.src = "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/store/codm-hero.jpg";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-emerald-500 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
+                currentActiveBorderClass = 'border-emerald-500 bg-emerald-500/10 shadow-[0_0_25px_rgba(16,185,129,0.25)]';
                 iconClass = 'text-emerald-400';
             } else if(juego === 'playstation') {
                 title.innerText = "PlayStation Network";
                 bannerImg.src = "https://gmedia.playstation.com/is/image/SIEPDC/playstation-gift-cards-background-desktop-01-en-14sep23?$1600px$";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.2)]';
+                currentActiveBorderClass = 'border-blue-500 bg-blue-500/10 shadow-[0_0_25px_rgba(59,130,246,0.25)]';
                 iconClass = 'text-blue-400';
             } else if(juego === 'zinli_sale') {
                 title.innerText = "Compra de Saldo Zinli";
                 bannerImg.src = "https://i.pinimg.com/736x/4c/e8/73/4ce8734f9cd2ded7416623e5b79c5c49.jpg";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-purple-500 bg-purple-500/10 shadow-[0_0_20px_rgba(168,85,247,0.2)]';
+                currentActiveBorderClass = 'border-purple-500 bg-purple-500/10 shadow-[0_0_25px_rgba(168,85,247,0.25)]';
             } else if(juego === 'netflix') {
                 title.innerText = "Netflix VIP";
                 bannerImg.src = "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=600&auto=format&fit=crop";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-red-600 bg-red-600/10 shadow-[0_0_20px_rgba(220,38,38,0.2)]';
+                currentActiveBorderClass = 'border-red-600 bg-red-600/10 shadow-[0_0_25px_rgba(220,38,38,0.25)]';
                 iconClass = 'text-red-500';
             } else if(juego === 'prime_video') {
                 title.innerText = "Amazon Prime Video";
                 bannerImg.src = "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=600&auto=format&fit=crop";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-cyan-500 bg-cyan-500/10 shadow-[0_0_20px_rgba(6,182,212,0.2)]';
+                currentActiveBorderClass = 'border-cyan-500 bg-cyan-500/10 shadow-[0_0_25px_rgba(6,182,212,0.25)]';
                 iconClass = 'text-cyan-400';
             } else if(juego === 'disney_plus') {
                 title.innerText = "Disney Plus";
                 bannerImg.src = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600&auto=format&fit=crop";
                 bannerContainer.classList.remove('hidden');
-                currentActiveBorderClass = 'border-indigo-500 bg-indigo-500/10 shadow-[0_0_20px_rgba(99,102,241,0.2)]';
+                currentActiveBorderClass = 'border-indigo-500 bg-indigo-500/10 shadow-[0_0_25px_rgba(99,102,241,0.25)]';
                 iconClass = 'text-indigo-400';
             }
 
@@ -804,7 +915,7 @@
                 listaPaquetes[juego].forEach((pkg, idx) => {
                     const isChecked = idx === 0;
                     const checkedAttr = isChecked ? "checked" : "";
-                    const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-900 bg-slate-950/40';
+                    const currentCardClass = isChecked ? currentActiveBorderClass : 'border-slate-800 bg-slate-950/40';
                     
                     const calculatedPriceBs = (pkg.priceUSD * tasaValue).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -847,7 +958,7 @@
 
         function selectPackage(element, name, priceUSD) {
             document.querySelectorAll('.package-content').forEach(card => {
-                card.className = "package-content border border-slate-900 bg-slate-950/40 rounded-2xl p-3.5 md:p-4 flex flex-col justify-between h-full min-h-[130px] md:min-h-[150px] transition-all duration-300 relative overflow-hidden";
+                card.className = "package-content border border-slate-800 bg-slate-950/40 rounded-2xl p-3.5 md:p-4 flex flex-col justify-between h-full min-h-[130px] md:min-h-[150px] transition-all duration-300 relative overflow-hidden";
             });
 
             const innerDiv = element.querySelector('.package-content');
@@ -866,7 +977,7 @@
         function selectPaymentMethod(metodo) {
             metodoPagoActual = metodo;
             document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.className = "payment-method-btn border border-slate-900 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer";
+                btn.className = "payment-method-btn border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer";
             });
 
             document.querySelectorAll('.payment-info-box').forEach(box => {
@@ -874,13 +985,13 @@
             });
 
             if(metodo === 'pago_movil') {
-                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer";
+                document.getElementById('btn-pm').className = "payment-method-btn border border-amber-500 bg-amber-500/10 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer shadow-md";
                 document.getElementById('info-pago_movil').classList.add('active');
             } else if (metodo === 'binance') {
-                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer";
+                document.getElementById('btn-binance').className = "payment-method-btn border border-amber-500 bg-amber-500/10 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer shadow-md";
                 document.getElementById('info-binance').classList.add('active');
             } else if (metodo === 'zinli') {
-                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/5 text-slate-100 rounded-xl py-3 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer";
+                document.getElementById('btn-zinli').className = "payment-method-btn border border-purple-500 bg-purple-500/10 text-slate-100 rounded-xl py-3.5 flex flex-col items-center justify-center gap-1 font-bold text-[11px] md:text-xs transition-all cursor-pointer shadow-md";
                 document.getElementById('info-zinli').classList.add('active');
             }
 
